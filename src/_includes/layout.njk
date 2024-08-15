@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body>
+        {% include 'main-nav.njk' %}
+        <main>
+            {{ poop }}
+            {{ content | safe }}
+        </main>
+    </body>
+</html>

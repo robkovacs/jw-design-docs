@@ -1,0 +1,20 @@
+---
+permalink: assets/css/main.css
+---
+{%-
+    set files = [
+        'oately',
+        'tokens',
+        'typography',
+        'layout',
+        'components/main-nav',
+        'components/notice'
+    ]
+-%}
+{%- set css -%}
+    {%- for file in files -%}
+        {%- include "./assets/css/" + file + ".css" -%}
+    {%- endfor -%}
+{%- endset -%}
+
+{{- css | cssmin | safe -}}

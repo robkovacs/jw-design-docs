@@ -1,0 +1,21 @@
+.notice {
+    padding: 1.5rem;
+    border-radius: 0.25rem;
+    max-width: 40rem;
+}
+
+.notice--danger {
+    background-color: #FFF0EB;
+}
+
+.notice--info {
+    background-color: #E5F3FF;
+}
+
+.notice--success {
+    background-color: #DDF3EA;
+}
+
+.notice--warning {
+    background-color: #FFEED1;
+}

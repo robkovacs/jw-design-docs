@@ -1,0 +1,34 @@
+body {
+    font-family: var(--jw-b-font-family-default);
+    font-size: var(--jw-b-font-size-md);
+    line-height: var(--jw-b-line-height-md);
+}
+
+h1, .h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+h2, .h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+h3, .h3 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+p {
+    max-width: 40rem;
+    margin-bottom: 1.5rem;
+}

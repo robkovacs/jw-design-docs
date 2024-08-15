@@ -1,9 +1,0 @@
----
-permalink: assets/css/main.css
----
-{%- set css -%}
-    {%- include "./css/oately.css" -%}
-    {%- include "./css/main.css" -%}
-{%- endset -%}
-
-{{- css | cssmin | safe -}}
