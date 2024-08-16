@@ -3,6 +3,8 @@
         flex: 0 0 16rem;
         padding: 1.5rem 2rem;
         background-color: var(--jw-s-color-bg-neutral-subtle);
+        max-height: 100vh;
+        overflow-y: auto;
     }
 
     .main-nav__list {

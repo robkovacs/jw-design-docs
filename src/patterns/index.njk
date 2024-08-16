@@ -1,7 +1,10 @@
 ---
-layout: layout.njk
 title: Patterns
 eleventyNavigation:
     key: Patterns
+    parent: Home
 ---
-<h1>Patterns</h1>
+{% extends '../_includes/layout.njk' %}
+{% block content %}
+<h1>{{ title }}</h1>
+{% endblock %}

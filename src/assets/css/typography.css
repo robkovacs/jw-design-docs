@@ -2,6 +2,7 @@ body {
     font-family: var(--jw-b-font-family-default);
     font-size: var(--jw-b-font-size-md);
     line-height: var(--jw-b-line-height-md);
+    color: var(--jw-s-color-text-default);
 }
 
 h1, .h1 {

@@ -11,7 +11,6 @@ module.exports = function (eleventyConfig) {
 		return new cleanCSS({level: 2}).minify(code).styles;
 	});
 
-
 	eleventyConfig.addPassthroughCopy("src/assets/img");
 
 	return {

@@ -9,8 +9,7 @@
     <body>
         {% include 'main-nav.njk' %}
         <main>
-            {{ poop }}
-            {{ content | safe }}
+            {% block content %}{% endblock %}
         </main>
     </body>
 </html>

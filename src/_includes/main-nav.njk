@@ -1,4 +1,4 @@
-{% set navPages = collections.all | eleventyNavigation %}
+{% set navPages = collections.all | eleventyNavigation("Home") %}
 
 {% macro renderNavListItem(entry) -%}
 <li class="main-nav__list-item{% if entry.url == page.url %} main-nav__list-item--current{% endif %}">
@@ -12,7 +12,7 @@
 {%- endmacro %}
 
 <nav class="main-nav">
-    <div class="h3">Justworks</div>
+    <div class="h3">XD@JW</div>
     <ul class="main-nav__list">
         {%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
     </ul>
