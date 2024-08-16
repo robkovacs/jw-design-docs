@@ -23,7 +23,6 @@ body {
     main {
         flex: 1 1 calc(var(--ui-max-width) - var(--nav-width));
         padding: 2rem;
-        overflow-wrap: break-word;
-        word-break: break-all;
+        overflow-wrap: anywhere;
     }
 }
