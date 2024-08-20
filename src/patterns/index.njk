@@ -12,24 +12,23 @@ eleventyNavigation:
     set cards = [
         {
             'title': 'Empty states',
-            'description': "Because sometimes you have a place for content, but no content to put there",
+            'description': "Because sometimes you have a place for content, but no content to put there.",
             'href': 'empty-states/'
         },
         {
             'title': 'Loading states',
-            'description': "Because sometimes content can't be shown right away",
+            'description': "Because sometimes content can't be shown right away.",
             'href': 'loading-states/'
         },
         {
             'title': 'Tabs and friends',
-            'description': "We used to use tabs for a lot of different things. Let's not.",
+            'description': "We used to use tabs for a lot of different things. We shouldn't though.",
             'href': 'tabs-and-friends/'
         }
     ]
 %}
 
 {% block content %}
-<h1>{{ title }}</h1>
 
 <div class="list--cards">
     {% for cardData in cards %}

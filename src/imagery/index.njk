@@ -19,8 +19,6 @@ eleventyNavigation:
 %}
 
 {% block content %}
-<h1>Imagery</h1>
-
 <div class="list--cards">
     {% for cardData in cards %}
         {{ card.render(cardData.title, cardData.description, cardData.href) }}

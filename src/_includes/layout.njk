@@ -9,7 +9,9 @@
     <body>
         {% include 'main-nav.njk' %}
         <main>
-            {% block poop %}{% endblock %}
+            {% if includePageHeader !== false %}
+                {% include 'components/page-header.njk' %}
+            {% endif %}
             {% block content %}{% endblock %}
         </main>
     </body>
