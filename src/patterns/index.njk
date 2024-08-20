@@ -6,7 +6,34 @@ eleventyNavigation:
     order: 3
 ---
 {% extends '../_includes/layout.njk' %}
+{% import '../_includes/components/card.njk' as card %}
+
+{%
+    set cards = [
+        {
+            'title': 'Empty states',
+            'description': "Because sometimes you have a place for content, but no content to put there",
+            'href': 'empty-states/'
+        },
+        {
+            'title': 'Loading states',
+            'description': "Because sometimes content can't be shown right away",
+            'href': 'loading-states/'
+        },
+        {
+            'title': 'Tabs and friends',
+            'description': "We used to use tabs for a lot of different things. Let's not.",
+            'href': 'tabs-and-friends/'
+        }
+    ]
+%}
 
 {% block content %}
 <h1>{{ title }}</h1>
+
+<div class="list--cards">
+    {% for cardData in cards %}
+        {{ card.render(cardData.title, cardData.description, cardData.href) }}
+    {% endfor %}
+</div>
 {% endblock %}
