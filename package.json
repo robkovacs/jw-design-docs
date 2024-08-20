@@ -12,6 +12,7 @@
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-navigation": "^0.3.5",
-    "clean-css": "^5.3.3"
+    "clean-css": "^5.3.3",
+    "html-minifier": "^4.0.0"
   }
 }
