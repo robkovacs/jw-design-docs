@@ -5,6 +5,9 @@
         background-color: var(--jw-s-color-bg-neutral-subtle);
         max-height: 100vh;
         overflow-y: auto;
+        position: sticky;
+        left: 0;
+        top: 0;
     }
 
     .main-nav__list {

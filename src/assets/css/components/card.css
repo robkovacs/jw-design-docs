@@ -22,6 +22,7 @@
     transform: scale(1.0025) translateY(-0.125rem);
 }
 
+
 .list--cards {
     display: flex;
     flex-direction: row;
@@ -30,5 +31,5 @@
 }
 
 .list--cards > .card {
-    flex: 0 1 16rem;
+    flex: 0 0 calc(25% - 1.5rem);
 }

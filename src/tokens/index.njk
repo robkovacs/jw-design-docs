@@ -7,5 +7,32 @@ eleventyNavigation:
     order: 5
 ---
 {% extends '../_includes/layout.njk' %}
+{% import '../_includes/components/card.njk' as card %}
+
+{%
+    set cards = [
+        {
+            'title': 'Space',
+            'description': 'The space between / The tears we cry / Is the laughter, keeps us coming back for more',
+            'href': 'space/'
+        },
+        {
+            'title': 'Color',
+            'description': 'Color makes the world a lot less boring',
+            'href': 'color/'
+        },
+        {
+            'title': 'Typography',
+            'description': 'Believe it or not, most of the content of a UI is text. Gotta make it beautiful and functional.',
+            'href': 'typography/'
+        }
+    ]
+%}
+
 {% block content %}
+<div class="list--cards">
+    {% for cardData in cards %}
+        {{ card.render(cardData.title, cardData.description, cardData.href) }}
+    {% endfor %}
+</div>
 {% endblock %}

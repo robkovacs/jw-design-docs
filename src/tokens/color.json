@@ -1,0 +1,137 @@
+{
+    "colors": [
+        {
+            "name": "Base colors",
+            "prefix-figma": "base/color/",
+            "prefix-css": "--jw-b-color-",
+            "groups": [
+                {
+                    "name": "Gray",
+                    "prefix-figma": "gray/",
+                    "prefix-css": "gray-",
+                    "colors": [
+                        {   
+                            "name": "100",
+                            "hex": "#f7f8fb"
+                        },
+                        {   
+                            "name": "200",
+                            "hex": "#eef0f4"
+                        },
+                        {   
+                            "name": "300",
+                            "hex": "#dcd9e1"
+                        },
+                        {   
+                            "name": "400",
+                            "hex": "#a9adb5"
+                        },
+                        {   
+                            "name": "500",
+                            "hex": "#848890"
+                        },
+                        {   
+                            "name": "600",
+                            "hex": "#6d717a"
+                        },
+                        {   
+                            "name": "700",
+                            "hex": "#5e6167"
+                        },
+                        {   
+                            "name": "800",
+                            "hex": "#3f4147"
+                        },
+                        {   
+                            "name": "900",
+                            "hex": "#1c1d1f"
+                        }
+                    ]
+                },
+                {
+                    "name": "Blue",
+                    "prefix-figma": "blue/",
+                    "prefix-css": "blue-",
+                    "colors": [
+                        {   
+                            "name": "100",
+                            "hex": "#e5f3ff"
+                        },
+                        {   
+                            "name": "200",
+                            "hex": "#b6e5ff"
+                        },
+                        {   
+                            "name": "300",
+                            "hex": "#6dc8ff"
+                        },
+                        {   
+                            "name": "400",
+                            "hex": "#52b0ff"
+                        },
+                        {   
+                            "name": "500",
+                            "hex": "#0092f6"
+                        },
+                        {   
+                            "name": "600",
+                            "hex": "#0070d4"
+                        },
+                        {   
+                            "name": "700",
+                            "hex": "#0e57b5"
+                        },
+                        {   
+                            "name": "800",
+                            "hex": "#1e3d92"
+                        },
+                        {   
+                            "name": "900",
+                            "hex": "#15246d"
+                        }
+                    ]
+                },
+                {
+                    "name": "Red",
+                    "prefix-figma": "red/",
+                    "prefix-css": "red-",
+                    "colors": [
+                        {   
+                            "name": "100",
+                            "hex": "#ffefea"
+                        },
+                        {   
+                            "name": "200",
+                            "hex": "#ffcfbf"
+                        },
+                        {   
+                            "name": "300",
+                            "hex": "#ff9f82"
+                        },
+                        {   
+                            "name": "400",
+                            "hex": "#fb7f59"
+                        },
+                        {   
+                            "name": "500",
+                            "hex": "#df5a31"
+                        },
+                        {   
+                            "name": "600",
+                            "hex": "#cb431d"
+                        },
+                        {   
+                            "name": "700",
+                            "hex": "#af2c10"
+                        },
+                        {   
+                            "name": "800",
+                            "hex": "#832512"
+                        }
+                    ]
+                }
+
+            ]
+        }
+    ]
+}

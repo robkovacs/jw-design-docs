@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>{{ title }}</title>
+        <title>{{ title }} | XD@JW</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="favicon.png">
         <link rel="stylesheet" href="/assets/css/main.css">
@@ -10,7 +10,7 @@
         {% include 'main-nav.njk' %}
         <main>
             {% if includePageHeader !== false %}
-                {% include 'components/page-header.njk' %}
+                {% include 'page-header.njk' %}
             {% endif %}
             {% block content %}{% endblock %}
         </main>

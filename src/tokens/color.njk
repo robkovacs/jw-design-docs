@@ -1,0 +1,25 @@
+---
+title: Color
+eleventyNavigation:
+    key: Color
+    parent: Tokens
+    order: 2
+---
+{% extends '../_includes/layout.njk' %}
+{% import '../_includes/components/meta/swatch.njk' as swatch %}
+
+{% block content %}
+{% for level in colors %}
+    <h2>{{ level.name }}</h2>
+    {% for group in level.groups %}
+        <h3>{{ group.name }}</h3>
+        <div class="swatch-list">
+            {% for color in group.colors %}
+                {% set figmaName = level["prefix-figma"] + group["prefix-figma"] + color.name %}
+                {% set cssName = level["prefix-css"] + group["prefix-css"] + color.name %}
+                {{ swatch.render(color.name, color.hex, figmaName, cssName) }}
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endfor %}
+{% endblock %}
