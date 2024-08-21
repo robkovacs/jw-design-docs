@@ -22,12 +22,12 @@
 
     .main-nav__list-item > .main-nav__list {
         margin-left: 1rem;
-        margin-bottom: 0.25rem;
+        margin-bottom: 1rem;
         margin-top: 0.25rem;
     }
 
     .main-nav__list-item > .main-nav__list > .main-nav__list-item + .main-nav__list-item {
-        margin-top: 0.25rem;
+        margin-top: 0.125rem;
     }
 
     .main-nav__link:link, .main-nav__link:visited {
