@@ -11,7 +11,8 @@
     "@11ty/eleventy-navigation": "^0.3.5",
     "@floating-ui/dom": "^1.6.10",
     "clean-css": "^5.3.3",
-    "html-minifier-terser": "^7.2.0"
+    "html-minifier-terser": "^7.2.0",
+    "jsdom": "^24.1.1"
   },
   "devDependencies": {
     "webpack": "^5.93.0",

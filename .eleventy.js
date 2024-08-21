@@ -1,4 +1,6 @@
 const cleanCSS = require("clean-css");
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 const htmlmin = require('html-minifier-terser');
 const eleventyNavigation = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
@@ -9,6 +11,13 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addWatchTarget("./src/assets/js/");
 	
 	eleventyConfig.addFilter("json", JSON.stringify);
+
+	eleventyConfig.addFilter("addClass", function(input, additionalClass) {
+		const dom = new JSDOM(input.trim());
+		const newNode = dom.window.document.querySelector("body").firstChild;
+		newNode.classList.add(additionalClass);
+		return newNode.outerHTML;
+	});
 
 	eleventyConfig.addFilter("cssmin", function (code) {
 		return new cleanCSS({level: 2}).minify(code).styles;

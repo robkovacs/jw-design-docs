@@ -1,6 +1,7 @@
-{% macro render(trigger, tooltip, triggerType = 'block') %}
-<div class="notice notice--{{ type }}">
-    <div class="h3">{{ headline }}</div>
-    <div>{{ content | safe }}</div>
-<div>
+{% macro render(trigger, content, triggerType = 'block') %}
+{{ trigger | addClass("tooltip__trigger") | safe }}    
+<div class="tooltip__tooltip">
+    {{ content | safe }}
+    <div class="tooltip__arrow"></div>
+</div>
 {% endmacro %}

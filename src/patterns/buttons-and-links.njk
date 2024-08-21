@@ -7,10 +7,14 @@ eleventyNavigation:
 ---
 {% extends '../_includes/layout.njk' %}
 {% import '../_includes/components/system-icon.njk' as systemIcon %}
+{% import '../_includes/components/tooltip.njk' as tooltip %}
 
 {% block content %}
 <article>
     <h2>When to use a button or a link</h2>
+
+    {{ tooltip.render("<button>dsfdsfdfsdf</button>", "Look I'm a tooltip!") }}
+
     <p>Buttons and links behave differently, because they have different purposes:</p>
     <ul class="bulleted-list">
         <li><strong>Buttons</strong> trigger some action, such as showing content on the page that was previously hidden, playing a video, or submitting a form.</li>
@@ -30,7 +34,6 @@ eleventyNavigation:
         <button class="button-demo">...or if this looks like a button, but acts like a link...</button>
     </div>
     <p>...we might have some work to do.</p>
-    {{ systemIcon.render("copy", "xs") }}
 </article>
 {% endblock %}
 

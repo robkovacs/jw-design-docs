@@ -40,7 +40,12 @@
     --jw-b-size-xl: 1.5rem; 
     --jw-b-size-2xl: 1.75rem; 
     --jw-b-size-3xl: 2rem; 
-    --jw-b-size-4xl: 2.5rem; 
+    --jw-b-size-4xl: 2.5rem;
+
+    --jw-b-shadow-level-1: -1px -1px 2px 0px rgba(63, 65, 71, 0.07), 1px 1px 2px 0px rgba(63, 65, 71, 0.28);
+    --jw-b-shadow-level-2: -2px -2px 4px 0px rgba(63, 65, 71, 0.07), 2px 2px 4px 0px rgba(63, 65, 71, 0.28);
+    --jw-b-shadow-level-3: -4px -4px 8px 0px rgba(63, 65, 71, 0.06), 4px 4px 8px 0px rgba(63, 65, 71, 0.24);
+    --jw-b-shadow-level-4: -8px -8px 16px 0px rgba(63, 65, 71, 0.06), 8px 8px 16px 0px rgba(63, 65, 71, 0.24);
     
     --jw-s-color-bg-neutral-subtle: var(--jw-b-color-gray-100);
     --jw-s-color-text-default: var(--jw-b-color-gray-900);
