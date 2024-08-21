@@ -8,10 +8,10 @@ html {
 }
 
 *:focus-visible {
-    outline-offset: 0.125rem;
-    outline: #0092f6 solid 0.125rem;
-    box-shadow: 0 0 0 0.125rem #fff;
-    border-radius: 0.25rem;
+    outline-offset: var(--jw-b-size-4xs);
+    outline: var(--jw-b-color-blue-500) solid var(--jw-b-size-4xs);
+    box-shadow: 0 0 0 var(--jw-b-size-4xs) var(--jw-b-color-white);
+    border-radius: var(--jw-b-size-3xs);
 }
 
 body {
@@ -29,7 +29,7 @@ body {
 
     main {
         flex: 1 1 calc(var(--ui-max-width) - var(--nav-width));
-        padding: 2rem;
+        padding: var(--jw-b-size-3xl);
         overflow-wrap: anywhere;
     }
 }

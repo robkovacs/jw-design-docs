@@ -1,0 +1,3 @@
+{% macro render(iconName, size = "md", color = '') %}
+<span class="system-icon system-icon--size-{{ size }} {% if color !== '' %}system-icon--color-{% endif %}">{%- include '../../assets/img/system-icons/' + iconName + '.svg' -%}</span>
+{% endmacro %}

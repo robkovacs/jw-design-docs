@@ -6,6 +6,79 @@ eleventyNavigation:
     order: 1
 ---
 {% extends '../_includes/layout.njk' %}
+{% import '../_includes/components/system-icon.njk' as systemIcon %}
 
 {% block content %}
+<article>
+    <h2>When to use a button or a link</h2>
+    <p>Buttons and links behave differently, because they have different purposes:</p>
+    <ul class="bulleted-list">
+        <li><strong>Buttons</strong> trigger some action, such as showing content on the page that was previously hidden, playing a video, or submitting a form.</li>
+        <li><strong>Links</strong> take the user to a new location, such as a new web page or new section of the current page</li>
+    </ul>
+    <p>Because of their different purposes, buttons and links behave differently in both browsers and screen readers. Some examples include:</p>
+    <ul class="bulleted-list">
+        <li>Links have a concept of whether or not they’ve been visited, buttons don’t</li>
+        <li>Links can be opened in a new tab, buttons can’t</li>
+        <li>The target of a link can be bookmarked, but not the target of a button</li>
+        <li>Focused buttons can be activated (i.e. clicked on) with the <kbd>Space</kbd> key, or the <kbd>Enter</kbd> or <kbd>Return</kbd> key; focused links can only be activated with <kbd>Enter</kbd> or <kbd>Return</kbd></li>
+        <li>Some screen readers collect all links on the page in one section of their interface, and all buttons or form controls in another</li>
+    </ul>
+    <p>Because of their different purposes, and resulting different behaviors, elements in our experiences that are styled a certain way should consistently behave as either buttons or links.</p>
+    <div class="button-vs-link-demo">
+        <a href="javascript:return false;" class="link-demo">If this looks like a link, but acts like a button...</a>
+        <button class="button-demo">...or if this looks like a button, but acts like a link...</button>
+    </div>
+    <p>...we might have some work to do.</p>
+    {{ systemIcon.render("copy", "xs") }}
+</article>
 {% endblock %}
+
+{% set localCss %}
+.button-vs-link-demo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--jw-b-size-3xl);
+    align-items: center;
+}
+
+.link-demo, .button-demo {
+    flex: 1 0;
+    width: 100%;
+}
+
+.link-demo {
+    color: var(--jw-b-color-blue-600);
+    text-decoration: none;
+}
+
+.link-demo:hover {
+    color: var(--jw-b-color-blue-700);
+    text-decoration: underline;
+}
+
+.link-demo:active {
+    color: var(--jw-b-color-blue-800);
+}
+
+.button-demo {
+    font-family: inherit;
+    font-weight: bold;
+    font-size: var(--jw-b-size-md);
+    line-height: var(--jw-b-size-lg);
+    padding: var(--jw-b-size-xs) var(--jw-b-size-md);
+    border: var(--jw-b-size-5xs) solid transparent;
+    border-radius: var(--jw-b-size-3xs);
+    background-color: var(--jw-b-color-blue-600);
+    color: var(--jw-b-color-white);
+}
+
+.button-demo:hover {
+    background-color: var(--jw-b-color-blue-700);
+}
+
+.button-demo:active {
+    background-color: var(--jw-b-color-blue-800);
+}
+{% endset %}

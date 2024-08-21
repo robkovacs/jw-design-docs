@@ -2,21 +2,21 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    font-size: 0.875rem;
-    line-height: 1rem;
-    margin-bottom: 0.5rem;
-    color: #5E6167;
+    font-size: var(--jw-b-size-sm);
+    line-height: var(--jw-b-size-md);
+    margin-bottom: var(--jw-b-size-2xs);
+    color: var(--jw-b-color-gray-700);
 }
 
 .breadcrumbs, .breadcrumbs li {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.25rem;
+    gap: var(--jw-b-size-3xs);
 }
 
 .breadcrumbs li a {
-    color: #0070d4;
+    color: var(--jw-b-color-blue-600);
 }
 
 .breadcrumbs > li::after {

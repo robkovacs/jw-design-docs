@@ -1,9 +1,10 @@
 @media screen and (min-width: 30rem) {
     .main-nav {
         flex: 0 0 16rem;
-        padding: 1.5rem 2rem;
+        padding: var(--jw-b-size-xl) var(--jw-b-size-3xl);
         background-color: var(--jw-s-color-bg-neutral-subtle);
-        max-height: 100vh;
+        height: 100vh;
+        height: 100dvh;
         overflow-y: auto;
         position: sticky;
         left: 0;
@@ -17,29 +18,29 @@
     }    
 
     .main-nav__list-item + .main-nav__list-item {
-        margin-top: 0.5rem;
+        margin-top: var(--jw-b-size-2xs);
     }
 
     .main-nav__list-item > .main-nav__list {
-        margin-left: 1rem;
-        margin-bottom: 1rem;
-        margin-top: 0.25rem;
+        margin-left: var(--jw-b-size-md);
+        margin-bottom: var(--jw-b-size-md);
+        margin-top: var(--jw-b-size-3xs);
     }
 
     .main-nav__list-item > .main-nav__list > .main-nav__list-item + .main-nav__list-item {
-        margin-top: 0.125rem;
+        margin-top: var(--jw-b-size-3xs);
     }
 
     .main-nav__link:link, .main-nav__link:visited {
-        color: #666;
+        color: var(--jw-b-color-gray-600);
         text-decoration: none;
     }
 
     .main-nav__link:hover {
-        color: #555;
+        color: var(--jw-b-color-gray-700);
     }
 
     .main-nav__link:active {
-        color: #444;
+        color: var(--jw-b-color-gray-800);
     }
 }

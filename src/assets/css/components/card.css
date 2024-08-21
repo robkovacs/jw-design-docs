@@ -1,25 +1,25 @@
 .card {
     display: block;
-    border: 0.0625rem solid #dcd9e1;
-    border-radius: 0.25rem;
-    padding: 1.5rem;
+    border: var(--jw-b-size-5xs) solid var(--jw-b-color-gray-300);
+    border-radius: var(--jw-b-size-3xs);
+    padding: var(--jw-b-size-xl);
     text-decoration: none;
-    color: #1c1d1f;
+    color: var(--jw-b-color-gray-900);
     box-shadow: -1px -1px 2px 0px rgba(63, 65, 71, 0.08), 1px 1px 2px 0px rgba(63, 65, 71, 0.32);
 }
 
 .card__title {
-    font-size: 1.25rem;
-    line-height: 1.25rem;
+    font-size: var(--jw-b-size-lg);
+    line-height: var(--jw-b-size-lg);
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: var(--jw-b-size-md);
 }
 
 .card:hover {
-    border-color: #A9ADB5;
+    border-color: var(--jw-b-color-gray-400);
     box-shadow: -2px -2px 4px 0px rgba(63, 65, 71, 0.07), 2px 2px 4px 0px rgba(63, 65, 71, 0.28);
     transition: transform 150ms ease-out;
-    transform: scale(1.0025) translateY(-0.125rem);
+    transform: scale(1.0025) translateY(calc(-1 * var(--jw-b-size-4xs)));
 }
 
 
@@ -27,9 +27,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: var(--jw-b-size-3xl);
 }
 
 .list--cards > .card {
-    flex: 0 0 calc(25% - 1.5rem);
+    flex: 0 0 calc(25% - var(--jw-b-size-xl));
 }

@@ -1,0 +1,36 @@
+.system-icon {
+    display: inline-block;
+}
+
+.system-icon > svg {
+    vertical-align: top;
+}
+
+.system-icon--size-xs {
+    line-height: var(--jw-b-size-md);
+}
+
+.system-icon--size-xs > svg {
+    width: var(--jw-b-size-md);
+    height: var(--jw-b-size-md);
+}
+
+.system-icon--size-sm > svg {
+    width: var(--jw-b-size-lg);
+    height: var(--jw-b-size-lg);
+}
+
+.system-icon--size-md > svg {
+    width: var(--jw-b-size-xl);
+    height: var(--jw-b-size-xl);
+}
+
+.system-icon--lg > svg {
+    width: var(--jw-b-size-2xl);
+    height: var(--jw-b-size-2xl);
+}
+
+.system-icon--xl > svg {
+    width: var(--jw-b-size-4xl);
+    height: var(--jw-b-size-4xl);
+}
