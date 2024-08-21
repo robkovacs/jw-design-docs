@@ -1,6 +1,7 @@
 const cleanCSS = require("clean-css");
 const htmlmin = require("html-minifier");
 const eleventyNavigation = require("@11ty/eleventy-navigation");
+const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
 module.exports = function (eleventyConfig) {
 	eleventyConfig.addPlugin(eleventyNavigation);
@@ -28,7 +29,10 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/assets/img");
 	eleventyConfig.addPassthroughCopy("src/assets/js");
 
+	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+
 	return {
+		pathPrefix: "/eleventy-demo/",
 		dir: {
 		  input: "src",
 		  output: "dist"
