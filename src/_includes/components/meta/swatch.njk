@@ -4,17 +4,17 @@
     <div class="h4 swatch__name">{{ name }}</div>
     <ul class="swatch__button-list">
         <li>
-            <button class="swatch__button swatch__figma-name" data-to-copy="{{ figmaName }}">
+            <button class="swatch__button swatch__figma-name" data-copy-text="{{ figmaName }}" aria-label="Copy Figma">
                {% include "../../../assets/img/system-icons/copy.svg" %} Figma
             </button>
             </li>
         <li>
-            <button class="swatch__button swatch__css-name" data-to-copy="{{ cssName }}">
+            <button class="swatch__button swatch__css-name" data-copy-text="{{ cssName }}" aria-label="Copy CSS">
                 {% include "../../../assets/img/system-icons/copy.svg" %} CSS
             </button>
             </li>
         <li>
-            <button class="swatch__button swatch__hex" data-to-copy="{{ hex | safe }}">
+            <button class="swatch__button swatch__hex" data-copy-text="{{ hex | safe }}" aria-label="Copy Hex">
                 {% include "../../../assets/img/system-icons/copy.svg" %} Hex
             </button>
         </li>

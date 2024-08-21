@@ -1,5 +1,5 @@
 {
-    "colors": [
+    "colorData": [
         {
             "name": "Base colors",
             "prefix-figma": "base/color/",
@@ -20,7 +20,7 @@
                         },
                         {   
                             "name": "300",
-                            "hex": "#dcd9e1"
+                            "hex": "#d9dce1"
                         },
                         {   
                             "name": "400",

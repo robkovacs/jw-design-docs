@@ -1,22 +1,24 @@
 (() => {
     let swatchButton = document.querySelectorAll(".swatch__button");
-    const copyContent = async (textToWrite, successMessage) => {
+    const copyContent = async (textToWrite, toastMessage) => {
         try {
             await navigator.clipboard.writeText(textToWrite);
 
             let toaster = document.querySelector(".toaster");
             
             if (!toaster) {
-                let newToaster = document.createElement("div");
-                newToaster.classList.add("toaster");
-                document.querySelector("body").appendChild(newToaster);
-                toaster = newToaster;
+                toaster = document.createElement("div");
+                toaster.classList.add("toaster");
+                document.querySelector("body").appendChild(toaster);
             }
 
-            let newToast = document.createElement("div");
-            newToast.classList.add("toaster__toast");
-            newToast.innerHTML = successMessage;
-            toaster.appendChild(newToast);
+            let toast = document.createElement("div");
+            toast.classList.add("toaster__toast");
+            toast.setAttribute("role", "alert");
+            toast.setAttribute("aria-live", "assertive");
+            toast.setAttribute("aria-atomic", "true");
+            toast.innerHTML = toastMessage;
+            toaster.appendChild(toast);
             let thisToast = toaster.lastChild;
             window.setTimeout(() => {
                 thisToast.classList.add("fade-out");
@@ -30,8 +32,7 @@
     swatchButton.forEach((el) => {
         el.addEventListener("click", (e) => {
             e.preventDefault();
-
-            copyContent(e.target.dataset.toCopy, "Copied!");
+            copyContent(e.currentTarget.dataset.copyText, "Copied!");
         });
     });
 })();
