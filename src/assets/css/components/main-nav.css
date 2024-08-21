@@ -11,6 +11,17 @@
         top: 0;
     }
 
+    .main-nav__home {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        font-size: var(--jw-b-size-md);
+        line-height: var(--jw-b-size-lg);
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: var(--jw-b-size-md);
+    }
+
     .main-nav__list {
         list-style-type: none;
         margin: 0;

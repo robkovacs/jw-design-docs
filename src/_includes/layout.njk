@@ -1,9 +1,11 @@
 <!doctype html>
-<html>
+<html lang="en-US">
     <head>
         <title>{{ title }} | XD@JW</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="favicon.png">
+        <meta name="generator" content="{{ eleventy.generator }}">
+        <meta name="description" content="{{ metaDescription }}">
         <link rel="stylesheet" href="/assets/css/main.css">
         {% if localCss %}<style>{{ localCss | cssmin | safe }}</style>{% endif %}
     </head>
@@ -11,10 +13,11 @@
         {% include 'main-nav.njk' %}
         <main>
             {% if includePageHeader !== false %}
-                {% include 'page-header.njk' %}
+                {{ collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key) | eleventyNavigationToHtml({ 'listClass': 'breadcrumbs' }) | safe }}
+                <h1>{{ title }}</h1>
             {% endif %}
             {% block content %}{% endblock %}
         </main>
-    {% block localJs %}{% endblock %}
+        <script src="/assets/js/main.js"></script>
     </body>
 </html>
