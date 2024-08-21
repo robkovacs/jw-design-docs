@@ -2,9 +2,6 @@
   "name": "eleventy-demo",
   "version": "1.0.0",
   "main": ".eleventy.js",
-  "scripts": {
-     "build": "eleventy"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
