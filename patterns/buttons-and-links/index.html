@@ -1,1 +1,128 @@
-<!doctype html><html lang="en-US"><head><title>Buttons and links | XD@JW</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="shortcut icon" href="favicon.png"><meta name="generator" content="Eleventy v2.0.1"><meta name="description" content=""><link rel="stylesheet" href="/eleventy-demo/assets/css/main.css"><style>.button-vs-link-demo{display:flex;flex-direction:row;flex-wrap:wrap;gap:var(--jw-b-size-3xl);align-items:center}.button-demo,.link-demo{flex:1 0;width:100%}.link-demo{color:var(--jw-b-color-blue-600);text-decoration:none}.link-demo:hover{color:var(--jw-b-color-blue-700);text-decoration:underline}.link-demo:active{color:var(--jw-b-color-blue-800)}.button-demo{font-family:inherit;font-weight:700;font-size:var(--jw-b-size-md);line-height:var(--jw-b-size-lg);padding:var(--jw-b-size-xs) var(--jw-b-size-md);border:var(--jw-b-size-5xs) solid transparent;border-radius:var(--jw-b-size-3xs);background-color:var(--jw-b-color-blue-600);color:var(--jw-b-color-white)}.button-demo:hover{background-color:var(--jw-b-color-blue-700)}.button-demo:active{background-color:var(--jw-b-color-blue-800)}</style></head><body><nav class="main-nav"><a href="/eleventy-demo/" class="main-nav__home">XD@JW</a><ul class="main-nav__list"><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/foundations/">Foundations</a><ul class="main-nav__list"><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/foundations/principles/">Principles</a></li></ul></li><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/patterns/">Patterns</a><ul class="main-nav__list"><li class="main-nav__list-item main-nav__list-item--current"><a class="main-nav__link main-nav__link" href="/eleventy-demo/patterns/buttons-and-links/">Buttons and links</a></li><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/patterns/empty-states/">Empty states</a></li><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/patterns/loading-states/">Loading states</a></li><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/patterns/tabs-and-friends/">Tabs and friends</a></li></ul></li><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/components/">Components</a><ul class="main-nav__list"><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/components/select/">Select</a></li></ul></li><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/tokens/">Design tokens</a><ul class="main-nav__list"><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/tokens/space/">Space</a></li><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/tokens/color/">Color</a></li><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/tokens/typography/">Typography</a></li></ul></li><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/imagery/">Imagery</a><ul class="main-nav__list"><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/imagery/system-icons/">System icons</a></li></ul></li><li class="main-nav__list-item"><a class="main-nav__link main-nav__link" href="/eleventy-demo/contributing/">Contributing</a></li></ul></nav><main><ul class="breadcrumbs"><li><a href="/eleventy-demo/">Home</a></li><li><a href="/eleventy-demo/patterns/">Patterns</a></li></ul><h1>Buttons and links</h1><article><h2>When to use a button or a link</h2><button class="tooltip__trigger">dsfdsfdfsdf</button><div class="tooltip__tooltip">Look I'm a tooltip!<div class="tooltip__arrow"></div></div><p>Buttons and links behave differently, because they have different purposes:</p><ul class="bulleted-list"><li><strong>Buttons</strong> trigger some action, such as showing content on the page that was previously hidden, playing a video, or submitting a form.</li><li><strong>Links</strong> take the user to a new location, such as a new web page or new section of the current page</li></ul><p>Because of their different purposes, buttons and links behave differently in both browsers and screen readers. Some examples include:</p><ul class="bulleted-list"><li>Links have a concept of whether or not they’ve been visited, buttons don’t</li><li>Links can be opened in a new tab, buttons can’t</li><li>The target of a link can be bookmarked, but not the target of a button</li><li>Focused buttons can be activated (i.e. clicked on) with the <kbd>Space</kbd> key, or the <kbd>Enter</kbd> or <kbd>Return</kbd> key; focused links can only be activated with <kbd>Enter</kbd> or <kbd>Return</kbd></li><li>Some screen readers collect all links on the page in one section of their interface, and all buttons or form controls in another</li></ul><p>Because of their different purposes, and resulting different behaviors, elements in our experiences that are styled a certain way should consistently behave as either buttons or links.</p><div class="button-vs-link-demo"><a href="javascript:return false;" class="link-demo">If this looks like a link, but acts like a button...</a> <button class="button-demo">...or if this looks like a button, but acts like a link...</button></div><p>...we might have some work to do.</p></article></main><script src="/eleventy-demo/assets/js/main.js"></script></body></html>
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <title>Buttons and links | XD@JW</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="shortcut icon" href="favicon.png">
+        <meta name="generator" content="Eleventy v2.0.1">
+        <meta name="description" content="">
+        <link rel="stylesheet" href="/eleventy-demo/assets/css/main.css">
+        <style>.button-vs-link-demo{display:flex;flex-direction:row;flex-wrap:wrap;gap:var(--jw-b-size-3xl);align-items:center}.button-demo,.link-demo{flex:1 0;width:100%}</style>
+    </head>
+    <body>
+        
+
+
+
+<nav class="main-nav">
+    <a href="/eleventy-demo/" class="main-nav__home">XD@JW</a>
+    <ul class="main-nav__list"><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/foundations/">Foundations</a><ul class="main-nav__list"><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/foundations/principles/">Principles</a></li></ul></li><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/patterns/">Patterns</a><ul class="main-nav__list"><li class="main-nav__list-item main-nav__list-item--current">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/patterns/buttons-and-links/">Buttons and links</a></li><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/patterns/empty-states/">Empty states</a></li><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/patterns/loading-states/">Loading states</a></li><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/patterns/tabs-and-friends/">Tabs and friends</a></li></ul></li><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/components/">Components</a><ul class="main-nav__list"><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/components/select/">Select</a></li></ul></li><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/tokens/">Design tokens</a><ul class="main-nav__list"><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/tokens/space/">Space</a></li><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/tokens/color/">Color</a></li><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/tokens/typography/">Typography</a></li></ul></li><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/imagery/">Imagery</a><ul class="main-nav__list"><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/imagery/system-icons/">System icons</a></li></ul></li><li class="main-nav__list-item">
+  <a class="main-nav__link main-nav__link" href="/eleventy-demo/contributing/">Contributing</a></li></ul>
+</nav>
+        <main>
+            
+                <ul class="breadcrumbs"><li><a href="/eleventy-demo/">Home</a></li>
+<li><a href="/eleventy-demo/patterns/">Patterns</a></li></ul>
+                <h1>Buttons and links</h1>
+            
+            
+<article>
+    <h2>When to use a button or a link</h2>
+
+    
+
+
+    
+    <button class="tooltip__trigger">dsfdsfdfsdf</button>
+
+
+<div class="tooltip__tooltip">
+    Look I'm a tooltip!
+    <div class="tooltip__arrow"></div>
+</div>
+
+    
+<svg class="spinner spinner--size-md" viewbox="0 0 64 64">
+    <clipPath id="spinner__path">
+        <path d="M32.064 3.716a4 4 0 0 1-3.404 4.518 24 24 0 1 0 14.607 2.575 4 4 0 0 1 3.756-7.063A32 32 0 1 1 27.546.31a4 4 0 0 1 4.518 3.405Z"></path>
+    </clipPath>
+ 
+    <foreignObject width="64" height="64" clip-path="url(#spinner__path)" class="spinner__axis">
+        <div class="spinner__shape"></div>
+    </foreignObject>
+</svg>
+
+    <a href="https://google.com" class="anchor">
+<span class="system-icon system-icon--size-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path fill="currentColor" d="M8.25 3a.75.75 0 0 0-.75.75V7.5H3.75a.75.75 0 0 0-.75.75v12c0 .414.336.75.75.75h12a.75.75 0 0 0 .75-.75V16.5h3.75a.75.75 0 0 0 .75-.75v-12a.75.75 0 0 0-.75-.75h-12Zm7.5 4.5H9v-3h10.5V15h-3V8.25a.75.75 0 0 0-.75-.75ZM4.5 9H15v10.5H4.5V9Z"></path>
+</svg>
+</span>
+<span class="anchor__content">dffsedfdff</span>
+<span class="system-icon system-icon--size-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path fill="currentColor" d="M13.5 3.75a.75.75 0 0 1 .75-.75h5.962a.748.748 0 0 1 .787.787L21 9.75a.75.75 0 0 1-1.5 0V5.561l-6.22 6.22a.75.75 0 1 1-1.06-1.061l6.219-6.22h-4.19a.75.75 0 0 1-.749-.75Z"></path>
+  <path fill="currentColor" d="M3.44 6.44A1.5 1.5 0 0 1 4.5 6h6.75a.75.75 0 0 1 0 1.5H4.5v12h12v-6.75a.75.75 0 0 1 1.5 0v6.75a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 3 19.5v-12c0-.398.158-.78.44-1.06Z"></path>
+</svg>
+</span>
+</a>
+
+    <p>Buttons and links behave differently, because they have different purposes:</p>
+    <ul class="bulleted-list">
+        <li><strong>Buttons</strong> trigger some action, such as showing content on the page that was previously hidden, playing a video, or submitting a form.</li>
+        <li><strong>Links</strong> take the user to a new location, such as a new web page or new section of the current page</li>
+    </ul>
+    <p>Because of their different purposes, buttons and links behave differently in both browsers and screen readers. Some examples include:</p>
+    <ul class="bulleted-list">
+        <li>Links have a concept of whether or not they’ve been visited, buttons don’t</li>
+        <li>Links can be opened in a new tab, buttons can’t</li>
+        <li>The target of a link can be bookmarked, but not the target of a button</li>
+        <li>Focused buttons can be activated (i.e. clicked on) with the <kbd>Space</kbd> key, or the <kbd>Enter</kbd> or <kbd>Return</kbd> key; focused links can only be activated with <kbd>Enter</kbd> or <kbd>Return</kbd></li>
+        <li>Some screen readers collect all links on the page in one section of their interface, and all buttons or form controls in another</li>
+    </ul>
+    <p>Because of their different purposes, and resulting different behaviors, elements in our experiences that are styled a certain way should consistently behave as either buttons or links.</p>
+    <div class="button-vs-link-demo">
+        <a href="javascript:return false;" class="anchor link-demo"><span class="anchor__content">If this looks like a link, but acts like a button...</span></a>
+        
+<button class="button button--filled button-demo">
+    
+        
+<span class="system-icon system-icon--size-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path fill="currentColor" d="M8.25 3a.75.75 0 0 0-.75.75V7.5H3.75a.75.75 0 0 0-.75.75v12c0 .414.336.75.75.75h12a.75.75 0 0 0 .75-.75V16.5h3.75a.75.75 0 0 0 .75-.75v-12a.75.75 0 0 0-.75-.75h-12Zm7.5 4.5H9v-3h10.5V15h-3V8.25a.75.75 0 0 0-.75-.75ZM4.5 9H15v10.5H4.5V9Z"></path>
+</svg>
+</span>
+
+    
+    <span>...or if this looks like a button, but acts like a link...</span>
+    
+        
+<span class="system-icon system-icon--size-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path fill="currentColor" d="M13.5 3.75a.75.75 0 0 1 .75-.75h5.962a.748.748 0 0 1 .787.787L21 9.75a.75.75 0 0 1-1.5 0V5.561l-6.22 6.22a.75.75 0 1 1-1.06-1.061l6.219-6.22h-4.19a.75.75 0 0 1-.749-.75Z"></path>
+  <path fill="currentColor" d="M3.44 6.44A1.5 1.5 0 0 1 4.5 6h6.75a.75.75 0 0 1 0 1.5H4.5v12h12v-6.75a.75.75 0 0 1 1.5 0v6.75a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 3 19.5v-12c0-.398.158-.78.44-1.06Z"></path>
+</svg>
+</span>
+
+    
+</button>
+
+    </div>
+    <p>...we might have some work to do.</p>
+</article>
+
+        </main>
+        <script src="/eleventy-demo/assets/js/main.js"></script>
+    </body>
+</html>
