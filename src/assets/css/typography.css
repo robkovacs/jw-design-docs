@@ -71,7 +71,7 @@ article {
 }
 
 p + .bulleted-list {
-    margin-top: calc(-1 * var(--jw-b-size-sm));
+    margin-top: calc(-1 * var(--jw-b-size-xs));
 }
 
 .bulleted-list > li + li {
