@@ -70,6 +70,10 @@ article {
     margin-bottom: var(--jw-b-size-3xl);
 }
 
+p + .bulleted-list {
+    margin-top: calc(-1 * var(--jw-b-size-sm));
+}
+
 .bulleted-list > li + li {
     margin-top: var(--jw-b-size-3xs);
 }
