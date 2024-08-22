@@ -17,11 +17,11 @@ eleventyNavigation:
 <article>
     <h2>When to use a button or a link</h2>
 
-    {{ tooltip.render("<button>dfdsfdfsdf</button>", "Look I'm a tooltip!") }}
+    {# {{ tooltip.render("<button>dfdsfdfsdf</button>", "Look I'm a tooltip!") }}
     {{ spinner.render() }}
     <p>sdfpsh fsdfgho sdhszil;f sfhilsa fhfshklf s fh;s dfhls;d fsdh;f <a href="#">sdzghf; s fsdglkf zgjf hzjf zsh;fz hf hl;f hl;d zl;dxhf; dxhf dhf hl;f</a> h;sf hl;
     {{ anchor.render("dffsedfdff", "https://google.com", leftIcon = "copy", rightIcon = "external-link") }} shoufs fgsuf sfgs fgkulsdsagkul f</p>
-    {{ button.render("...or if this looks like a button, but acts like a link...", leftIcon = "copy", rightIcon = "external-link") }}
+    {{ button.render("...or if this looks like a button, but acts like a link...", leftIcon = "copy", rightIcon = "external-link") }} #}
 
     <p>Buttons and links behave differently, because they have different purposes:</p>
     <ul class="bulleted-list">
@@ -38,8 +38,12 @@ eleventyNavigation:
     </ul>
     <p>Because of their different purposes, and resulting different behaviors, elements in our experiences that are styled a certain way should consistently behave as either buttons or links.</p>
     <div class="button-vs-link-demo">
-        {{ anchor.render("If this looks like a link, but acts like a button...", "javascript:return false;", class = "link-demo") }}
-        {{ button.render("...or if this looks like a button, but acts like a link...", leftIcon = "copy", rightIcon = "external-link", class = "button-demo") }}
+        <div>
+            {{ anchor.render("If this looks like a link, but acts like a button...", "javascript:return false;", class = "link-demo") }}
+        </div>
+        <div>
+            {{ button.render("...or if this looks like a button, but acts like a link...", leftIcon = "copy", rightIcon = "external-link", class = "button-demo") }}
+        </div>
     </div>
     <p>...we might have some work to do.</p>
 </article>
@@ -54,7 +58,7 @@ eleventyNavigation:
     align-items: center;
 }
 
-.link-demo, .button-demo {
+.button-vs-link-demo > div {
     flex: 1 0;
     width: 100%;
 }
