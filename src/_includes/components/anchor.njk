@@ -4,7 +4,10 @@
 <a href="{{ href }}" class="anchor {% if variant %}anchor--{{ variant }}{% endif %} {{ class }}">
     {%- if (leftIcon) -%}
         {{- systemIcon.render(leftIcon) -}}
-    {%- endif -%}<span class="anchor__content">{{- content -}}</span>
+    {%- endif -%}
+
+    <span class="anchor__content">{{- content -}}</span>
+    
     {%- if (rightIcon) -%}
         {{- systemIcon.render(rightIcon) -}}
     {%- endif -%}

@@ -4,6 +4,7 @@
     line-height: inherit;
     font-size: inherit;
     white-space: collapse;
+    vertical-align: top;
 }
 
 .anchor:link, .anchor:visited {

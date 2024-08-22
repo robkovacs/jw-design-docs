@@ -2,15 +2,19 @@
     font-family: inherit;
     font-weight: bold;
     font-size: var(--jw-b-size-md);
-    line-height: var(--jw-b-size-lg);
-    padding: var(--jw-b-size-xs) var(--jw-b-size-md);
+    line-height: var(--jw-b-size-xl);
+    padding: calc(var(--jw-b-size-xs) - var(--jw-b-size-4xs)) calc(var(--jw-b-size-md) - var(--jw-b-size-4xs));
     border-radius: var(--jw-b-size-3xs);
-    border-width: var(--jw-b-size-5xs);
+    border-width: var(--jw-b-size-4xs);
     border-style: solid;
-    display: inline-flex;
-    gap: var(--jw-b-size-3xs);
-    flex-direction: row;
-    flex-wrap: nowrap;
+}
+
+.button > .system-icon:first-child {
+    margin-right: var(--jw-b-size-3xs);
+}
+
+.button > .system-icon:last-child {
+    margin-left: var(--jw-b-size-3xs);
 }
 
 .button--filled {

@@ -1,6 +1,6 @@
 .system-icon {
     display: inline-block;
-    vertical-align: baseline;
+    vertical-align: top;
 }
 
 .system-icon > svg {
