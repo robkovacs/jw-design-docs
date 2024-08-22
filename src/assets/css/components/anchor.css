@@ -1,0 +1,38 @@
+.anchor {
+    border-radius: var(--jw-b-size-3xs);
+    display: inline;
+    line-height: inherit;
+    font-size: inherit;
+    white-space: collapse;
+}
+
+.anchor:link, .anchor:visited {
+    color: #0070d4;
+    text-decoration: none;
+}
+
+.anchor:hover, .anchor:hover:visited {
+    color: #0E57B5;
+    text-decoration: underline;
+}
+
+.anchor:active {
+    color: #1E3D92;
+    text-decoration: underline;
+}
+
+.anchor:hover:active {
+    color: #1E3D92;
+}
+
+.anchor > .system-icon:first-child {
+    margin-right: var(--jw-b-size-4xs);
+}
+
+.anchor > .system-icon:last-child {
+    margin-left: var(--jw-b-size-4xs);
+}
+
+.anchor__content {
+    white-space: normal;
+}

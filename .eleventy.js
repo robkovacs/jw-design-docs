@@ -12,10 +12,16 @@ module.exports = function (eleventyConfig) {
 	
 	eleventyConfig.addFilter("json", JSON.stringify);
 
-	eleventyConfig.addFilter("addClass", function(input, additionalClass) {
+	eleventyConfig.addFilter("addClass", function(input, toAdd) {
 		const dom = new JSDOM(input.trim());
 		const newNode = dom.window.document.querySelector("body").firstChild;
-		newNode.classList.add(additionalClass);
+		if (typeof toAdd === 'array') {
+			toAdd.forEach((item) => {
+				newNode.classList.add(item);
+			});
+		} else if (typeof toAdd === 'string') {
+			newNode.classList.add(toAdd);
+		}
 		return newNode.outerHTML;
 	});
 
@@ -26,7 +32,6 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addTransform("htmlmin", (content, outputPath) => {
 		if (outputPath.endsWith(".html")) {
 		  return htmlmin.minify(content, {
-			collapseWhitespace: true,
 			removeComments: true,  
 			useShortDoctype: true,
 		  });

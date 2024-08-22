@@ -1,4 +1,4 @@
-import { computePosition, flip, offset, arrow } from "@floating-ui/dom";
+import { computePosition, flip, offset, arrow, inline } from "@floating-ui/dom";
 
 let triggers = document.querySelectorAll(".tooltip__trigger");
 
@@ -13,9 +13,15 @@ let showTooltip = function (trigger, tooltip) {
 
 let update = function (trigger, tooltip) {
     let arrowElement = tooltip.querySelector(".tooltip__arrow");
+    let placement = "top";
+    
+    if (tooltip.dataset.placement) {
+        placement = tooltip.dataset.placement;
+    }
+    
     computePosition(trigger, tooltip, {
-        placement: "top",
-        middleware: [flip(), offset(8), arrow({ element: arrowElement })],
+        placement: placement,
+        middleware: [flip(), inline(), offset(8), arrow({ element: arrowElement })],
     }).then(({ x, y, placement, middlewareData }) => {
         Object.assign(tooltip.style, {
             left: `${x}px`,
@@ -43,7 +49,7 @@ let update = function (trigger, tooltip) {
 
 triggers.forEach((el) => {
     let trigger = el;
-    let tooltip = el.nextSibling;
+    let tooltip = el.nextElementSibling;
 
     trigger.addEventListener("mouseenter", () => {
         showTooltip(trigger, tooltip);

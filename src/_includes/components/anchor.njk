@@ -1,0 +1,12 @@
+{% import './system-icon.njk' as systemIcon %}
+
+{%- macro render(content, href, class = '', variant = '', leftIcon = '', rightIcon = '') -%}
+<a href="{{ href }}" class="anchor {% if variant %}anchor--{{ variant }}{% endif %} {{ class }}">
+    {%- if (leftIcon) -%}
+        {{- systemIcon.render(leftIcon) -}}
+    {%- endif -%}<span class="anchor__content">{{- content -}}</span>
+    {%- if (rightIcon) -%}
+        {{- systemIcon.render(rightIcon) -}}
+    {%- endif -%}
+</a>
+{%- endmacro -%}

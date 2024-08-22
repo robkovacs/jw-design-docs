@@ -1,6 +1,24 @@
-{% macro render(trigger, content, triggerType = 'block') %}
-{{ trigger | addClass("tooltip__trigger") | safe }}    
-<div class="tooltip__tooltip">
+{% macro render(trigger, content, inverse = false, placement = false, triggerType = 'block') %}
+
+{% if (triggerType == 'string') %}
+    <span tabindex="1" role="term" class="tooltip__trigger tooltip__trigger--string">{{ trigger }}</span>
+{% else %}
+    {% set classes = 'tooltip__trigger' %}
+    {{ trigger | addClass(classes) | safe }}
+{% endif %}
+
+<div
+    class="tooltip__tooltip
+        {%- if (inverse) %} tooltip__tooltip--inverse{%- endif -%}"
+    
+    {% if (placement) %}
+        data-placement="{{ placement }}"
+    {% endif %}    
+
+    {% if (triggerType == 'string') %}
+    role="definition"
+    {% endif %}    
+>
     {{ content | safe }}
     <div class="tooltip__arrow"></div>
 </div>

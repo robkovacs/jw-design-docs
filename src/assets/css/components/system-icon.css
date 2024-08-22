@@ -1,13 +1,10 @@
 .system-icon {
     display: inline-block;
+    vertical-align: baseline;
 }
 
 .system-icon > svg {
     vertical-align: top;
-}
-
-.system-icon--size-xs {
-    line-height: var(--jw-b-size-md);
 }
 
 .system-icon--size-xs > svg {

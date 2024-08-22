@@ -6,6 +6,10 @@ eleventyNavigation:
     order: 1
 ---
 {% extends '../_includes/layout.njk' %}
+
+{% import '../_includes/components/anchor.njk' as anchor %}
+{% import '../_includes/components/button.njk' as button %}
+{% import '../_includes/components/spinner.njk' as spinner %}
 {% import '../_includes/components/system-icon.njk' as systemIcon %}
 {% import '../_includes/components/tooltip.njk' as tooltip %}
 
@@ -14,6 +18,8 @@ eleventyNavigation:
     <h2>When to use a button or a link</h2>
 
     {{ tooltip.render("<button>dsfdsfdfsdf</button>", "Look I'm a tooltip!") }}
+    {{ spinner.render() }}
+    {{ anchor.render("dffsedfdff", "https://google.com", leftIcon = "copy", rightIcon = "external-link") }}
 
     <p>Buttons and links behave differently, because they have different purposes:</p>
     <ul class="bulleted-list">
@@ -30,8 +36,8 @@ eleventyNavigation:
     </ul>
     <p>Because of their different purposes, and resulting different behaviors, elements in our experiences that are styled a certain way should consistently behave as either buttons or links.</p>
     <div class="button-vs-link-demo">
-        <a href="javascript:return false;" class="link-demo">If this looks like a link, but acts like a button...</a>
-        <button class="button-demo">...or if this looks like a button, but acts like a link...</button>
+        {{ anchor.render("If this looks like a link, but acts like a button...", "javascript:return false;", class = "link-demo") }}
+        {{ button.render("...or if this looks like a button, but acts like a link...", leftIcon = "copy", rightIcon = "external-link", class = "button-demo") }}
     </div>
     <p>...we might have some work to do.</p>
 </article>
@@ -49,39 +55,5 @@ eleventyNavigation:
 .link-demo, .button-demo {
     flex: 1 0;
     width: 100%;
-}
-
-.link-demo {
-    color: var(--jw-b-color-blue-600);
-    text-decoration: none;
-}
-
-.link-demo:hover {
-    color: var(--jw-b-color-blue-700);
-    text-decoration: underline;
-}
-
-.link-demo:active {
-    color: var(--jw-b-color-blue-800);
-}
-
-.button-demo {
-    font-family: inherit;
-    font-weight: bold;
-    font-size: var(--jw-b-size-md);
-    line-height: var(--jw-b-size-lg);
-    padding: var(--jw-b-size-xs) var(--jw-b-size-md);
-    border: var(--jw-b-size-5xs) solid transparent;
-    border-radius: var(--jw-b-size-3xs);
-    background-color: var(--jw-b-color-blue-600);
-    color: var(--jw-b-color-white);
-}
-
-.button-demo:hover {
-    background-color: var(--jw-b-color-blue-700);
-}
-
-.button-demo:active {
-    background-color: var(--jw-b-color-blue-800);
 }
 {% endset %}
