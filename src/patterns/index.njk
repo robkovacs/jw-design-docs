@@ -6,7 +6,6 @@ eleventyNavigation:
     order: 3
 ---
 {% extends '../_includes/layout.njk' %}
-{% import '../_includes/components/card.njk' as card %}
 
 {%
     set cards = [
@@ -37,7 +36,7 @@ eleventyNavigation:
 
 <div class="list--cards">
     {% for cardData in cards %}
-        {{ card.render(cardData.title, cardData.description, cardData.href) }}
+        {{ card(cardData.title, cardData.description, cardData.href) }}
     {% endfor %}
 </div>
 {% endblock %}

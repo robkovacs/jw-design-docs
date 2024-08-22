@@ -7,43 +7,31 @@ eleventyNavigation:
 ---
 {% extends '../_includes/layout.njk' %}
 
-{% import '../_includes/components/anchor.njk' as anchor %}
-{% import '../_includes/components/button.njk' as button %}
-{% import '../_includes/components/spinner.njk' as spinner %}
-{% import '../_includes/components/system-icon.njk' as systemIcon %}
-{% import '../_includes/components/tooltip.njk' as tooltip %}
-
 {% block content %}
 <article>
     <h2>When to use a button or a link</h2>
 
-    {# {{ tooltip.render("<button>dfdsfdfsdf</button>", "Look I'm a tooltip!") }}
-    {{ spinner.render() }}
-    <p>sdfpsh fsdfgho sdhszil;f sfhilsa fhfshklf s fh;s dfhls;d fsdh;f <a href="#">sdzghf; s fsdglkf zgjf hzjf zsh;fz hf hl;f hl;d zl;dxhf; dxhf dhf hl;f</a> h;sf hl;
-    {{ anchor.render("dffsedfdff", "https://google.com", leftIcon = "copy", rightIcon = "external-link") }} shoufs fgsuf sfgs fgkulsdsagkul f</p>
-    {{ button.render("...or if this looks like a button, but acts like a link...", leftIcon = "copy", rightIcon = "external-link") }} #}
-
     <p>Buttons and links behave differently, because they have different purposes:</p>
     <ul class="bulleted-list">
-        <li><strong>Buttons</strong> trigger some action, such as showing content on the page that was previously hidden, playing a video, or submitting a form.</li>
-        <li><strong>Links</strong> take the user to a new location, such as a new web page or new section of the current page</li>
+        <li><strong>Buttons are for actions:</strong> showing content on the page that was previously hidden, playing a video, or submitting a form, and so on.</li>
+        <li><strong>Links are for movement:</strong> taking the user to a new page, or new section of the current page</li>
     </ul>
     <p>Because of their different purposes, buttons and links behave differently in both browsers and screen readers. Some examples include:</p>
     <ul class="bulleted-list">
-        <li>Links have a concept of whether or not they’ve been visited, buttons don’t</li>
+        <li>A link points to a specific URL that can be shared, bookmarked, saved in your browser history, and reopened later—but a button doesn't</li>
         <li>Links can be opened in a new tab, buttons can’t</li>
+        <li>Links have a concept of whether or not they’ve been visited, buttons don’t</li>
         <li>Most browsers show a link's target URL in the bottom-left corner on hover or focus; but don't do that for buttons</li>
-        <li>The target of a link can be bookmarked, but not the target of a button</li>
         <li>Focused buttons can be activated (i.e. clicked on) with the <kbd>Space</kbd> key, or the <kbd>Enter</kbd> or <kbd>Return</kbd> key; focused links can only be activated with <kbd>Enter</kbd> or <kbd>Return</kbd></li>
         <li>Some screen readers collect all links on the page in one section of their interface, and all buttons or form controls in another</li>
     </ul>
-    <p>Because of their different purposes, and resulting different behaviors, elements in our experiences that are styled a certain way should consistently behave as either buttons or links.</p>
+    <p>Put together, those different purposes, and resulting different behaviors, mean that...</p>
     <div class="button-vs-link-demo">
         <div>
-            {{ anchor.render("If this looks like a link, but acts like a button...", "javascript:return false;", class = "link-demo") }}
+            {{ anchor("...if this looks like a link, but acts like a button...", "javascript:return false;", class = "link-demo") }}
         </div>
         <div>
-            {{ button.render("...or if this looks like a button, but acts like a link...", leftIcon = "copy", rightIcon = "external-link", class = "button-demo") }}
+            {{ button("...or if this looks like a button, but acts like a link...", class = "button-demo") }}
         </div>
     </div>
     <p>...we might have some work to do.</p>

@@ -4,7 +4,6 @@ eleventyNavigation:
     key: Select
     parent: Components
 ---
-{% import '../_includes/components/notice.njk' as notice %}
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
@@ -17,5 +16,5 @@ f assjpf sdh f[odzf h[osdf sd[ho fdzfi ]zxf ]zxf
 sfszf dsfd asdas]
 {% endset %}
 
-{{ notice.render(noticeHeadline, noticeContent, 'danger') }}
+{{ notice(noticeHeadline, noticeContent, 'danger') }}
 {% endblock content %}

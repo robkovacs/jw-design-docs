@@ -6,7 +6,6 @@ eleventyNavigation:
     order: 2
 ---
 {% extends '../_includes/layout.njk' %}
-{% import '../_includes/components/meta/swatch.njk' as swatch %}
 
 {% block content %}
 {% for level in colorData %}
@@ -18,7 +17,7 @@ eleventyNavigation:
                 {% for color in group.colors %}
                     {% set figmaName = level["prefix-figma"] + group["prefix-figma"] + color.name %}
                     {% set cssName = level["prefix-css"] + group["prefix-css"] + color.name %}
-                    {{ swatch.render(color.name, color.hex, figmaName, cssName) }}
+                    {{ swatch(color.name, color.hex, figmaName, cssName) }}
                 {% endfor %}
             {% endif %}
         </div>
