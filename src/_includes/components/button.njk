@@ -1,13 +1,13 @@
 {% import './system-icon.njk' as systemIcon %}
 
-{% macro render(content, class = '', variant = 'filled', leftIcon = '', rightIcon = '') %}
+{%- macro render(content, class = '', variant = 'filled', leftIcon = '', rightIcon = '') -%}
 <button class="button {% if variant %}button--{{ variant }}{% endif %} {{ class }}" {% if (attributes) -%}{{ attributes }}{%- endif %}>
-    {% if (leftIcon) %}
-        {{ systemIcon.render(leftIcon) }}
-    {% endif %}
-    <span>{{ content }}</span>
-    {% if (rightIcon) %}
-        {{ systemIcon.render(rightIcon) }}
-    {% endif %}
+    {%- if (leftIcon) -%}
+        {{- systemIcon.render(leftIcon) -}}
+    {%- endif -%}
+    <span class="button__content">{{- content -}}</span>
+    {%- if (rightIcon) -%}
+        {{- systemIcon.render(rightIcon) -}}
+    {%- endif -%}
 </button>
-{% endmacro %}
+{%- endmacro -%}
