@@ -10,9 +10,14 @@ eleventyNavigation:
 {%
     set cards = [
         {
-            'title': 'System icons',
-            'description': 'System icons are pretty much the coolest thing you could ever imagine. What else do you need to know?',
-            'href': 'system-icons/'
+            title: 'System icons',
+            description: "System icons are pretty much the coolest thing you could ever imagine. What else do you need to know?",
+            href: 'system-icons/'
+        },
+        {
+            title: 'Display icons',
+            description: "Display icons are everyone's favorite thing",
+            href: 'display-icons/'
         }
     ]
 %}
@@ -20,7 +25,11 @@ eleventyNavigation:
 {% block content %}
 <div class="list--cards">
     {% for cardData in cards %}
-        {{ card(cardData.title, cardData.description, cardData.href) }}
+        {{ card({
+            href: cardData.href,
+            title: cardData.title,
+            description: cardData.description
+        }) }}
     {% endfor %}
 </div>
 

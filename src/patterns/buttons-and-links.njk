@@ -19,8 +19,8 @@ eleventyNavigation:
     <p>Because of their different purposes, buttons and links behave differently in both browsers and screen readers. Some examples include:</p>
     <ul class="bulleted-list">
         <li>A link points to a specific URL that can be shared, bookmarked, saved in your browser history, and reopened later—but a button doesn't</li>
-        <li>Links can be opened in a new tab, buttons can’t</li>
-        <li>Links have a concept of whether or not they’ve been visited, buttons don’t</li>
+        <li>Links can be opened in a new tab, buttons can't</li>
+        <li>Links have a concept of whether or not they've been visited, buttons don't</li>
         <li>Most browsers show a link's target URL in the bottom-left corner on hover or focus; but don't do that for buttons</li>
         <li>Focused buttons can be activated (i.e. clicked on) with the <kbd>Space</kbd> key, or the <kbd>Enter</kbd> or <kbd>Return</kbd> key; focused links can only be activated with <kbd>Enter</kbd> or <kbd>Return</kbd></li>
         <li>Some screen readers collect all links on the page in one section of their interface, and all buttons or form controls in another</li>
@@ -28,10 +28,15 @@ eleventyNavigation:
     <p>Put together, those different purposes, and resulting different behaviors, mean that...</p>
     <div class="button-vs-link-demo">
         <div>
-            {{ anchor("...if this looks like a link, but acts like a button...", "javascript:return false;", class = "link-demo") }}
+            {{ anchor({
+                content: "...if this looks like a link, but acts like a button...",
+                href: "javascript:return false;"
+            }) }}
         </div>
         <div>
-            {{ button("...or if this looks like a button, but acts like a link...", class = "button-demo") }}
+            {{ button({
+                content: "...or if this looks like a button, but acts like a link..."
+            }) }}
         </div>
     </div>
     <p>...we might have some work to do.</p>

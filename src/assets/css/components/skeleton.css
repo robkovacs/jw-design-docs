@@ -1,0 +1,57 @@
+.skeleton-text,
+.skeleton-image {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--jw-b-color-gray-300);
+    vertical-align: middle;
+}
+
+.skeleton-text {
+    border-radius: 9999px;
+}
+
+.skeleton-text:after,
+.skeleton-image:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0)
+    );
+    animation: shimmer 2s infinite;
+    content: "";
+}
+
+@media (prefers-reduced-motion) {
+    .skeletonText:after,
+    .skeleton-image:after {
+        animation: shimmer 6s infinite;
+    }
+}
+
+.skeleton-image--border-radius-md {
+    border-radius: 0.25rem;
+}
+
+.skeleton-image--border-radius-lg {
+    border-radius: 9999px;
+}
+
+.skeleton-text--variant-body.skeleton-text--size-md {
+    height: 1rem;
+    margin: 0.25rem 0;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}

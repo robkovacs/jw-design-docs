@@ -1,0 +1,13 @@
+{%- macro render(options) -%}
+{% set color %}{{ options.color | default('blue') }}{% endset %}
+{% set size %}{{ options.size | default('md') }}{% endset %}
+
+    <span
+        class="display-icon display-icon--color-{{ color }} {{ 'display-icon--inverse' if options.inverse }} display-icon--size-{{ size }} {{ options.classes | join(' ') if options.classes }}"
+        {%- for attribute, value in options.attributes -%}
+            {{ attribute }}="{{ value | safe }}"
+        {% endfor %}
+    >
+        {%- include '../../assets/img/display-icons/' + options.iconName + '.svg' -%}
+    </span>
+{%- endmacro -%}

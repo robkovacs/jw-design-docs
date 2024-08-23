@@ -3,18 +3,20 @@ title: Select
 eleventyNavigation:
     key: Select
     parent: Components
+    order: 1
 ---
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
 <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Auctor torquent fringilla natoque conubia ridiculus viverra orci enim posuere. Blandit ligula montes est litora efficitur odio fringilla curabitur auctor. Curabitur platea sapien facilisi netus tortor varius varius. Gravida a dolor sit, cursus hac sollicitudin vel augue aptent. Aliquet ex tempus quis lorem odio risus dui aliquet. Sagittis magna placerat dictum felis varius suscipit massa. Consectetur leo montes dui sit sollicitudin pretium. Sociosqu volutpat nisl, ut montes finibus purus. Sollicitudin convallis a nunc aptent elit nibh potenti.</p>
 
-{% set noticeHeadline = 'dsfsdfdsfdsfdsf' %}
-{% set noticeContent %}
+{% call notice({
+    headline: 'dsfsdfdsfdsfdsf',
+    type: 'danger'
+}) %}
 dfgdsfjsf[sf]sdfsd
 f assjpf sdh f[odzf h[osdf sd[ho fdzfi ]zxf ]zxf 
 sfszf dsfd asdas]
-{% endset %}
+{% endcall %}
 
-{{ notice(noticeHeadline, noticeContent, 'danger') }}
 {% endblock content %}

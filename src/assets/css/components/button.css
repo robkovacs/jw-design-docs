@@ -7,15 +7,10 @@
     border-radius: var(--jw-b-size-3xs);
     border-width: var(--jw-b-size-4xs);
     border-style: solid;
-    white-space: nowrap;
 }
 
 .button > .system-icon:first-child {
     margin-right: var(--jw-b-size-3xs);
-}
-
-.button__content {
-    white-space: normal;
 }
 
 .button > .system-icon:last-child {

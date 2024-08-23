@@ -22,12 +22,12 @@
     height: var(--jw-b-size-xl);
 }
 
-.system-icon--lg > svg {
+.system-icon--size-lg > svg {
     width: var(--jw-b-size-2xl);
     height: var(--jw-b-size-2xl);
 }
 
-.system-icon--xl > svg {
+.system-icon--size-xl > svg {
     width: var(--jw-b-size-4xl);
     height: var(--jw-b-size-4xl);
 }

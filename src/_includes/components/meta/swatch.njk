@@ -1,4 +1,4 @@
-{% import '../system-icon.njk' as systemIcon %}
+{% from '../system-icon.njk' import render as systemIcon %}
 
 {% macro render(name, hex, figmaName, cssName) %}
 <div class="swatch">
@@ -7,17 +7,17 @@
     <ul class="swatch__button-list">
         <li>
             <button class="swatch__button swatch__figma-name" data-copy-text="{{ figmaName }}" aria-label="Copy Figma">
-               {{ systemIcon.render("copy", "xs") }} Figma
+               {{ systemIcon("copy", "xs") }} Figma
             </button>
             </li>
         <li>
             <button class="swatch__button swatch__css-name" data-copy-text="{{ cssName }}" aria-label="Copy CSS">
-                {{ systemIcon.render("copy", "xs") }} CSS
+                {{ systemIcon("copy", "xs") }} CSS
             </button>
             </li>
         <li>
             <button class="swatch__button swatch__hex" data-copy-text="{{ hex | safe }}" aria-label="Copy Hex">
-                {{ systemIcon.render("copy", "xs") }} Hex
+                {{ systemIcon("copy", "xs") }} Hex
             </button>
         </li>
     </ul>

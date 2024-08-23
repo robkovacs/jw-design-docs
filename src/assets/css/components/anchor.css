@@ -3,7 +3,6 @@
     display: inline;
     line-height: inherit;
     font-size: inherit;
-    white-space: nowrap;
     vertical-align: top;
 }
 
@@ -32,8 +31,4 @@
 
 .anchor > .system-icon:last-child {
     margin-left: var(--jw-b-size-4xs);
-}
-
-.anchor__content {
-    white-space: normal;
 }

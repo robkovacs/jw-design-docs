@@ -1,0 +1,89 @@
+---
+title: Tooltip
+eleventyNavigation:
+    key: Tooltip
+    parent: Components
+    order: 2
+---
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+    {{ tooltip({
+        trigger: "Look at me",
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size."
+    }) }}
+
+    {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'left-end'
+    }) }}
+
+    {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'left'
+    }) }}
+
+    {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'left-start'
+    }) }}
+
+    {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'top-end'
+    }) }}
+
+    {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'top'
+    }) }}
+
+    {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'top-start'
+    }) }}
+
+    {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'right-end'
+    }) }}
+
+    {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'right'
+    }) }}
+
+        {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'right-start'
+    }) }}
+
+    {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'bottom-end'
+    }) }}
+
+    {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'bottom'
+    }) }}
+
+
+    {{ tooltip({
+        trigger: button({ content: "Look at me" }),
+        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size.",
+        placement: 'bottom-start'
+    }) }}
+
+{% endblock %}

@@ -18,16 +18,33 @@
 
     --jw-b-color-blue-100: #e5f3ff;
     --jw-b-color-blue-200: #b6e5ff;
+    --jw-b-color-blue-400: #52b0ff;
     --jw-b-color-blue-500: #0092f6;
     --jw-b-color-blue-600: #0070d4;
     --jw-b-color-blue-700: #0e57b5;
     --jw-b-color-blue-800: #1e3d92;
 
     --jw-b-color-red-100: #ffefea;
+    --jw-b-color-red-200: #ffcfbf;
+    --jw-b-color-red-300: #ff9f82;
+    --jw-b-color-red-500: #df5a31;
+    --jw-b-color-red-700: #af2c10;
     
     --jw-b-color-green-100: #ddf3ea;
+    --jw-b-color-green-200: #98e2c5;
+    --jw-b-color-green-400: #2cb987;
+    --jw-b-color-green-600: #008354;
+    --jw-b-color-green-800: #005133;
     
     --jw-b-color-yellow-100: #ffeed1;
+    --jw-b-color-yellow-200: #ffdb7b;
+    --jw-b-color-yellow-300: #f3b715;
+    --jw-b-color-yellow-600: #ad5e0d;
+    --jw-b-color-yellow-800: #753204;
+
+    --jw-b-color-purple-300: #baaaf9;
+    --jw-b-color-purple-700: #5f43ca;
+
 
     --jw-b-size-5xs: 0.0625rem;
     --jw-b-size-4xs: 0.125rem;

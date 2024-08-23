@@ -8,4 +8,47 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
+    <div class="empty-state">
+        {{ displayIcon({
+            iconName: 'toolbox',
+            classes: ['empty-state__icon']
+        }) }}
+        <div class="empty-state__primary-text">Invite your first contractor</div>
+        <p class="empty-state__secondary-text">Once they’ve accepted their invite, you’ll be able to start paying them in Justworks, and other fun stuff.</p>
+        {{ button({ content: 'Invite contractor', variant: 'outlined' } )}}
+    </div>
 {% endblock %}
+
+{% set localCss %}
+.empty-state {
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 24rem;
+}
+
+.empty-state__icon {
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.empty-state__icon > svg {
+    width: 3rem;
+    height: 3rem;
+}
+
+.empty-state__primary-text {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.empty-state__secondary-text {
+    margin-top: 0;
+    color: #5e6167;
+}
+
+.empty-state__icon > svg {
+    width: 3rem; height: 3rem;
+}
+{% endset %}

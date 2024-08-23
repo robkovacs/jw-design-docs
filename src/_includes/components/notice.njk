@@ -1,6 +1,7 @@
-{% macro render(headline, content, type = 'info') %}
+{% macro render(options) %}
+{% set type %}{{ options.type | default('info') }}{% endset %}
 <div class="notice notice--{{ type }}">
-    <div class="h3">{{ headline }}</div>
-    <div>{{ content | safe }}</div>
+    {% if options.headline %}<div class="h3">{{ options.headline }}</div>{% endif %}
+    {% if caller() %}<div>{{ caller() | safe }}</div>{% endif %}
 <div>
 {% endmacro %}

@@ -1,0 +1,48 @@
+---
+title: Display icons
+eleventyNavigation:
+    key: Display icons
+    parent: Imagery
+    order: 2
+    excerpt: "Display icons are everyone's favorite thing"
+---
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="display-icon-gallery">
+    {{ displayIcon({ iconName: 'coffee' }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'green' }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'red' }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'yellow' }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'gray' }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'redPurple' }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'yellowPurple' }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'greenYellow' }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'blueYellow' }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'blueGreen' }) }}
+</div>
+<div class="display-icon-gallery display-icon-gallery--inverse">
+    {{ displayIcon({ iconName: 'coffee', inverse: true }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'green', inverse: true }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'red', inverse: true }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'yellow', inverse: true }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'gray', inverse: true }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'redPurple', inverse: true }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'yellowPurple', inverse: true }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'greenYellow', inverse: true }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'blueYellow', inverse: true }) }}
+    {{ displayIcon({ iconName: 'coffee', color: 'blueGreen', inverse: true }) }}
+</div>
+{% endblock content %}
+
+{% set localCss %}
+.display-icon-gallery {
+    {# width: max-content; #}
+    max-width: 100%;
+    padding: 2rem;
+}
+
+.display-icon-gallery--inverse {
+    background-color: var(--jw-b-color-gray-900);
+}
+{% endset %}

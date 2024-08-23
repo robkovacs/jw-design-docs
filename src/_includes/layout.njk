@@ -1,9 +1,11 @@
 {% from './components/meta/swatch.njk' import render as swatch %}
 {% from './components/anchor.njk' import render as anchor %}
 {% from './components/button.njk' import render as button %}
-{% from './components/button.njk' import render as card %}
+{% from './components/card.njk' import render as card %}
+{% from './components/display-icon.njk' import render as displayIcon %}
 {% from './components/notice.njk' import render as notice %}
 {% from './components/spinner.njk' import render as spinner %}
+{% from './components/skeleton.njk' import render as skeleton %}
 {% from './components/system-icon.njk' import render as systemIcon %}
 {% from './components/tooltip.njk' import render as tooltip %}
 <!doctype html>
@@ -15,17 +17,26 @@
         <meta name="generator" content="{{ eleventy.generator }}">
         <meta name="description" content="{{ metaDescription }}">
         <link rel="stylesheet" href="/assets/css/main.css">
+        <link rel="stylesheet" href="/pagefind/pagefind-ui.css" >
         {% if localCss %}<style>{{ localCss | cssmin | safe }}</style>{% endif %}
     </head>
     <body>
         {% include 'main-nav.njk' %}
-        <main>
+        <main data-pagefind-body>
             {% if includePageHeader !== false %}
-                {{ collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key) | eleventyNavigationToHtml({ 'listClass': 'breadcrumbs' }) | safe }}
+                <div data-pagefind-ignore>
+                    {{ collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key) | eleventyNavigationToHtml({ 'listClass': 'breadcrumbs' }) | safe }}
+                </div>
                 <h1>{{ title }}</h1>
             {% endif %}
             {% block content %}{% endblock %}
         </main>
         <script src="/assets/js/main.js"></script>
-    </body>
+        <script src="/pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => {
+                new PagefindUI({ element: "#search" });
+            });
+        </script>
+</body>
 </html>

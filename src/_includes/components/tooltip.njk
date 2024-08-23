@@ -1,14 +1,20 @@
-{% macro render(trigger, content, inverse = false, placement = false, triggerType = 'block') %}
+{% macro render(options) %}
 
-{% if (triggerType == 'string') %}
-    <span class="tooltip__trigger tooltip__trigger--string">{{ trigger }}</span>
+{% set id = nanoid() %}
+
+{% if not isHtmlElement(options.trigger) %}
+    <span role="button" tabindex="0" aria-describedby="{{ id }}" class="tooltip__trigger tooltip__trigger--string">{{- options.trigger -}}</span>
 {% else %}
-    {% set classes = 'tooltip__trigger' %}
-    {{ trigger | addClass(classes) | safe }}
+    {% set trigger = addClass(options.trigger, 'tooltip__trigger') %}
+    {{ addAttribute(trigger, { 'aria-describedby': id }) | safe }}
 {% endif %}
 
-<span class="tooltip__tooltip{% if (inverse) %} tooltip__tooltip--inverse{% endif %}">
-    {{ content | safe }}
+<span id="{{ id }}"
+    class="tooltip__tooltip {{ 'tooltip__tooltip--inverse' if options.inverse }}"
+    {% if options.placement %}data-placement="{{ options.placement | safe }}"{% endif %}
+>
+    {{ options.content | safe }}
     <span class="tooltip__arrow"></span>
 </span>
+
 {% endmacro %}

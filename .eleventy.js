@@ -1,7 +1,9 @@
+const { execSync } = require('child_process')
 const cleanCSS = require("clean-css");
+const htmlmin = require("html-minifier-terser");
+const { nanoid } = require("nanoid");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const htmlmin = require("html-minifier-terser");
 const eleventyNavigation = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
@@ -10,18 +12,38 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget("./src/assets/css/");
     eleventyConfig.addWatchTarget("./src/assets/js/");
 
-    eleventyConfig.addFilter("json", JSON.stringify);
+    eleventyConfig.addNunjucksGlobal("nanoid", () => nanoid());
 
-    eleventyConfig.addFilter("addClass", function (input, toAdd) {
-        const dom = new JSDOM(input.trim());
+    eleventyConfig.addNunjucksGlobal("isHtmlElement", function (string) {
+        const dom = new JSDOM(string);
         const newNode = dom.window.document.querySelector("body").firstChild;
-        if (typeof toAdd === "array") {
+        if (newNode.nodeType === 1) {
+            return true;
+        }
+        return false;
+    });
+
+    eleventyConfig.addNunjucksGlobal("addAttribute", function (string, toAdd) {
+        const dom = new JSDOM(string);
+        const newNode = dom.window.document.querySelector("body").firstChild;
+        for (const attribute in toAdd) {
+			newNode.setAttribute(`${attribute}`, `${toAdd[attribute]}`);
+		}
+		
+        return newNode.outerHTML;
+    });
+
+    eleventyConfig.addNunjucksGlobal("addClass", function (string, toAdd) {
+        const dom = new JSDOM(string);
+        const newNode = dom.window.document.querySelector("body").firstChild;
+        if (typeof toAdd === "string") {
+            newNode.classList.add(toAdd);
+        } else if (typeof toAdd === "object") {
             toAdd.forEach((item) => {
                 newNode.classList.add(item);
             });
-        } else if (typeof toAdd === "string") {
-            newNode.classList.add(toAdd);
         }
+
         return newNode.outerHTML;
     });
 
@@ -44,6 +66,10 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/img");
 
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+
+	eleventyConfig.on('eleventy.after', () => {
+		execSync(`npx pagefind --site dist --glob \"**/*.html\"`, { encoding: 'utf-8' })
+	});
 
     return {
         pathPrefix: "/eleventy-demo/",

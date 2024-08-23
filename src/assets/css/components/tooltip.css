@@ -1,19 +1,12 @@
 .tooltip__trigger--string {
     display: inline;
-    border: none;
     border-radius: var(--jw-b-size-3xs);
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
     color: var(--jw-b-color-gray-900);
     text-decoration-line: underline;
     text-decoration-style: dashed;
     text-decoration-skip-ink: none;
     text-decoration-color: var(--jw-b-color-blue-600);
     text-underline-offset: var(--jw-b-size-4xs);
-    background-color: transparent;
-    padding: 0;
-    cursor: help;
 }
 
 .tooltip__trigger--string:hover {
