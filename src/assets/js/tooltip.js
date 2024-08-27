@@ -1,4 +1,11 @@
-import { computePosition, flip, shift, offset, arrow, inline } from "@floating-ui/dom";
+import {
+    computePosition,
+    autoPlacement,
+    shift,
+    offset,
+    arrow,
+    inline
+} from "@floating-ui/dom";
 
 let triggers = document.querySelectorAll(".tooltip__trigger");
 
@@ -13,15 +20,18 @@ let showTooltip = function (trigger, tooltip) {
 
 let update = function (trigger, tooltip) {
     let arrowElement = tooltip.querySelector(".tooltip__arrow");
-    let placement = "top";
-    
-    if (tooltip.dataset.placement) {
-        placement = tooltip.dataset.placement;
-    }
-    
+
     computePosition(trigger, tooltip, {
-        placement: placement,
-        middleware: [flip(), inline(), shift({padding: 16}), offset(8), arrow({ element: arrowElement })],
+        middleware: [
+            autoPlacement({
+                alignment: "top",
+                crossAxis: true,
+            }),
+            inline(),
+            shift({ padding: 16 }),
+            offset(8),
+            arrow({ element: arrowElement }),
+        ],
     }).then(({ x, y, placement, middlewareData }) => {
         Object.assign(tooltip.style, {
             left: `${x}px`,
