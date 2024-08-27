@@ -31,3 +31,7 @@
 .toc ol li > ol > li + li {
     margin-top: var(--jw-b-size-3xs);
 }
+
+.toc .current {
+    font-weight: 700;
+}
