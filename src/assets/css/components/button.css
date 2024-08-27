@@ -1,9 +1,6 @@
 .button {
     font-family: inherit;
     font-weight: bold;
-    font-size: var(--jw-b-size-md);
-    line-height: var(--jw-b-size-xl);
-    padding: calc(var(--jw-b-size-xs) - var(--jw-b-size-4xs)) calc(var(--jw-b-size-md) - var(--jw-b-size-4xs));
     border-radius: var(--jw-b-size-3xs);
     border-width: var(--jw-b-size-4xs);
     border-style: solid;
@@ -45,4 +42,37 @@
 .button--outlined:active {
     border-color: var(--jw-b-color-blue-800);
     color: var(--jw-b-color-blue-800);
+}
+
+.button--ghost {
+    border-color: transparent;
+    background-color: transparent;
+    color: var(--jw-b-color-blue-600);
+}
+
+.button--ghost:hover {
+    background-color: var(--jw-b-color-blue-100);
+    color: var(--jw-b-color-blue-700);
+}
+
+.button--ghost:active {
+    background-color: var(--jw-b-color-blue-200);
+    color: var(--jw-b-color-blue-800);
+}
+
+.button--size-md {
+    font-size: var(--jw-b-size-md);
+    line-height: var(--jw-b-size-xl);
+    padding: calc(var(--jw-b-size-xs) - var(--jw-b-size-4xs)) calc(var(--jw-b-size-md) - var(--jw-b-size-4xs));
+}
+
+.button--size-sm {
+    font-size: var(--jw-b-size-sm);
+    line-height: var(--jw-b-size-md);
+    padding: calc(var(--jw-b-size-3xs) - var(--jw-b-size-4xs)) calc(var(--jw-b-size-3xs) - var(--jw-b-size-4xs));
+}
+
+.button--size-sm > .system-icon > svg {
+    width: var(--jw-b-size-md);
+    height: var(--jw-b-size-md);
 }

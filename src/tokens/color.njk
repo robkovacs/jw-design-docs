@@ -6,18 +6,19 @@ eleventyNavigation:
     order: 2
 ---
 {% extends '../_includes/layout.njk' %}
+{% from '../_includes/components/meta/color-swatch.njk' import render as colorSwatch %}
 
 {% block content %}
 {% for level in colorData %}
     <h2>{{ level.name }}</h2>
     {% for group in level.groups %}
         <h3>{{ group.name }}</h3>
-        <div class="swatch-list">
+        <div class="color-swatch-list">
             {% if group.colors %}
                 {% for color in group.colors %}
                     {% set figmaName = level["prefix-figma"] + group["prefix-figma"] + color.name %}
                     {% set cssName = level["prefix-css"] + group["prefix-css"] + color.name %}
-                    {{ swatch(color.name, color.hex, figmaName, cssName) }}
+                    {{ colorSwatch(color.name, color.hex, figmaName, cssName) }}
                 {% endfor %}
             {% endif %}
         </div>

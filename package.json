@@ -6,6 +6,11 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "scripts": {
+    "serve": "npm run webpack && npx @11ty/eleventy --serve",
+    "build": "npm run webpack && npx @11ty/eleventy",
+    "webpack": "npx webpack"
+  },
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-navigation": "^0.3.5",

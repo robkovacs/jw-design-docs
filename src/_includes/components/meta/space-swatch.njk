@@ -1,0 +1,69 @@
+{% from '../system-icon.njk' import render as systemIcon %}
+{% from '../button.njk' import render as button %}
+
+{% macro render(name, sizePx, figmaName, cssName) %}
+<div class="space-swatch">
+    <div class="space-swatch__name">{{ name }}</div>
+    <div class="space-swatch__preview">
+        <div style="width: {{sizePx}}px"></div>
+    </div>
+    <div class="space-swatch__specs">
+        {{ sizePx }}px
+        <span class="space-swatch__specs--rem">({{ ((sizePx | int) / 16) }}rem)</span>
+    </div>
+    <ul class="space-swatch__button-list">
+        <li>
+            {{ button({ 
+                variant: "ghost",
+                size: "sm",
+                leftIcon: "copy",
+                content: "Figma",
+                attributes: {
+                    "data-copy-text": figmaName,
+                    "aria-label": "Copy Figma"
+                },
+                classes: "space-swatch__button"
+            }) }}
+        </li>
+        <li>
+            {{ button({ 
+                variant: "ghost",
+                size: "sm",
+                leftIcon: "copy",
+                content: "CSS",
+                attributes: {
+                    "data-copy-text": cssName,
+                    "aria-label": "Copy CSS"
+                },
+                classes: "space-swatch__button"
+            }) }}
+        </li>
+        <li>
+            {{ button({ 
+                variant: "ghost",
+                size: "sm",
+                leftIcon: "copy",
+                content: "px",
+                attributes: {
+                    "data-copy-text": sizePx + "px",
+                    "aria-label": "Copy in pixels"
+                },
+                classes: "space-swatch__button"
+            }) }}
+        </li>
+        <li>
+            {{ button({ 
+                variant: "ghost",
+                size: "sm",
+                leftIcon: "copy",
+                content: "rem",
+                attributes: {
+                    "data-copy-text": ((sizePx | int) / 16) + "rem",
+                    "aria-label": "Copy in rem"
+                },
+                classes: "space-swatch__button"
+            }) }}
+        </li>
+    </ul>
+</div>
+{% endmacro %}

@@ -2,11 +2,26 @@
 
 {% macro render(options) %}
 {% set variant %}{{ options.variant | default("filled") }}{% endset %}
+{% set size %}{{ options.size | default("md") }}{% endset %}
+{% set classes %}
+    {% if options.classes %}
+        {% if options.classes == (options.classes | string) %}
+            {{ options.classes }}
+        {% else %}
+            {{ options.classes | join(' ') }}
+        {% endif %}
+    {% endif %}
+{% endset %}
+
 <button
-    class="button button--{{ variant }} {{ options.classes | join(' ') if options.classes }}">
+    class="button button--{{ variant }} button--size-{{ size }} {{ classes }}"
+    {% for key, value in options.attributes %}
+        {{ key }}="{{ value | safe }}"
+    {% endfor %}
+>
     
     {{ systemIcon(options.leftIcon) if options.leftIcon }}
-    {{ options.content }}
+    <span>{{ options.content }}</span>
     {{ systemIcon(options.rightIcon) if options.rightIcon }}
 </button>
 {% endmacro %}

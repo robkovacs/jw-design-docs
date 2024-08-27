@@ -6,5 +6,18 @@ eleventyNavigation:
     order: 1
 ---
 {% extends '../_includes/layout.njk' %}
+{% from '../_includes/components/meta/space-swatch.njk' import render as spaceSwatch %}
+
 {% block content %}
+    <h2>Base spacing</h2>
+
+    <div class="space-swatch-list">
+    {% for level in spaceData %}
+        {% for value in level.values %}
+            {% set figmaName = level["prefix-figma"] + value.name %}
+            {% set cssName = level["prefix-css"] + value.name %}
+            {{ spaceSwatch(value.name, value.sizePx, figmaName, cssName) }}
+        {% endfor %}
+    {% endfor %}
+    </div>
 {% endblock %}

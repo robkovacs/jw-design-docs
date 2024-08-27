@@ -1,4 +1,4 @@
-.swatch-list {
+.color-swatch-list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -6,24 +6,24 @@
     margin-bottom: 4rem;
 }
 
-.swatch {
+.color-swatch {
     flex: 0 1 6rem;
     width: 0;
     text-decoration: none;
     color: var(--jw-b-color-gray-900);   
 }
 
-.swatch__preview {
+.color-swatch__preview {
     height: 0;
     padding-top: 100%;
     margin-bottom: var(--jw-b-size-2xs);
 }
 
-.swatch__name {
+.color-swatch__name {
     font-weight: 700;
 }
 
-.swatch__button-list {
+.color-swatch__button-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -33,7 +33,7 @@
     flex-wrap: wrap;
 }
 
-.swatch__button {
+.color-swatch__button {
     display: flex;
     flex-direction: row;
     gap: var(--jw-b-size-3xs);
@@ -49,45 +49,14 @@
     border-radius: var(--jw-b-size-3xs);
 }
 
-.swatch__button svg {
-    height: var(--jw-b-size-md);
-    width: var(--jw-b-size-md);
-}
-
-.swatch__button:hover {
+.color-swatch__button:hover {
     background-color: var(--jw-b-color-blue-100);
     color: var(--jw-b-color-blue-700);
 }
       
-.swatch__button:active {
+.color-swatch__button:active {
     background-color: var(--jw-b-color-blue-200);
     color: var(--jw-b-color-blue-800);
 }
 
-.toaster {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: var(--jw-b-size-md);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.toaster__toast {
-    border-radius: var(--jw-b-size-3xs);
-    background-color: var(--jw-b-color-gray-900);
-    color: var(--jw-b-color-white);
-    font-size: var(--jw-b-size-sm);
-    line-height: var(--jw-b-size-md);
-    padding: var(--jw-b-size-2xs);
-    transition: opacity 500ms ease-out;
-}
-
-.toaster__toast.fade-out {
-    opacity: 0;
-}
-
-.toaster__toast + .toaster__toast {
-    margin-top: var(--jw-b-size-2xs);
-}
+/* TODO: update buttons to use button component, delete non-flex-related button CSS */

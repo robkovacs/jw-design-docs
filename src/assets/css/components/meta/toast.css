@@ -1,0 +1,27 @@
+.toaster {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: var(--jw-b-size-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toaster__toast {
+    border-radius: var(--jw-b-size-3xs);
+    background-color: var(--jw-b-color-gray-900);
+    color: var(--jw-b-color-white);
+    font-size: var(--jw-b-size-sm);
+    line-height: var(--jw-b-size-md);
+    padding: var(--jw-b-size-2xs);
+    transition: opacity 500ms ease-out;
+}
+
+.toaster__toast.fade-out {
+    opacity: 0;
+}
+
+.toaster__toast + .toaster__toast {
+    margin-top: var(--jw-b-size-2xs);
+}

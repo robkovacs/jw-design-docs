@@ -1,0 +1,66 @@
+{
+    "spaceData": [
+        {
+            "prefix-figma": "base/spacing/",
+            "prefix-css": "--base-spacing-",
+            "values": [
+                {
+                    "name": "4xs",
+                    "sizePx": 1
+                },
+                {
+                    "name": "3xs",
+                    "sizePx": 2
+                },
+                {
+                    "name": "2xs",
+                    "sizePx": 4
+                },
+                {
+                    "name": "xs",
+                    "sizePx": 8
+                },
+                {
+                    "name": "sm",
+                    "sizePx": 12
+                },
+                {
+                    "name": "md",
+                    "sizePx": 16
+                },
+                {
+                    "name": "lg",
+                    "sizePx": 24
+                },
+                {
+                    "name": "xl",
+                    "sizePx": 32
+                },
+                {
+                    "name": "2xl",
+                    "sizePx": 40
+                },
+                {
+                    "name": "3xl",
+                    "sizePx": 48
+                },
+                {
+                    "name": "4xl",
+                    "sizePx": 64
+                },
+                {
+                    "name": "5xl",
+                    "sizePx": 80
+                },
+                {
+                    "name": "6xl",
+                    "sizePx": 96
+                },
+                {
+                    "name": "7xl",
+                    "sizePx": 128
+                }
+            ]
+        }
+    ]
+}
