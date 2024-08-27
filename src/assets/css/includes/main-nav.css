@@ -11,9 +11,9 @@
         top: 0;
     }
 
-    .main-nav__home {
+    .main-nav__home, .main-nav__home:visited  {
         display: block;
-        color: inherit;
+        color: var(--jw-b-color-gray-900);
         text-decoration: none;
         font-size: var(--jw-b-size-md);
         line-height: var(--jw-b-size-lg);

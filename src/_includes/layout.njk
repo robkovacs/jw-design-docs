@@ -22,13 +22,28 @@
     <body>
         {% include 'main-nav.njk' %}
         <main data-pagefind-body>
-            {% if includePageHeader !== false %}
-                <div data-pagefind-ignore>
-                    {{ collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key) | eleventyNavigationToHtml({ 'listClass': 'breadcrumbs' }) | safe }}
+                {% if includePageHeader !== false %}
+                    <div data-pagefind-ignore>
+                        {{ collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key) | eleventyNavigationToHtml({ 'listClass': 'breadcrumbs' }) | safe }}
+                    </div>
+                    <h1>{{ title }}</h1>
+                {% endif %}
+            <div class="main-content">
+                {% set localContent %}
+                    {% block content %}{% endblock %}
+                {% endset %}
+                
+                {% if localContent and hasTOC %}
+                    <aside class="toc__container">
+                        <div class="h4">Table of contents</div>
+                        {{ localContent | toc | safe }}
+                    </aside>
+                {% endif %}
+
+                <div class="body-content">    
+                    {{ localContent | safe }}
                 </div>
-                <h1>{{ title }}</h1>
-            {% endif %}
-            {% block content %}{% endblock %}
+            </div>
         </main>
         <script src="/assets/js/main.js"></script>
         <script src="/pagefind/pagefind-ui.js"></script>

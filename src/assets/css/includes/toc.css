@@ -1,0 +1,33 @@
+.toc__heading {
+    margin-top: calc(-1 * var(--jw-b-size-3xl));
+    padding-top: var(--jw-b-size-3xl);
+}
+
+.toc__container {
+    flex: 1 0;
+    order: 2;
+    position: sticky;
+    top: var(--jw-b-size-3xl);
+    right: var(--jw-b-size-3xl);
+    align-self: flex-start;
+}
+
+.toc ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toc ol li + li {
+    margin-top: var(--jw-b-size-2xs);
+}
+
+.toc li > ol {
+    margin-left: var(--jw-b-size-md);
+    margin-bottom: var(--jw-b-size-md);
+    margin-top: var(--jw-b-size-3xs);
+}
+
+.toc ol li > ol > li + li {
+    margin-top: var(--jw-b-size-3xs);
+}

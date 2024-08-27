@@ -28,7 +28,6 @@ h2, .h2 {
     margin-bottom: var(--jw-b-size-md);
 }
 
-
 h3, .h3 {
     font-size: var(--jw-b-size-lg);
     line-height: var(--jw-b-size-xl);
@@ -50,7 +49,7 @@ p {
     margin-bottom: var(--jw-b-size-xl);
 }
 
-kbd {
+kbd, code {
     display: inline-block;
     padding: var(--jw-b-size-3xs);
     line-height: var(--jw-b-size-xs);
@@ -60,10 +59,6 @@ kbd {
     background-color: var(--jw-b-color-gray-200);
     border-radius: var(--jw-b-size-3xs);
     font-family: monospace;
-}
-
-article {
-    max-width: 40rem;
 }
 
 .bulleted-list {

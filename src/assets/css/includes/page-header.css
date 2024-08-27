@@ -15,10 +15,6 @@
     gap: var(--jw-b-size-3xs);
 }
 
-.breadcrumbs li a {
-    color: var(--jw-b-color-blue-600);
-}
-
 .breadcrumbs > li::after {
     content: "/";
 }

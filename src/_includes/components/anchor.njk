@@ -1,9 +1,21 @@
 {% from './system-icon.njk' import render as systemIcon %}
 
 {%- macro render(options) -%}
+    {% set classes %}
+        {% if options.classes %}
+            {% if options.classes == (options.classes | string) %}
+                {{ options.classes }}
+            {% else %}
+                {{ options.classes | join(' ') }}
+            {% endif %}
+        {% endif %}
+    {% endset %}
     <a
         href="{{ options.href }}"
-        class="anchor {{ 'anchor--' + options.variant if options.variant }} {{ options.classes | join(' ') if options.classes }}"
+        class="anchor {{ 'anchor--' + options.variant if options.variant }} {{ classes }}"
+        {% for key, value in options.attributes %}
+            {{ key }}="{{ value | safe }}"
+        {% endfor %}
     >
         {{- systemIcon(options.leftIcon) if options.leftIcon -}}
         {{- options.content -}}

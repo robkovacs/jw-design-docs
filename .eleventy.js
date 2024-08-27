@@ -6,6 +6,7 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const eleventyNavigation = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const pluginTOC = require('eleventy-plugin-toc');
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(eleventyNavigation);
@@ -13,6 +14,8 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget("./src/assets/js/");
 
     eleventyConfig.addNunjucksGlobal("nanoid", () => nanoid());
+
+    eleventyConfig.addNunjucksGlobal("addToTOC", () =>  'class="toc__heading" id="' + nanoid() + '"');
 
     eleventyConfig.addNunjucksGlobal("isHtmlElement", function (string) {
         const dom = new JSDOM(string);
@@ -66,8 +69,9 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/img");
 
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+    eleventyConfig.addPlugin(pluginTOC);
 
-	eleventyConfig.on('eleventy.after', () => {
+    eleventyConfig.on('eleventy.after', () => {
 		execSync(`npx pagefind --site dist --glob \"**/*.html\"`, { encoding: 'utf-8' })
 	});
 

@@ -18,6 +18,55 @@ body {
     margin: 0;
 }
 
+a {
+    border-radius: var(--jw-b-size-3xs);
+    display: inline;
+    line-height: inherit;
+    font-size: inherit;
+    vertical-align: top;
+}
+
+a:link, a:visited {
+    color: #0070d4;
+    text-decoration: none;
+}
+
+a:hover, a:hover:visited {
+    color: #0E57B5;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #1E3D92;
+    text-decoration: underline;
+}
+
+a:hover:active {
+    color: #1E3D92;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.body-content {
+    flex: 3 0;
+}
+
+article {
+    max-width: 40rem;
+}
+
+section + section {
+    margin-top: 4rem;
+}
+
+figure {
+    margin: 0 0 var(--jw-b-size-xl);
+}
+
 @media screen and (min-width: 30rem) {
     body {
         min-height: 100%;

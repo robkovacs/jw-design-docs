@@ -16,6 +16,7 @@
         "@11ty/eleventy-navigation": "^0.3.5",
         "@floating-ui/dom": "^1.6.10",
         "clean-css": "^5.3.3",
+        "eleventy-plugin-toc": "^1.1.5",
         "html-minifier-terser": "^7.2.0",
         "jsdom": "^24.1.1",
         "nanoid": "^3.3.7"

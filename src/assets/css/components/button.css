@@ -10,6 +10,10 @@
     margin-right: var(--jw-b-size-3xs);
 }
 
+.button > .system-icon:first-child:has(+ span:empty) {
+    margin-right: 0;
+}
+
 .button > .system-icon:last-child {
     margin-left: var(--jw-b-size-3xs);
 }
@@ -65,6 +69,12 @@
     line-height: var(--jw-b-size-xl);
     padding: calc(var(--jw-b-size-xs) - var(--jw-b-size-4xs)) calc(var(--jw-b-size-md) - var(--jw-b-size-4xs));
 }
+
+.button--size-md:has(.system-icon + span:empty) {
+    padding-left: calc(var(--jw-b-size-xs) - var(--jw-b-size-4xs));
+    padding-right: calc(var(--jw-b-size-xs) - var(--jw-b-size-4xs));
+}
+
 
 .button--size-sm {
     font-size: var(--jw-b-size-sm);
