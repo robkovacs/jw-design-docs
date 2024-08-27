@@ -38,18 +38,14 @@ jobs:
       - name: Eleventy build
         run: |
             npx @11ty/eleventy
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
+        with:
+          path: './dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        publish_dir: ./dist
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
