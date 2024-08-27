@@ -11,7 +11,7 @@
         top: 0;
     }
 
-    .main-nav__home, .main-nav__home:visited  {
+    .main-nav__home, .main-nav__home:visited, .main-nav__home:hover, .main-nav__home:active {
         display: block;
         color: var(--jw-b-color-gray-900);
         text-decoration: none;

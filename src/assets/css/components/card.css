@@ -6,7 +6,7 @@
     box-shadow: var(--jw-b-box-shadow-level-1);
 }
 
-.card, .card:visited {
+.card, .card:visited, .card:hover, .card:active {
     text-decoration: none;
     color: var(--jw-b-color-gray-900);
 }
