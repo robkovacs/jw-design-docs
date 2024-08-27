@@ -15,8 +15,6 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.addNunjucksGlobal("nanoid", () => nanoid());
 
-    eleventyConfig.addNunjucksGlobal("addToTOC", () =>  'class="toc__heading" id="' + nanoid() + '"');
-
     eleventyConfig.addNunjucksGlobal("isHtmlElement", function (string) {
         const dom = new JSDOM(string);
         const newNode = dom.window.document.querySelector("body").firstChild;

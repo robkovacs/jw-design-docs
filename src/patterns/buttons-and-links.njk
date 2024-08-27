@@ -11,7 +11,7 @@ eleventyNavigation:
 {% block content %}
 <article>
     <section>
-        <h2 {{ addToTOC() | safe }}>Whether to use a button or a link</h2>
+        <h2 class="toc__heading" id="use-button-link">Whether to use a button or a link</h2>
 
         <p>Buttons and links behave differently, because they have different purposes:</p>
         <ul class="bulleted-list">
@@ -46,9 +46,9 @@ eleventyNavigation:
         <p>...we might have some work to do.</p>
     </section>
     <section>
-        <h2 {{ addToTOC() | safe }}>Icon-only buttons</h2>
-
-        <h3 {{ addToTOC() | safe }}>When to use</h3>
+        <h2 class="toc__heading" id="icon-only-buttons">Icon-only buttons</h2>
+        
+        <h3 class="toc__heading" id="use-icon-only-buttons">When to use</h3>
 
         <p>Out of a desire to create a simpler user interface, or save space, you might consider using an Icon Button in some part of your designs. But you should consider:</p>
 
@@ -109,7 +109,8 @@ eleventyNavigation:
             </div>
         </div>
 
-        <h3 {{ addToTOC() | safe }}>Accessibility</h3>
+        <h3 class="toc__heading" id="icon-only-buttons-accessibility">Icon-only buttons</h3>
+
         <p>Whether or not an icon has a common interpretation, that still depends on users' ability to see it. So for screen reader users, we need to add an <code>aria-label</code> to each icon-only button that will stand in for the icon.</p>
         <div class="two-columns">
             <div>
@@ -134,13 +135,13 @@ eleventyNavigation:
     </section>
 
     <section>
-        <h2 {{ addToTOC() | safe }}>Links and icons</h2>
+        <h2 class="toc__heading" id="links-icons">Links with icons</h3>
         
-        <h3 {{ addToTOC() | safe }}>When to use</h3>
+        <h3 class="toc__heading" id="use-links-icons">When to use</h3>
         
         <p>Both links and buttons can have icons added to the left or the right of the text. But for links, we should use icons to indicate when a link behaves in a non-standard way — in other words, when it doesn't open up a new page in the current tab.</p>
         
-        <h4 {{ addToTOC() | safe }}>Links to files</h4>                
+        <h4 class="toc__heading" id="links-files">Links to files</h4>                
         <div class="two-columns vertically-centered">
             <div>
                 <p>Use a <kbd><samp>document-*<samp></kbd> icon to indicate that this link points to a file, with the icon specific to that filetype if available. If not, use <kbd><samp>document<samp></kbd>.</p>
@@ -162,11 +163,10 @@ eleventyNavigation:
             </div>
         </div>
 
-        <h4 {{ addToTOC() | safe }}>Links that open in a new tab</h4>
+        <h4 class="toc__heading" id="links-open-new-tab">Links that open in a new tab</h4>
 
         <div class="two-columns vertically-centered">
             <div>
-                {# <h4 {{ addToTOC() | safe }}>Links that open in a new tab</h4> #}
                 <p>Use the <kbd><samp>external-link<samp></kbd> icon on the right to indicate when a link opens in a new tab. Screen reader users in particular will appreciate a heads up on the context shift.</p>
                 <p>Links to files will either trigger a download or open the file in a new tab, depending on the user's browser configuration and the file's type.</p>
             </div>
@@ -181,7 +181,7 @@ eleventyNavigation:
             </div>
         </div>
         
-        <h3 {{ addToTOC() | safe }}>Accessibility</h3>
+        <h3 class="toc__heading" id="link-icon-accessibility">Accessibility</h3>
         <p>It's important to ensure that screen reader users who won't see the icon attached to your link still get the additional context it provides.</p>
         <p>For file downloads, the filetype (if common), plus <code>Download:</code>, can be prefixed to the link text. For external links, append <code>: Opens in a new tab</code>.</p>
 
