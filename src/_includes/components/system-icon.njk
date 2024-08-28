@@ -1,6 +1,7 @@
+{# TODO: make extraClasses into a custom filter #}
+
 {%- macro render(iconName, size = 'md', classes = '') -%}
-{% set extraClasses %}
-{# TODO: make this into a custom filter #}
+{%- set extraClasses -%}
     {% if classes %}
         {% if classes == (classes | string) %}
             {{ classes }}
@@ -8,7 +9,7 @@
             {{ classes | join(' ') }}
         {% endif %}
     {% endif %}
-{% endset %}
+{%- endset -%}
     <span class="system-icon system-icon--size-{{ size }} {{ extraClasses }}">
         {%- include '../../assets/img/system-icons/' + iconName + '.svg' -%}
     </span>

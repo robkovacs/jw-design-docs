@@ -18,7 +18,7 @@
         {% endfor %}
     >
         {{- systemIcon(options.leftIcon) if options.leftIcon -}}
-        {{- options.content -}}
+        <span class="anchor__content">{{- options.content -}}</span>
         {{- systemIcon(options.rightIcon) if options.rightIcon -}}
     </a>
 {%- endmacro -%}

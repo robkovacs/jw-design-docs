@@ -4,60 +4,114 @@ eleventyNavigation:
     key: Select
     parent: Components
     order: 1
+hasTOC: true
 ---
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
-<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Auctor torquent fringilla natoque conubia ridiculus viverra orci enim posuere. Blandit ligula montes est litora efficitur odio fringilla curabitur auctor. Curabitur platea sapien facilisi netus tortor varius varius. Gravida a dolor sit, cursus hac sollicitudin vel augue aptent. Aliquet ex tempus quis lorem odio risus dui aliquet. Sagittis magna placerat dictum felis varius suscipit massa. Consectetur leo montes dui sit sollicitudin pretium. Sociosqu volutpat nisl, ut montes finibus purus. Sollicitudin convallis a nunc aptent elit nibh potenti.</p>
+<article>
+    <p style="font-size: 20px; line-height: 32px">A <strong>Select</strong> allows someone to choose one option from many. It's most appropriate when there are 4 or more options to choose from, and those options can be represented in a one- or two-level list of short, text-only labels.</p>
 
-{% call stack() %}
-    {% call select({
-        label: "Favorite fruit",
-        required: true
-    }) %}
-        <optgroup label="Apples">
-            <option>Granny Smith</option>
-            <option>McIntosh</option>
-            <option>Pink Lady</option>
-            <option>Red Delicious</option>
-        </optgroup>
-        <optgroup label="Oranges">
-            <option>Cara Cara</option>
-            <option>Mandarin</option>
-            <option>Navel</option>
-            <option>Valencia</option>
-        </optgroup>
-    {% endcall %}
+<ul class="space-swatch__button-list">
+        <li>
+            {{ anchor({ 
+                href: "https://www.figma.com/design/2XUAgVi6sCaQZ1qm4N34GA/Design-System---Components?node-id=10172-19141",
+                leftIcon: "brand-figma",
+                content: "Figma"
+            }) }}
+        </li>
+        <li>
+            {{ anchor({ 
+                href: "https://main--63c9ba51287fc47003f73128.chromatic.com/?path=/docs/form-select-select--docs",
+                leftIcon: "brand-storybook",
+                content: "Storybook"
+            }) }}
+        </li>
+        <li>
+            {{ anchor({ 
+                href: "https://github.com/justworkshr/milo-components/tree/main/packages/components/form/src/select",
+                leftIcon: "brand-github",
+                content: "GitHub"
+            }) }}
+        </li>
+    </ul>
 
-    <div class="submitted">
-        {% call select({ 
-            label: "Favorite fruit",
-            required: true,
-            messages: [{
-                type: "error",
-                message: "Choose your favorite fruit"
-            }]
-        }) %}
-            <optgroup label="group">
-                <option name="dffsd">sfssdfsdfs</option>
-                <option name="dffsd">sfssdfsdfs</option>
-                <option name="dffsd">sfssdfsdfs</option>
-                <option name="dffsd">sfssdfsdfs</option>
-            </optgroup>
-        {% endcall %}
-    </div>
-{% endcall %}
+    <section>
+        <div style="border-radius: 12px; padding: var(--size-5xl); filter: var(--drop-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
+            {% call stack({
+                attributes: { style: "width: min-content; margin: -1rem auto 0" }
+            }) %}
+                {% call select({ 
+                        label: "Your favorite fruit",
+                        required: true
+                    }) %}
+                    <option>Apples</option>
+                    <option>Bananas</option>
+                    <option>Blueberries</option>
+                    <option>Cantaloupe</option>
+                    <option>Grapes</option>
+                    <option>Oranges</option>
+                    <option>Strawberries</option>
+                    <option>Watermelon</option>
+                {% endcall %}
 
+                {% call select({
+                    label: "Your favorite fruit (grouped)",
+                    required: false
+                }) %}
+                    <optgroup label="Apples">
+                        <option>Granny Smith</option>
+                        <option>McIntosh</option>
+                        <option>Pink Lady</option>
+                        <option>Red Delicious</option>
+                    </optgroup>
+                    <optgroup label="Oranges">
+                        <option>Cara Cara</option>
+                        <option>Mandarin</option>
+                        <option>Navel</option>
+                        <option>Valencia</option>
+                    </optgroup>
+                {% endcall %}
+            {% endcall %}
+        </div>
+        <div class="h4">Also known as:</div>
+        <ul class="bulleted-list">
+            <li>Select box</li>
+            <li>Dropdown</li>
+            <li>Picker</li>
+            <li>Picklist</li>
+        </ul>
+    </section>
+    <section>
+        <h2 class="toc__heading" id="#anatomy">Anatomy</h2>
+        <dl>
+            <dt>Select box</dt>
+            <dd>The area which will be focused when this component is focused; will contain the placeholder when the field is empty and the value when an option is selected.</dd>
+            <dt>Label</dt>
+            <dd>Describes the purpose or meaning of the value to be selected.</dd>
+            <dt>Placeholder</dt>
+            <dd>Can be used to support the label; but should be used sparingly and the input should be understandable without it</dd>
+            <dt>Option list</dt>
+            <dd>The container used to display the list of available options.</dd>
+            <dt>Option group label</dt>
+            <dd>If the options have been put into groups, those groups need a short description.</dd>
+            <dt>Option</dt>
+            <dd>One of the options available to the user to select (as long as it isn't disabled!)</dd>
+            <dt>Value</dt>
+            <dd>A static representation of the selected option, after the user has finished interacting with the option list.</dd>
+        <dl>
+    </section>
+</article>
 {% endblock content %}
 
 {% set localJs %}
 (() => {
     // clear error message when empty "post-submit" select is updated
-    let emptyInvalid = document.querySelector('.submitted .select');
+    /* let emptyInvalid = document.querySelector('.submitted .select');
     emptyInvalid.addEventListener("change", (e) => {
         if(e.target.checkValidity) {
             e.target.parentElement.nextElementSibling.style.display = 'none';
         }
-    });
+    }); */
 })();
 {% endset %}

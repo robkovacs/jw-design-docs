@@ -62,6 +62,8 @@
     --size-2xl: 1.75rem; 
     --size-3xl: 2rem; 
     --size-4xl: 2.5rem;
+    --size-5xl: 3rem;
+    --size-6xl: 4rem;
 
     --box-shadow-level-1: -1px -1px 2px 0px rgba(63, 65, 71, 0.07), 1px 1px 2px 0px rgba(63, 65, 71, 0.28);
     --box-shadow-level-2: -2px -2px 4px 0px rgba(63, 65, 71, 0.07), 2px 2px 4px 0px rgba(63, 65, 71, 0.28);

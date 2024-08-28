@@ -4,7 +4,9 @@
 
 {% macro render(options) %}
     {% set placeholder %}{{ options.placeholder | default('Select&hellip;' | safe ) }}{% endset %}
-    {% set isOptional %}{{ options.isOptional | default(false) }}{% endset %}
+    {% set required %}
+        {{ options.required | default(true) }}
+    {% endset %}
     {% set id %}{{ options.attributes.id | default(nanoid()) }}{% endset %}
     
     {% set classes %}
@@ -21,7 +23,7 @@
     {% if options.label or options.messages %}
         <div class="form-field">
     {% endif %}
-            {{ inputLabel(options.label, isOptional, id) if options.label }}
+            {{ inputLabel(options.label, required, id) if options.label }}
             <span class="select__wrapper">
                 <select
                     class="select {{ classes }}"
@@ -31,7 +33,7 @@
                         {% endif %}
                     {% endfor %}
                     id="{{ id | safe }}"
-                    {{ 'required' if options.required }}
+                    {{ 'required' if required }}
                 >
                     <option hidden disabled selected value>{{ placeholder | safe }}</option>
                     {{ caller() | safe }}

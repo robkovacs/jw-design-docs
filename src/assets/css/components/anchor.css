@@ -26,9 +26,9 @@
 }
 
 .anchor > .system-icon:first-child {
-    margin-right: var(--size-4xs);
+    margin-right: var(--size-3xs);
 }
 
 .anchor > .system-icon:last-child {
-    margin-left: var(--size-4xs);
+    margin-left: var(--size-3xs);
 }

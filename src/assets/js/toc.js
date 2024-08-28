@@ -14,17 +14,19 @@ window.addEventListener("hashchange", () => {
     });
 });
 
-let firstTocLink = document.querySelector('.toc a');
-if (firstTocLink) {
-    firstTocLink.classList.add('current');
-}
+
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         const targetId = entry.target.getAttribute('id');
+        const currentLink = document.querySelector('.toc a.current');
         if (entry.isIntersecting) {
-            document.querySelector('.toc a.current').classList.remove('current');
+            if (currentLink) {
+                currentLink.classList.remove('current');
+            }
             document.querySelector('.toc a[href="#' + targetId + '"]').classList.add('current');
+        } else {
+            document.querySelector('.toc a[href="#' + targetId + '"]').classList.remove('current');
         }
         // TODO: fix hashchange outcome getting overridden by observer
     });
