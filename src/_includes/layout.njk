@@ -56,5 +56,6 @@
                 new PagefindUI({ element: "#search" });
             });
         </script>
+       {% if localJs %}<script>{{ localJs | jsmin | safe }}</script>{% endif %} 
 </body>
 </html>

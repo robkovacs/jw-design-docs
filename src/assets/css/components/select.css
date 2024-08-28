@@ -17,7 +17,7 @@
     padding-left: calc(var(--size-md) - var(--size-5xs));
     font-size: var(--size-md);
     line-height: var(--size-xl);
-    color: var(--color-gray-400);
+    color: var(--color-gray-900);
 }
 
 .select:hover {
@@ -40,25 +40,24 @@
     border-color: var(--color-gray-700);
 }
 
-.select:has(option:checked[value]),
-.select:has(option:checked[value=""]) {
-    border-color: var(--color-gray-500);
-}
+/* 
+    when the checked option has NO value:
+        - don't visually mark as invalid, even if empty but required
+        - make the text color a placeholder-y light gray
+*/
+    .select:has(option:checked[value=""]) {
+        border-color: var(--color-gray-500);
+        color: var(--color-gray-400);
+    }
 
-.select:has(option:checked[value]):hover,
-.select:has(option:checked[value=""]):hover {
-    border-color: var(--color-gray-600);
-}
+    .select:has(option:checked[value=""]):hover {
+        border-color: var(--color-gray-600);
+    }
 
-.select:has(option:checked[value]):active,
-.select:has(option:checked[value=""]):active {
-    border-color: var(--color-gray-700);
-}
-
-.select:has(option:checked:not([value])),
-.select:has(option:checked:not([value=""])) {
-    color: var(--color-gray-900);
-}
+    .select:has(option:checked[value=""]):active {
+        border-color: var(--color-gray-700);
+    }
+/* End */
 
 .submitted .select:required:invalid {
     border-color: var(--color-red-500);
