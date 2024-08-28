@@ -1,53 +1,53 @@
 .tooltip__trigger--string {
     display: inline;
-    border-radius: var(--jw-b-size-3xs);
-    color: var(--jw-b-color-gray-900);
+    border-radius: var(--size-3xs);
+    color: var(--color-gray-900);
     text-decoration-line: underline;
     text-decoration-style: dashed;
     text-decoration-skip-ink: none;
-    text-decoration-color: var(--jw-b-color-blue-600);
-    text-underline-offset: var(--jw-b-size-4xs);
+    text-decoration-color: var(--color-blue-600);
+    text-underline-offset: var(--size-4xs);
 }
 
 .tooltip__trigger--string:hover {
-    color: var(--jw-b-color-gray-700);
-    text-decoration-color: var(--jw-b-color-blue-700);
+    color: var(--color-gray-700);
+    text-decoration-color: var(--color-blue-700);
 }
 
 .tooltip__trigger--string:active {
-    color: var(--jw-b-color-gray-800);
-    text-decoration-color: var(--jw-b-color-blue-800);
+    color: var(--color-gray-800);
+    text-decoration-color: var(--color-blue-800);
 }
 
 .tooltip__tooltip {
     display: none;
-    filter: var(--jw-b-drop-shadow-level-2);
+    filter: var(--drop-shadow-level-2);
     width: max-content;
     max-width: 16rem;
     position: absolute;
     top: 0;
     left: 0;
-    background-color: var(--jw-b-color-gray-900);
-    color: var(--jw-b-color-white);
-    padding: var(--jw-b-size-2xs);
-    border-radius: var(--jw-b-size-3xs);
-    font-size: var(--jw-b-size-sm);
-    line-height: var(--jw-b-size-lg);
+    background-color: var(--color-gray-900);
+    color: var(--color-white);
+    padding: var(--size-2xs);
+    border-radius: var(--size-3xs);
+    font-size: var(--size-sm);
+    line-height: var(--size-lg);
 }
 
 .tooltip__arrow {
     position: absolute;
-    background-color: var(--jw-b-color-gray-900);;
-    width: 8px;
-    height: 8px;
+    background-color: var(--color-gray-900);;
+    width: var(--size-2xs);
+    height: var(--size-2xs);
     transform: rotate(45deg);
 }
 
 .tooltip__tooltip--inverse {
-    background-color: var(--jw-b-color-gray-100);
-    color: var(--jw-b-color-gray-900);
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-900);
 }
 
 .tooltip__tooltip--inverse > .tooltip__arrow {
-    background-color: var(--jw-b-color-gray-100);
+    background-color: var(--color-gray-100);
 }

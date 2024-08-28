@@ -3,7 +3,7 @@
     display: inline-block;
     position: relative;
     overflow: hidden;
-    background-color: var(--jw-b-color-gray-300);
+    background-color: var(--color-gray-300);
     vertical-align: middle;
 }
 

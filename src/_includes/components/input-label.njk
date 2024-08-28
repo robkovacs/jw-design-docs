@@ -1,0 +1,13 @@
+{%- macro render(content, isOptional = false, forId = '') -%}
+<label
+    class="input-label"
+    {% if forId %}
+        for="{{ forId | safe }}"
+    {% endif %}
+>
+    {{ content }}
+    {% if isOptional and isOptional !== "false" %}
+        <span class="input-label__optional">Optional</label>
+    {% endif %}
+</label>
+{% endmacro %}

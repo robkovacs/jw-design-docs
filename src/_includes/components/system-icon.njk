@@ -1,5 +1,15 @@
-{%- macro render(iconName, size = 'md') -%}
-    <span class="system-icon system-icon--size-{{ size }}">
+{%- macro render(iconName, size = 'md', classes = '') -%}
+{% set extraClasses %}
+{# TODO: make this into a custom filter #}
+    {% if classes %}
+        {% if classes == (classes | string) %}
+            {{ classes }}
+        {% else %}
+            {{ classes | join(' ') }}
+        {% endif %}
+    {% endif %}
+{% endset %}
+    <span class="system-icon system-icon--size-{{ size }} {{ extraClasses }}">
         {%- include '../../assets/img/system-icons/' + iconName + '.svg' -%}
     </span>
 {%- endmacro -%}

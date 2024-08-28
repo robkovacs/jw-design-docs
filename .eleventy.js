@@ -11,7 +11,6 @@ const pluginTOC = require('eleventy-plugin-toc');
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(eleventyNavigation);
     eleventyConfig.addWatchTarget("./src/assets/css/");
-    eleventyConfig.addWatchTarget("./src/assets/js/");
 
     eleventyConfig.addNunjucksGlobal("nanoid", () => nanoid());
 

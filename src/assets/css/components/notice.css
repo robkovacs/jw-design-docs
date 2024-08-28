@@ -1,21 +1,21 @@
 .notice {
-    padding: var(--jw-b-size-xl);
-    border-radius: var(--jw-b-size-3xs);
+    padding: var(--size-xl);
+    border-radius: var(--size-3xs);
     max-width: 40rem;
 }
 
 .notice--danger {
-    background-color: var(--jw-b-color-red-100);
+    background-color: var(--color-red-100);
 }
 
 .notice--info {
-    background-color: var(--jw-b-color-blue-100);
+    background-color: var(--color-blue-100);
 }
 
 .notice--success {
-    background-color: var(--jw-b-color-green-100);
+    background-color: var(--color-green-100);
 }
 
 .notice--warning {
-    background-color: var(--jw-b-color-yellow-100);
+    background-color: var(--color-yellow-100);
 }

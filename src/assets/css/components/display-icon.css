@@ -8,8 +8,8 @@
 }
 
 .display-icon--size-sm > svg {
-    width: var(--jw-b-size-4xl);
-    height: var(--jw-b-size-4xl);
+    width: var(--size-4xl);
+    height: var(--size-4xl);
 }
 
 .display-icon--size-md > svg {
@@ -23,169 +23,169 @@
 }
 
 .display-icon--color-blue .display-icon__fill-1 {
-    fill: var(--jw-b-color-blue-400);
+    fill: var(--color-blue-400);
 }
 
 .display-icon--color-blue .display-icon__fill-2 {
-    fill: var(--jw-b-color-blue-200);
+    fill: var(--color-blue-200);
 }
 
 .display-icon--inverse.display-icon--color-blue .display-icon__fill-1 {
-    fill: var(--jw-b-color-blue-600);
+    fill: var(--color-blue-600);
 }
 
 .display-icon--inverse.display-icon--color-blue .display-icon__fill-2 {
-    fill: var(--jw-b-color-blue-800);
+    fill: var(--color-blue-800);
 }
 
 .display-icon--color-green .display-icon__fill-1 {
-    fill: var(--jw-b-color-green-400);
+    fill: var(--color-green-400);
 }
 
 .display-icon--color-green .display-icon__fill-2 {
-    fill: var(--jw-b-color-green-200);
+    fill: var(--color-green-200);
 }
 
 .display-icon--inverse.display-icon--color-green .display-icon__fill-1 {
-    fill: var(--jw-b-color-green-600);
+    fill: var(--color-green-600);
 }
 
 .display-icon--inverse.display-icon--color-green .display-icon__fill-2 {
-    fill: var(--jw-b-color-green-800);
+    fill: var(--color-green-800);
 }
 
 .display-icon--color-red .display-icon__fill-1 {
-    fill: var(--jw-b-color-red-300);
+    fill: var(--color-red-300);
 }
 
 .display-icon--color-red .display-icon__fill-2 {
-    fill: var(--jw-b-color-red-200);
+    fill: var(--color-red-200);
 }
 
 .display-icon--inverse.display-icon--color-red .display-icon__fill-1 {
-    fill: var(--jw-b-color-red-500);
+    fill: var(--color-red-500);
 }
 
 .display-icon--inverse.display-icon--color-red .display-icon__fill-2 {
-    fill: var(--jw-b-color-red-700);
+    fill: var(--color-red-700);
 }
 
 .display-icon--color-yellow .display-icon__fill-1 {
-    fill: var(--jw-b-color-yellow-200);
+    fill: var(--color-yellow-200);
 }
 
 .display-icon--color-yellow .display-icon__fill-2 {
-    fill: var(--jw-b-color-yellow-300);
+    fill: var(--color-yellow-300);
 }
 
 .display-icon--inverse.display-icon--color-yellow .display-icon__fill-1 {
-    fill: var(--jw-b-color-yellow-600);
+    fill: var(--color-yellow-600);
 }
 
 .display-icon--inverse.display-icon--color-yellow .display-icon__fill-2 {
-    fill: var(--jw-b-color-yellow-800);
+    fill: var(--color-yellow-800);
 }
 
 .display-icon--color-gray .display-icon__fill-1 {
-    fill: var(--jw-b-color-gray-300);
+    fill: var(--color-gray-300);
 }
 
 .display-icon--color-gray .display-icon__fill-2 {
-    fill: var(--jw-b-color-gray-300);
+    fill: var(--color-gray-300);
 }
 
 .display-icon--inverse.display-icon--color-gray .display-icon__fill-1 {
-    fill: var(--jw-b-color-gray-700);
+    fill: var(--color-gray-700);
 }
 
 .display-icon--inverse.display-icon--color-gray .display-icon__fill-2 {
-    fill: var(--jw-b-color-gray-700);
+    fill: var(--color-gray-700);
 }
 
 .display-icon--color-redPurple .display-icon__fill-1 {
-    fill: var(--jw-b-color-red-300);
+    fill: var(--color-red-300);
 }
 
 .display-icon--color-redPurple .display-icon__fill-2 {
-    fill: var(--jw-b-color-purple-300);
+    fill: var(--color-purple-300);
 }
 
 .display-icon--inverse.display-icon--color-redPurple .display-icon__fill-1 {
-    fill: var(--jw-b-color-red-700);
+    fill: var(--color-red-700);
 }
 
 .display-icon--inverse.display-icon--color-redPurple .display-icon__fill-2 {
-    fill: var(--jw-b-color-purple-700);
+    fill: var(--color-purple-700);
 }
 
 .display-icon--color-yellowPurple .display-icon__fill-1 {
-    fill: var(--jw-b-color-yellow-200);
+    fill: var(--color-yellow-200);
 }
 
 .display-icon--color-yellowPurple .display-icon__fill-2 {
-    fill: var(--jw-b-color-purple-300);
+    fill: var(--color-purple-300);
 }
 
 .display-icon--inverse.display-icon--color-yellowPurple .display-icon__fill-1 {
-    fill: var(--jw-b-color-yellow-600);
+    fill: var(--color-yellow-600);
 }
 
 .display-icon--inverse.display-icon--color-yellowPurple .display-icon__fill-2 {
-    fill: var(--jw-b-color-purple-700);
+    fill: var(--color-purple-700);
 }
 
 .display-icon--color-greenYellow .display-icon__fill-1 {
-    fill: var(--jw-b-color-green-400);
+    fill: var(--color-green-400);
 }
 
 .display-icon--color-greenYellow .display-icon__fill-2 {
-    fill: var(--jw-b-color-yellow-200);
+    fill: var(--color-yellow-200);
 }
 
 .display-icon--inverse.display-icon--color-greenYellow .display-icon__fill-1 {
-    fill: var(--jw-b-color-green-600);
+    fill: var(--color-green-600);
 }
 
 .display-icon--inverse.display-icon--color-greenYellow .display-icon__fill-2 {
-    fill: var(--jw-b-color-yellow-600);
+    fill: var(--color-yellow-600);
 }
 
 .display-icon--color-blueYellow .display-icon__fill-1 {
-    fill: var(--jw-b-color-blue-400);
+    fill: var(--color-blue-400);
 }
 
 .display-icon--color-blueYellow .display-icon__fill-2 {
-    fill: var(--jw-b-color-yellow-200);
+    fill: var(--color-yellow-200);
 }
 
 .display-icon--inverse.display-icon--color-blueYellow .display-icon__fill-1 {
-    fill: var(--jw-b-color-blue-600);
+    fill: var(--color-blue-600);
 }
 
 .display-icon--inverse.display-icon--color-blueYellow .display-icon__fill-2 {
-    fill: var(--jw-b-color-yellow-600);
+    fill: var(--color-yellow-600);
 }
 
 .display-icon--color-blueGreen .display-icon__fill-1 {
-    fill: var(--jw-b-color-blue-400);
+    fill: var(--color-blue-400);
 }
 
 .display-icon--color-blueGreen .display-icon__fill-2 {
-    fill: var(--jw-b-color-green-400);
+    fill: var(--color-green-400);
 }
 
 .display-icon--inverse.display-icon--color-blueGreen .display-icon__fill-1 {
-    fill: var(--jw-b-color-blue-600);
+    fill: var(--color-blue-600);
 }
 
 .display-icon--inverse.display-icon--color-blueGreen .display-icon__fill-2 {
-    fill: var(--jw-b-color-green-600);
+    fill: var(--color-green-600);
 }
 
 .display-icon__ink {
-    fill: var(--jw-b-color-gray-900);
+    fill: var(--color-gray-900);
 }
 
 .display-icon--inverse .display-icon__ink {
-    fill: var(--jw-b-color-white);
+    fill: var(--color-white);
 }

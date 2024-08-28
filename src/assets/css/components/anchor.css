@@ -1,5 +1,5 @@
 .anchor {
-    border-radius: var(--jw-b-size-3xs);
+    border-radius: var(--size-3xs);
     display: inline;
     line-height: inherit;
     font-size: inherit;
@@ -26,9 +26,9 @@
 }
 
 .anchor > .system-icon:first-child {
-    margin-right: var(--jw-b-size-4xs);
+    margin-right: var(--size-4xs);
 }
 
 .anchor > .system-icon:last-child {
-    margin-left: var(--jw-b-size-4xs);
+    margin-left: var(--size-4xs);
 }

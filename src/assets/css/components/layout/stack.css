@@ -1,0 +1,9 @@
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-2xl);
+}
+
+.stack--gap-md {
+    gap: var(--size-2xl);   
+}

@@ -8,26 +8,26 @@
 }
 
 .system-icon--size-xs > svg {
-    width: var(--jw-b-size-md);
-    height: var(--jw-b-size-md);
+    width: var(--size-md);
+    height: var(--size-md);
 }
 
 .system-icon--size-sm > svg {
-    width: var(--jw-b-size-lg);
-    height: var(--jw-b-size-lg);
+    width: var(--size-lg);
+    height: var(--size-lg);
 }
 
 .system-icon--size-md > svg {
-    width: var(--jw-b-size-xl);
-    height: var(--jw-b-size-xl);
+    width: var(--size-xl);
+    height: var(--size-xl);
 }
 
 .system-icon--size-lg > svg {
-    width: var(--jw-b-size-2xl);
-    height: var(--jw-b-size-2xl);
+    width: var(--size-2xl);
+    height: var(--size-2xl);
 }
 
 .system-icon--size-xl > svg {
-    width: var(--jw-b-size-4xl);
-    height: var(--jw-b-size-4xl);
+    width: var(--size-4xl);
+    height: var(--size-4xl);
 }

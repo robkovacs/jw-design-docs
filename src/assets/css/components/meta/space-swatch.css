@@ -1,8 +1,8 @@
 .space-swatch-list {
     display: flex;
     flex-direction: column;
-    gap: var(--jw-b-size-3xl);
-    margin-top: var(--jw-b-size-3xl);
+    gap: var(--size-3xl);
+    margin-top: var(--size-3xl);
 }
 
 .space-swatch {
@@ -10,7 +10,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: var(--jw-b-size-3xl);
+    gap: var(--size-3xl);
 }
 
 .space-swatch__preview {
@@ -20,10 +20,10 @@
 .space-swatch__preview > div {
     box-sizing: content-box;
     margin: 0 auto;
-    height: var(--jw-b-size-2xl);
-    background-color: var(--jw-b-color-purple-100);
-    border: 1px solid var(--jw-b-color-purple-500);
-    border-width: 0 1px 0 1px;
+    height: var(--size-2xl);
+    background-color: var(--color-purple-100);
+    border: var(--size-5xs) solid var(--color-purple-500);
+    border-width: 0 var(--size-5xs) 0 var(--size-5xs);
 }
 
 .space-swatch__name {
@@ -37,9 +37,9 @@
 }
 
 .space-swatch__specs--rem {
-    color: var(--jw-b-color-gray-700);
-    font-size: var(--jw-b-size-sm);
-    line-height: var(--jw-b-size-md);
+    color: var(--color-gray-700);
+    font-size: var(--size-sm);
+    line-height: var(--size-md);
     display: inline-block;
     vertical-align: baseline;
 }
@@ -51,6 +51,6 @@
     padding: 0;
     display: flex;
     flex-direction: row;
-    gap: 0 var(--jw-b-size-2xs);
+    gap: 0 var(--size-2xs);
     flex-wrap: wrap;
 }

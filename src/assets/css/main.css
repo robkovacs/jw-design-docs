@@ -7,11 +7,11 @@ html {
     box-sizing: border-box;
 }
 
-*:focus-visible {
-    outline-offset: var(--jw-b-size-4xs);
-    outline: var(--jw-b-color-blue-500) solid var(--jw-b-size-4xs);
-    box-shadow: 0 0 0 var(--jw-b-size-4xs) var(--jw-b-color-white);
-    border-radius: var(--jw-b-size-3xs);
+*:focus-visible, select:focus {
+    outline-offset: var(--size-4xs);
+    outline: var(--color-blue-500) solid var(--size-4xs);
+    box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
+    border-radius: var(--size-3xs);
 }
 
 body {
@@ -19,7 +19,7 @@ body {
 }
 
 a {
-    border-radius: var(--jw-b-size-3xs);
+    border-radius: var(--size-3xs);
     display: inline;
     line-height: inherit;
     font-size: inherit;
@@ -64,7 +64,7 @@ section + section {
 }
 
 figure {
-    margin: 0 0 var(--jw-b-size-xl);
+    margin: 0 0 var(--size-xl);
 }
 
 @media screen and (min-width: 30rem) {
@@ -78,7 +78,7 @@ figure {
 
     main {
         flex: 1 1 calc(var(--ui-max-width) - var(--nav-width));
-        padding: var(--jw-b-size-3xl);
+        padding: var(--size-3xl);
         overflow-wrap: anywhere;
     }
 }

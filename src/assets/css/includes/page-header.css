@@ -2,17 +2,17 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    font-size: var(--jw-b-size-sm);
-    line-height: var(--jw-b-size-md);
-    margin-bottom: var(--jw-b-size-2xs);
-    color: var(--jw-b-color-gray-700);
+    font-size: var(--size-sm);
+    line-height: var(--size-md);
+    margin-bottom: var(--size-2xs);
+    color: var(--color-gray-700);
 }
 
 .breadcrumbs, .breadcrumbs li {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--jw-b-size-3xs);
+    gap: var(--size-3xs);
 }
 
 .breadcrumbs > li::after {

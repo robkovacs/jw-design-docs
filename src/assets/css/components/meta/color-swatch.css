@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--jw-b-size-3xl) var(--jw-b-size-2xs);
+    gap: var(--size-3xl) var(--size-2xs);
     margin-bottom: 4rem;
 }
 
@@ -10,13 +10,13 @@
     flex: 0 1 6rem;
     width: 0;
     text-decoration: none;
-    color: var(--jw-b-color-gray-900);   
+    color: var(--color-gray-900);   
 }
 
 .color-swatch__preview {
     height: 0;
     padding-top: 100%;
-    margin-bottom: var(--jw-b-size-2xs);
+    margin-bottom: var(--size-2xs);
 }
 
 .color-swatch__name {
@@ -29,34 +29,34 @@
     padding: 0;
     display: flex;
     flex-direction: row;
-    gap: 0 var(--jw-b-size-2xs);
+    gap: 0 var(--size-2xs);
     flex-wrap: wrap;
 }
 
 .color-swatch__button {
     display: flex;
     flex-direction: row;
-    gap: var(--jw-b-size-3xs);
+    gap: var(--size-3xs);
     appearance: none;
     border: none;
     background-color: transparent;
     font-family: inherit;
-    color: var(--jw-b-color-blue-600);
+    color: var(--color-blue-600);
     font-weight: 700;
-    font-size: var(--jw-b-size-sm);
-    line-height: var(--jw-b-size-md);
-    padding: var(--jw-b-size-3xs);
-    border-radius: var(--jw-b-size-3xs);
+    font-size: var(--size-sm);
+    line-height: var(--size-md);
+    padding: var(--size-3xs);
+    border-radius: var(--size-3xs);
 }
 
 .color-swatch__button:hover {
-    background-color: var(--jw-b-color-blue-100);
-    color: var(--jw-b-color-blue-700);
+    background-color: var(--color-blue-100);
+    color: var(--color-blue-700);
 }
       
 .color-swatch__button:active {
-    background-color: var(--jw-b-color-blue-200);
-    color: var(--jw-b-color-blue-800);
+    background-color: var(--color-blue-200);
+    color: var(--color-blue-800);
 }
 
 /* TODO: update buttons to use button component, delete non-flex-related button CSS */
