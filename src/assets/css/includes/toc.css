@@ -3,6 +3,8 @@
     padding-top: var(--size-3xl);
 }
 
+/* TODO: update the call to the TOC plugin to give everything BEM-y classnames */
+
 .toc__container {
     flex: 1 0;
     order: 2;
@@ -18,21 +20,10 @@
     padding: 0;
 }
 
-.toc ol li + li {
-    margin-top: var(--size-2xs);
-}
-
 .toc li > ol {
     margin-left: var(--size-md);
     margin-bottom: var(--size-md);
-    margin-top: var(--size-3xs);
 }
-
-.toc ol li > ol > li + li {
-    margin-top: var(--size-3xs);
-}
-
-
 
 .toc .current {
     background-color: var(--color-blue-100);

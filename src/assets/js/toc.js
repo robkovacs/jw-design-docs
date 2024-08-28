@@ -14,7 +14,10 @@ window.addEventListener("hashchange", () => {
     });
 });
 
-document.querySelector('.toc a').classList.add('current');
+let firstTocLink = document.querySelector('.toc a');
+if (firstTocLink) {
+    firstTocLink.classList.add('current');
+}
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
