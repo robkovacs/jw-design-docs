@@ -4,6 +4,6 @@
             <rect class="toggle-switch__background" x="0.5" y="2.5" width="31" height="19" ry="10" stroke="var(--color-gray-500)" stroke-width="1" fill="var(--color-gray-100)" />
             <circle class="toggle-switch__foreground" cx="10" cy="12" r="9.5" stroke="var(--color-gray-500)" stroke-width="1" fill="var(--color-white)" />
         </svg>
-        {{ options.content }}
+        {{ options.content | safe }}
     </button>
 {% endmacro %}

@@ -10,13 +10,15 @@
     padding: 0;
     border: none;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--size-xs);
     border-radius: var(--size-3xs);
+    text-align: left;
 }
 
 .toggle-switch__frame {
     pointer-events: none;
+    flex: 1 0 2rem;
 }
 
 .toggle-switch__background,
