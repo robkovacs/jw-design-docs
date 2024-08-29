@@ -1,2 +1,8 @@
 {% macro render(options) %}
+    {% set color = (options.color | default("neutral")) %}
+    {% set emphasis = (options.emphasis | default("subtle")) %}
+    {% set size = (options.size | default("md")) %}
+    <div class="badge badge--size-{{ size }} badge--color-{{ color }} badge--emphasis-{{ emphasis }}">
+        {{ options.content }}
+    </div>
 {% endmacro %}
