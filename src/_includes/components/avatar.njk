@@ -1,3 +1,32 @@
 {% macro render(options) %}
-    {% set size = (options.size | default("md")) %}    
+    {% set size = (options.size | default("md")) %}
+    {% set nameWords = options.fullName.split(" ") %}
+    {% set initials = nameWords[0][0].toUpperCase() + nameWords[nameWords.length - 1][0].toUpperCase() %}
+    {% set backgroundColorOptions = ["--color-blue-200", "--color-yellow-200", "--color-green-200", "--color-red-200", "--color-purple-200"] %}
+    {%- set backgroundColor -%}
+        {%- if initials -%}
+            {%- set firstCode = initials.charCodeAt(0) - 65 -%}
+            
+            {%- if initials.length > 1 -%}
+                {% set secondCode = initials.charCodeAt(1) - 65 -%}
+            {%- else -%}
+                {% set secondCode = 0 -%}
+            {%- endif -%}
+            
+            {%- set backgroundColorIndex = (firstCode + secondCode) % backgroundColorOptions.length -%}
+            {{- backgroundColorOptions[backgroundColorIndex] -}}
+        {%- else -%}
+            --color-gray-200
+        {%- endif -%}
+    {%- endset -%}
+
+    <div class="avatar avatar--size-{{ size }}" style="background-color: var({{ backgroundColor }})">
+        {%- if options.photoUrl -%}
+            <img loading="lazy" class="avatar__photo" src="{{ options.photoUrl | safe }}" alt="{{ options.fullName }}" />
+        {% else %}
+            <abbr class="avatar__initials" title="{{ options.fullName }}">
+                {{ initials }}
+            </abbr>
+        {% endif %}
+    </div>
 {% endmacro %}

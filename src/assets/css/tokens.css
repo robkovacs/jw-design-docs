@@ -46,6 +46,7 @@
     --color-yellow-800: #753204;
 
     --color-purple-100: #f4ebfc;
+    --color-purple-200: #e0d0ff;
     --color-purple-300: #baaaf9;
     --color-purple-500: #8a73e5;
     --color-purple-700: #5f43ca;
@@ -65,6 +66,8 @@
     --size-4xl: 2.5rem;
     --size-5xl: 3rem;
     --size-6xl: 4rem;
+    --size-7xl: 6rem;
+    --size-8xl: 8rem;
 
     --box-shadow-level-1: -1px -1px 2px 0px rgba(63, 65, 71, 0.07), 1px 1px 2px 0px rgba(63, 65, 71, 0.28);
     --box-shadow-level-2: -2px -2px 4px 0px rgba(63, 65, 71, 0.07), 2px 2px 4px 0px rgba(63, 65, 71, 0.28);

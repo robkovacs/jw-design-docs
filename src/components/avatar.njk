@@ -8,4 +8,62 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem; align-items: center">
+        {{ avatar({
+            fullName: "Meredith Palmer",
+            size: "xs"
+        }) }}
+        {{ avatar({
+            fullName: "Ryan Howard",
+            size: "sm"    
+        }) }}
+        {{ avatar({
+            fullName: "Kelly Kapoor",
+            size: "md"    
+        }) }}
+        {{ avatar({
+            fullName: "Creed Bratton",
+            size: "lg"    
+        }) }}
+        {{ avatar({
+            fullName: "Pam Beesly",
+            size: "xl"    
+        }) }}
+        {{ avatar({
+            fullName: "Michael Scott",
+            size: "2xl"    
+        }) }}
+    </div>
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem; align-items: center">
+        {{ avatar({
+            fullName: "Meredith Palmer",
+            size: "xs",
+            photoUrl: "/assets/img/components/avatar/meredith-palmer.jpg"
+        }) }}
+        {{ avatar({
+            fullName: "Ryan Howard",
+            size: "sm",
+            photoUrl: "/assets/img/components/avatar/ryan-howard.jpg"    
+        }) }}
+        {{ avatar({
+            fullName: "Kelly Kapoor",
+            size: "md",
+            photoUrl: "/assets/img/components/avatar/kelly-kapoor.jpg"
+        }) }}
+        {{ avatar({
+            fullName: "Creed Bratton",
+            size: "lg",
+            photoUrl: "/assets/img/components/avatar/creed-bratton.jpg"
+        }) }}
+        {{ avatar({
+            fullName: "Pam Beesly",
+            size: "xl",
+            photoUrl: "/assets/img/components/avatar/pam-beesly.jpg"
+        }) }}
+        {{ avatar({
+            fullName: "Michael Scott",
+            size: "2xl",
+            photoUrl: "/assets/img/components/avatar/michael-scott.jpg"    
+        }) }}
+    </div>
 {% endblock %}
