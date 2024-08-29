@@ -1,0 +1,11 @@
+{% macro render(options) %}
+    <label class="checkbox{{ ' checkbox--framed' if options.framed }}">
+        <input name="checkbox" type="checkbox" class="checkbox__control" {{ 'required' if options.required }}/>
+            <span class="checkbox__content">
+                <span class="checkbox__label">{{ options.label }}</span>
+                {%- if options.description and options.framed -%}
+                    <span class="checkbox__description">{{ options.description }}</span>
+                {%- endif -%}
+            </span>
+    </label>
+{% endmacro %}

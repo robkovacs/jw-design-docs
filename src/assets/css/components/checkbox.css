@@ -1,0 +1,169 @@
+.checkbox {
+    display: flex;
+    gap: var(--size-xs);
+}
+
+.checkbox__control {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    width: var(--size-xl);
+    height: var(--size-xl);
+    border: var(--size-5xs) solid var(--color-gray-500);
+    border-radius: var(--size-3xs);
+    position: relative;
+}
+
+.checkbox__control::before {
+    background-color: var(--color-white);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: var(--size-lg);
+    display: none;
+    content: '';
+}
+
+.checkbox__control, .checkbox__control::before {
+    width: var(--size-xl);
+    height: var(--size-xl);
+}
+
+.checkbox__control:checked,
+.checkbox__control:indeterminate {
+    background-color: var(--color-blue-600);
+}
+
+.checkbox__control:checked::before {
+    display: block;
+    position: absolute;
+    mask-image: url("../../assets/img/system-icons/check.svg");
+    left: calc(-1 * var(--size-5xs));
+    top: calc(-1 * var(--size-5xs));
+}
+
+.checkbox__control:indeterminate::before {
+    mask-image: url("../../assets/img/system-icons/minus.svg");
+}
+
+.checkbox:hover .checkbox__control {
+    border-color: var(--color-gray-600);
+}
+
+.checkbox:active .checkbox__control {
+    border-color: var(--color-gray-600);
+}
+
+.checkbox:hover .checkbox__control {
+    background-color: var(--color-blue-100);
+}
+
+.checkbox:active .checkbox__control {
+    background-color: var(--color-blue-200);
+}
+
+.checkbox:hover .checkbox__control:checked {
+    background-color: var(--color-blue-700);
+}
+
+.checkbox:active .checkbox__control:checked {
+    background-color: var(--color-blue-800);
+}
+
+.checkbox .checkbox__control:invalid {
+    border-color: var(--color-red-500);
+}
+
+.checkbox:hover .checkbox__control:invalid {
+    border-color: var(--color-red-600);
+}
+
+.checkbox:active .checkbox__control:invalid {
+    border-color: var(--color-red-700);
+}
+
+.checkbox--framed {
+    padding: var(--size-md);
+    border: var(--size-5xs) solid var(--color-gray-500);
+    border-radius: var(--size-3xs);
+}
+
+.checkbox--framed:hover {
+    background-color: var(--color-gray-100);
+    border-color: var(--color-gray-600);
+}
+
+.checkbox--framed:active {
+    background-color: var(--color-gray-200);
+    border-color: var(--color-gray-700);
+}
+
+.checkbox--framed:has(:checked) {
+    background-color: var(--color-blue-100);
+}
+
+.checkbox--framed:hover:has(:checked) {
+    background-color: var(--color-blue-200);
+}
+
+.checkbox--framed:active:has(:checked) {
+    background-color: var(--color-blue-300);
+}
+
+.checkbox--framed:has(:focus-visible) {
+    outline-offset: var(--size-4xs);
+    outline: var(--color-blue-500) solid var(--size-4xs);
+    box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
+}
+
+.checkbox--framed .checkbox__control:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+.checkbox--framed:has(:invalid) {
+    border-color: var(--color-red-500);
+}
+
+.checkbox--framed:hover:has(:invalid) {
+    border-color: var(--color-red-600);
+}
+
+.checkbox--framed:active:has(:invalid) {
+    border-color: var(--color-red-700);
+}
+
+.checkbox--framed .checkbox__control,
+.checkbox--framed:hover .checkbox__control,
+.checkbox--framed:active .checkbox__control,
+.checkbox--framed .checkbox__control:invalid,
+.checkbox--framed:hover .checkbox__control:invalid,
+.checkbox--framed:active .checkbox__control:invalid {
+    border-color: var(--color-gray-500);
+    background-color: var(--color-white);
+}
+
+.checkbox--framed .checkbox__control:checked,
+.checkbox--framed:hover .checkbox__control:checked,
+.checkbox--framed:active .checkbox__control:checked {
+    background-color: var(--color-blue-600);
+}
+
+.checkbox__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-2xs);
+}
+
+.checkbox__label, .checkbox__description {
+    display: block;
+}
+
+.checkbox__description {
+    color: var(--color-gray-600);
+    font-size: var(--size-sm);
+    line-height: var(--size-lg);
+}
+
+.checkbox--framed:active:has(:checked) .checkbox__description {
+    color: var(--color-gray-900);
+}

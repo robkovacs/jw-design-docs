@@ -1,0 +1,24 @@
+---
+title: Checkbox
+eleventyNavigation: 
+    key: Checkbox
+    parent: Components
+    order: 3
+---
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+    <article>
+        {% call stack() %}
+            {{ checkbox({
+                label: "Check me out"
+            }) }}
+
+            {{ checkbox({
+                label: "I've been framed!",
+                description: "Here's some extra context.",
+                framed: true
+            }) }}
+        {% endcall %}
+    </article>
+{% endblock %}
