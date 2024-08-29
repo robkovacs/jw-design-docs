@@ -1,8 +1,8 @@
 {% macro render(options) %}
-<a class="card" href="{{ options.href }}">
-    <div class="card__title">{{ options.title }}</div>
+<a class="index-card" href="{{ options.href }}">
+    <div class="index-card__title">{{ options.title }}</div>
     {% if options.description %}
-        <div class="card__description">
+        <div class="index-card__description">
             {{ options.description | safe }}
         </div>
     {% endif %}

@@ -55,6 +55,27 @@ a:hover:active {
     flex: 3 0;
 }
 
+.breadcrumbs {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--size-sm);
+    line-height: var(--size-md);
+    margin-bottom: var(--size-2xs);
+    color: var(--color-gray-700);
+}
+
+.breadcrumbs, .breadcrumbs li {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--size-3xs);
+}
+
+.breadcrumbs > li::after {
+    content: "/";
+}
+
 article {
     max-width: 40rem;
 }

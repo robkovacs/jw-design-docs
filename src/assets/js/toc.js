@@ -37,6 +37,7 @@ const observer = new IntersectionObserver((entries) => {
             // document.querySelector('.toc a[href="#' + targetId + '"]').classList.remove('current');
             // TODO: if leaving on the bottom, move to previous (if any)
             // if leaving on the top, move to next (if any)
+            // Cound this be done with two observers: one at the top of the viewport, and one at the bottom???
         }
     });
 }, {

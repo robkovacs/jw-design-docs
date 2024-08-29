@@ -23,9 +23,9 @@ eleventyNavigation:
 %}
 
 {% block content %}
-<div class="list--cards">
+<div class="index-cards__list">
     {% for cardData in cards %}
-        {{ card({
+        {{ indexCard({
             href: cardData.href,
             title: cardData.title,
             description: cardData.description

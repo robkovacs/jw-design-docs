@@ -1,16 +1,22 @@
+{% from './components/meta/index-card.njk' import render as indexCard %}
 {% from './components/anchor.njk' import render as anchor %}
+{% from './components/avatar.njk' import render as avatar %}
+{% from './components/badge.njk' import render as badge %}
 {% from './components/button.njk' import render as button %}
-{% from './components/card.njk' import render as card %}
 {% from './components/display-icon.njk' import render as displayIcon %}
+{% from './components/divider.njk' import render as divider %}
 {% from './components/input-label.njk' import render as inputLabel %}
 {% from './components/input-message.njk' import render as inputMessage %}
 {% from './components/notice.njk' import render as notice %}
+{% from './components/page-header.njk' import render as pageHeader %}
 {% from './components/select.njk' import render as select %}
 {% from './components/spinner.njk' import render as spinner %}
 {% from './components/skeleton.njk' import render as skeleton %}
+{% from './components/stepper.njk' import render as stepper %}
 {% from './components/system-icon.njk' import render as systemIcon %}
 {% from './components/tooltip.njk' import render as tooltip %}
-{% from './components/layout/stack.njk' import render as stack %}
+{% from './components/layout/stack.njk' import render as stack -%}
+
 <!doctype html>
 <html lang="en-US">
     <head>
@@ -38,7 +44,7 @@
                 {% endset %}
                 
                 {% if localContent and hasTOC %}
-                    <aside class="toc__container">
+                    <aside class="toc__container" data-pagefind-ignore>
                         <div class="h4">Table of contents</div>
                         {{ localContent | toc | safe }}
                     </aside>
