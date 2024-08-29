@@ -22,7 +22,8 @@
 .tooltip__tooltip {
     display: none;
     filter: var(--drop-shadow-level-2);
-    transform: translate3d(0, 0, 0) rotate(0) skewX(0) skewY(0) scaleX(0) scaleY(0); /* Mobile Safari bug */
+    /* transform: translate3d(0, 0, 0) rotate(0) skewX(0) skewY(0) scaleX(0) scaleY(0); */
+    will-change: filter;
     width: max-content;
     max-width: 16rem;
     position: absolute;
