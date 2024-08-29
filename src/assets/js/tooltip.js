@@ -7,6 +7,14 @@ import {
     inline
 } from "@floating-ui/dom";
 
+/*
+    TODO:
+    - would like to use preferred placement if possible, *then* flip, *then* go wherever
+    - arrow can get misaligned when trigger is at the edge of the viewport
+    - autoUpdate!!
+    - clicking outside of a tooltip doesn't do anything on Mobile Safari
+*/
+
 let triggers = document.querySelectorAll(".tooltip__trigger");
 
 let hideTooltip = function (tooltip) {
