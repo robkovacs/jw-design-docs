@@ -46,7 +46,7 @@ h4, .h4 {
 
 p {
     margin-top: 0;
-    margin-bottom: var(--size-xl);
+    margin-bottom: var(--size-md);
 }
 
 kbd, code {
@@ -64,6 +64,7 @@ kbd, code {
 .bulleted-list {
     margin-top: 0;
     margin-bottom: var(--size-xl);
+    padding-left: var(--size-3xl);
 }
 
 p + .bulleted-list {
@@ -71,5 +72,42 @@ p + .bulleted-list {
 }
 
 .bulleted-list > li + li {
-    margin-top: var(--size-3xs);
+    margin-top: var(--size-2xs);
+}
+
+.annotation-list dt, .annotation-list dd {
+    margin-left: var(--size-5xl);
+}
+
+.annotation-list dt {
+    position: relative;
+    padding: var(--size-3xs) 0;
+    font-weight: 700;
+}
+
+.annotation-list dt:first-child {
+    counter-reset: annotations; 
+}
+
+.annotation-list dt::before {
+    display: block;
+    position: absolute;
+    left: calc(-1 *  var(--size-5xl));
+    font-weight: 700;
+    color: var(--color-blue-600);
+    border: 1px solid var(--color-blue-600);
+    background-color: var(--color-blue-100);
+    font-size: var(--size-md);
+    line-height: var(--size-md);
+    padding: var(--size-2xs);
+    text-align: center;
+    min-width: var(--size-md);
+    border-radius: 100%;
+    top: 0;
+    content: counter(annotations);
+    counter-increment: annotations;
+}
+
+.annotation-list dd {
+    margin-bottom: var(--size-xl);
 }

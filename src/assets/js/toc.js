@@ -1,20 +1,27 @@
 
-window.addEventListener("hashchange", () => {
+const setCurrentFromHash = () => {
     let tocLinks = document.querySelectorAll('.toc a');
     let currentLink = document.querySelector('.toc a.current');
     
     if (currentLink) {
         currentLink.classList.remove('current');
     }
-
+    
     tocLinks.forEach((el) => {
-        if (location.hash == el.getAttribute('href')) {
+        if (window.location.hash == el.getAttribute('href')) {
             el.classList.add('current');
+            document.querySelector(el.getAttribute('href')).scrollIntoView();
         }
     });
-});
+};
 
+window.addEventListener("hashchange", setCurrentFromHash);
 
+window.addEventListener("load", setCurrentFromHash);
+
+document.querySelectorAll('.toc a').forEach((link) => {
+    link.addEventListener("click", setCurrentFromHash);
+})
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -25,17 +32,18 @@ const observer = new IntersectionObserver((entries) => {
                 currentLink.classList.remove('current');
             }
             document.querySelector('.toc a[href="#' + targetId + '"]').classList.add('current');
+            window.history.pushState(null, null, '#'+targetId);
         } else {
-            document.querySelector('.toc a[href="#' + targetId + '"]').classList.remove('current');
+            // document.querySelector('.toc a[href="#' + targetId + '"]').classList.remove('current');
+            // TODO: if leaving on the bottom, move to previous (if any)
+            // if leaving on the top, move to next (if any)
         }
-        // TODO: fix hashchange outcome getting overridden by observer
     });
 }, {
-    rootMargin: "0px 0px -50% 0px",
     threshold: 0
 });
 
 document.querySelectorAll('.toc__heading').forEach((heading) => {
-    observer.observe(heading);
+    observer.observe(heading); 
 });
 

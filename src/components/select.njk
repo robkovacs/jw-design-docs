@@ -1,37 +1,47 @@
 ---
-title: Select
+title: Select box
 eleventyNavigation:
-    key: Select
+    key: Select box
     parent: Components
     order: 1
 hasTOC: true
 ---
 {% extends '../_includes/layout.njk' %}
+{% from '../_includes/components/meta/dos-donts.njk' import render as dosDonts %}
 
 {% block content %}
 <article>
-    <p style="font-size: 20px; line-height: 32px">A <strong>Select</strong> allows someone to choose one option from many. It's most appropriate when there are 4 or more options to choose from, and those options can be represented in a one- or two-level list of short, text-only labels.</p>
+    <p style="font-size: 20px; line-height: 32px">A <strong>select box</strong> allows someone to choose one option from many. It's most appropriate when there are 4 or more options to choose from, and those options can be represented in a one- or two-level list of short, text-only labels.</p>
 
-<ul class="space-swatch__button-list">
+<ul style="list-style-type: none; padding: 0; margin: 0; display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--size-md)">
         <li>
             {{ anchor({ 
                 href: "https://www.figma.com/design/2XUAgVi6sCaQZ1qm4N34GA/Design-System---Components?node-id=10172-19141",
                 leftIcon: "brand-figma",
-                content: "Figma"
+                content: "Figma",
+                attributes: {
+                    target: "_blank"
+                }
             }) }}
         </li>
         <li>
             {{ anchor({ 
                 href: "https://main--63c9ba51287fc47003f73128.chromatic.com/?path=/docs/form-select-select--docs",
                 leftIcon: "brand-storybook",
-                content: "Storybook"
+                content: "Storybook",
+                attributes: {
+                    target: "_blank"
+                }
             }) }}
         </li>
         <li>
             {{ anchor({ 
                 href: "https://github.com/justworkshr/milo-components/tree/main/packages/components/form/src/select",
                 leftIcon: "brand-github",
-                content: "GitHub"
+                content: "GitHub",
+                attributes: {
+                    target: "_blank"
+                }
             }) }}
         </li>
     </ul>
@@ -39,10 +49,11 @@ hasTOC: true
     <section>
         <div style="border-radius: 12px; padding: var(--size-5xl); filter: var(--drop-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
             {% call stack({
-                attributes: { style: "width: min-content; margin: -1rem auto 0" }
+                attributes: { style: "width: 20rem; margin: -1rem auto 0" }
             }) %}
                 {% call select({ 
-                        label: "Your favorite fruit",
+                        label: "Favorite fruit",
+                        placeholder: "Choose a fruit",
                         required: true
                     }) %}
                     <option>Apples</option>
@@ -56,7 +67,8 @@ hasTOC: true
                 {% endcall %}
 
                 {% call select({
-                    label: "Your favorite fruit (grouped)",
+                    label: "Favorite fruit (grouped)",
+                    placeholder: "Choose a fruit",
                     required: false
                 }) %}
                     <optgroup label="Apples">
@@ -76,16 +88,19 @@ hasTOC: true
         </div>
         <div class="h4">Also known as:</div>
         <ul class="bulleted-list">
-            <li>Select box</li>
+            <li>Select</li>
+            <li>Select input</li>
+            <li>Single select</li>
             <li>Dropdown</li>
             <li>Picker</li>
             <li>Picklist</li>
         </ul>
     </section>
     <section>
-        <h2 class="toc__heading" id="#anatomy">Anatomy</h2>
-        <dl>
-            <dt>Select box</dt>
+        <h2 class="toc__heading" id="anatomy">Anatomy</h2>
+        <img src="/assets/img/components/select-anatomy.png" style="width: 100%" />
+        <dl class="annotation-list">
+            <dt>Select input</dt>
             <dd>The area which will be focused when this component is focused; will contain the placeholder when the field is empty and the value when an option is selected.</dd>
             <dt>Label</dt>
             <dd>Describes the purpose or meaning of the value to be selected.</dd>
@@ -100,6 +115,444 @@ hasTOC: true
             <dt>Value</dt>
             <dd>A static representation of the selected option, after the user has finished interacting with the option list.</dd>
         <dl>
+    </section>
+    <section>
+        <h2 class="toc__heading" id="when-to-use-or-not">When to use (or not)</h2>
+        <div class="two-columns">
+            <div>
+                <div class="h3" style="color: var(--color-green-600)">{{ systemIcon('check-circle') }}&nbsp; When to use</div>
+                <ul class="bulleted-list">
+                    <li>If the user is being presented with at least 4 options</li>
+                    <li>If the user can only select one of those options at a time</li>
+                    <li>If the options to choose from can be represented in a single line of plain text</li>
+                    <li>If the options to choose from have either no hierarchy, or a single level of hierarchy</li>
+                </ul>
+            </div>
+            <div>
+                <div class="h3" style="color: var(--color-red-600)">{{ systemIcon('error') }}&nbsp; When not to use</div>
+                <ul class="bulleted-list">
+                    <li>If the user has 4 or fewer options to choose from, and can only choose one, use <strong>radio buttons</strong></li>
+                    <li>If the user has 4 or fewer options to choose from, and can choose more than one, use <strong>checkboxes</strong></li>
+                    <li>If the user only can only make a binary or Boolean choice (e.g. on/off, yes/no, enabled/disabled, show/hide), and their choice is intended to take effect immediately, use a <strong>toggle switch</strong></li>
+                    <li>If the user can select multiple options at once, and there are more than 4 to choose from, use a <strong>multi-select</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2 class="toc__heading" id="content-guidance">Content</h2>
+        <h3 class="toc__heading" id="put-options-in-order">Put option names in a logical order</h3>
+        
+        <p>The most logical order for a given use case may not always be alphabetical. Maybe you're presenting a set of statuses that are generally expected to be in being in a certain order. Maybe there are more commonly-used options that belong at the top of the list—whatever makes sense.</p>
+        
+        <div class="two-columns" style="border-radius: 12px; padding: var(--size-xl); filter: var(--drop-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0 var(--size-2xl)">
+            <div>
+                {% call select({
+                    label: "Favorite U.S. president",
+                    placeholder: "Choose a president"
+                }) %}
+                    <option>George Washington</option>
+                    <option>John Adams</option>
+                    <option>Thomas Jefferson</option>
+                    <option>James Madison</option>
+                    <option>James Monroe</option>
+                    <option>John Quincy Adams</option>
+                    <option>Andrew Jackson</option>
+                    <option>Martin van Buren</option>
+                    <option>William Henry Harrison</option>
+                    <option>John Tyler</option>
+                    <option>James K. Polk</option>
+                    <option>Zachary Taylor</option>
+                    <option>Millard Fillmore</option>
+                    <option>Franklin Pierce</option>
+                    <option>James Buchanan</option>
+                    <option>Abraham Lincoln</option>
+                    <option>Andrew Johnson</option>
+                    <option>Ulysses S. Grant</option>
+                    <option>Rutherford B. Hayes</option>
+                    <option>James A. Garfield</option>
+                    <option>Chester A. Arthur</option>
+                    <option>Grover Cleveland</option>
+                    <option>Benjamin Harrison</option>
+                    <option>William McKinley</option>
+                    <option>Theodore Roosevelt</option>
+                    <option>William Howard Taft</option>
+                    <option>Woodrow Wilson</option>
+                    <option>Warren G. Harding</option>
+                    <option>Calvin Coolidge</option>
+                    <option>Herbert Hoover</option>
+                    <option>Franklin D. Roosevelt</option>
+                    <option>Harry S. Truman</option>
+                    <option>Dwight D. Eisenhower</option>
+                    <option>John F. Kennedy</option>
+                    <option>Lyndon B. Johnson</option>
+                    <option>Richard Nixon</option>
+                    <option>Gerald Ford</option>
+                    <option>Jimmy Carter</option>
+                    <option>Ronald Reagan</option>
+                    <option>George Bush</option>
+                    <option>Bill Clinton</option>
+                    <option>George W. Bush</option>
+                    <option>Barack Obama</option>
+                    <option>Donald Trump</option>
+                    <option>Joe Biden</option>
+                {% endcall %}
+                {{ dosDonts("do") }}
+            </div>
+            <div>
+                {% call select({
+                    label: "Favorite U.S. president",
+                    placeholder: "Choose a president"
+                }) %}
+                    <option>Abraham Lincoln</option>
+                    <option>Andrew Jackson</option>
+                    <option>Andrew Johnson</option>
+                    <option>Barack Obama</option>
+                    <option>Benjamin Harrison</option>
+                    <option>Bill Clinton</option>
+                    <option>Calvin Coolidge</option>
+                    <option>Chester A. Arthur</option>
+                    <option>Donald Trump</option>
+                    <option>Dwight D. Eisenhower</option>
+                    <option>Franklin D. Roosevelt</option>
+                    <option>Franklin Pierce</option>
+                    <option>George Bush</option>
+                    <option>George W. Bush</option>
+                    <option>George Washington</option>
+                    <option>Gerald Ford</option>
+                    <option>Grover Cleveland</option>
+                    <option>Harry S. Truman</option>
+                    <option>Herbert Hoover</option>
+                    <option>James A. Garfield</option>
+                    <option>James Buchanan</option>
+                    <option>James K. Polk</option>
+                    <option>James Madison</option>
+                    <option>James Monroe</option>
+                    <option>Jimmy Carter</option>
+                    <option>Joe Biden</option>
+                    <option>John Adams</option>
+                    <option>John F. Kennedy</option>
+                    <option>John Quincy Adams</option>
+                    <option>John Tyler</option>
+                    <option>Lyndon B. Johnson</option>
+                    <option>Martin van Buren</option>
+                    <option>Millard Fillmore</option>
+                    <option>Richard Nixon</option>
+                    <option>Ronald Reagan</option>
+                    <option>Rutherford B. Hayes</option>
+                    <option>Theodore Roosevelt</option>
+                    <option>Thomas Jefferson</option>
+                    <option>Ulysses S. Grant</option>
+                    <option>Warren G. Harding</option>
+                    <option>William Henry Harrison</option>
+                    <option>William Howard Taft</option>
+                    <option>William McKinley</option>
+                    <option>Woodrow Wilson</option>
+                    <option>Zachary Taylor</option>
+                {% endcall %}
+                {{ dosDonts("dont") }}
+            </div>
+        </div>
+        <p style="color: var(--color-gray-600)">A list of U.S. presidents might make more sense to be put in chronological order, not alphabetical order by first name.</p>
+
+        <h3 class="toc__heading" id="make-it-wide-enough">Ensure the select box will be wide enough for its contents</h3>
+        <p>The placeholder will be displayed as a single line of text in an empty select box, and the selected value will be displayed on a single line. So make sure the select box can accommodate that, whenever possible. Pay extra close attention to this if your option values are derived from user-generated data!</p>
+
+        <div style="border-radius: 12px; padding: var(--size-xl); filter: var(--drop-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
+            {% call stack() %}
+            <div>
+                {% call select({
+                    label: "Favorite Nicolas Cage movie",
+                    placeholder: "It's hard to choose just one, but do it anyway"
+                }) %}
+                    <option>Fast Times at Ridgemont High (1982)</option>
+                    <option>Valley Girl (1983)</option>
+                    <option>Rumble Fish (1983)</option>
+                    <option>Racing with the Moon (1984)</option>
+                    <option>The Cotton Club (1984)</option>
+                    <option>Birdy (1984)</option>
+                    <option>The Boy in Blue (1986)</option>
+                    <option>Peggy Sue Got Married (1986)</option>
+                    <option>Raising Arizona (1987)</option>
+                    <option>Moonstruck (1987)</option>
+                    <option>Vampire's Kiss (1988)</option>
+                    <option>Time to Kill (1989)</option>
+                    <option>Wild at Heart (1990)</option>
+                    <option>Fire Birds (1990)</option>
+                    <option>Honeymoon in Vegas (1992)</option>
+                    <option>Amos &amp; Andrew (1993)</option>
+                    <option>Red Rock West (1993)</option>
+                    <option>Deadfall (1993)</option>
+                    <option>Guarding Tess (1994)</option>
+                    <option>It Could Happen to You (1994)</option>
+                    <option>Trapped in Paradise (1994)</option>
+                    <option>Kiss of Death (1995)</option>
+                    <option>Leaving Las Vegas (1995)</option>
+                    <option>The Rock (1996)</option>
+                    <option>Con Air (1996)</option>
+                    <option>Face/Off (1997)</option>
+                    <option>City of Angels (1998)</option>
+                    <option>Snake Eyes (1998)</option>
+                    <option>8MM (1999)</option>
+                    <option>Bringing Out the Dead (1999)</option>
+                    <option>Gone in 60 Seconds (2000)</option>
+                    <option>The Family Man (2000)</option>
+                    <option>Captain Corelli's Mandolin (2001)</option>
+                    <option>Christmas Carol: The Movie (2001)</option>
+                    <option>Windtalkers (2002)</option>
+                    <option>Sonny (2002)</option>
+                    <option>Adaptation. (2002)</option>
+                    <option>Matchstick Men (2003)</option>
+                    <option>National Treasure (2004)</option>
+                    <option>Lord of War (2005)</option>
+                    <option>The Weather Man (2005)</option>
+                    <option>The Ant Bully (2006)</option>
+                    <option>World Trade Center (2006)</option>
+                    <option>The Wicker Man (2006)</option>
+                    <option>Ghost Rider (2007)</option>
+                    <option>Next (2007)</option>
+                    <option>National Treasure: Book of Secrets (2007)</option>
+                    <option>Bangkok Dangerous (2008)</option>
+                    <option>Knowing (2009)</option>
+                    <option>G-Force (2009)</option>
+                    <option>Bad Lieutenant: Port of Call New Orleans (2009)</option>
+                    <option>Astro Boy (2009)</option>
+                    <option>Kick-Ass (2010)</option>
+                    <option>The Sorcerer's Apprentice (2010)</option>
+                    <option>Season of the Witch (2011)</option>
+                    <option>Drive Angry (2011)</option>
+                    <option>Seeking Justice (2011)</option>
+                    <option>Trespass (2011)</option>
+                    <option>Ghost Rider: Spirit of Vengeance (2011)</option>
+                    <option>A Thousand Words (2012)</option>
+                    <option>Stolen (2012)</option>
+                    <option>The Croods (2013)</option>
+                    <option>Joe (2013)</option>
+                    <option>Left Behind (2014)</option>
+                    <option>Snowden (2016)</option>
+                    <option>Vengeance: A Love Story (2017)</option>
+                    <option>Mandy (2018)</option>
+                    <option>Teen Titans Go! To the Movies (2018)</option>
+                    <option>Spider-Man: Into the Spider-Verse (2018)</option>
+                    <option>Love, Antosha (2019)</option>
+                    <option>The Croods: A New Age (2020)</option>
+                    <option>Prisoners of the Ghostland (2021)</option>
+                    <option>Willy's Wonderland (2021)</option>
+                    <option>Pig (2021)</option>
+                    <option selected>The Unbearable Weight of Massive Talent (2022)</option>
+                    <option>Butcher's Crossing (2023)</option>
+                    <option>Renfield (2023)</option>
+                    <option>The Flash (2023)</option>
+                    <option>Sympathy for the Devil (2023)</option>
+                    <option>The Retirement Plan (2023)</option>
+                    <option>Dream Scenario (2023)</option>
+                    <option>Arcadian (2024)</option>
+                    <option>The Surfer (2024)</option>
+                    <option>Longlegs (2024)</option>
+                {% endcall %}
+                {{ dosDonts("do") }}  
+            </div>
+            <div style="width: 15rem">
+                {% call select({
+                    label: "Favorite Nicolas Cage movie",
+                    placeholder: "It's hard to choose just one, but do it anyway"
+                }) %}
+                    <option>Fast Times at Ridgemont High (1982)</option>
+                    <option>Valley Girl (1983)</option>
+                    <option>Rumble Fish (1983)</option>
+                    <option>Racing with the Moon (1984)</option>
+                    <option>The Cotton Club (1984)</option>
+                    <option>Birdy (1984)</option>
+                    <option>The Boy in Blue (1986)</option>
+                    <option>Peggy Sue Got Married (1986)</option>
+                    <option>Raising Arizona (1987)</option>
+                    <option>Moonstruck (1987)</option>
+                    <option>Vampire's Kiss (1988)</option>
+                    <option>Time to Kill (1989)</option>
+                    <option>Wild at Heart (1990)</option>
+                    <option>Fire Birds (1990)</option>
+                    <option>Honeymoon in Vegas (1992)</option>
+                    <option>Amos &amp; Andrew (1993)</option>
+                    <option>Red Rock West (1993)</option>
+                    <option>Deadfall (1993)</option>
+                    <option>Guarding Tess (1994)</option>
+                    <option>It Could Happen to You (1994)</option>
+                    <option>Trapped in Paradise (1994)</option>
+                    <option>Kiss of Death (1995)</option>
+                    <option>Leaving Las Vegas (1995)</option>
+                    <option>The Rock (1996)</option>
+                    <option>Con Air (1996)</option>
+                    <option>Face/Off (1997)</option>
+                    <option>City of Angels (1998)</option>
+                    <option>Snake Eyes (1998)</option>
+                    <option>8MM (1999)</option>
+                    <option>Bringing Out the Dead (1999)</option>
+                    <option>Gone in 60 Seconds (2000)</option>
+                    <option>The Family Man (2000)</option>
+                    <option>Captain Corelli's Mandolin (2001)</option>
+                    <option>Christmas Carol: The Movie (2001)</option>
+                    <option>Windtalkers (2002)</option>
+                    <option>Sonny (2002)</option>
+                    <option>Adaptation. (2002)</option>
+                    <option>Matchstick Men (2003)</option>
+                    <option>National Treasure (2004)</option>
+                    <option>Lord of War (2005)</option>
+                    <option>The Weather Man (2005)</option>
+                    <option>The Ant Bully (2006)</option>
+                    <option>World Trade Center (2006)</option>
+                    <option>The Wicker Man (2006)</option>
+                    <option>Ghost Rider (2007)</option>
+                    <option>Next (2007)</option>
+                    <option>National Treasure: Book of Secrets (2007)</option>
+                    <option>Bangkok Dangerous (2008)</option>
+                    <option>Knowing (2009)</option>
+                    <option>G-Force (2009)</option>
+                    <option selected>Bad Lieutenant: Port of Call New Orleans (2009)</option>
+                    <option>Astro Boy (2009)</option>
+                    <option>Kick-Ass (2010)</option>
+                    <option>The Sorcerer's Apprentice (2010)</option>
+                    <option>Season of the Witch (2011)</option>
+                    <option>Drive Angry (2011)</option>
+                    <option>Seeking Justice (2011)</option>
+                    <option>Trespass (2011)</option>
+                    <option>Ghost Rider: Spirit of Vengeance (2011)</option>
+                    <option>A Thousand Words (2012)</option>
+                    <option>Stolen (2012)</option>
+                    <option>The Croods (2013)</option>
+                    <option>Joe (2013)</option>
+                    <option>Left Behind (2014)</option>
+                    <option>Snowden (2016)</option>
+                    <option>Vengeance: A Love Story (2017)</option>
+                    <option>Mandy (2018)</option>
+                    <option>Teen Titans Go! To the Movies (2018)</option>
+                    <option>Spider-Man: Into the Spider-Verse (2018)</option>
+                    <option>Love, Antosha (2019)</option>
+                    <option>The Croods: A New Age (2020)</option>
+                    <option>Prisoners of the Ghostland (2021)</option>
+                    <option>Willy's Wonderland (2021)</option>
+                    <option>Pig (2021)</option>
+                    <option>The Unbearable Weight of Massive Talent (2022)</option>
+                    <option>Butcher's Crossing (2023)</option>
+                    <option>Renfield (2023)</option>
+                    <option>The Flash (2023)</option>
+                    <option>Sympathy for the Devil (2023)</option>
+                    <option>The Retirement Plan (2023)</option>
+                    <option>Dream Scenario (2023)</option>
+                    <option>Arcadian (2024)</option>
+                    <option>The Surfer (2024)</option>
+                    <option>Longlegs (2024)</option>
+                {% endcall %}
+                {{ dosDonts("dont") }}
+            </div>
+        </div>
+        {% endcall %}
+
+        <h3 class="toc__heading" id="keep-options-short">Keep option names short</h3>
+        <p>Some browsers truncate long option names in their option lists. Even for those that don’t, shorter option names will be inherently easier for users to parse. As we mentioned in the previous section, placeholders and values need to fit on a single line as well.</p>
+
+        <div style="border-radius: 12px; padding: var(--size-xl); filter: var(--drop-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
+            {% call stack() %}
+                <div style="width: 100%; max-width: 20rem">
+                    {% call select({
+                        label: "Assigned employee",
+                        placeholder: "Choose an employee"
+                    }) %}
+                        <option>Andrea Adams</option>
+                        <option>Andrew Billings</option>
+                        <option>Beata Bujalski</option>
+                        <option>Billy Crane</option>
+                        <option>Christopher Joseph</option>
+                    {% endcall %}
+                    {{ dosDonts("do") }}
+                </div>
+                <div>
+                    {% call select({
+                        label: "Assigned employee",
+                        placeholder: "Choose an employee"
+                    }) %}
+                        <option>Andrea Adams — Director of Marketing [Full-Time]</option>
+                        <option>Andrew Billings — Assistant Undersecretary for the Department of Nuclear Physics [Part-Time]</option>
+                        <option>Beata Bujalski — Head of Sales [Full-Time]</option>
+                        <option>Billy Crane — Human Resources [Intern]</option>
+                        <option>Christopher Joseph  — Vice President of Widget Management Services [Full-Time, Remote]</option>
+                    {% endcall %}
+                    {{ dosDonts("dont") }}
+                </div>
+            {% endcall %}
+        </div>
+    </section>
+    <section>
+        <h2 class="toc__heading" id="accessibility-guidance">Accessibility</h2>
+        <h3 class="toc__heading" id="include-label">Always include a label</h3>
+        
+        <p>The label helps all users understand the purpose or meaning of the select box.</p>
+        <p>In very rare cases, it may be important to not provide a visual label. But if so, use <code>aria-label</code>, <code>aria-labelledby</code>, or hide the label visually while keeping it available to screen readers.</p>
+        <p>Whatever you do, don't use a placeholder in place of a label. Screen readers don't read them, and even sighted users may find them hard to read. They're a nice-to-have, if anything.</p>
+
+        <div style="border-radius: 12px; padding: var(--size-xl); filter: var(--drop-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
+            <div class="two-columns" style="align-items: flex-end">
+                <div>
+                    {% call select({
+                        label: "Status",
+                        placeholder: "Choose a status"
+                    }) %}
+                        <option>Not started</option>
+                        <option>On hold</option>
+                        <option>In progress</option>
+                        <option>In review</option>
+                        <option>Done</option>
+                    {% endcall %}
+                    {{ dosDonts("do") }}    
+                </div>    
+                <div>
+                    {% call select({
+                        placeholder: "Status"
+                    }) %}
+                        <option>Not started</option>
+                        <option>On hold</option>
+                        <option>In progress</option>
+                        <option>In review</option>
+                        <option>Done</option>
+                    {% endcall %}
+                    {{ dosDonts("dont") }}               
+                </div>    
+            </div>    
+        </div>
+
+        <h3 class="toc__heading" id="dont-use-emojis">Don't use emojis in option names</h3>
+        <p>One of the built-in features of option lists in many browsers is that the user can start typing with the option list open, and use that to navigate to the next option value that matches what they've typed. Introducing emojis into your option names makes this difficult, if not impossible.</p>
+        <p>Also, <code>aria-hidden</code> doesn't work inside of an option list, so screen readers will be stuck reading out the emoji name(s), even if you only intend to use them for decoration.</p>
+
+        <div style="border-radius: 12px; padding: var(--size-xl); filter: var(--drop-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
+            <div class="two-columns" style="align-items: flex-end">
+                <div>
+                    {% call select({
+                        label: "Status",
+                        placeholder: "Choose a country"
+                    }) %}
+                        <option>United States of America</option>
+                        <option>Afghanistan</option>
+                        <option>Aland Islands</option>
+                        <option>Albania</option>
+                        <option>Algeria</option>
+                    {% endcall %}
+                    {{ dosDonts("do") }}    
+                </div>    
+                <div>
+                    {% call select({
+                        label: "Country",
+                        placeholder: "Choose a country"
+                    }) %}
+                        <option>🇺🇸 United States of America</option>
+                        <option>🇦🇫 Afghanistan</option>
+                        <option>🇦🇽 Aland Islands</option>
+                        <option>🇦🇱 Albania</option>
+                        <option>🇩🇿 Algeria</option>
+                    {% endcall %}
+                    {{ dosDonts("dont") }}               
+                </div>    
+            </div>    
+        </div>
     </section>
 </article>
 {% endblock content %}

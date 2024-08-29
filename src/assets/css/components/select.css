@@ -1,11 +1,11 @@
 .select__wrapper {
     display: inline-block;
+    width: 100%;
     position: relative;
 }
 
 .select {
-    width: 15rem;
-    max-width: 100%;
+    width: 100%;
     appearance: none;
     border-radius: var(--size-3xs);
     border: var(--size-5xs) solid var(--color-gray-500);

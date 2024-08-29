@@ -1,4 +1,4 @@
-{%- macro render(content, isRequired = 'true', forId = '') -%}
+{%- macro render(content, isRequired = true, forId = '') -%}
 <label
     class="input-label"
     {% if forId %}
@@ -6,7 +6,7 @@
     {% endif %}
 >
     {{ content }}
-    {% if isRequired == 'false' %}
+    {% if isRequired == false %}
         <span class="input-label__optional">Optional</label>
     {% endif %}
 </label>

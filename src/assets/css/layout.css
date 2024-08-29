@@ -1,0 +1,16 @@
+.two-columns {
+    display: flex;
+    flex-direction: row;
+    margin-left: calc(-1 * var(--size-md));
+    margin-right: calc(-1 * var(--size-md));
+}
+
+.vertically-centered {
+    align-items: center;
+}
+
+.two-columns > div {
+    flex: 0 1 50%;
+    padding-left: var(--size-md);
+    padding-right: var(--size-md);
+}

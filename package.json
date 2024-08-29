@@ -1,12 +1,7 @@
 {
     "name": "eleventy-demo",
-    "version": "1.0.0",
-    "main": ".eleventy.js",
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "description": "",
-    "scripts": {
+    "version": "0.0.1-alpha",
+    "main": ".eleventy.js","scripts": {
         "serve": "npm run webpack && npx @11ty/eleventy --serve",
         "build": "npm run webpack && npx @11ty/eleventy",
         "webpack": "npx webpack"

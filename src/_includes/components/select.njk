@@ -4,21 +4,19 @@
 
 {% macro render(options) %}
     {% set placeholder %}{{ options.placeholder | default('Select&hellip;' | safe ) }}{% endset %}
-    {% set required %}
-        {{ options.required | default(true) }}
-    {% endset %}
+    {% set required = (options.required | default(true)) %}
     {% set id %}{{ options.attributes.id | default(nanoid()) }}{% endset %}
     
-    {% set classes %}
-    {# TODO: make this into a custom filter #}
-        {% if options.classes %}
-            {% if options.classes == (options.classes | string) %}
+    {% set classes -%}
+    {#- TODO: make this into a custom filter -#}
+        {%- if options.classes -%}
+            {%- if options.classes == (options.classes | string) -%}
                 {{ options.classes }}
-            {% else %}
+            {%- else -%}
                 {{ options.classes | join(' ') }}
-            {% endif %}
-        {% endif %}
-    {% endset %}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endset %}
 
     {% if options.label or options.messages %}
         <div class="form-field">
@@ -34,6 +32,7 @@
                     {% endfor %}
                     id="{{ id | safe }}"
                     {{ 'required' if required }}
+                    title="{{ placeholder | safe }}"
                 >
                     <option hidden disabled selected value>{{ placeholder | safe }}</option>
                     {{ caller() | safe }}

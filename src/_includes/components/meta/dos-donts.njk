@@ -1,0 +1,14 @@
+{% from '../system-icon.njk' import render as systemIcon %}
+
+{% macro render(type = 'do') %}
+    <div class="dos-donts dos-donts--{{ type }}">
+        {%- if type == 'do' -%}
+            {{ systemIcon('check-circle') }}
+            Do
+        {%- else -%}
+            {{ systemIcon('error') }}
+            Don't
+        {%- endif -%}
+    </div>
+{% endmacro %}
+
