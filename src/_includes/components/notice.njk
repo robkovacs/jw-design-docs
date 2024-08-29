@@ -3,7 +3,7 @@
 {% macro render(options) %}
 {% set type = (options.type | default('info')) %}
 {%- set noticeIcon -%}
-    {%- if type == "error" -%}
+    {%- if type == "danger" -%}
         error
     {%- elif type == "warning" -%}
         warning

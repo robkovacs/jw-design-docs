@@ -12,7 +12,7 @@
 }
 
 .notice__headline .system-icon {
-    margin-right: var(--size-xs);
+    margin-right: var(--size-2xs);
 }
 
 .notice--type-danger {
