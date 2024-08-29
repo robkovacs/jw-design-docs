@@ -4,13 +4,13 @@ const setCurrentFromHash = () => {
     let currentLink = document.querySelector('.toc a.current');
     
     if (currentLink) {
-        currentLink.classList.remove('current');
+        // currentLink.classList.remove('current');
     }
     
     tocLinks.forEach((el) => {
         if (window.location.hash == el.getAttribute('href')) {
-            el.classList.add('current');
-            document.querySelector(el.getAttribute('href')).scrollIntoView();
+            // el.classList.add('current');
+            // document.querySelector(el.getAttribute('href')).scrollIntoView();
         }
     });
 };
@@ -38,13 +38,15 @@ const observer = new IntersectionObserver((entries) => {
             // TODO: if leaving on the bottom, move to previous (if any)
             // if leaving on the top, move to next (if any)
             // Cound this be done with two observers: one at the top of the viewport, and one at the bottom???
+            // TODO: opening a page where the first heading is in view scrolls to that heading...
         }
     });
 }, {
+    rootMargin: "0px 0px -99% 0px",
     threshold: 0
 });
 
-document.querySelectorAll('.toc__heading').forEach((heading) => {
-    observer.observe(heading); 
-});
+// document.querySelectorAll('.toc__heading').forEach((heading) => {
+//     observer.observe(heading); 
+// });
 
