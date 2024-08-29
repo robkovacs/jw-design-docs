@@ -1,7 +1,27 @@
+{% from './system-icon.njk' import render as systemIcon %}
+
 {% macro render(options) %}
-{% set type %}{{ options.type | default('info') }}{% endset %}
-<div class="notice notice--{{ type }}">
-    {% if options.headline %}<div class="h3">{{ options.headline }}</div>{% endif %}
-    {% if caller() %}<div>{{ caller() | safe }}</div>{% endif %}
-<div>
+{% set type = (options.type | default('info')) %}
+{%- set noticeIcon -%}
+    {%- if type == "error" -%}
+        error
+    {%- elif type == "warning" -%}
+        warning
+    {%- elif type == "success" -%}
+        check-circle
+    {%- elif type == "new" -%}
+        whats-new
+    {%- elif type == "info" -%}
+        info-circle
+    {%- endif -%}
+{%- endset -%}
+
+<div class="notice notice--type-{{ type }}">
+    {% if options.headline %}
+        <div class="notice__headline">
+            {{- systemIcon(noticeIcon) if noticeIcon -}}
+            {{- options.headline -}}
+        </div>{% endif %}
+    {% if caller() %}<div>{{ caller() }}</div>{% endif %}
+</div>
 {% endmacro %}

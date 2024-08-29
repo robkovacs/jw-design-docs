@@ -48,7 +48,7 @@ a:hover:active {
 .main-content {
     display: flex;
     flex-direction: row;
-    gap: 32px;
+    gap: var(--size-5xl);
 }
 
 .body-content {
@@ -99,7 +99,7 @@ figure {
 
     main {
         flex: 1 1 calc(var(--ui-max-width) - var(--nav-width));
-        padding: var(--size-3xl);
+        padding: var(--size-5xl);
         overflow-wrap: anywhere;
     }
 }

@@ -1,0 +1,59 @@
+
+
+.toggle-switch {
+    appearance: none;
+    background-color: transparent;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    color: var(--color-gray-900);
+    padding: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: var(--size-xs);
+    border-radius: var(--size-3xs);
+}
+
+.toggle-switch__frame {
+    pointer-events: none;
+}
+
+.toggle-switch__background,
+.toggle-switch__foreground {
+    transition: all 150ms ease-out;
+}
+
+.toggle-switch:hover .toggle-switch__background,
+.toggle-switch:hover .toggle-switch__foreground {
+    stroke: var(--color-gray-600);
+}
+
+.toggle-switch:active .toggle-switch__background,
+.toggle-switch:active .toggle-switch__foreground {
+    stroke: var(--color-gray-700);
+}
+
+.toggle-switch[aria-checked="false"]:hover .toggle-switch__background {
+    fill: var(--color-gray-200);
+}
+
+.toggle-switch[aria-checked="false"]:active .toggle-switch__background {
+    fill: var(--color-gray-300);
+}
+
+.toggle-switch[aria-checked="true"] .toggle-switch__foreground {
+    cx: 1.375rem;
+}
+
+.toggle-switch[aria-checked="true"] .toggle-switch__background {
+    fill: var(--color-blue-600);
+}
+
+.toggle-switch[aria-checked="true"]:hover .toggle-switch__background {
+    fill: var(--color-blue-700);
+}
+
+.toggle-switch[aria-checked="true"]:active .toggle-switch__background {
+    fill: var(--color-blue-800);
+}

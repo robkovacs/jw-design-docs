@@ -1,4 +1,5 @@
 {% from './system-icon.njk' import render as systemIcon %}
+
 {%- macro render(type = "error", message = "") -%}
     {%- set messageIcon -%}
         {%- if type == "error" -%}
@@ -11,8 +12,8 @@
     {%- endset -%}
 
     {% if message %}
-        <div class="input-message input-message--{{ type | safe }}">
-            {{ systemIcon(messageIcon)}}
+        <div class="input-message input-message--type-{{ type }}">
+            {{ systemIcon(messageIcon) if messageIcon }}
             {{ message | safe }}
         </div>
     {% endif %}

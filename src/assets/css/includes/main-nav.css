@@ -56,11 +56,13 @@
         text-decoration: none;
     }
 
-    .main-nav__link:hover {
+    .main-nav__link:hover,
+    .main-nav__link:visited:hover {
         color: var(--color-gray-700);
     }
 
-    .main-nav__link:active {
+    .main-nav__link:active,
+    .main-nav__link:visited:active {
         color: var(--color-gray-800);
     }
 }

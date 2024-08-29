@@ -8,4 +8,10 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
+    {% call stack() %}
+        {{ inputMessage("help", "This is a help message") }}
+        {{ inputMessage("error", "This is an error message") }}
+        {{ inputMessage("warning", "This is a warning message") }}
+        {{ inputMessage("success", "This is a success message") }}
+    {% endcall %}
 {% endblock %}

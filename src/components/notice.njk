@@ -8,4 +8,47 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
+    <article>
+        {% call notice({
+            type: "neutral",
+            headline: "This is a notice headline"
+        }) %}
+        This is a notice message. Try not to include more than a few sentences. Any longer than that and the reader will start to zone out.
+        {% endcall %}
+
+        {% call notice({
+            type: "info",
+            headline: "This is a notice headline"
+        }) %}
+        This is a notice message. Try not to include more than a few sentences. Any longer than that and the reader will start to zone out.
+        {% endcall %}
+
+        {% call notice({
+            type: "danger",
+            headline: "This is a notice headline"
+        }) %}
+        This is a notice message. Try not to include more than a few sentences. Any longer than that and the reader will start to zone out.
+        {% endcall %}
+
+        {% call notice({
+            type: "warning",
+            headline: "This is a notice headline"
+        }) %}
+        This is a notice message. Try not to include more than a few sentences. Any longer than that and the reader will start to zone out.
+        {% endcall %}
+
+        {% call notice({
+            type: "success",
+            headline: "This is a notice headline"
+        }) %}
+        This is a notice message. Try not to include more than a few sentences. Any longer than that and the reader will start to zone out.
+        {% endcall %}
+
+        {% call notice({
+            type: "new",
+            headline: "This is a notice headline"
+        }) %}
+        This is a notice message. Try not to include more than a few sentences. Any longer than that and the reader will start to zone out.
+        {% endcall %}
+    </article>
 {% endblock %}

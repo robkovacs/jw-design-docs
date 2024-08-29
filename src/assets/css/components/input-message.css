@@ -11,6 +11,18 @@
     gap: var(--size-2xs);
 }
 
-.input-message--error {
+.input-message--type-error {
     color: var(--color-red-600);
+}
+
+.input-message--type-success {
+    color: var(--color-green-600);
+}
+
+.input-message--type-warning {
+    color: var(--color-yellow-600);
+}
+
+.input-message--type-help {
+    color: var(--color-gray-600);
 }
