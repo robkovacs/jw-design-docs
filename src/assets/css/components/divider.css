@@ -18,3 +18,7 @@
 .divider--size-lg {
     margin: var(--size-3xl) 0;
 }
+
+.divider--size-xl {
+    margin: var(--size-4xl) 0;
+}

@@ -1,2 +1,21 @@
+{% from './anchor.njk' import render as anchor %}
+{% from './divider.njk' import render as divider %}
+
 {% macro render(options) %}
+<div class="page-header">
+    {% if options.linkToParent %}
+        <div class="page-header__link-to-parent">
+            {{ anchor({
+                href: options.linkToParent.href,
+                content: options.linkToParent.content,
+                leftIcon: "arrow-left"
+            }) }}
+        </div>
+    {% endif %}
+    <h1 class="page-header__title">{{ options.title }}</h1>
+    {% if options.description %}
+        <p class="page-header__description">{{ options.description }}</p>
+    {% endif %}
+    {{ divider("xl") if options.showDivider }}
+</div>
 {% endmacro %}

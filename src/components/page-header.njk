@@ -8,4 +8,55 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
+    <article>
+        {% call stack("md") %}
+            {{ pageHeader ({
+                linkToParent: {
+                    href: "javascript:return false",
+                    content: "Back to parent page"
+                },
+                title: "Title of current page",
+                description: "This page header has it all: a link to its parent page, a title, a description, and a divider.",
+                showDivider: true
+            })}}
+            {{ pageHeader ({
+                linkToParent: {
+                    href: "javascript:return false",
+                    content: "Back to parent page"
+                },
+                title: "Title of current page",
+                description: "This one doesn't have a divider.",
+                showDivider: false
+            })}}
+
+            {{ pageHeader ({
+                linkToParent: {
+                    href: "javascript:return false",
+                    content: "Back to parent page"
+                },
+                title: "This one doesn't have a description",
+                showDivider: true
+            })}}
+            
+            {{ pageHeader ({
+                title: "Title of current page",
+                description: "This one doesn't have a parent link or a divider.",
+                showDivider: false
+            })}}
+
+            {{ pageHeader ({
+                linkToParent: {
+                    href: "javascript:return false",
+                    content: "Back to parent page"
+                },
+                title: "This one doesn't have a divider or a description",
+                showDivider: false
+            })}}
+
+            {{ pageHeader ({
+                title: "This one doesn't have a parent link, a divider, or a description",
+                showDivider: false
+            })}}
+        {% endcall %}
+    </article>
 {% endblock %}

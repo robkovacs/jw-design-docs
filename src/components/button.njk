@@ -36,6 +36,13 @@ eleventyNavigation:
                 variant: "ghost",
                 rightIcon: "arrow-right"
             }) }}
+            {{ tooltip({
+                trigger: button({
+                    variant: "ghost",
+                    leftIcon: "grid"
+                }),
+                content: "Or just an icon"
+            }) }}
         {% endcall %}
                 {% call row() %}
             {{ button({
