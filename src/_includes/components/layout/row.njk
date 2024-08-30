@@ -1,0 +1,21 @@
+{%- macro render(options) -%}
+    {% set classes %}
+        {% if options.classes %}
+            {% if options.classes == (options.classes | string) %}
+                {{ options.classes }}
+            {% else %}
+                {{ options.classes | join(' ') }}
+            {% endif %}
+        {% endif %}
+    {% endset %}
+    {% set gap = (options.gap | default("md")) %}
+
+    <div
+        class="row row--gap-{{ gap }} {{ classes }}"
+        {% for key, value in options.attributes %}
+            {{ key }}="{{ value | safe }}"
+        {% endfor %}
+    >
+        {{ caller() | safe }}
+    </div>
+{%- endmacro -%}
