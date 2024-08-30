@@ -51,7 +51,7 @@ hasTOC: true
             {% call stack({
                 attributes: { style: "width: 20rem; margin: -1rem auto 0" }
             }) %}
-                {% call select({ 
+                {% call selectBox({
                         label: "Favorite fruit",
                         placeholder: "Choose a fruit",
                         required: true
@@ -66,7 +66,7 @@ hasTOC: true
                     <option>Watermelon</option>
                 {% endcall %}
 
-                {% call select({
+                {% call selectBox({
                     label: "Favorite fruit (grouped)",
                     placeholder: "Choose a fruit",
                     required: false
@@ -147,7 +147,7 @@ hasTOC: true
         
         <div class="two-columns" style="border-radius: 12px; padding: var(--size-xl); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0 var(--size-2xl)">
             <div>
-                {% call select({
+                {% call selectBox({
                     label: "Favorite U.S. president",
                     placeholder: "Choose a president"
                 }) %}
@@ -200,7 +200,7 @@ hasTOC: true
                 {{ dosDonts("do") }}
             </div>
             <div>
-                {% call select({
+                {% call selectBox({
                     label: "Favorite U.S. president",
                     placeholder: "Choose a president"
                 }) %}
@@ -261,7 +261,7 @@ hasTOC: true
         <div style="border-radius: 12px; padding: var(--size-xl); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
             {% call stack() %}
             <div>
-                {% call select({
+                {% call selectBox({
                     label: "Favorite Nicolas Cage movie",
                     placeholder: "It's hard to choose just one, but do it anyway"
                 }) %}
@@ -353,7 +353,7 @@ hasTOC: true
                 {{ dosDonts("do") }}  
             </div>
             <div style="width: 15rem">
-                {% call select({
+                {% call selectBox({
                     label: "Favorite Nicolas Cage movie",
                     placeholder: "It's hard to choose just one, but do it anyway"
                 }) %}
@@ -453,7 +453,7 @@ hasTOC: true
         <div style="border-radius: 12px; padding: var(--size-xl); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
             {% call stack() %}
                 <div style="width: 100%; max-width: 20rem">
-                    {% call select({
+                    {% call selectBox({
                         label: "Assigned employee",
                         placeholder: "Choose an employee"
                     }) %}
@@ -466,7 +466,7 @@ hasTOC: true
                     {{ dosDonts("do") }}
                 </div>
                 <div>
-                    {% call select({
+                    {% call selectBox({
                         label: "Assigned employee",
                         placeholder: "Choose an employee"
                     }) %}
@@ -492,7 +492,7 @@ hasTOC: true
         <div style="border-radius: 12px; padding: var(--size-xl); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
             <div class="two-columns" style="align-items: flex-end">
                 <div>
-                    {% call select({
+                    {% call selectBox({
                         label: "Status",
                         placeholder: "Choose a status"
                     }) %}
@@ -505,7 +505,7 @@ hasTOC: true
                     {{ dosDonts("do") }}    
                 </div>    
                 <div>
-                    {% call select({
+                    {% call selectBox({
                         placeholder: "Status"
                     }) %}
                         <option>Not started</option>
@@ -526,7 +526,7 @@ hasTOC: true
         <div style="border-radius: 12px; padding: var(--size-xl); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
             <div class="two-columns" style="align-items: flex-end">
                 <div>
-                    {% call select({
+                    {% call selectBox({
                         label: "Country",
                         placeholder: "Choose a country"
                     }) %}
@@ -539,7 +539,7 @@ hasTOC: true
                     {{ dosDonts("do") }}    
                 </div>    
                 <div>
-                    {% call select({
+                    {% call selectBox({
                         label: "Country",
                         placeholder: "Choose a country"
                     }) %}

@@ -22,9 +22,9 @@
         <div class="form-field">
     {% endif %}
             {{ inputLabel(options.label, required, id) if options.label }}
-            <span class="select__wrapper">
+            <span class="select-box__wrapper">
                 <select
-                    class="select {{ classes }}"
+                    class="select-box {{ classes }}"
                     {% for key, value in options.attributes %}
                         {% if key !== "id" %}
                             {{ key }}="{{ value | safe }}"
@@ -37,7 +37,7 @@
                     <option hidden disabled selected value>{{ placeholder | safe }}</option>
                     {{ caller() | safe }}
                 </select>
-                {{ systemIcon('chevron-down', classes = 'select__icon') }}
+                {{ systemIcon('chevron-down', classes = 'select-box__icon') }}
             </span>
     {% if options.messages %}
         <div class="input-message__list">
