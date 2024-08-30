@@ -11,18 +11,20 @@
     text-decoration: none;
 }
 
-.anchor:hover, .anchor:hover:visited {
-    color: #0E57B5;
-    text-decoration: underline;
-}
-
 .anchor:active {
     color: #1E3D92;
     text-decoration: underline;
 }
 
-.anchor:hover:active {
-    color: #1E3D92;
+@media (hover: hover) {
+    .anchor:hover, .anchor:hover:visited {
+        color: #0E57B5;
+        text-decoration: underline;
+    }
+
+    .anchor:hover:active {
+        color: #1E3D92;
+    }
 }
 
 .anchor > .system-icon:first-child {

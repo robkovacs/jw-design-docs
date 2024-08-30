@@ -19,12 +19,25 @@
 
 .index-card,
 .index-card:visited,
-.index-card:hover,
 .index-card:active,
-.index-card:visited:hover,
 .index-card:visited:active {
     text-decoration: none;
     color: var(--color-gray-900);
+}
+
+@media (hover: hover) {
+    .index-card:hover,
+    .index-card:visited:hover {
+        text-decoration: none;
+        color: var(--color-gray-900);
+    }
+    
+    .index-card:hover {
+        border-color: var(--color-gray-400);
+        box-shadow: var(--box-shadow-level-2);
+        transition: transform 150ms ease-out;
+        transform: scale(1.0025) translateY(calc(-1 * var(--size-4xs)));
+    }
 }
 
 .index-card__title {
@@ -32,11 +45,4 @@
     line-height: var(--size-lg);
     font-weight: 700;
     margin-bottom: var(--size-md);
-}
-
-.index-card:hover {
-    border-color: var(--color-gray-400);
-    box-shadow: var(--box-shadow-level-2);
-    transition: transform 150ms ease-out;
-    transform: scale(1.0025) translateY(calc(-1 * var(--size-4xs)));
 }

@@ -9,9 +9,11 @@
     text-underline-offset: var(--size-4xs);
 }
 
-.tooltip__trigger--string:hover {
-    color: var(--color-gray-700);
-    text-decoration-color: var(--color-blue-700);
+@media (hover: hover) {
+    .tooltip__trigger--string:hover {
+        color: var(--color-gray-700);
+        text-decoration-color: var(--color-blue-700);
+    }
 }
 
 .tooltip__trigger--string:active {

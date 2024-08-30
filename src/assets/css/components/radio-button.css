@@ -33,24 +33,24 @@
     transform: translate(-50%, -50%);
 }
 
-.radio-button:hover .radio-button__control {
-    border-color: var(--color-gray-600);
+@media (hover: hover) {
+    .radio-button:hover .radio-button__control {
+        background-color: var(--color-blue-100);
+        border-color: var(--color-gray-600);
+    }
 }
 
 .radio-button:active .radio-button__control {
     border-color: var(--color-gray-600);
 }
 
-.radio-button:hover .radio-button__control {
-    background-color: var(--color-blue-100);
-}
-
 .radio-button .radio-button__control:invalid {
     border-color: var(--color-red-500);
 }
-
-.radio-button:hover .radio-button__control:invalid {
-    border-color: var(--color-red-600);
+@media (hover: hover) {
+    .radio-button:hover .radio-button__control:invalid {
+        border-color: var(--color-red-600);
+    }
 }
 
 .radio-button:active .radio-button__control:invalid {
@@ -64,9 +64,11 @@
     border-radius: var(--size-3xs);
 }
 
-.radio-button--framed:hover {
-    background-color: var(--color-gray-100);
-    border-color: var(--color-gray-600);
+@media (hover: hover) {
+    .radio-button--framed:hover {
+        background-color: var(--color-gray-100);
+        border-color: var(--color-gray-600);
+    }
 }
 
 .radio-button--framed:active {
@@ -78,8 +80,10 @@
     background-color: var(--color-blue-100);
 }
 
-.radio-button--framed:hover:has(:checked) {
-    background-color: var(--color-blue-200);
+@media (hover: hover) {
+    .radio-button--framed:hover:has(:checked) {
+        background-color: var(--color-blue-200);
+    }
 }
 
 .radio-button--framed:active:has(:checked) {
@@ -101,8 +105,10 @@
     border-color: var(--color-red-500);
 }
 
-.radio-button--framed:hover:has(:invalid) {
-    border-color: var(--color-red-600);
+@media (hover: hover) {
+    .radio-button--framed:hover:has(:invalid) {
+        border-color: var(--color-red-600);
+    }
 }
 
 .radio-button--framed:active:has(:invalid) {
@@ -110,16 +116,22 @@
 }
 
 .radio-button--framed .radio-button__control,
-.radio-button--framed:hover .radio-button__control,
 .radio-button--framed:active .radio-button__control,
 .radio-button--framed .radio-button__control:checked,
-.radio-button--framed:hover .radio-button__control:checked,
 .radio-button--framed:active .radio-button__control:checked,
 .radio-button--framed .radio-button__control:invalid,
-.radio-button--framed:hover .radio-button__control:invalid,
 .radio-button--framed:active .radio-button__control:invalid {
     border-color: var(--color-gray-500);
     background-color: var(--color-white);
+}
+
+@media (hover: hover) {
+    .radio-button--framed:hover .radio-button__control,
+    .radio-button--framed:hover .radio-button__control:checked,
+    .radio-button--framed:hover .radio-button__control:invalid {
+        border-color: var(--color-gray-500);
+        background-color: var(--color-white);
+    }
 }
 
 .radio-button__content {

@@ -32,31 +32,3 @@
     gap: 0 var(--size-2xs);
     flex-wrap: wrap;
 }
-
-.color-swatch__button {
-    display: flex;
-    flex-direction: row;
-    gap: var(--size-3xs);
-    appearance: none;
-    border: none;
-    background-color: transparent;
-    font-family: inherit;
-    color: var(--color-blue-600);
-    font-weight: 700;
-    font-size: var(--size-sm);
-    line-height: var(--size-md);
-    padding: var(--size-3xs);
-    border-radius: var(--size-3xs);
-}
-
-.color-swatch__button:hover {
-    background-color: var(--color-blue-100);
-    color: var(--color-blue-700);
-}
-      
-.color-swatch__button:active {
-    background-color: var(--color-blue-200);
-    color: var(--color-blue-800);
-}
-
-/* TODO: update buttons to use button component, delete non-flex-related button CSS */

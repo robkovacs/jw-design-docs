@@ -1,4 +1,5 @@
 {% from '../system-icon.njk' import render as systemIcon %}
+{% from '../button.njk' import render as button %}
 
 {% macro render(name, hex, figmaName, cssName) %}
 <div class="color-swatch">
@@ -6,19 +7,43 @@
     <div class="h4 color-swatch__name">{{ name }}</div>
     <ul class="color-swatch__button-list">
         <li>
-            <button class="color-swatch__button" data-copy-text="{{ figmaName }}" aria-label="Copy Figma">
-               {{ systemIcon("copy", "xs") }} Figma
-            </button>
+            {{ button ({
+                size: "sm",
+                variant: "ghost",
+                classes: "color-swatch__button",
+                leftIcon: "copy",
+                content: "Figma",
+                attributes: {
+                    "data-copy-text": figmaName,
+                    "aria-label": "Copy Figma"
+                }
+            }) }}
             </li>
         <li>
-            <button class="color-swatch__button" data-copy-text="{{ cssName }}" aria-label="Copy CSS">
-                {{ systemIcon("copy", "xs") }} CSS
-            </button>
-            </li>
+            {{ button({
+                size: "sm",
+                variant: "ghost",
+                classes: "color-swatch__button",
+                leftIcon: "copy",
+                content: "CSS",
+                attributes: {
+                    "data-copy-text": cssName,
+                    "aria-label": "Copy CSS"
+                }
+            }) }}
+        </li>
         <li>
-            <button class="color-swatch__button" data-copy-text="{{ hex | safe }}" aria-label="Copy Hex">
-                {{ systemIcon("copy", "xs") }} Hex
-            </button>
+            {{ button({
+                size: "sm",
+                variant: "ghost",
+                classes: "color-swatch__button",
+                leftIcon: "copy",
+                content: "Hex",
+                attributes: {
+                    "data-copy-text": ( hex | safe),
+                    "aria-label": "Copy Hex"
+                }
+            }) }}
         </li>
     </ul>
 </div>

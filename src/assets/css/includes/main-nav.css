@@ -13,9 +13,7 @@
 
     .main-nav__home,
     .main-nav__home:visited,
-    .main-nav__home:hover,
     .main-nav__home:active,
-    .main-nav__home:visited:hover,
     .main-nav__home:visited:active {
         display: block;
         color: var(--color-gray-900);
@@ -26,6 +24,21 @@
         margin-top: 0;
         margin-bottom: var(--size-md);
     }
+
+    @media (hover: hover) {
+        .main-nav__home:hover,
+        .main-nav__home:visited:hover {
+            display: block;
+            color: var(--color-gray-900);
+            text-decoration: none;
+            font-size: var(--size-md);
+            line-height: var(--size-lg);
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: var(--size-md);
+        }    
+    }
+
 
     .main-nav__list {
         list-style-type: none;

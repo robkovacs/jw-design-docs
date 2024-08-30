@@ -31,20 +31,21 @@ a:link, a:visited {
     text-decoration: none;
 }
 
-a:hover, a:hover:visited {
-    color: #0E57B5;
-    text-decoration: underline;
-}
-
 a:active {
     color: #1E3D92;
     text-decoration: underline;
 }
 
-a:hover:active {
-    color: #1E3D92;
-}
+@media (hover: hover) {
+    a:hover, a:hover:visited {
+    color: #0E57B5;
+    text-decoration: underline;
+    }
 
+    a:hover:active {
+        color: #1E3D92;
+    }
+}
 .main-content {
     display: flex;
     flex-direction: row;

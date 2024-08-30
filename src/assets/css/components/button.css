@@ -24,8 +24,10 @@
     color: var(--color-white);
 }
 
-.button--filled:hover {
-    background-color: var(--color-blue-700);
+@media (hover: hover) {
+    .button--filled:hover {
+        background-color: var(--color-blue-700);
+    }
 }
 
 .button--filled:active {
@@ -38,9 +40,11 @@
     color: var(--color-blue-600);
 }
 
-.button--outlined:hover {
-    border-color: var(--color-blue-700);
-    color: var(--color-blue-700);
+@media (hover: hover) {
+    .button--outlined:hover {
+        border-color: var(--color-blue-700);
+        color: var(--color-blue-700);
+    }
 }
 
 .button--outlined:active {
@@ -54,9 +58,11 @@
     color: var(--color-blue-600);
 }
 
-.button--ghost:hover {
-    background-color: var(--color-blue-100);
-    color: var(--color-blue-700);
+@media (hover: hover) {
+    .button--ghost:hover {
+        background-color: var(--color-blue-100);
+        color: var(--color-blue-700);
+    }
 }
 
 .button--ghost:active {

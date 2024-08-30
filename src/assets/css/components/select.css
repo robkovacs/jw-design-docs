@@ -20,8 +20,10 @@
     color: var(--color-gray-900);
 }
 
-.select:hover {
-    border-color: var(--color-gray-600);
+@media (hover: hover) {
+    .select:hover {
+        border-color: var(--color-gray-600);
+    }
 }
 
 .select:active {
@@ -31,9 +33,10 @@
 .select:invalid {
     border-color: var(--color-red-500);
 }
-
-.select:invalid:hover {
-    border-color: var(--color-red-600);
+@media (hover: hover) {
+    .select:invalid:hover {
+        border-color: var(--color-red-600);
+    }
 }
 
 .select:invalid:active {
@@ -50,8 +53,10 @@
         color: var(--color-gray-400);
     }
 
-    .select:has(option:checked[value=""]):hover {
-        border-color: var(--color-gray-600);
+    @media (hover: hover) {
+        .select:has(option:checked[value=""]):hover {
+            border-color: var(--color-gray-600);
+        }
     }
 
     .select:has(option:checked[value=""]):active {
@@ -59,15 +64,17 @@
     }
 /* End */
 
-.submitted .select:required:invalid {
+.after-submit .select:required:invalid {
     border-color: var(--color-red-500);
 }
 
-.submitted .select:required:invalid:hover {
+@media (hover: hover) {
+    .after-submit .select:required:invalid:hover {
         border-color: var(--color-red-600);
+    }
 }
 
-.submitted .select:required:invalid:active {
+.after-submit .select:required:invalid:active {
     border-color: var(--color-gray-700);
 }
 
