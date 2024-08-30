@@ -1,0 +1,40 @@
+---
+title: Radio button
+eleventyNavigation: 
+    key: Radio button
+    parent: Components
+    order: 3
+---
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+    <article>
+        {% call stack() %}
+            {% call stack({ gap: "xs" }) %}
+                {{ radioButton({
+                    name: "radio-group-1",
+                    content: "Radio gaga"
+                }) }}
+                {{ radioButton({
+                    name: "radio-group-1",
+                    content: "Radio googoo"
+                }) }}
+            {% endcall %}
+            
+            {% call stack({ gap: "xs" }) %}
+                {{ radioButton({
+                    name: "radio-group-2",
+                    content: "Choose me",
+                    description: "Here's some extra context.",
+                    framed: true
+                }) }}
+                {{ radioButton({
+                    name: "radio-group-2",
+                    content: "No, choose me!",
+                    description: "Here's some extra context.",
+                    framed: true
+                }) }}
+            {% endcall %}
+        {% endcall %}
+    </article>
+{% endblock %}

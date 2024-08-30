@@ -1,6 +1,8 @@
 .checkbox {
     display: flex;
     gap: var(--size-xs);
+    width: fit-content;
+    max-width: 100%;
 }
 
 .checkbox__control {
@@ -82,6 +84,7 @@
 }
 
 .checkbox--framed {
+    width: auto;
     padding: var(--size-md);
     border: var(--size-5xs) solid var(--color-gray-500);
     border-radius: var(--size-3xs);

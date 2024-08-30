@@ -11,11 +11,11 @@ eleventyNavigation:
     <article>
         {% call stack() %}
             {{ checkbox({
-                label: "Check me out"
+                content: "Check me out"
             }) }}
 
             {{ checkbox({
-                label: "I've been framed!",
+                content: "I've been framed!",
                 description: "Here's some extra context.",
                 framed: true
             }) }}

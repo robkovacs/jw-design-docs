@@ -8,9 +8,10 @@
             {% endif %}
         {% endif %}
     {% endset %}
+    {% set gap = (options.gap | default("3xl")) %}
 
     <div
-        class="stack {{ 'stack--gap-' + options.gap if options.gap }} {{ classes }}"
+        class="stack stack--gap-{{ gap }} {{ classes }}"
         {% for key, value in options.attributes %}
             {{ key }}="{{ value | safe }}"
         {% endfor %}
