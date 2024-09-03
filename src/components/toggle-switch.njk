@@ -8,5 +8,8 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
-    {{ toggleSwitch({ content: "Toggle me" }) }}
+    <article>
+        {{ toggleSwitch({ content: "Toggle me" }) }}
+        {{ toggleSwitch({ content: "Toggle me", description: "Here's a little extra to help you decide whether or not to do it", framed: true }) }}
+    </article>
 {% endblock %}

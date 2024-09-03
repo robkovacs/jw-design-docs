@@ -145,6 +145,7 @@
     border-color: var(--color-gray-500);
     background-color: var(--color-white);
 }
+
 @media (hover: hover) {
     .checkbox--framed:hover .checkbox__control,
     .checkbox--framed:hover .checkbox__control:invalid {

@@ -17,7 +17,7 @@
     {% endif %}
             {{ inputLabel(options.label, required, id) if options.label }}
             {{ inputMessage("help", options.helpText) if options.helpText }}
-            <button class="toggle-switch {{ classes }}"
+            <button class="toggle-switch {{ 'toggle-switch--framed' if options.framed }} {{ classes }}"
                 {% for key, value in options.attributes %}
                     {% if key !== "id" %}
                         {{ key }}="{{ value | safe }}"
@@ -32,7 +32,12 @@
                     <rect class="toggle-switch__background" x="0.5" y="2.5" width="31" height="19" ry="10" stroke="var(--color-gray-500)" stroke-width="1" fill="var(--color-gray-100)" />
                     <circle class="toggle-switch__foreground" cx="10" cy="12" r="9.5" stroke="var(--color-gray-500)" stroke-width="1" fill="var(--color-white)" />
                 </svg>
-                {{ options.content | safe }}
+                <span class="toggle-switch__content">
+                    <span class="checkbox__label">{{ options.content }}</span>
+                    {%- if options.description and options.framed -%}
+                        <span class="toggle-switch__description">{{ options.description }}</span>
+                    {%- endif -%}
+                </span>
             </button>
         {% if options.messages %}
             <div class="input-message__list">
