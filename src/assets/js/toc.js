@@ -4,13 +4,13 @@ const setCurrentFromHash = () => {
     let currentLink = document.querySelector('.toc a.current');
     
     if (currentLink) {
-        // currentLink.classList.remove('current');
+        currentLink.classList.remove('current');
     }
     
     tocLinks.forEach((el) => {
         if (window.location.hash == el.getAttribute('href')) {
-            // el.classList.add('current');
-            // document.querySelector(el.getAttribute('href')).scrollIntoView();
+            el.classList.add('current');
+            document.querySelector(el.getAttribute('href')).scrollIntoView();
         }
     });
 };
