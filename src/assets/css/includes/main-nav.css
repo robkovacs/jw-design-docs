@@ -11,7 +11,7 @@
         top: 0;
     }
 
-    .main-nav__home,
+    .main-nav__home:link,
     .main-nav__home:visited,
     .main-nav__home:active,
     .main-nav__home:visited:active {

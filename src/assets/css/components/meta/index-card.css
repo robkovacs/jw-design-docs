@@ -17,7 +17,7 @@
     box-shadow: var(--box-shadow-level-1);
 }
 
-.index-card,
+.index-card:link,
 .index-card:visited,
 .index-card:active,
 .index-card:visited:active {
