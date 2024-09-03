@@ -36,8 +36,8 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, {
-    // rootMargin: "0px 0px -50% 0px",
-    // threshold: 0
+    rootMargin: "0px 0px -50% 0px",
+    threshold: 0
 });
 
 document.querySelectorAll('section:has(.toc__heading)').forEach((section) => {
