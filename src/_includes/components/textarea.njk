@@ -4,6 +4,7 @@
 {% macro render(options) %}
     {% set required = (options.required | default(true)) %}
     {% set id %}{{ options.id | default(nanoid()) }}{% endset %}
+    {% set resizable %}{{ options.attributes.resizable | default("none") }}{% endset %}
     
     {% set classes -%}
     {#- TODO: make this into a custom filter -#}
@@ -21,8 +22,8 @@
     {% endif %}
             {{ inputLabel(options.label, required, id) if options.label }}
             {{ inputMessage("help", options.helpText) if options.helpText }}
-            <input
-                class="text-box {{ classes }}"
+            <textarea
+                class="textarea resizable--{{ resizable }} {{ classes }}"
                 {% for key, value in options.attributes %}
                     {% if key !== "id" %}
                         {{ key }}="{{ value | safe }}"
@@ -30,9 +31,10 @@
                 {% endfor %}
                 id="{{ id | safe }}"
                 {{ 'required' if required }}
-                type="text"
-                title="{{ placeholder | safe }}"    
-            />
+                title="{{ placeholder | safe }}"
+            >
+                {{- options.value -}}
+            </textarea>
         {% if options.messages %}
             <div class="input-message__list">
             {% for message in options.messages %}

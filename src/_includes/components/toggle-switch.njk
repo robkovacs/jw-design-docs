@@ -1,9 +1,47 @@
 {% macro render(options) %}
-    <button class="toggle-switch" role="switch" aria-checked="false">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="32" class="toggle-switch__frame">
-            <rect class="toggle-switch__background" x="0.5" y="2.5" width="31" height="19" ry="10" stroke="var(--color-gray-500)" stroke-width="1" fill="var(--color-gray-100)" />
-            <circle class="toggle-switch__foreground" cx="10" cy="12" r="9.5" stroke="var(--color-gray-500)" stroke-width="1" fill="var(--color-white)" />
-        </svg>
-        {{ options.content | safe }}
-    </button>
+    {% set id %}{{ options.id | default(nanoid()) }}{% endset %}
+    
+    {% set classes -%}
+    {#- TODO: make this into a custom filter -#}
+        {%- if options.classes -%}
+            {%- if options.classes == (options.classes | string) -%}
+                {{ options.classes }}
+            {%- else -%}
+                {{ options.classes | join(' ') }}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endset %}
+
+    {% if options.label or options.messages %}
+        <div class="form-field">
+    {% endif %}
+            {{ inputLabel(options.label, required, id) if options.label }}
+            {{ inputMessage("help", options.helpText) if options.helpText }}
+            <button class="toggle-switch {{ classes }}"
+                {% for key, value in options.attributes %}
+                    {% if key !== "id" %}
+                        {{ key }}="{{ value | safe }}"
+                    {% endif %}
+                {% endfor %}
+                id="{{ id | safe }}"
+                title="{{ placeholder | safe }}"
+                role="switch"
+                aria-checked="false"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="32" class="toggle-switch__frame">
+                    <rect class="toggle-switch__background" x="0.5" y="2.5" width="31" height="19" ry="10" stroke="var(--color-gray-500)" stroke-width="1" fill="var(--color-gray-100)" />
+                    <circle class="toggle-switch__foreground" cx="10" cy="12" r="9.5" stroke="var(--color-gray-500)" stroke-width="1" fill="var(--color-white)" />
+                </svg>
+                {{ options.content | safe }}
+            </button>
+        {% if options.messages %}
+            <div class="input-message__list">
+            {% for message in options.messages %}
+                    {{ inputMessage(message.type, message.message) }}
+            {% endfor %} 
+            </div>
+        {% endif %}
+    {% if options.label or options.messages %}
+        </div>
+    {% endif %}
 {% endmacro %}

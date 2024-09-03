@@ -5,7 +5,7 @@
 {% macro render(options) %}
     {% set placeholder %}{{ options.placeholder | default('Select&hellip;' | safe ) }}{% endset %}
     {% set required = (options.required | default(true)) %}
-    {% set id %}{{ options.attributes.id | default(nanoid()) }}{% endset %}
+    {% set id %}{{ options.id | default(nanoid()) }}{% endset %}
     
     {% set classes -%}
     {#- TODO: make this into a custom filter -#}
@@ -22,6 +22,7 @@
         <div class="form-field">
     {% endif %}
             {{ inputLabel(options.label, required, id) if options.label }}
+            {{ inputMessage("help", options.helpText) if options.helpText }}
             <span class="select-box__wrapper">
                 <select
                     class="select-box {{ classes }}"

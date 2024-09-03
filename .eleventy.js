@@ -74,7 +74,7 @@ module.exports = function (eleventyConfig) {
         }
     });
 
-    eleventyConfig.addPassthroughCopy("src/assets/img");
+    eleventyConfig.addPassthroughCopy({ "src/imagery/system-icons.json": "assets/js/system-icons.json" });
 
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
     eleventyConfig.addPlugin(pluginTOC);

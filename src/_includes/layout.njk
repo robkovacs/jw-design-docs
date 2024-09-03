@@ -16,11 +16,12 @@
 {% from './components/skeleton.njk' import render as skeleton %}
 {% from './components/stepper.njk' import render as stepper %}
 {% from './components/system-icon.njk' import render as systemIcon %}
-{% from './components/text-box.njk' import render as text %}
+{% from './components/textarea.njk' import render as textarea %}
+{% from './components/text-box.njk' import render as textBox %}
 {% from './components/toggle-switch.njk' import render as toggleSwitch %}
 {% from './components/tooltip.njk' import render as tooltip %}
-{% from './components/layout/row.njk' import render as row -%}
-{% from './components/layout/stack.njk' import render as stack -%}
+{% from './components/layout/row.njk' import render as row %}
+{% from './components/layout/stack.njk' import render as stack %}
 
 <!doctype html>
 <html lang="en-US">
@@ -67,6 +68,7 @@
                 new PagefindUI({ element: "#search" });
             });
         </script>
-       {% if localJs %}<script>{{ localJs | jsmin | safe }}</script>{% endif %} 
+       {% if localJs %}<script>{{ localJs | safe }}</script>{% endif %} 
+       {# {% if localJs %}<script>{{ localJs | jsmin | safe }}</script>{% endif %}  #}
 </body>
 </html>

@@ -6,7 +6,621 @@ eleventyNavigation:
     excerpt: "System icons are pretty much the coolest thing you could ever imagine. What else do you need to know?"
     order: 1
 ---
-{% extends "layout.njk" %}
+{% extends '../_includes/layout.njk' %}
 
 {% block content %}
+    <div id="system-icon-settings">
+        <div id="system-icon-search-input">
+            <input type="text" id="system-icon-setting--keyword" placeholder="Search icons" />
+            <button id="clear-search-input" aria-label="Clear search"></button>
+        </div>
+        <div>
+            {{ toggleSwitch({
+                content: "Hide deprecated icons",
+                id: "deprecated-toggle"
+            }) }}
+        </div>
+        <div id="system-icon-count"></div>
+    </div>
+
+    <div id="system-icon-explorer">
+        <div id="system-icon-gallery"></div>
+        <div id="system-icon-inspector">
+            <div class="empty-state">Choose an icon to see its details here</div>
+        </div>
+    </div>
+
+    <template id="icon-summary-template">
+        <button class="icon-summary">
+            <figure>
+                <div class="icon-preview"></div>
+                <figcaption></figcaption>
+            </figure>
+        </button>
+    </template>
+
+    <template id="icon-detail-template">
+        <div class="icon-detail">
+            <figure>
+                <div class="icon-preview"></div>
+                <figcaption></figcaption>
+            </figure>
+            <ul class="icon-tag-list"></ul>
+            <p></p>
+            <small>Source: <span></span></small>
+        </div>
+    </template>
+
+    <template id="icon-tag-template">
+        <li><button class="icon-tag"></button></li>
+    </template>
 {% endblock content %}
+
+{% set localCss %}
+    #system-icon-settings {
+        margin-bottom: var(--size-3xl);
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: var(--size-3xl);
+        row-gap: var(--size-md);
+        align-items: center;
+    }
+
+    #system-icon-search-input {
+        position: relative;
+    }
+
+    #system-icon-search-input input {
+        padding: 0.75rem 3rem;
+        font-family: inherit;
+        font-size: 1rem;
+        line-height: 1.25rem;
+        border-radius: 0.25rem;
+        border: 0.0625rem solid #848890;
+        width: 100%;
+        max-width: 24rem;
+        height: 3rem;
+        position: relative;
+    }
+
+    #system-icon-search-input input:hover {
+        border-color: #6D717A;
+    }
+
+    #system-icon-search-input::before {
+        content: "";
+        z-index: 1;
+        background-image: url('../../assets/img/system-icons/search.svg');
+        background-position: center;
+        background-size: 1.5rem;
+        background-repeat: no-repeat;
+        opacity: 0.5;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 3rem;
+        width: 3rem;
+    }
+
+    #clear-search-input {
+        position: absolute;
+        display: none;
+        top: 0;
+        right: 0;
+        width: 3rem;
+        height: 3rem;
+        background-color: transparent;
+        background-image: url('../../assets/img/system-icons/close-circle.svg');
+        background-position: center;
+        background-size: 1.5rem;
+        background-repeat: no-repeat;
+        border: none;
+        border-radius: 0.25rem;
+    }
+
+    #system-icon-count {
+        color: var(--color-gray-600);
+        white-space: nowrap;
+    }
+
+    /* General Layout */
+    #system-icon-explorer {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    #system-icon-gallery {
+        flex: 3;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+        grid-auto-rows: fit-content(8rem);
+        grid-column-gap: 1rem;
+        grid-row-gap: 1rem;
+    }
+
+    #system-icon-inspector {
+        position: sticky;
+        align-self: flex-start;
+        top: 2rem;
+        right: 2rem;
+        flex: 1;
+        padding: 2rem;
+        background-color: #f7f8fb;
+        border-radius: 0.5rem;
+        max-height: calc(100vh - 4rem);
+        overflow-y: scroll;
+    }
+
+    @media (max-width: 600px) {
+        #system-icon-gallery,
+        #system-icon-inspector {
+            flex: 2;
+        }
+    }
+    
+    /* Icon Summary OR Detail */
+
+    figure {
+        margin: 0;
+    }
+
+    .icon-preview > svg {
+        height: 1.5rem;
+        width: 1.5rem;
+        display: block;
+    }
+
+    /* Icon Summary */
+
+    #system-icon-gallery button {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+        background-color: #fff;
+        border: 0.0625rem solid #d9dce1;
+        border-radius: 0.25rem;
+        margin: 0.0625rem;
+    }
+
+    #system-icon-gallery button:hover {
+        background-color: #f7f8fb;
+    }
+
+    #system-icon-gallery button:active {
+        background-color: #eef0f4;
+    }
+
+    #system-icon-gallery .current {
+        border: 0.125rem solid #0070d4;
+        background-color: #e5f3ff;
+    }
+
+    #system-icon-gallery .current:hover {
+        background-color: #b6e5ff;
+    }
+
+    #system-icon-gallery .current:active {
+        background-color: #6dc8ff;
+    }
+
+    .icon-summary {
+        padding: 1rem;
+        flex: 0 2 8rem;
+        align-self: stretch;
+        font-size: 0.875rem;
+        line-height: 1rem;
+    }
+
+    .deprecated-dot,
+    .new-dot {
+        display: inline-block;
+        border-radius: 0.25rem;
+        height: 0.5rem;
+        width: 0.5rem;
+        margin-top: 0.25rem;
+        margin-right: 0.375rem;
+    }
+
+    .deprecated-dot {
+        background-color: #f3b715;
+    }
+
+    .new-dot {
+        background-color: #65c9a3;
+    }
+
+    .icon-summary .icon-preview {
+        margin-bottom: 0.5rem;
+    }
+
+    .icon-summary .icon-preview > svg {
+        margin: 0 auto;
+    }
+
+    /* Icon Detail */
+    #system-icon-inspector button {
+        font-family: inherit;
+        color: inherit;
+    }
+
+    #system-icon-inspector button:hover {
+        background-color: #f7f8fb;
+    }
+
+    #system-icon-inspector button:active {
+        background-color: #eef0f4;
+    }
+
+    .icon-detail .icon-preview {
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+
+    .icon-detail figcaption {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        font-size: 1.25rem;
+        line-height: 2rem;
+        font-weight: 700;
+    }
+
+    .deprecated-badge,
+    .new-badge {
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        font-weight: 700;
+        align-self: center;
+    }
+
+    .deprecated-badge {
+        background-color: #ffeed1;
+        color: #ad5e0d;
+    }
+
+    .new-badge {
+        background-color: #ddf3ea;
+        color: #008354;
+    }
+
+    .icon-detail figure {
+        margin-bottom: 1rem;
+    }
+
+    code {
+        display: inline-block;
+        padding: 0.25rem;
+        background-color: #d9dce1;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        line-height: 1rem;
+    }
+
+    .icon-tag-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .icon-tag {
+        flex: 0 0 1rem;
+        text-align: center;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        border: 0.0625rem solid #848890;
+        border-radius: 9999rem;
+        padding: 0.25rem 0.5rem;
+        background-color: transparent;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .icon-detail > figure:last-child,
+    .icon-detail > ul:last-child,
+    .icon-detail > p:last-child {
+        margin-bottom: 0;
+    }
+
+    small {
+        display: block;
+        font-size: 0.75rem;
+        line-height: 1rem;
+    }
+
+    .empty-state {
+        color: #5e6167;
+        grid-column: 1 / -1;
+    }
+{% endset %}
+
+{% set localJs %}
+(() => {
+    let icons;
+    const searchInput = document.querySelector("#system-icon-setting--keyword");
+    const deprecatedToggle = document.querySelector("#deprecated-toggle");
+    const clearSearch = document.querySelector("#clear-search-input");
+    let currentQuery = searchInput.value;
+
+    async function getIcons() {
+        const response = await fetch("../../assets/js/system-icons.json");
+        data = await response.json();
+        icons = data.systemIcons;
+    }
+
+    async function populateGallery(data = "") {
+        await getIcons();
+        if (!data) {
+            data = icons;
+        }
+
+        const gallery = document.querySelector("#system-icon-gallery");
+        const inspector = document.querySelector("#system-icon-inspector");
+        if (gallery.innerHTML) {
+            gallery.innerHTML = "";
+            inspector.style.display = "block";
+            inspector.innerHTML =
+                '<div class="empty-state">Choose an icon to see its details here</div>';
+        }
+
+        if (JSON.stringify(data) === "{}") {
+            gallery.innerHTML =
+                '<div class="empty-state">No matching icons found</div>';
+            inspector.style.display = "none";
+        }
+
+        const iconSummaryTemplate = document.querySelector(
+            "#icon-summary-template"
+        );
+
+        // Sort the JSON alphabetically by key name, just in case it's out of order
+        data = Object.keys(data)
+            .sort()
+            .reduce((obj, key) => {
+                obj[key] = data[key];
+                return obj;
+            }, {});
+
+        let count = Object.keys(data).length;
+        let countText = count + " matching icon";
+        document.querySelector("#system-icon-count").textContent = "";
+
+        if (count !== 1) {
+            countText += "s";
+        }
+
+        if (count > 0) {
+            document.querySelector("#system-icon-count").textContent = countText;
+        }
+
+        for (let key in data) {
+            let iconName = data[key].name;
+            let iconTags = data[key].tags;
+            let iconDescription = data[key].description;
+            let iconSource = data[key].source;
+            let isDeprecated = data[key].isDeprecated;
+            let isNew = data[key].isNew;
+
+            let iconSummary = iconSummaryTemplate.content.cloneNode(true);
+            let button = iconSummary.querySelector("button");
+            let iconContainer = iconSummary.querySelector("figure > div");
+            let figcaption = iconSummary.querySelector("figcaption");
+
+            button.addEventListener("click", function (e) {
+                const currentButton = document.querySelector("button.current");
+                if (currentButton) {
+                    currentButton.classList.toggle("current");
+                }
+                e.currentTarget.classList.toggle("current");
+                showIconDetails(
+                    iconName,
+                    iconTags,
+                    iconDescription,
+                    iconSource,
+                    isDeprecated,
+                    isNew
+                );
+            });
+            button.setAttribute("aria-label", iconName);
+
+            // Use fetch() to get the actual SVG code (so that maybe one day we can have a color picker)
+            fetch("../../assets/img/system-icons/" + iconName + ".svg")
+                .then((response) => response.text())
+                .then((svg) => {
+                    iconContainer.innerHTML = svg;
+                });
+
+            if (isDeprecated) {
+                figcaption.innerHTML = '<span class="deprecated-dot"></span>';
+            } else if (isNew) {
+                figcaption.innerHTML = '<span class="new-dot"></span>';
+            }
+
+            figcaption.innerHTML += iconName;
+
+            gallery.appendChild(iconSummary);
+        }
+    }
+
+    async function filterIcons(query = "", hideDeprecated = false) {
+        await getIcons();
+        let matchingIcons = {};
+        if (!query) {
+            query = searchInput.value;
+        }
+
+        const regex = new RegExp(escapeRegex(query.toLowerCase().trim()));
+
+        for (let key in icons) {
+            let iconName = icons[key].name;
+            let iconTags = icons[key].tags;
+            let iconDescription = icons[key].description;
+
+            if (hideDeprecated && icons[key].isDeprecated) {
+                continue;
+            }
+
+            if (iconName.toLowerCase().search(regex) !== -1) {
+                matchingIcons[key] = icons[key];
+                continue;
+            }
+
+            for (let i = 0; i < iconTags.length; i++) {
+                if (iconTags[i].toLowerCase().search(regex) !== -1) {
+                    matchingIcons[key] = icons[key];
+                    continue;
+                }
+            }
+
+            if (iconDescription.toLowerCase().search(regex) !== -1) {
+                matchingIcons[key] = icons[key];
+                continue;
+            }
+        }
+
+        populateGallery(matchingIcons);
+    }
+
+    function showIconDetails(
+        name,
+        tags,
+        description,
+        source,
+        isDeprecated,
+        isNew
+    ) {
+        const inspector = document.querySelector("#system-icon-inspector");
+
+        const iconDetailTemplate = document.querySelector(
+            "#icon-detail-template"
+        );
+
+        let iconDetail = iconDetailTemplate.content.cloneNode(true);
+        let container = iconDetail.querySelector(".icon-detail");
+        let icon = iconDetail.querySelector("figure > div");
+        let figcaption = iconDetail.querySelector("figcaption");
+        let ul = iconDetail.querySelector("ul");
+        let p = iconDetail.querySelector("p");
+        let small = iconDetail.querySelector("small");
+
+        fetch("../../assets/img/system-icons/" + name + ".svg")
+            .then((response) => response.text())
+            .then((svg) => {
+                icon.innerHTML = svg;
+            });
+
+        figcaption.innerHTML = name;
+
+        if (isDeprecated) {
+            figcaption.innerHTML +=
+                '<span class="deprecated-badge">Deprecated</span>';
+        } else if (isNew) {
+            figcaption.innerHTML += '<span class="new-badge">New</span>';
+        }
+
+        if (tags.length > 0) {
+            const iconTagTemplate =
+                document.querySelector("#icon-tag-template");
+            for (let i in tags) {
+                let iconTag = iconTagTemplate.content.cloneNode(true);
+                let button = iconTag.querySelector("button");
+                let tagName = tags[i];
+                button.textContent = tagName;
+                button.addEventListener("click", function (e) {
+                    searchInput.value = tagName;
+                    const toggleState = deprecatedToggle.getAttribute("aria-checked") === "true";
+                    filterIcons(tagName, toggleState);
+                    clearSearch.style.display = "block";
+                });
+                ul.appendChild(iconTag);
+            }
+        } else {
+            container.removeChild(ul);
+        }
+
+        if (description) {
+            p.innerHTML = description;
+        } else {
+            container.removeChild(p);
+        }
+
+        if (source) {
+            small.firstChild.nextSibling.innerHTML = source;
+        } else {
+            container.removeChild(small);
+        }
+
+        while (inspector.childNodes.length > 0) {
+            inspector.removeChild(inspector.firstChild);
+        }
+
+        inspector.appendChild(iconDetail);
+    }
+
+    function escapeRegex(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function debounce(func, delay) {
+        let debounceTimer;
+        return function () {
+            const context = this;
+            const args = arguments;
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => func.apply(context, args), delay);
+        };
+    }
+
+    searchInput.addEventListener(
+        "input",
+        debounce(function (e) {
+            if (this.value.trim() !== currentQuery) {
+                const toggleState =
+                    deprecatedToggle.getAttribute("aria-checked") === "true";
+                currentQuery = this.value;
+                filterIcons(this.value, toggleState);
+            }
+
+            if (this.value.trim()) {
+                clearSearch.style.display = "block";
+            } else {
+                clearSearch.style.display = "none";
+            }
+        }, 100)
+    );
+
+    deprecatedToggle.addEventListener("click", function (e) {
+        const currentState = e.target.getAttribute("aria-checked") === "true";
+        filterIcons(searchInput.value, currentState);
+    });
+
+    clearSearch.addEventListener("click", function (e) {
+        searchInput.value = "";
+        const toggleState =
+            deprecatedToggle.getAttribute("aria-checked") === "true";
+        filterIcons("", toggleState);
+        searchInput.focus();
+        this.style.display = "none";
+    });
+
+    getIcons();
+
+    if (currentQuery.trim()) {
+        filterIcons(currentQuery);
+        clearSearch.style.display = "block";
+    } else {
+        populateGallery();
+        clearSearch.style.display = "none";
+    }
+})();
+
+{% endset %}
