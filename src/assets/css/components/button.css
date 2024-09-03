@@ -81,7 +81,6 @@
     padding-right: calc(var(--size-xs) - var(--size-4xs));
 }
 
-
 .button--size-sm {
     font-size: var(--size-sm);
     line-height: var(--size-md);
@@ -89,6 +88,17 @@
 }
 
 .button--size-sm > .system-icon > svg {
+    width: var(--size-md);
+    height: var(--size-md);
+}
+
+.button--size-xs {
+    font-size: var(--size-sm);
+    line-height: var(--size-md);
+    padding: calc(var(--size-3xs) - var(--size-4xs)) calc(var(--size-3xs) - var(--size-4xs));
+}
+
+.button--size-xs > .system-icon > svg {
     width: var(--size-md);
     height: var(--size-md);
 }
