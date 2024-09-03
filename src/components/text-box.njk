@@ -8,5 +8,9 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
-    {{ textBox()}}
+    {{ textBox({ attributes: { pattern: "\\d+" } }) }}
+    
+    <div class="show-error-blank-but-required">
+        {{ textBox({ required: true }) }}
+    </div>
 {% endblock %}

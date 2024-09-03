@@ -567,15 +567,3 @@ hasTOC: true
     </section>
 </article>
 {% endblock content %}
-
-{% set localJs %}
-(() => {
-    // clear error message when empty "post-submit" select is updated
-    /* let emptyInvalid = document.querySelector('.submitted .select');
-    emptyInvalid.addEventListener("change", (e) => {
-        if(e.target.checkValidity) {
-            e.target.parentElement.nextElementSibling.style.display = 'none';
-        }
-    }); */
-})();
-{% endset %}

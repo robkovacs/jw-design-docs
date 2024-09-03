@@ -22,6 +22,6 @@
             {{- systemIcon(noticeIcon) if noticeIcon -}}
             {{- options.headline -}}
         </div>{% endif %}
-    {% if caller() %}<div>{{ caller() }}</div>{% endif %}
+    {% if caller() %}<div class="notice__content">{{ caller() }}</div>{% endif %}
 </div>
 {% endmacro %}

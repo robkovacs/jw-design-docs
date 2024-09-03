@@ -33,6 +33,7 @@
 .select-box:invalid {
     border-color: var(--color-red-500);
 }
+
 @media (hover: hover) {
     .select-box:invalid:hover {
         border-color: var(--color-red-600);
@@ -64,18 +65,18 @@
     }
 /* End */
 
-.after-submit .select-box:required:invalid {
+.show-error-blank-but-required .select-box:required:invalid {
     border-color: var(--color-red-500);
 }
 
 @media (hover: hover) {
-    .after-submit .select-box:required:invalid:hover {
+    .show-error-blank-but-required .select-box:required:invalid:hover {
         border-color: var(--color-red-600);
     }
 }
 
-.after-submit .select-box:required:invalid:active {
-    border-color: var(--color-gray-700);
+.show-error-blank-but-required .select-box:required:invalid:active {
+    border-color: var(--color-red-700);
 }
 
 .select-box__icon {

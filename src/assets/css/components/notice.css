@@ -38,3 +38,11 @@
 .notice--type-neutral {
     background-color: var(--color-gray-200);
 }
+
+.notice__content .bulleted-list:first-child {
+    margin-top: var(--size-xs);
+}
+
+.notice__content .bulleted-list:last-child {
+    margin-bottom: 0;
+}

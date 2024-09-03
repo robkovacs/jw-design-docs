@@ -9,6 +9,19 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
+    {% call notice({
+        type: "neutral",
+        headline: "Can't find the right icon?"
+    }) %}
+    <ul class="bulleted-list">
+        <li>Ask on Slack—we might be able to point you to the right one</li>
+        <li>If not, check Phosphor's
+            {{ anchor({ href: "https://phosphoricons.com/", content: "website", rightIcon: "external-link", attributes: { target: "_blank" } }) }} &nbsp;or&nbsp; {{ anchor({ href: "https://www.figma.com/community/plugin/898620911119764089/phosphor-icons", content: "Figma plugin", rightIcon: "external-link", attributes: { target: "_blank" } }) }} &nbsp;for an appropriate icon, and let us know what you chose
+        </li>
+        <li>If Phosphor doesn't have a good fit, we'll bring in a custom icon</li>
+    </ul>
+    {% endcall %}
+
     <div id="system-icon-settings">
         <div id="system-icon-search-input">
             <input type="text" id="system-icon-setting--keyword" placeholder="Search icons" />

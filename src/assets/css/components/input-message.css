@@ -17,6 +17,9 @@
 
 .input-message--type-help {
     color: var(--color-gray-600);
+}
+
+.form-field .input-message--type-help {
     margin-bottom: var(--size-xs);
 }
 
