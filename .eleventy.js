@@ -7,7 +7,7 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const eleventyNavigation = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
-const pluginTOC = require('eleventy-plugin-toc');
+const pluginTOC = require('@uncenter/eleventy-plugin-toc');
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(eleventyNavigation);

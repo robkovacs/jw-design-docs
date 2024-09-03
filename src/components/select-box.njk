@@ -11,42 +11,44 @@ hasTOC: true
 
 {% block content %}
 <article>
-    <p style="font-size: 20px; line-height: 32px">A <strong>select box</strong> allows someone to choose one option from many. It's most appropriate when there are 4 or more options to choose from, and those options can be represented in a one- or two-level list of short, text-only labels.</p>
-
-<ul style="list-style-type: none; padding: 0; margin: var(--size-3xl) 0 0 0; display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--size-md)">
-        <li>
-            {{ anchor({ 
-                href: "https://www.figma.com/design/2XUAgVi6sCaQZ1qm4N34GA/Design-System---Components?node-id=10172-19141",
-                leftIcon: "brand-figma",
-                content: "Figma",
-                attributes: {
-                    target: "_blank"
-                }
-            }) }}
-        </li>
-        <li>
-            {{ anchor({ 
-                href: "https://main--63c9ba51287fc47003f73128.chromatic.com/?path=/docs/form-select-select--docs",
-                leftIcon: "brand-storybook",
-                content: "Storybook",
-                attributes: {
-                    target: "_blank"
-                }
-            }) }}
-        </li>
-        <li>
-            {{ anchor({ 
-                href: "https://github.com/justworkshr/milo-components/tree/main/packages/components/form/src/select",
-                leftIcon: "brand-github",
-                content: "GitHub",
-                attributes: {
-                    target: "_blank"
-                }
-            }) }}
-        </li>
-    </ul>
-
     <section>
+        <h2 class="toc__heading" style="display: none" id="intro">Introduction</h2>
+    
+        <p style="font-size: 20px; line-height: 32px">A <strong>select box</strong> allows someone to choose one option from many. It's most appropriate when there are 4 or more options to choose from, and those options can be represented in a one- or two-level list of short, text-only labels.</p>
+
+        <ul style="list-style-type: none; padding: 0; margin: var(--size-3xl) 0 0 0; display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--size-md)">
+            <li>
+                {{ anchor({ 
+                    href: "https://www.figma.com/design/2XUAgVi6sCaQZ1qm4N34GA/Design-System---Components?node-id=10172-19141",
+                    leftIcon: "brand-figma",
+                    content: "Figma",
+                    attributes: {
+                        target: "_blank"
+                    }
+                }) }}
+            </li>
+            <li>
+                {{ anchor({ 
+                    href: "https://main--63c9ba51287fc47003f73128.chromatic.com/?path=/docs/form-select-select--docs",
+                    leftIcon: "brand-storybook",
+                    content: "Storybook",
+                    attributes: {
+                        target: "_blank"
+                    }
+                }) }}
+            </li>
+            <li>
+                {{ anchor({ 
+                    href: "https://github.com/justworkshr/milo-components/tree/main/packages/components/form/src/select",
+                    leftIcon: "brand-github",
+                    content: "GitHub",
+                    attributes: {
+                        target: "_blank"
+                    }
+                }) }}
+            </li>
+        </ul>
+
         <div style="border-radius: 12px; padding: var(--size-5xl); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
             {% call stack({
                 attributes: { style: "width: 20rem; margin: -1rem auto 0" }
@@ -87,6 +89,7 @@ hasTOC: true
                 {% endcall %}
             {% endcall %}
         </div>
+
         <div class="h4">Also known as:</div>
         <ul class="bulleted-list">
             <li>Select</li>
@@ -142,6 +145,8 @@ hasTOC: true
     </section>
     <section>
         <h2 class="toc__heading" id="content-guidance">Content</h2>
+    </section>
+    <section>
         <h3 class="toc__heading" id="put-options-in-order">Put option names in a logical order</h3>
         
         <p>The most logical order for a given use case may not always be alphabetical. Maybe you're presenting a set of statuses that are generally expected to be in being in a certain order. Maybe there are more commonly-used options that belong at the top of the list—whatever makes sense.</p>
@@ -255,7 +260,8 @@ hasTOC: true
             </div>
         </div>
         <p style="color: var(--color-gray-600)">A list of U.S. presidents might make more sense to be put in chronological order, not alphabetical order by first name.</p>
-
+    </section>
+    <section>
         <h3 class="toc__heading" id="make-it-wide-enough">Ensure the select box will be wide enough for its contents</h3>
         <p>The placeholder will be displayed as a single line of text in an empty select box, and the selected value will be displayed on a single line. So make sure the select box can accommodate that, whenever possible. Pay extra close attention to this if your option values are derived from user-generated data!</p>
 
@@ -447,7 +453,8 @@ hasTOC: true
             </div>
         </div>
         {% endcall %}
-
+    </section>
+    <section>
         <h3 class="toc__heading" id="keep-options-short">Keep option names short</h3>
         <p>Some browsers truncate long option names in their option lists. Even for those that don’t, shorter option names will be inherently easier for users to parse. As we mentioned in the previous section, placeholders and values need to fit on a single line as well.</p>
 
@@ -484,6 +491,8 @@ hasTOC: true
     </section>
     <section>
         <h2 class="toc__heading" id="accessibility-guidance">Accessibility</h2>
+    </section>
+    <section>
         <h3 class="toc__heading" id="include-label">Always include a label</h3>
         
         <p>The label helps all users understand the purpose or meaning of the select box.</p>
@@ -519,7 +528,8 @@ hasTOC: true
                 </div>    
             </div>    
         </div>
-
+    </section>
+    <section>
         <h3 class="toc__heading" id="dont-use-emojis">Don't use emojis in option names</h3>
         <p>One of the built-in features of option lists in many browsers is that the user can start typing with the option list open, and use that to navigate to the next option value that matches what they've typed. Introducing emojis into your option names makes this difficult, if not impossible.</p>
         <p>Also, <code>aria-hidden</code> doesn't work inside of an option list, so screen readers will be stuck reading out the emoji name(s), even if you only intend to use them for decoration.</p>

@@ -25,7 +25,7 @@ document.querySelectorAll('.toc a').forEach((link) => {
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-        const targetId = entry.target.getAttribute('id');
+        const targetId = entry.target.firstElementChild.getAttribute('id');
         const currentLink = document.querySelector('.toc a.current');
         if (entry.isIntersecting) {
             if (currentLink) {
@@ -33,20 +33,14 @@ const observer = new IntersectionObserver((entries) => {
             }
             document.querySelector('.toc a[href="#' + targetId + '"]').classList.add('current');
             window.history.pushState(null, null, '#'+targetId);
-        } else {
-            // document.querySelector('.toc a[href="#' + targetId + '"]').classList.remove('current');
-            // TODO: if leaving on the bottom, move to previous (if any)
-            // if leaving on the top, move to next (if any)
-            // Cound this be done with two observers: one at the top of the viewport, and one at the bottom???
-            // TODO: opening a page where the first heading is in view scrolls to that heading...
         }
     });
 }, {
-    rootMargin: "0px 0px -99% 0px",
-    threshold: 0
+    // rootMargin: "0px 0px -50% 0px",
+    // threshold: 0
 });
 
-// document.querySelectorAll('.toc__heading').forEach((heading) => {
-//     observer.observe(heading); 
-// });
+document.querySelectorAll('section:has(.toc__heading)').forEach((section) => {
+    observer.observe(section); 
+});
 

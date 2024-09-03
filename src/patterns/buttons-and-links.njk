@@ -48,7 +48,8 @@ eleventyNavigation:
     </section>
     <section>
         <h2 class="toc__heading" id="icon-only-buttons">Icon-only buttons</h2>
-        
+    </section>
+    <section>
         <h3 class="toc__heading" id="use-icon-only-buttons">When to use</h3>
 
         <p>Out of a desire to create a simpler user interface, or save space, you might consider using an Icon Button in some part of your designs. But you should consider:</p>
@@ -109,7 +110,8 @@ eleventyNavigation:
                 </figure>
             </div>
         </div>
-
+    </section>
+    <section>
         <h3 class="toc__heading" id="icon-only-buttons-accessibility">Accessibility</h3>
 
         <p>Whether or not an icon has a common interpretation, that still depends on users' ability to see it. So for screen reader users, we need to add an <code>aria-label</code> to each icon-only button that will stand in for the icon.</p>
@@ -137,11 +139,13 @@ eleventyNavigation:
 
     <section>
         <h2 class="toc__heading" id="links-icons">Links with icons</h3>
-        
+    </section>
+    <section>        
         <h3 class="toc__heading" id="use-links-icons">When to use</h3>
         
         <p>Both links and buttons can have icons added to the left or the right of the text. But for links, we should use icons to indicate when a link behaves in a non-standard way — in other words, when it doesn't open up a new page in the current tab.</p>
-        
+    </section>
+    <section>        
         <h4 class="toc__heading" id="links-files">Links to files</h4>                
         <div class="two-columns vertically-centered">
             <div>
@@ -163,7 +167,8 @@ eleventyNavigation:
                 </figure>
             </div>
         </div>
-
+    </section>
+    <section>
         <h4 class="toc__heading" id="links-open-new-tab">Links that open in a new tab</h4>
 
         <div class="two-columns vertically-centered">
@@ -181,7 +186,8 @@ eleventyNavigation:
                 </figure>
             </div>
         </div>
-        
+    </section>
+    <section>        
         <h3 class="toc__heading" id="link-icon-accessibility">Accessibility</h3>
         <p>It's important to ensure that screen reader users who won't see the icon attached to your link still get the additional context it provides.</p>
         <p>For file downloads, the filetype (if common), plus <code>Download:</code>, can be prefixed to the link text. For external links, append <code>: Opens in a new tab</code>.</p>
@@ -256,18 +262,3 @@ eleventyNavigation:
     </section>
 </article>
 {% endblock %}
-
-{% set localCss %}
-.button-vs-link-demo {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--size-3xl);
-    align-items: center;
-}
-
-.button-vs-link-demo > div {
-    flex: 1 0;
-    width: 100%;
-}
-{% endset %}
