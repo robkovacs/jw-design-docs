@@ -28,10 +28,24 @@
     .button--filled:hover {
         background-color: var(--color-blue-700);
     }
+
+    .button--filled:hover[aria-disabled="true"] {
+        background-color: var(--color-gray-300);
+        color: var(--color-gray-500);
+        cursor: not-allowed;
+    }
 }
 
 .button--filled:active {
     background-color: var(--color-blue-800);
+}
+
+.button--filled:disabled,
+.button--filled[aria-disabled="true"],
+.button--filled:active[aria-disabled="true"] {
+    background-color: var(--color-gray-300);
+    color: var(--color-gray-500);
+    cursor: not-allowed;
 }
 
 .button--outlined {
@@ -45,11 +59,25 @@
         border-color: var(--color-blue-700);
         color: var(--color-blue-700);
     }
+
+    .button--outlined:hover[aria-disabled="true"] {
+        border-color: var(--color-gray-500);
+        color: var(--color-gray-500);
+        cursor: not-allowed;
+    }
 }
 
 .button--outlined:active {
     border-color: var(--color-blue-800);
     color: var(--color-blue-800);
+}
+
+.button--outlined:disabled,
+.button--outlined[aria-disabled="true"],
+.button--outlined:active[aria-disabled="true"] {
+    border-color: var(--color-gray-500);
+    color: var(--color-gray-500);
+    cursor: not-allowed;
 }
 
 .button--ghost {
@@ -63,6 +91,20 @@
         background-color: var(--color-blue-100);
         color: var(--color-blue-700);
     }
+
+    .button--ghost:hover[aria-disabled="true"] {
+        background-color: transparent;
+        color: var(--color-gray-500);
+        cursor: not-allowed;
+    }
+}
+
+.button--ghost:disabled,
+.button--ghost[aria-disabled="true"],
+.button--ghost:active[aria-disabled="true"] {
+    background-color: transparent;
+    color: var(--color-gray-500);
+    cursor: not-allowed;
 }
 
 .button--ghost:active {
@@ -73,7 +115,8 @@
 .button--size-md {
     font-size: var(--size-md);
     line-height: var(--size-xl);
-    padding: calc(var(--size-xs) - var(--size-4xs)) calc(var(--size-md) - var(--size-4xs));
+    padding: calc(var(--size-xs) - var(--size-4xs))
+        calc(var(--size-md) - var(--size-4xs));
 }
 
 .button--size-md:has(.system-icon + span:empty) {
@@ -84,7 +127,8 @@
 .button--size-sm {
     font-size: var(--size-sm);
     line-height: var(--size-md);
-    padding: calc(var(--size-2xs) - var(--size-4xs)) calc(var(--size-xs) - var(--size-4xs));
+    padding: calc(var(--size-2xs) - var(--size-4xs))
+        calc(var(--size-xs) - var(--size-4xs));
 }
 
 .button--size-sm > .system-icon > svg {
@@ -95,7 +139,8 @@
 .button--size-xs {
     font-size: var(--size-sm);
     line-height: var(--size-md);
-    padding: calc(var(--size-3xs) - var(--size-4xs)) calc(var(--size-3xs) - var(--size-4xs));
+    padding: calc(var(--size-3xs) - var(--size-4xs))
+        calc(var(--size-3xs) - var(--size-4xs));
 }
 
 .button--size-xs > .system-icon > svg {

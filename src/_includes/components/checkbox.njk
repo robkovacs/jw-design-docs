@@ -1,6 +1,12 @@
 {% macro render(options) %}
     <label class="checkbox{{ ' checkbox--framed' if options.framed }}">
-        <input type="checkbox" class="checkbox__control" {{ 'required' if options.required }}/>
+        <input
+            type="checkbox"
+            class="checkbox__control"
+            {{ ('aria-disabled="true"' | safe) if options.disabled }}
+            {{ 'required' if options.required }}
+            {{ ('checked="true"' | safe) if options.checked }}
+        />
         <span class="checkbox__content">
             <span class="checkbox__label">{{ options.content }}</span>
             {%- if options.description and options.framed -%}

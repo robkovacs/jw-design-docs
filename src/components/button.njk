@@ -60,5 +60,21 @@ eleventyNavigation:
                 size: "sm"
             }) }}
         {% endcall %}
+        {% call row() %}
+            {{ button({
+                content: "Buttons can be disabled",
+                disabled: true
+            }) }}
+            {{ button({
+                content: "Even if they're outlined",
+                variant: "outlined",
+                disabled: true
+            }) }}
+            {{ button({
+                content: "Or ghost",
+                variant: "ghost",
+                disabled: true
+            }) }}
+        {% endcall %}
     {% endcall %}
 {% endblock %}

@@ -18,6 +18,7 @@
         {% for key, value in options.attributes %}
             {{ key }}="{{ value | safe }}"
         {% endfor %}
+        {{ ('aria-disabled="true"' | safe) if options.disabled }}
     > 
         {{- systemIcon(options.leftIcon) if options.leftIcon -}}
         <span>{{- options.content -}}</span>

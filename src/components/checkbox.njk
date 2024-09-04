@@ -19,6 +19,53 @@ eleventyNavigation:
                 description: "Here's some extra context.",
                 framed: true
             }) }}
+
+        {% call row() %}
+            {% call stack() %}
+                {{ checkbox({
+                    content: "Leave me alone ...I'm disabled",
+                    disabled: true
+                }) }}
+
+                {{ checkbox({
+                    content: "I've been framed!",
+                    description: "But I too am disabled",
+                    framed: true,
+                    disabled: true
+                }) }}
+            {% endcall %}
+
+            {% call stack() %}
+                {{ checkbox({
+                    content: "Leave me alone ...I'm disabled",
+                    disabled: true,
+                    checked: true
+                }) }}
+
+                {{ checkbox({
+                    content: "I've been framed!",
+                    description: "But I too am disabled",
+                    framed: true,
+                    disabled: true,
+                    checked: true
+                }) }}
+            {% endcall %}
         {% endcall %}
+    {% endcall %}
     </article>
 {% endblock %}
+
+{% set localJs %}
+    /*
+        Disable aria-disabled checkboxes on this page
+        Note that in real life there might be other earlier click events on here that these won't catch
+    */
+    let disabledCheckboxes = document.querySelectorAll('.checkbox__control[aria-disabled="true"]');
+
+    disabledCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        });
+    });
+{% endset %}

@@ -22,10 +22,11 @@
     mask-position: center;
     mask-size: var(--size-lg);
     display: none;
-    content: '';
+    content: "";
 }
 
-.checkbox__control, .checkbox__control::before {
+.checkbox__control,
+.checkbox__control::before {
     width: var(--size-xl);
     height: var(--size-xl);
 }
@@ -171,7 +172,8 @@
     gap: var(--size-2xs);
 }
 
-.checkbox__label, .checkbox__description {
+.checkbox__label,
+.checkbox__description {
     display: block;
 }
 
@@ -183,4 +185,106 @@
 
 .checkbox--framed:active:has(:checked) .checkbox__description {
     color: var(--color-gray-900);
+}
+
+.checkbox:has(
+        .checkbox__control:disabled,
+        .checkbox__control[aria-disabled="true"]
+    ) {
+    cursor: not-allowed;
+    color: var(--color-gray-500);
+}
+
+.checkbox__control:disabled,
+.checkbox__control[aria-disabled="true"],
+.checkbox__control:active[aria-disabled="true"] {
+    background-color: var(--color-gray-200);
+    border-color: var(--color-gray-400);
+}
+
+.checkbox__control:checked:disabled,
+.checkbox__control:checked[aria-disabled="true"],
+.checkbox__control:checked:active[aria-disabled="true"] {
+    background-color: var(--color-gray-400);
+}
+
+@media (hover: hover) {
+    .checkbox__control:hover[aria-disabled="true"] {
+        background-color: var(--color-gray-200);
+        border-color: var(--color-gray-400);
+    }
+    
+    .checkbox__control:checked:hover[aria-disabled="true"] {
+        background-color: var(--color-gray-400);
+    }
+}
+
+.checkbox__control:checked:disabled::before,
+.checkbox__control:checked[aria-disabled="true"]::before {
+    background-color: var(--color-gray-200);
+}
+
+@media (hover: hover) {
+    .checkbox--framed:has(:disabled,
+    [aria-disabled="true"]):hover {
+        background-color: var(--color-white);
+        border-color: var(--color-gray-500);
+    }
+}
+
+.checkbox--framed:has(:disabled,
+[aria-disabled="true"]):active {
+    background-color: var(--color-white);
+    border-color: var(--color-gray-500);
+    cursor: not-allowed;
+}
+
+.checkbox--framed:has(:checked:disabled,
+:checked[aria-disabled="true"]),
+.checkbox--framed:has(:checked:disabled,
+:checked[aria-disabled="true"]):hover,
+.checkbox--framed:has(:checked:disabled,
+:checked[aria-disabled="true"]):active {
+    background-color: var(--color-gray-200);
+    border-color: var(--color-gray-400);
+    cursor: not-allowed;
+}
+
+.checkbox--framed:has(:checked:disabled, :checked[aria-disabled="true"]) .checkbox__description {
+    color: var(--color-gray-500);
+}
+
+@media (hover: hover) {
+    .checkbox--framed:hover:has(:checked) {
+        background-color: var(--color-blue-200);
+    }
+}
+
+.checkbox--framed:active:has(:checked) {
+    background-color: var(--color-blue-300);
+}
+
+.checkbox--framed:has(:focus-visible) {
+    outline-offset: var(--size-4xs);
+    outline: var(--color-blue-500) solid var(--size-4xs);
+    box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
+}
+
+.checkbox--framed .checkbox__control:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+.checkbox--framed:has(:invalid) {
+    border-color: var(--color-red-500);
+}
+
+@media (hover: hover) {
+    .checkbox--framed:hover:has(:invalid) {
+        border-color: var(--color-red-600);
+    }
+}
+
+.checkbox--framed:active:has(:invalid) {
+    border-color: var(--color-red-700);
 }

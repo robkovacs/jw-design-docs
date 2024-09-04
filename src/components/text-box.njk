@@ -8,9 +8,16 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
-    {{ textBox({ attributes: { pattern: "\\d+" } }) }}
-    
-    <div class="show-error-blank-but-required">
-        {{ textBox({ required: true }) }}
-    </div>
+
+    {% call stack() %}
+        {{ textBox({
+            label: "Enter a value",
+            helpText: "You must use only numbers (0-9)",
+            attributes: { pattern: "\\d+" }
+        }) }}
+        
+        {# <div class="show-error-blank-but-required">
+            {{ textBox({ required: true }) }}
+        </div> #}
+    {% endcall %}
 {% endblock %}
