@@ -16,9 +16,7 @@
 
 .toggle-switch__frame {
     pointer-events: none;
-    width: 2rem;
-    min-width: 2rem;
-    max-width: 2rem;
+    flex: 0 0 var(--size-3xl);
 }
 
 .toggle-switch__background,

@@ -10,7 +10,7 @@ const setCurrentFromHash = () => {
     tocLinks.forEach((el) => {
         if (window.location.hash == el.getAttribute('href')) {
             el.classList.add('current');
-            document.querySelector(el.getAttribute('href')).scrollIntoView();
+            // document.querySelector(el.getAttribute('href')).scrollIntoView();
         }
     });
 };

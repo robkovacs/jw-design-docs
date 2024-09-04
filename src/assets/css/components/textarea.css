@@ -5,6 +5,7 @@
     font-size: var(--size-md);
     line-height: var(--size-xl);
     border: var(--size-5xs) solid var(--color-gray-500);
+    width: 100%;
 }
 
 .textarea:hover {

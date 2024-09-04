@@ -1,15 +1,13 @@
 .radio-button {
     display: flex;
     gap: var(--size-xs);
-    width: fit-content;
-    max-width: 100%;
 }
 
 .radio-button__control {
+    flex: 0 0 var(--size-lg);
     appearance: none;
     background-color: #fff;
-    margin: 0;
-    width: var(--size-lg);
+    margin: var(--size-4xs);
     height: var(--size-lg);
     border: var(--size-5xs) solid var(--color-gray-500);
     border-radius: 9999px;
@@ -153,6 +151,7 @@
 
 .radio-button__content {
     display: flex;
+    width: max-content;
     flex-direction: column;
     gap: var(--size-2xs);
 }
