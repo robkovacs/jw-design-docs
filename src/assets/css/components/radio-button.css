@@ -6,7 +6,7 @@
 .radio-button__control {
     flex: 0 0 var(--size-lg);
     appearance: none;
-    background-color: #fff;
+    background-color: var(--color-white);
     margin: var(--size-4xs);
     height: var(--size-lg);
     border: var(--size-5xs) solid var(--color-gray-500);

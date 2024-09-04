@@ -5,6 +5,8 @@
     font-size: var(--size-md);
     line-height: var(--size-xl);
     border: var(--size-5xs) solid var(--color-gray-500);
+    background-color: var(--color-white);
+    color: inherit;
 }
 
 .text-box:not(:placeholder-shown) {

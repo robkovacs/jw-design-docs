@@ -1,6 +1,7 @@
 html {
     height: 100%;
     margin: 0;
+    background-color: var(--color-white);
 }
 
 * {
@@ -16,6 +17,7 @@ html {
 
 body {
     margin: 0;
+    background-color: var(--color-white);
 }
 
 a {
@@ -27,23 +29,23 @@ a {
 }
 
 a:link, a:visited {
-    color: #0070d4;
+    color: var(--color-blue-600);
     text-decoration: none;
 }
 
 a:active {
-    color: #1E3D92;
+    color: var(--color-blue-800);
     text-decoration: underline;
 }
 
 @media (hover: hover) {
     a:hover, a:hover:visited {
-    color: #0E57B5;
-    text-decoration: underline;
+        color: var(--color-blue-700);
+        text-decoration: underline;
     }
 
     a:hover:active {
-        color: #1E3D92;
+        color: var(--color-blue-800);
     }
 }
 .main-content {

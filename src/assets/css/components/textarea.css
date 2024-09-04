@@ -6,6 +6,8 @@
     line-height: var(--size-xl);
     border: var(--size-5xs) solid var(--color-gray-500);
     width: 100%;
+    background-color: var(--color-white);
+    color: inherit;
 }
 
 .textarea:hover {

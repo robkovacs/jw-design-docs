@@ -25,6 +25,7 @@
     --color-blue-600: #0070d4;
     --color-blue-700: #0e57b5;
     --color-blue-800: #1e3d92;
+    --color-blue-900: #15246d;
 
     --color-red-100: #ffefea;
     --color-red-200: #ffcfbf;
@@ -52,7 +53,6 @@
     --color-purple-500: #8a73e5;
     --color-purple-600: #775bdb;
     --color-purple-700: #5f43ca;
-
 
     --size-5xs: 0.0625rem;
     --size-4xs: 0.125rem;
@@ -86,5 +86,69 @@
     :root {
         --nav-width: 16rem;
         --ui-max-width: 90rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-white: #000000;
+
+        --color-gray-100: #1c1d1f;
+        --color-gray-200: #3f4147;
+        --color-gray-300: #5e6167;
+        --color-gray-400: #6d717a;
+        --color-gray-500: #848890;
+        --color-gray-600: #a9adb5;
+        --color-gray-700: #d9dce1;
+        --color-gray-800: #eef0f4;
+        --color-gray-900: #f7f8fb;
+
+        --color-blue-100: #15246d;
+        --color-blue-200: #1e3d92;
+        --color-blue-300: #0e57b5;
+        --color-blue-400: #0070d4;
+        --color-blue-500: #0092f6;
+        --color-blue-600: #52b0ff;
+        --color-blue-700: #6dc8ff;
+        --color-blue-800: #b6e5ff;
+        --color-blue-900: #e5f3ff;
+
+        --color-red-100: #710100;
+        --color-red-200: #832512;
+        --color-red-300: #af2c10;
+        --color-red-500: #df5a31;
+        --color-red-600: #fb7f59;
+        --color-red-700: #ff9f82;
+        
+        --color-green-100: #003d27;
+        --color-green-200: #005133;
+        --color-green-300: #006943;
+        --color-green-400: #008354;
+        --color-green-600: #2cb987;
+        --color-green-800: #98e2c5;
+        
+        --color-yellow-100: #5c2200;
+        --color-yellow-200: #753204;
+        --color-yellow-300: #8f4509;
+        --color-yellow-600: #dd9610;
+        --color-yellow-800: #ffdb7b;
+
+        --color-purple-100: #300EA2;
+        --color-purple-200: #4529b4;
+        --color-purple-300: #5f43ca;
+        --color-purple-500: #8a73e5;
+        --color-purple-600: #a993ff;
+        --color-purple-700: #baaaf9;
+
+        --box-shadow-level-1: -1px -1px 2px 0px rgba(238, 240, 244, 0.07), 1px 1px 2px 0px rgba(238, 240, 244, 0.28);
+        --box-shadow-level-2: -2px -2px 4px 0px rgba(238, 240, 244, 0.07), 2px 2px 4px 0px rgba(238, 240, 244, 0.28);
+        --box-shadow-level-3: -4px -4px 8px 0px rgba(238, 240, 244, 0.06), 4px 4px 8px 0px rgba(238, 240, 244, 0.24);
+        --box-shadow-level-4: -8px -8px 16px 0px rgba(238, 240, 244, 0.06), 8px 8px 16px 0px rgba(238, 240, 244, 0.24);
+        
+        --drop-shadow-level-1: drop-shadow(-1px -1px 2px rgba(238, 240, 244, 0.07)) drop-shadow(1px 1px 2px 0px rgba(238, 240, 244, 0.28));
+        --drop-shadow-level-2: drop-shadow(-2px -2px 4px rgba(238, 240, 244, 0.07)) drop-shadow(2px 2px 4px rgba(238, 240, 244, 0.28));
+        --drop-shadow-level-3: drop-shadow(-4px -4px 8px rgba(238, 240, 244, 0.06)) drop-shadow(4px 4px 8px rgba(238, 240, 244, 0.24));
+        --drop-shadow-level-4: drop-shadow(-8px -8px 16px rgba(238, 240, 244, 0.06)) drop-shadow(8px 8px 16px rgba(238, 240, 244, 0.24));
+    
     }
 }

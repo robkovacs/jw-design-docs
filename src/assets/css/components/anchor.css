@@ -7,23 +7,23 @@
 }
 
 .anchor:link, .anchor:visited {
-    color: #0070d4;
+    color: var(--color-blue-600);
     text-decoration: none;
 }
 
 .anchor:active {
-    color: #1E3D92;
+    color: var(--color-blue-800);
     text-decoration: underline;
 }
 
 @media (hover: hover) {
     .anchor:hover, .anchor:hover:visited {
-        color: #0E57B5;
+        color: var(--color-blue-700);
         text-decoration: underline;
     }
 
     .anchor:hover:active {
-        color: #1E3D92;
+        color: var(--color-blue-800);
     }
 }
 
