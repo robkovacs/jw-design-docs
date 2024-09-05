@@ -4,6 +4,7 @@
 
     &:has(:disabled, [aria-disabled="true"]) {
         color: var(--color-gray-500);
+        cursor: not-allowed;
     }
 
     @media (hover: hover) {
