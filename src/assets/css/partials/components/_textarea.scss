@@ -27,11 +27,47 @@
         }
     }
 
+    &:not(:placeholder-shown) {
+        border-color: var(--color-red-500);
+
+        &:active {
+            border-color: var(--color-red-700);
+        }
+    }
+
+    &:valid {
+        border-color: var(--color-gray-500);
+
+        &:active {
+            border-color: var(--color-gray-700);
+        }
+    }
+
     @media (hover: hover) {
         &:hover {
-            border-color: var(--color-gray-600);
+            &:not(:placeholder-shown) {
+                border-color: var(--color-red-600);
+            }
+
+            &:valid {
+                border-color: var(--color-gray-600);
+            }
         }
     }
 }
 
-/* TODO: error state */
+.show-error-blank-but-required .textarea:required {
+    &:invalid {
+        border-color: var(--color-red-500);
+
+        @media (hover: hover) {
+            &:hover {
+                border-color: var(--color-red-600);
+            }
+        }
+
+        &:active {
+            border-color: var(--color-red-700);
+        }
+    }
+}

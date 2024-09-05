@@ -38,16 +38,18 @@
     }
 }
 
-.show-error-blank-but-required .text-box:invalid {
-    border-color: var(--color-red-500);
+.show-error-blank-but-required .text-box:required {
+    &:invalid {
+        border-color: var(--color-red-500);
 
-    @media (hover: hover) {
-        &:hover {
-            border-color: var(--color-red-600);
+        @media (hover: hover) {
+            &:hover {
+                border-color: var(--color-red-600);
+            }
         }
-    }
 
-    &:active {
-        border-color: var(--color-red-700);
+        &:active {
+            border-color: var(--color-red-700);
+        }
     }
 }
