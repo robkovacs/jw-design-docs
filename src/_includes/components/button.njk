@@ -1,4 +1,5 @@
 {% from './system-icon.njk' import render as systemIcon %}
+{% from './spinner.njk' import render as spinner %}
 
 {% macro render(options) %}
     {% set variant %}{{ options.variant | default("filled") }}{% endset %}
@@ -20,8 +21,14 @@
         {% endfor %}
         {{ ('aria-disabled="true"' | safe) if options.disabled }}
     > 
-        {{- systemIcon(options.leftIcon) if options.leftIcon -}}
-        <span>{{- options.content -}}</span>
-        {{- systemIcon(options.rightIcon) if options.rightIcon -}}
+        {% if options.loading %}
+            {{ spinner() }}
+        {% endif %}
+
+        <span class="button__content">
+            {{- systemIcon(options.leftIcon) if options.leftIcon -}}
+            <span class="button__label">{{- options.content -}}</span>
+            {{- systemIcon(options.rightIcon) if options.rightIcon -}}
+        </span>
     </button>
 {% endmacro %}

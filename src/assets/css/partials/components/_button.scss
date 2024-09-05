@@ -5,7 +5,7 @@
     border-width: var(--size-4xs);
     border-style: solid;
 
-    & > .system-icon {
+    & .system-icon {
         &:first-child {
             margin-right: var(--size-3xs);
 
@@ -132,7 +132,7 @@
             padding: calc(var(--size-2xs) - var(--size-4xs))
                 calc(var(--size-xs) - var(--size-4xs));
 
-            & > .system-icon > svg {
+            & .system-icon > svg {
                 width: var(--size-md);
                 height: var(--size-md);
             }
@@ -149,7 +149,7 @@
             padding: calc(var(--size-3xs) - var(--size-4xs))
                 calc(var(--size-3xs) - var(--size-4xs));
 
-            & > .system-icon > svg {
+            & .system-icon > svg {
                 width: var(--size-md);
                 height: var(--size-md);
             }
@@ -158,6 +158,76 @@
                 padding-left: calc(var(--size-3xs) - var(--size-4xs));
                 padding-right: calc(var(--size-3xs) - var(--size-4xs));
             }
+        }
+    }
+}
+
+.button--loading {
+    position: relative;
+    cursor: wait;
+
+    & .button__content {
+        visibility: hidden;
+    }
+
+    & .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    &.button--filled {
+        & .spinner__shape {
+            background: conic-gradient(transparent 12.5%, var(--color-white));
+        }
+
+        &:not(:disabled, [aria-disabled="true"]) {
+            background-color: var(--color-blue-800);
+        }
+
+        &:disabled,
+        &[aria-disabled="true"] {
+            & .spinner__shape {
+                background: conic-gradient(transparent 12.5%, var(--color-gray-500));
+            }            
+        }
+    }
+
+    &.button--outlined {
+        & .spinner__shape {
+            background: conic-gradient(transparent 12.5%, var(--color-blue-800));
+        }
+
+        &:not(:disabled, [aria-disabled="true"]) {
+            color: var(--color-blue-800);
+            border-color: var(--color-blue-800);
+        }
+
+        &:disabled,
+        &[aria-disabled="true"] {
+            & .spinner__shape {
+                background: conic-gradient(transparent 12.5%, var(--color-gray-500));
+            }            
+        }
+    }
+
+    &.button--ghost {
+        & .spinner__shape {
+            background: conic-gradient(transparent 12.5%, var(--color-blue-800));
+        }
+
+        @media(hover: hover) {
+            &:hover {
+                background-color: transparent;
+            }
+        }
+
+        &:disabled,
+        &[aria-disabled="true"] {
+            & .spinner__shape {
+                background: conic-gradient(transparent 12.5%, var(--color-gray-500));
+            }            
         }
     }
 }
