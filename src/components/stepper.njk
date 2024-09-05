@@ -8,4 +8,62 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
+    {% call stack() %}
+        {{ stepper({
+            steps: [
+                {
+                    type: "complete",
+                    title: 'Step 1',
+                    subtitle: 'You already did this'
+                },
+                {
+                    type: "current",
+                    title: 'Step 2',
+                    subtitle: 'You are here'
+                },
+                {
+                    title: 'Step 3',
+                    subtitle: 'Still to come'
+                },
+                {
+                    title: 'Step 4',
+                    subtitle: 'Almost there...'
+                },
+                {
+                    type: "disabled",
+                    title: 'Step 5',
+                    subtitle: "You'll make it here one day, I just know it!"
+                }
+            ]
+        }) }}
+
+        {{ stepper({
+            orientation: "vertical",
+            steps: [
+                {
+                    type: "complete",
+                    title: 'Step 1',
+                    subtitle: 'You already did this'
+                },
+                {
+                    type: "current",
+                    title: 'Step 2',
+                    subtitle: 'You are here'
+                },
+                {
+                    title: 'Step 3',
+                    subtitle: 'Still to come'
+                },
+                {
+                    title: 'Step 4',
+                    subtitle: 'Almost there...'
+                },
+                {
+                    type: "disabled",
+                    title: 'Step 5',
+                    subtitle: "You'll make it here one day, I just know it!"
+                }
+            ]
+        }) }}
+    {% endcall %}
 {% endblock %}

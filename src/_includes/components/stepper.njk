@@ -1,2 +1,16 @@
 {% macro render(options) %}
+    {% set orientation = (options.orientation | default("horizontal")) %}
+
+    <ol class="stepper stepper--orientation-{{ orientation }}">
+    {% for step in options.steps %}
+        {% set type = (step.type | default("incomplete")) %}
+        <li class="step step--type-{{ type }}">
+            <span class="step__counter"></span>
+            <span class="step__content">
+                <span class="step__title">{{ step.title }}</span>
+                <span class="step__subtitle">{{ step.subtitle }}</span>
+            </span>
+        </li>
+    {% endfor %}
+    </ol>
 {% endmacro %}
