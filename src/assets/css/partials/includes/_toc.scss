@@ -18,9 +18,11 @@
 }
 
 .toc {
-    & .current {
-        background-color: var(--color-blue-100);
-        border-left: var(--size-4xs) solid var(--color-blue-600);
+    @media (min-width: 72rem) {
+        & .current {
+            background-color: var(--color-blue-100);
+            border-left: var(--size-4xs) solid var(--color-blue-600);
+        }
     }
 
     & ol {
@@ -36,9 +38,15 @@
         }
 
         & a {
-            padding: var(--size-2xs);
-            border-left: var(--size-4xs) solid transparent;
-            border-radius: 0;
+            padding: var(--size-3xs);
+        }
+        
+        @media (min-width: 72rem) {
+            & a {
+                padding: var(--size-2xs);
+                border-left: var(--size-4xs) solid transparent;
+                border-radius: 0;
+            }
         }
     }
 }
