@@ -37,15 +37,16 @@
         <link rel="stylesheet" href="/pagefind/pagefind-ui.css" >
         {% if localCss %}<style>{{ localCss | cssmin | safe }}</style>{% endif %}
     </head>
-    <body>
+    <body>      
         {% include 'main-nav.njk' %}
         <main data-pagefind-body>
-                {% if includePageHeader !== false %}
-                    <div data-pagefind-ignore>
-                        {{ collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key) | eleventyNavigationToHtml({ 'listClass': 'breadcrumbs' }) | safe }}
-                    </div>
-                    <h1>{{ title }}</h1>
-                {% endif %}
+        {% if includePageHeader !== false %}
+            <div data-pagefind-ignore>
+                {{ collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key) | eleventyNavigationToHtml({ 'listClass': 'breadcrumbs' }) | safe }}
+            </div>
+            <h1>{{ title }}</h1>
+        {% endif %}
+
             <div class="main-content">
                 {% set localContent %}
                     {% block content %}{% endblock %}

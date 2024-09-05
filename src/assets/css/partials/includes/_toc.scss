@@ -6,12 +6,15 @@
 }
 
 .toc__container {
-    order: 2;
     flex: 1 0;
     align-self: flex-start;
-    position: sticky;
     top: var(--size-3xl);
     right: var(--size-3xl);
+
+    @media (min-width: 72rem) {
+        position: sticky;
+        order: 2;
+    }
 }
 
 .toc {

@@ -10,6 +10,12 @@
 {%- endif -%}
 </li>
 {%- endmacro %}
+<div class="mobile-header">
+    <button class="mobile-header__button">
+        {{ systemIcon("menu") }}
+    </button>
+    <a href="/" class="main-nav__home">XD@JW</a>
+</div>  
 
 <nav class="main-nav">
     <a href="/" class="main-nav__home">XD@JW</a>
@@ -20,3 +26,4 @@
         {%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
     </ul>
 </nav>
+<div class="main-nav__backdrop"></div>

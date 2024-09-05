@@ -27,13 +27,20 @@ body {
     margin: 0;
     background-color: var(--color-white);
 
-    @media screen and (min-width: 30rem) {
+    @media screen and (min-width: 48rem) {
         min-height: 100%;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: stretch;
     }
+}
+
+html:has(.main-nav--open), body:has(.main-nav--open) {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;   
 }
 
 a {
@@ -68,7 +75,10 @@ a {
 }
 
 main {
-    @media screen and (min-width: 30rem) {
+    flex: 1 1 100%;
+    padding: var(--size-xl);
+
+    @media screen and (min-width: 48rem) {
         flex: 1 1 calc(var(--ui-max-width) - var(--nav-width));
         padding: var(--size-5xl);
         overflow-wrap: anywhere;
@@ -77,8 +87,12 @@ main {
 
 .main-content {
     display: flex;
-    flex-direction: row;
     gap: var(--size-5xl);
+    flex-direction: column;
+    
+    @media screen and (min-width: 72rem) {
+        flex-direction: row;
+    }  
 }
 
 .body-content {
