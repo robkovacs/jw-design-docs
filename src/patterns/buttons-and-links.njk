@@ -9,256 +9,256 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
-<article>
-    <section>
-        <h2 class="toc__heading" id="use-button-link">Whether to use a button or a link</h2>
-        <!-- TODO: figure out how to properly componentize these headings -->
+    <article>
+        <section>
+            <h2 class="toc__heading" id="use-button-link">Whether to use a button or a link</h2>
+            <!-- TODO: figure out how to properly componentize these headings -->
 
-        <p>Buttons and links behave differently, because they have different purposes:</p>
-        <ul class="bulleted-list">
-            <li><strong>Buttons are for actions:</strong> showing content on the page that was previously hidden, playing a video, or submitting a form, and so on.</li>
-            <li><strong>Links are for movement:</strong> taking the user to a new page, or new section of the current page</li>
-        </ul>
-        <p>Because of their different purposes, buttons and links behave differently in both browsers and screen readers. Some examples include:</p>
-        <ul class="bulleted-list">
-            <li>A link points to a specific URL that can be shared, bookmarked, saved in your browser history, and reopened later—but a button doesn't</li>
-            <li>Links can be opened in a new tab, buttons can't</li>
-            <li>Links have a concept of whether or not they've been visited, buttons don't</li>
-            <li>Most browsers show a link's target URL in the bottom-left corner on hover or focus; but don't do that for buttons</li>
-            <li>Focused buttons can be activated (i.e. clicked on) with the <kbd>Space</kbd> key, or the <kbd>Enter</kbd> or <kbd>Return</kbd> key; focused links can only be activated with <kbd>Enter</kbd> or <kbd>Return</kbd></li>
-            <li>Some screen readers collect all links on the page in one section of their interface, and all buttons or form controls in another</li>
-        </ul>
-        <p>Put together, those different purposes, and resulting different behaviors, mean that...</p>
-        <figure>
+            <p>Buttons and links behave differently, because they have different purposes:</p>
+            <ul class="bulleted-list">
+                <li><strong>Buttons are for actions:</strong> showing content on the page that was previously hidden, playing a video, or submitting a form, and so on.</li>
+                <li><strong>Links are for movement:</strong> taking the user to a new page, or new section of the current page</li>
+            </ul>
+            <p>Because of their different purposes, buttons and links behave differently in both browsers and screen readers. Some examples include:</p>
+            <ul class="bulleted-list">
+                <li>A link points to a specific URL that can be shared, bookmarked, saved in your browser history, and reopened later—but a button doesn't</li>
+                <li>Links can be opened in a new tab, buttons can't</li>
+                <li>Links have a concept of whether or not they've been visited, buttons don't</li>
+                <li>Most browsers show a link's target URL in the bottom-left corner on hover or focus; but don't do that for buttons</li>
+                <li>Focused buttons can be activated (i.e. clicked on) with the <kbd>Space</kbd> key, or the <kbd>Enter</kbd> or <kbd>Return</kbd> key; focused links can only be activated with <kbd>Enter</kbd> or <kbd>Return</kbd></li>
+                <li>Some screen readers collect all links on the page in one section of their interface, and all buttons or form controls in another</li>
+            </ul>
+            <p>Put together, those different purposes, and resulting different behaviors, mean that...</p>
+            <figure>
+                <div class="two-columns vertically-centered">
+                    <div>
+                        {{ anchor({
+                            content: "...if this looks like a link, but acts like a button...",
+                            href: "javascript:return false;"
+                        }) }}
+                    </div>
+                    <div>
+                        {{ button({
+                            content: "...or if this looks like a button, but acts like a link..."
+                        }) }}
+                    </div>
+                </div>
+            </figure>
+            <p>...we might have some work to do.</p>
+        </section>
+        <section>
+            <h2 class="toc__heading" id="icon-only-buttons">Icon-only buttons</h2>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="use-icon-only-buttons">When to use</h3>
+
+            <p>Out of a desire to create a simpler user interface, or save space, you might consider using an Icon Button in some part of your designs. But you should consider:</p>
+
+            <ul class="bulleted-list">
+                <li>How likely is it that all of the users of this experience will <strong>correctly</strong> interpret the function of this button, with only an icon?</li>
+                <li>What might be the <strong>consequences of misinterpretation</strong>? Can the user easily undo whatever the button does? How might their experience be degraded if they ignore the button, because they don't realize what it actually does?</li>
+            </ul>
+
             <div class="two-columns vertically-centered">
                 <div>
-                    {{ anchor({
-                        content: "...if this looks like a link, but acts like a button...",
-                        href: "javascript:return false;"
-                    }) }}
+                    <p>If there's a <strong>low</strong> risk of misinterpretation, an icon-only button should work just fine.</p>
                 </div>
                 <div>
-                    {{ button({
-                        content: "...or if this looks like a button, but acts like a link..."
-                    }) }}
+                    <figure>
+                        {{ button({
+                            variant: "ghost",
+                            leftIcon: "edit",
+                            attributes: {
+                                "aria-label": "Edit"
+                            }
+                        }) }}
+                    </figure>
                 </div>
             </div>
-        </figure>
-        <p>...we might have some work to do.</p>
-    </section>
-    <section>
-        <h2 class="toc__heading" id="icon-only-buttons">Icon-only buttons</h2>
-    </section>
-    <section>
-        <h3 class="toc__heading" id="use-icon-only-buttons">When to use</h3>
 
-        <p>Out of a desire to create a simpler user interface, or save space, you might consider using an Icon Button in some part of your designs. But you should consider:</p>
-
-        <ul class="bulleted-list">
-            <li>How likely is it that all of the users of this experience will <strong>correctly</strong> interpret the function of this button, with only an icon?</li>
-            <li>What might be the <strong>consequences of misinterpretation</strong>? Can the user easily undo whatever the button does? How might their experience be degraded if they ignore the button, because they don't realize what it actually does?</li>
-        </ul>
-
-        <div class="two-columns vertically-centered">
-            <div>
-                <p>If there's a <strong>low</strong> risk of misinterpretation, an icon-only button should work just fine.</p>
+            <div class="two-columns vertically-centered">
+                <div>
+                    <p>If you think there's a <strong>medium</strong> risk of misinterpretation, consider adding a tooltip to the button to provide users with additional context.</p>
+                </div>
+                <div>
+                    <figure>
+                        {{ tooltip({
+                            trigger: button({
+                                variant: "ghost",
+                                leftIcon: "fullscreen-open",
+                                attributes: {
+                                    "aria-label": "View org chart in fullscreen"
+                                }
+                            }),
+                            content: "View org chart in fullscreen"
+                        }) }}
+                    </figure>
+                </div>
             </div>
-            <div>
-                <figure>
-                    {{ button({
-                        variant: "ghost",
-                        leftIcon: "edit",
-                        attributes: {
-                            "aria-label": "Edit"
-                        }
-                    }) }}
-                </figure>
-            </div>
-        </div>
 
-        <div class="two-columns vertically-centered">
-            <div>
-                <p>If you think there's a <strong>medium</strong> risk of misinterpretation, consider adding a tooltip to the button to provide users with additional context.</p>
-            </div>
-            <div>
-                <figure>
-                    {{ tooltip({
-                        trigger: button({
+            <div class="two-columns vertically-centered">
+                <div>
+                    <p>If there's a <strong>high</strong> risk of misinterpretation, consider adding a text label to the button.</p>
+                </div>
+                <div>
+                    <figure>
+                        {{ button({
                             variant: "ghost",
-                            leftIcon: "fullscreen-open",
+                            leftIcon: "sync",
+                            content: "Sync all invoices"
+                        }) }}
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="icon-only-buttons-accessibility">Accessibility</h3>
+
+            <p>Whether or not an icon has a common interpretation, that still depends on users' ability to see it. So for screen reader users, we need to add an <code>aria-label</code> to each icon-only button that will stand in for the icon.</p>
+            <div class="two-columns">
+                <div>
+                    <figure>
+                        <div class="h4">Given this button...</div>
+                        {{ button({
+                            variant: "outlined",
+                            leftIcon: "trash",
                             attributes: {
-                                "aria-label": "View org chart in fullscreen"
+                                "aria-label": "Delete"
                             }
-                        }),
-                        content: "View org chart in fullscreen"
-                    }) }}
-                </figure>
+                        }) }}
+                    </figure>
+                </div>
+                <div>
+                    <figure>
+                        <div class="h4">...on focus, a screen reader will say:</div>
+                        <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"Delete."</samp>
+                    </figure>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="two-columns vertically-centered">
-            <div>
-                <p>If there's a <strong>high</strong> risk of misinterpretation, consider adding a text label to the button.</p>
-            </div>
-            <div>
+        <section>
+            <h2 class="toc__heading" id="links-icons">Links with icons</h3>
+        </section>
+        <section>        
+            <h3 class="toc__heading" id="use-links-icons">When to use</h3>
+            
+            <p>Both links and buttons can have icons added to the left or the right of the text. But for links, we should use icons to indicate when a link behaves in a non-standard way — in other words, when it doesn't open up a new page in the current tab.</p>
+        </section>
+        <section>        
+            <h4 class="toc__heading" id="links-files">Links to files</h4>                
+            <div class="two-columns vertically-centered">
+                <div>
+                    <p>Use a <kbd><samp>document-*<samp></kbd> icon to indicate that this link points to a file, with the icon specific to that filetype if available. If not, use <kbd><samp>document<samp></kbd>.</p>
+                    <p>Links to files will either trigger a download or open the file in a new tab, depending on the user's browser configuration and the file's type.</p>
+                </div>
+                <div>
                 <figure>
-                    {{ button({
-                        variant: "ghost",
-                        leftIcon: "sync",
-                        content: "Sync all invoices"
-                    }) }}
-                </figure>
+                        <p>{{ anchor({
+                            href: "javascript:return false;",
+                            leftIcon: "document-pdf",
+                            content: "Plan overview"
+                        }) }}</p>
+                        <p>{{ anchor({
+                            href: "javascript:return false;",
+                            leftIcon: "document",
+                            content: "QuickBooks Desktop (2019 or later)"
+                        }) }}</p>
+                    </figure>
+                </div>
             </div>
-        </div>
-    </section>
-    <section>
-        <h3 class="toc__heading" id="icon-only-buttons-accessibility">Accessibility</h3>
+        </section>
+        <section>
+            <h4 class="toc__heading" id="links-open-new-tab">Links that open in a new tab</h4>
 
-        <p>Whether or not an icon has a common interpretation, that still depends on users' ability to see it. So for screen reader users, we need to add an <code>aria-label</code> to each icon-only button that will stand in for the icon.</p>
-        <div class="two-columns">
-            <div>
-                <figure>
-                    <div class="h4">Given this button...</div>
-                    {{ button({
-                        variant: "outlined",
-                        leftIcon: "trash",
-                        attributes: {
-                            "aria-label": "Delete"
-                        }
-                    }) }}
-                </figure>
+            <div class="two-columns vertically-centered">
+                <div>
+                    <p>Use the <kbd><samp>external-link<samp></kbd> icon on the right to indicate when a link opens in a new tab. Screen reader users in particular will appreciate a heads up on the context shift.</p>
+                    <p>Links to files will either trigger a download or open the file in a new tab, depending on the user's browser configuration and the file's type.</p>
+                </div>
+                <div>
+                    <figure>
+                        <p>{{ anchor({
+                            href: "javascript:return false;",
+                            rightIcon: "external-link",
+                            content: "IRS guidelines for FLSA status"
+                        }) }}</p>
+                    </figure>
+                </div>
             </div>
-            <div>
-                <figure>
-                    <div class="h4">...on focus, a screen reader will say:</div>
-                    <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"Delete."</samp>
-                </figure>
-            </div>
-        </div>
-    </section>
+        </section>
+        <section>        
+            <h3 class="toc__heading" id="link-icon-accessibility">Accessibility</h3>
+            <p>It's important to ensure that screen reader users who won't see the icon attached to your link still get the additional context it provides.</p>
+            <p>For file downloads, the filetype (if common), plus <code>Download:</code>, can be prefixed to the link text. For external links, append <code>: Opens in a new tab</code>.</p>
 
-    <section>
-        <h2 class="toc__heading" id="links-icons">Links with icons</h3>
-    </section>
-    <section>        
-        <h3 class="toc__heading" id="use-links-icons">When to use</h3>
-        
-        <p>Both links and buttons can have icons added to the left or the right of the text. But for links, we should use icons to indicate when a link behaves in a non-standard way — in other words, when it doesn't open up a new page in the current tab.</p>
-    </section>
-    <section>        
-        <h4 class="toc__heading" id="links-files">Links to files</h4>                
-        <div class="two-columns vertically-centered">
-            <div>
-                <p>Use a <kbd><samp>document-*<samp></kbd> icon to indicate that this link points to a file, with the icon specific to that filetype if available. If not, use <kbd><samp>document<samp></kbd>.</p>
-                <p>Links to files will either trigger a download or open the file in a new tab, depending on the user's browser configuration and the file's type.</p>
+            <div class="two-columns">
+                <div>
+                    <figure>
+                        <div class="h4">Given this link...</div>
+                        {{ anchor({
+                            href: "javascript:return false;",
+                            leftIcon: "document-pdf",
+                            content: "Plan overview",
+                            attributes: {
+                                "aria-label": "PDF download: Plan overview"
+                            }
+                        }) }}
+                    </figure>
+                </div>
+                <div>
+                    <figure>
+                        <div class="h4">...on focus, a screen reader will say:</div>
+                        <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"PDF download: Plan overview."</samp>
+                    </figure>
+                </div>
             </div>
-            <div>
-               <figure>
-                    <p>{{ anchor({
-                        href: "javascript:return false;",
-                        leftIcon: "document-pdf",
-                        content: "Plan overview"
-                    }) }}</p>
-                    <p>{{ anchor({
-                        href: "javascript:return false;",
-                        leftIcon: "document",
-                        content: "QuickBooks Desktop (2019 or later)"
-                    }) }}</p>
-                </figure>
-            </div>
-        </div>
-    </section>
-    <section>
-        <h4 class="toc__heading" id="links-open-new-tab">Links that open in a new tab</h4>
 
-        <div class="two-columns vertically-centered">
-            <div>
-                <p>Use the <kbd><samp>external-link<samp></kbd> icon on the right to indicate when a link opens in a new tab. Screen reader users in particular will appreciate a heads up on the context shift.</p>
-                <p>Links to files will either trigger a download or open the file in a new tab, depending on the user's browser configuration and the file's type.</p>
+            <div class="two-columns">
+                <div>
+                    <figure>
+                        <div class="h4">Given this link...</div>
+                        {{ anchor({
+                            href: "javascript:return false;",
+                            leftIcon: "document",
+                            content: "QuickBooks Desktop (2019 or later)",
+                            attributes: {
+                                "aria-label": "Download: QuickBooks Desktop (2019 or later)"
+                            }
+                        }) }}
+                    </figure>
+                </div>
+                <div>
+                    <figure>
+                        <div class="h4">...on focus, a screen reader will say:</div>
+                        <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"Download: QuickBooks Desktop (2019 or later)."</samp>
+                    </figure>
+                </div>
             </div>
-            <div>
-                 <figure>
-                    <p>{{ anchor({
-                        href: "javascript:return false;",
-                        rightIcon: "external-link",
-                        content: "IRS guidelines for FLSA status"
-                    }) }}</p>
-                </figure>
-            </div>
-        </div>
-    </section>
-    <section>        
-        <h3 class="toc__heading" id="link-icon-accessibility">Accessibility</h3>
-        <p>It's important to ensure that screen reader users who won't see the icon attached to your link still get the additional context it provides.</p>
-        <p>For file downloads, the filetype (if common), plus <code>Download:</code>, can be prefixed to the link text. For external links, append <code>: Opens in a new tab</code>.</p>
 
-         <div class="two-columns">
-            <div>
-                <figure>
-                    <div class="h4">Given this link...</div>
-                    {{ anchor({
-                        href: "javascript:return false;",
-                        leftIcon: "document-pdf",
-                        content: "Plan overview",
-                        attributes: {
-                            "aria-label": "PDF download: Plan overview"
-                        }
-                    }) }}
-                </figure>
+            <div class="two-columns">
+                <div>
+                    <figure>
+                        <div class="h4">Given this link...</div>
+                        {{ anchor({
+                            href: "javascript:return false;",
+                            rightIcon: "external-link",
+                            content: "IRS guidelines for FLSA status",
+                            attributes: {
+                                "aria-label": "IRS guidelines for FLSA status: Opens in a new tab"
+                            }
+                        }) }}
+                    </figure>
+                </div>
+                <div>
+                    <figure>
+                        <div class="h4">...on focus, a screen reader will say:</div>
+                        <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"IRS guidelines for FLSA status: Opens in a new tab."</samp>
+                    </figure>
+                </div>
             </div>
-            <div>
-                <figure>
-                    <div class="h4">...on focus, a screen reader will say:</div>
-                    <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"PDF download: Plan overview."</samp>
-                </figure>
-            </div>
-        </div>
 
-        <div class="two-columns">
-            <div>
-                <figure>
-                    <div class="h4">Given this link...</div>
-                    {{ anchor({
-                        href: "javascript:return false;",
-                        leftIcon: "document",
-                        content: "QuickBooks Desktop (2019 or later)",
-                        attributes: {
-                            "aria-label": "Download: QuickBooks Desktop (2019 or later)"
-                        }
-                    }) }}
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <div class="h4">...on focus, a screen reader will say:</div>
-                    <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"Download: QuickBooks Desktop (2019 or later)."</samp>
-                </figure>
-            </div>
-        </div>
-
-        <div class="two-columns">
-            <div>
-                <figure>
-                    <div class="h4">Given this link...</div>
-                    {{ anchor({
-                        href: "javascript:return false;",
-                        rightIcon: "external-link",
-                        content: "IRS guidelines for FLSA status",
-                        attributes: {
-                            "aria-label": "IRS guidelines for FLSA status: Opens in a new tab"
-                        }
-                    }) }}
-                </figure>
-            </div>
-            <div>
-                <figure>
-                    <div class="h4">...on focus, a screen reader will say:</div>
-                    <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"IRS guidelines for FLSA status: Opens in a new tab."</samp>
-                </figure>
-            </div>
-        </div>
-
-        <p>Typically this is accomplished using the link's <code>aria-label</code> attribute.</p>
-    </section>
-</article>
+            <p>Typically this is accomplished using the link's <code>aria-label</code> attribute.</p>
+        </section>
+    </article>
 {% endblock %}

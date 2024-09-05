@@ -8,8 +8,10 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
-    {% call stack() %}
-        {{ inputLabel("Required field label", true, "dummy-id-1") }}
-        {{ inputLabel("Optional field label", false, "dummy-id-2") }}
-    {% endcall %}
+    <article>
+        {% call stack() %}
+            {{ inputLabel("Required field label", true, "dummy-id-1") }}
+            {{ inputLabel("Optional field label", false, "dummy-id-2") }}
+        {% endcall %}
+    </article>
 {% endblock %}

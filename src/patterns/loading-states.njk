@@ -8,11 +8,13 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
-    <p>{{ spinner() }}</p>
-    <p style="margin-bottom: 0.5rem">{{ skeleton('image', { width: '100px', height: '100px', borderRadius: 'md' }) }}</p>
-    <p>
-        {{ skeleton('text', { width: '400px'}) }}<br />
-        {{ skeleton('text', { width: '500px'}) }}<br />
-        {{ skeleton('text', { width: '400px'}) }}
-    </p>
+    <article>
+        <p>{{ spinner() }}</p>
+        <p style="margin-bottom: 0.5rem">{{ skeleton('image', { width: '100px', height: '100px', borderRadius: 'md' }) }}</p>
+        <p>
+            {{ skeleton('text', { width: '400px'}) }}<br />
+            {{ skeleton('text', { width: '500px'}) }}<br />
+            {{ skeleton('text', { width: '400px'}) }}
+        </p>
+    </article>
 {% endblock %}

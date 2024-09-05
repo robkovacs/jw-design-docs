@@ -8,13 +8,15 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
-    {{ tooltip({
-        trigger: "Look at me",
-        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size."
-    }) }}
+    <article>
+        {{ tooltip({
+            trigger: "Look at me",
+            content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size."
+        }) }}
 
-    {{ tooltip({
-        trigger: button({ content: "Look at me" }),
-        content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size."
-    }) }}
+        {{ tooltip({
+            trigger: button({ content: "Look at me" }),
+            content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size."
+        }) }}
+    </article>
 {% endblock %}

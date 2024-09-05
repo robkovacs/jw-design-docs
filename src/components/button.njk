@@ -8,112 +8,114 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
-    {% call stack() %}
-        {% call row() %}
-            {{ button({
-                content: "This is a filled button"
-            }) }}
-            {{ button({
-                content: "This is an outlined button",
-                variant: "outlined"
-            }) }}
-            {{ button({
-                content: "This is a ghost button",
-                variant: "ghost"
-            }) }}
-        {% endcall %}
+    <article>
+        {% call stack() %}
             {% call row() %}
-            {{ button({
-                content: "Buttons can have no icons"
-            }) }}
-            {{ button({
-                content: "Or an icon on the left",
-                variant: "outlined",
-                leftIcon: "undo"
-            }) }}
-            {{ button({
-                content: "Or an icon on the right",
-                variant: "ghost",
-                rightIcon: "arrow-right"
-            }) }}
-            {{ tooltip({
-                trigger: button({
-                    variant: "ghost",
-                    leftIcon: "grid"
-                }),
-                content: "Or just an icon"
-            }) }}
-        {% endcall %}
+                {{ button({
+                    content: "This is a filled button"
+                }) }}
+                {{ button({
+                    content: "This is an outlined button",
+                    variant: "outlined"
+                }) }}
+                {{ button({
+                    content: "This is a ghost button",
+                    variant: "ghost"
+                }) }}
+            {% endcall %}
                 {% call row() %}
-            {{ button({
-                content: "Buttons can be small",
-                size: "sm"
-            }) }}
-            {{ button({
-                content: "This helps them fit into tight spaces",
-                variant: "outlined",
-                size: "sm"
-            }) }}
-            {{ button({
-                content: "Like into a row of a list",
-                variant: "ghost",
-                size: "sm"
-            }) }}
-        {% endcall %}
-        {% call row() %}
-            {{ button({
-                content: "Buttons can be disabled",
-                disabled: true
-            }) }}
-            {{ button({
-                content: "Even if they're outlined",
-                variant: "outlined",
-                disabled: true
-            }) }}
-            {{ button({
-                content: "Or ghost",
-                variant: "ghost",
-                disabled: true
-            }) }}
-        {% endcall %}
+                {{ button({
+                    content: "Buttons can have no icons"
+                }) }}
+                {{ button({
+                    content: "Or an icon on the left",
+                    variant: "outlined",
+                    leftIcon: "undo"
+                }) }}
+                {{ button({
+                    content: "Or an icon on the right",
+                    variant: "ghost",
+                    rightIcon: "arrow-right"
+                }) }}
+                {{ tooltip({
+                    trigger: button({
+                        variant: "ghost",
+                        leftIcon: "grid"
+                    }),
+                    content: "Or just an icon"
+                }) }}
+            {% endcall %}
+                    {% call row() %}
+                {{ button({
+                    content: "Buttons can be small",
+                    size: "sm"
+                }) }}
+                {{ button({
+                    content: "This helps them fit into tight spaces",
+                    variant: "outlined",
+                    size: "sm"
+                }) }}
+                {{ button({
+                    content: "Like into a row of a list",
+                    variant: "ghost",
+                    size: "sm"
+                }) }}
+            {% endcall %}
+            {% call row() %}
+                {{ button({
+                    content: "Buttons can be disabled",
+                    disabled: true
+                }) }}
+                {{ button({
+                    content: "Even if they're outlined",
+                    variant: "outlined",
+                    disabled: true
+                }) }}
+                {{ button({
+                    content: "Or ghost",
+                    variant: "ghost",
+                    disabled: true
+                }) }}
+            {% endcall %}
 
-        {% call row() %}
-            {{ button({
-                content: "Buttons can be disabled",
-                loading: true
-            }) }}
-            {{ button({
-                content: "Even if they're outlined",
-                variant: "outlined",
-                loading: true
-            }) }}
-            {{ button({
-                content: "Or ghost",
-                variant: "ghost",
-                loading: true
-            }) }}
-        {% endcall %}
+            {% call row() %}
+                {{ button({
+                    content: "Buttons can be disabled",
+                    loading: true
+                }) }}
+                {{ button({
+                    content: "Even if they're outlined",
+                    variant: "outlined",
+                    loading: true
+                }) }}
+                {{ button({
+                    content: "Or ghost",
+                    variant: "ghost",
+                    loading: true
+                }) }}
+            {% endcall %}
 
-        {% call row() %}
-            {{ button({
-                content: "Buttons can be disabled",
-                disabled: true,
-                loading: true
-            }) }}
-            {{ button({
-                content: "Even if they're outlined",
-                variant: "outlined",
-                disabled: true,
-                loading: true
-            }) }}
-            {{ button({
-                content: "Or ghost",
-                variant: "ghost",
-                disabled: true,
-                loading: true
-            }) }}
+            {% call row() %}
+                {{ button({
+                    content: "Buttons can be disabled",
+                    disabled: true,
+                    loading: true
+                }) }}
+                {{ button({
+                    content: "Even if they're outlined",
+                    variant: "outlined",
+                    disabled: true,
+                    loading: true
+                }) }}
+                {{ button({
+                    content: "Or ghost",
+                    variant: "ghost",
+                    disabled: true,
+                    loading: true
+                }) }}
+            {% endcall %}
         {% endcall %}
-    {% endcall %}
+    </article>
 {% endblock %}
 
 {% set localJs %}
