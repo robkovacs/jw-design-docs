@@ -9,7 +9,24 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        {{ toggleSwitch({ content: "Toggle me" }) }}
-        {{ toggleSwitch({ content: "Toggle me", description: "Here's a little extra to help you decide whether or not to do it", framed: true }) }}
+        {{ toggleSwitch({
+            content: "Toggle me"
+        }) }}
+        {{ toggleSwitch({
+            content: "Toggle me",
+            description: "Here's a little extra to help you decide whether or not to do it",
+            framed: true
+        }) }}
+        {{ toggleSwitch({
+            content: "Toggle me",
+            disabled: true
+        }) }}
+        {{ toggleSwitch({
+            content: "Toggle me",
+            description: "Here's a little extra to help you decide whether or not to do it",
+            framed: true,
+            disabled: true,
+            checked: true
+        }) }}
     </article>
 {% endblock %}

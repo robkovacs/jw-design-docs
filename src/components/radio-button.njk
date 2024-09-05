@@ -90,3 +90,18 @@ eleventyNavigation:
         {% endcall %}
     </article>
 {% endblock %}
+
+{% set localJs %}
+    /*
+        Disable aria-disabled radio buttons on this page
+        Note that in real life there might be other earlier click events on here that these won't catch
+    */
+    let disabledRadioButtons = document.querySelectorAll('.radio-button__control[aria-disabled="true"]');
+
+    disabledRadioButtons.forEach((radioButton) => {
+        radioButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        });
+    });
+{% endset %}
