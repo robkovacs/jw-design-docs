@@ -4,6 +4,8 @@
     gap: var(--size-md);
 
     & .input-label {
+        font-size: var(--size-sm);
+        line-height: var(--size-md);
         font-weight: 400;
     }
 
