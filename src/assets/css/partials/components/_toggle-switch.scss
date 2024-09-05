@@ -18,9 +18,23 @@
         flex: 0 0 var(--size-3xl);
     }
 
-    &__background,
+    &__foreground,
+    &__background {
+        transition-property: stroke, fill, cx;
+        transition-duration: 150ms;
+        transition-timing-function: ease-out;
+    }
+
     &__foreground {
-        transition: all 150ms ease-out;
+        stroke: var(--color-gray-500);
+        stroke-width: var(--size-5xs);
+        fill: var(--color-white);
+    }
+
+    &__background {
+        stroke: var(--color-gray-500);
+        stroke-width: var(--size-5xs);
+        fill: var(--color-gray-100);
     }
 
     @media (hover: hover) {
@@ -60,6 +74,22 @@
                     fill: var(--color-gray-400);
                 }
             }
+        }
+    }
+
+    &:focus-visible:not(.toggle-switch--framed) {
+        outline: none;
+        box-shadow: none;
+
+        & .toggle-switch__frame {
+            overflow: visible;
+        }
+
+        & .toggle-switch__background {
+            outline: var(--color-blue-500) solid var(--size-4xs);
+            outline-offset: var(--size-4xs);
+            box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
+            border-radius: var(--size-xs);
         }
     }
 

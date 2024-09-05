@@ -155,7 +155,7 @@ eleventyNavigation:
     #system-icon-inspector {
         position: sticky;
         align-self: flex-start;
-        top: 2rem;
+        top: 6rem;
         right: 2rem;
         flex: 1;
         padding: 2rem;
@@ -165,13 +165,21 @@ eleventyNavigation:
         overflow-y: scroll;
     }
 
-    @media (max-width: 600px) {
-        #system-icon-gallery,
+    #system-icon-gallery,
+    #system-icon-inspector {
+        flex: 2;
+    }
+
+    @media (min-width: 768px) {
+        #system-icon-gallery {
+            flex: 3;
+        }
+
         #system-icon-inspector {
-            flex: 2;
+            top: 2rem;
+            flex: 1;
         }
     }
-    
     /* Icon Summary OR Detail */
 
     figure {

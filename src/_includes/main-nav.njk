@@ -2,20 +2,33 @@
 
 {% macro renderNavListItem(entry) -%}
 <li class="main-nav__list-item{% if entry.url == page.url %} main-nav__list-item--current{% endif %}">
-  <a class="main-nav__link main-nav__link" href="{{ entry.url }}">{{ entry.title }}</a>
-{%- if entry.children.length -%}
-  <ul class="main-nav__list">
-    {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
-  </ul>
+    <a class="main-nav__link main-nav__link" href="{{ entry.url }}">{{ entry.title }}</a>
+    {%- if entry.children.length -%}
+        <ul class="main-nav__list">
+            {%- for child in entry.children %}{{ renderNavListItem(child) }}
+            {% endfor -%}
+    </ul>
 {%- endif -%}
 </li>
 {%- endmacro %}
+
 <div class="mobile-header">
-    <button class="mobile-header__button">
+    <button class="mobile-header__menu-button">
         {{ systemIcon("menu") }}
     </button>
+
     <a href="/" class="main-nav__home">XD@JW</a>
-</div>  
+
+    <button class="mobile-header__theme-button">
+        <div class="theme-button__frame">
+            <div class="theme-button__background"></div>
+            <div class="theme-button__foreground">
+                {{ systemIcon("color-mode-light", "sm", "theme-button__icon--light") }}
+                {{ systemIcon("color-mode-dark", "sm", "theme-button__icon--dark") }}
+            </div>
+        </div>
+    </button>
+</div>
 
 <nav class="main-nav">
     <a href="/" class="main-nav__home">XD@JW</a>
@@ -23,7 +36,9 @@
     <div id="search" style="margin-bottom: var(--size-md);"></div>
 
     <ul class="main-nav__list">
-        {%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
+        {%- for entry in navPages -%}
+            {{ renderNavListItem(entry) }}
+        {%- endfor -%}
     </ul>
 </nav>
 <div class="main-nav__backdrop"></div>

@@ -1,5 +1,5 @@
 let mainNav = document.querySelector('.main-nav');
-let mainNavButton = document.querySelector('.mobile-header__button');
+let mainNavButton = document.querySelector('.mobile-header__menu-button');
 let mainNavBackdrop = document.querySelector('.main-nav__backdrop');
 
 function toggleMainNav() {
@@ -29,3 +29,42 @@ window.addEventListener('orientationchange', () => {
         closeMainNav();
     }
 });
+
+document.querySelector('.mobile-header__theme-button').addEventListener("click", (e) => {
+    const currentState = e.target.getAttribute("aria-checked") === "true";
+    const newState = String(!currentState);
+    e.target.setAttribute("aria-checked", newState);
+
+    toggle();
+});
+
+let userPreference = localStorage.getItem('appearance') || 'auto';
+const query = window.matchMedia('(prefers-color-scheme: dark)');
+let isDark = userPreference === 'auto' ? query.matches : userPreference === 'dark';
+
+setClass(isDark);
+
+function setClass(dark) {
+    let themeButton = document.querySelector('.mobile-header__theme-button');
+    if (dark) {
+        document.documentElement.dataset.appearanceMode = "dark";
+        themeButton.setAttribute("aria-checked", "true");
+    } else {
+        document.documentElement.removeAttribute('data-appearance-mode');
+        themeButton.setAttribute("aria-checked", "false");
+    }
+}
+  
+function toggle() {
+    setClass((isDark = !isDark));
+    localStorage.setItem(
+        'appearance',
+        (userPreference = isDark ? (query.matches ? 'auto' : 'dark') : query.matches ? 'light' : 'auto')
+    )
+}
+
+query.onchange = (e) => {
+    if (userPreference === 'auto') {
+        setClass((isDark = e.matches));
+    }
+}

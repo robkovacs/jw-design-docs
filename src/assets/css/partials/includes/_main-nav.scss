@@ -20,7 +20,7 @@
             z-index: 1;
             background-color: rgba(0, 0, 0, 0.2);
 
-            @media (prefers-color-scheme: dark) {
+            html[data-appearance-mode="dark"] & {
                 background-color: rgba(255, 255, 255, 0.2);
             }
         }
@@ -30,7 +30,6 @@
     position: absolute;
     z-index: 2;
     width: 16rem;
-    box-shadow: var(--box-shadow-level-4);
 
     @media (min-width: 48rem) {
         position: sticky;
@@ -113,7 +112,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: var(--size-md);
 
     position: sticky;
@@ -127,13 +126,14 @@
     border-bottom: 1px solid var(--color-gray-300);
 
 
-    &__button {
+    &__menu-button {
         appearance: none;
         border-radius: var(--size-3xs);
         background-color: transparent;
         border: none;
         margin: 0;
         padding: var(--size-xs);
+        color: inherit;
 
         @media (hover: hover) {
             &:hover {
@@ -146,8 +146,73 @@
         }
     }
 
+    &__theme-button {
+        appearance: none;
+        width: 3rem;
+        height: 3rem;
+        padding: 0;
+        margin: 0 var(--size-xs);
+        background-color: transparent;
+        border: none;
+        color: inherit;
+
+        & .theme-button__frame {
+            position: relative;
+            pointer-events: none;
+            height: 2rem;
+        }
+
+        & .theme-button__background,
+        & .theme-button__foreground {
+            position: absolute;
+            height: 2rem;
+            border: 1px solid var(--color-gray-400);
+            border-radius: 1.125rem;
+        }
+
+        & .theme-button__background {
+            width: 3rem;
+            background-color: var(--color-gray-200);
+        }
+
+        & .theme-button__foreground {
+            left: 0;
+            top: 0;
+            width: 2rem;
+            background-color: var(--color-white);
+            transition: transform 150ms ease-in;
+        }
+
+        & .theme-button__icon--light,
+        & .theme-button__icon--dark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            transition: opacity 150ms ease-in;
+        }
+
+        & .theme-button__icon--dark {
+            opacity: 0;
+        }
+
+        &[aria-checked="true"] {
+            & .theme-button__icon--light {
+                opacity: 0;
+            }
+
+            & .theme-button__foreground {
+                transform: translateX(1rem);
+            }
+
+            & .theme-button__icon--dark {
+                opacity: 1;
+            }
+        }
+    }
+
     .main-nav__home {
-        flex: 1 0;
+        flex: 0 0;
         margin-bottom: 0;
     }
 

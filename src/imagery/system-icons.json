@@ -442,6 +442,32 @@
             "source": "Phosphor Regular, x"
         },
         {
+            "name": "color-mode-light",
+            "tags": [
+                "color",
+                "light",
+                "dark",
+                "toggle",
+                "sun"
+            ],
+            "description": "Light mode, as in the opposite of dark mode",
+            "source": "Phosphor Regular, sun",
+            "isNew": true
+        },
+        {
+            "name": "color-mode-dark",
+            "tags": [
+                "color",
+                "light",
+                "dark",
+                "toggle",
+                "moon"
+            ],
+            "description": "Dark mode, as in the opposite of light mode",
+            "source": "Phosphor Regular, moon",
+            "isNew": true
+        },
+        {
             "name": "copy",
             "tags": [
                 "clipboard",
