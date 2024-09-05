@@ -19,7 +19,7 @@
 
     <a href="/" class="main-nav__home">XD@JW</a>
 
-    <button class="mobile-header__theme-button">
+    <button class="theme-button" aria-checked="false">
         <div class="theme-button__frame">
             <div class="theme-button__background"></div>
             <div class="theme-button__foreground">
@@ -31,7 +31,19 @@
 </div>
 
 <nav class="main-nav">
-    <a href="/" class="main-nav__home">XD@JW</a>
+    <div class="desktop-header">
+        <a href="/" class="main-nav__home">XD@JW</a>
+
+        <button class="theme-button" aria-checked="false">
+            <div class="theme-button__frame">
+                <div class="theme-button__background"></div>
+                <div class="theme-button__foreground">
+                    {{ systemIcon("color-mode-light", "sm", "theme-button__icon--light") }}
+                    {{ systemIcon("color-mode-dark", "sm", "theme-button__icon--dark") }}
+                </div>
+            </div>
+        </button>
+    </div>
 
     <div id="search" style="margin-bottom: var(--size-md);"></div>
 
