@@ -69,6 +69,24 @@ eleventyNavigation:
                     checked: true
                 }) }}
             {% endcall %}
+
+            {% call stack({ gap: "xs" }) %}
+                {{ radioButton({
+                    name: "radio-group-4",
+                    content: "This one is disabled",
+                    description: "Here's some extra context.",
+                    disabled: true,
+                    framed: true
+                }) }}
+                {{ radioButton({
+                    name: "radio-group-4",
+                    content: "And so is this one",
+                    description: "Here's some extra context.",
+                    disabled: true,
+                    checked: true,
+                    framed: true
+                }) }}
+            {% endcall %}
         {% endcall %}
     </article>
 {% endblock %}
