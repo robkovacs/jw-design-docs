@@ -1,0 +1,27 @@
+.divider {
+    border: none;
+    border-top: var(--size-5xs) solid var(--color-gray-300);
+
+    &--size {
+        &-xs {
+            margin: var(--size-xs) 0;
+        }
+        
+        &-sm {
+            margin: var(--size-md) 0;
+        }
+        
+        &-md {
+            margin: var(--size-xl) 0;
+        }
+        
+        &-lg {
+            margin: var(--size-3xl) 0;
+        }
+        
+        &-xl {
+            margin: var(--size-4xl) 0;
+        }        
+    }
+}
+

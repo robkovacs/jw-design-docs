@@ -1,0 +1,36 @@
+.anchor {
+    border-radius: var(--size-3xs);
+    display: inline;
+    line-height: inherit;
+    font-size: inherit;
+    vertical-align: top;
+
+    &:link, &:visited {
+        color: var(--color-blue-600);
+        text-decoration: none;
+    }
+    
+    &:active {
+        color: var(--color-blue-800);
+        text-decoration: underline;
+    }
+
+    @media (hover: hover) {
+        &:hover, &:hover:visited {
+            color: var(--color-blue-700);
+            text-decoration: underline;
+        }
+    
+        &:hover:active {
+            color: var(--color-blue-800);
+        }
+    }
+
+    & > .system-icon:first-child {
+        margin-right: var(--size-3xs);
+    }
+    
+    & > .system-icon:last-child {
+        margin-left: var(--size-3xs);
+    }
+}

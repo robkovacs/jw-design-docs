@@ -1,0 +1,21 @@
+.dos-donts {
+    border-top-width: var(--size-4xs);
+    border-top-style: solid;
+    margin-top: var(--size-2xl);
+    padding-top: var(--size-2xs);
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-3xs);
+
+    &--do {
+        border-top-color: var(--color-green-600);
+        color: var(--color-green-600);
+    }
+    
+    &--dont {
+        border-top-color: var(--color-red-600);
+        color: var(--color-red-600);
+    }
+}
+

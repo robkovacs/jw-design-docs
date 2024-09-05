@@ -1,0 +1,41 @@
+/* TODO: update the call to the TOC plugin to give everything BEM-y classnames */
+
+.toc__heading {
+    margin-top: calc(-1 * var(--size-3xl));
+    padding-top: var(--size-3xl);
+}
+
+.toc__container {
+    flex: 1 0;
+    order: 2;
+    position: sticky;
+    top: var(--size-3xl);
+    right: var(--size-3xl);
+    align-self: flex-start;
+}
+
+.toc {
+    & .current {
+        background-color: var(--color-blue-100);
+        border-left: var(--size-4xs) solid var(--color-blue-600);
+    }
+
+    & ol {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    & li {
+        & > ol {
+            margin-left: var(--size-md);
+            margin-bottom: var(--size-md);
+        }
+
+        & a {
+            padding: var(--size-2xs);
+            border-radius: 0;
+            border-left: var(--size-4xs) solid transparent;
+        }
+    }
+}

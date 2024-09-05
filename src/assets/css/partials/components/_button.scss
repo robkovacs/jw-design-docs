@@ -1,0 +1,160 @@
+.button {
+    font-family: inherit;
+    font-weight: bold;
+    border-radius: var(--size-3xs);
+    border-width: var(--size-4xs);
+    border-style: solid;
+
+    & > .system-icon {
+        &:first-child {
+            margin-right: var(--size-3xs);
+
+            &:has(+ span:empty) {
+                margin-right: 0;
+            }
+        }
+
+        &:last-child {
+            margin-left: var(--size-3xs);
+        }
+    }
+
+    &--filled {
+        border-color: transparent;
+        background-color: var(--color-blue-600);
+        color: var(--color-white);
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--color-blue-700);
+
+                &[aria-disabled="true"] {
+                    background-color: var(--color-gray-200);
+                    color: var(--color-gray-500);
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        &:active {
+            background-color: var(--color-blue-800);
+        }
+
+        &:disabled,
+        &[aria-disabled="true"],
+        &:active[aria-disabled="true"] {
+            background-color: var(--color-gray-200);
+            color: var(--color-gray-500);
+            cursor: not-allowed;
+        }
+    }
+
+    &--outlined {
+        border-color: var(--color-blue-600);
+        background-color: transparent;
+        color: var(--color-blue-600);
+
+        @media (hover: hover) {
+            &:hover {
+                border-color: var(--color-blue-700);
+                color: var(--color-blue-700);
+
+                &[aria-disabled="true"] {
+                    border-color: var(--color-gray-500);
+                    color: var(--color-gray-500);
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        &:active {
+            border-color: var(--color-blue-800);
+            color: var(--color-blue-800);
+        }
+
+        &:disabled,
+        &[aria-disabled="true"],
+        &:active[aria-disabled="true"] {
+            border-color: var(--color-gray-500);
+            color: var(--color-gray-500);
+            cursor: not-allowed;
+        }
+    }
+
+    &--ghost {
+        border-color: transparent;
+        background-color: transparent;
+        color: var(--color-blue-600);
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--color-blue-100);
+                color: var(--color-blue-700);
+                
+                &[aria-disabled="true"] {
+                    background-color: transparent;
+                    color: var(--color-gray-500);
+                    cursor: not-allowed;
+                }
+            }            
+        }
+
+        &:active {
+            background-color: var(--color-blue-200);
+            color: var(--color-blue-800);
+        }
+        
+        &:disabled,
+        &[aria-disabled="true"],
+        &:active[aria-disabled="true"] {
+            background-color: transparent;
+            color: var(--color-gray-500);
+            cursor: not-allowed;
+        }        
+    }
+
+    &--size {
+        &-md {
+            font-size: var(--size-md);
+            line-height: var(--size-xl);
+            padding: calc(var(--size-xs) - var(--size-4xs)) calc(var(--size-md) - var(--size-4xs));
+
+            &:has(.system-icon + span:empty) {
+                padding-left: calc(var(--size-xs) - var(--size-4xs));
+                padding-right: calc(var(--size-xs) - var(--size-4xs));
+            }
+        }
+
+        &-sm {
+            font-size: var(--size-sm);
+            line-height: var(--size-md);
+            padding: calc(var(--size-2xs) - var(--size-4xs)) calc(var(--size-xs) - var(--size-4xs));
+
+            & > .system-icon > svg {
+                width: var(--size-md);
+                height: var(--size-md);
+            }
+
+            &:has(.system-icon + span:empty) {
+                padding-left: calc(var(--size-2xs) - var(--size-4xs));
+                padding-right: calc(var(--size-2xs) - var(--size-4xs));
+            }
+        }
+
+        &-xs {
+            font-size: var(--size-sm);
+            line-height: var(--size-md);
+            padding: calc(var(--size-3xs) - var(--size-4xs)) calc(var(--size-3xs) - var(--size-4xs));
+
+            & > .system-icon > svg {
+                width: var(--size-md);
+                height: var(--size-md);
+            }
+
+            &:has(.system-icon + span:empty) {
+                padding-left: calc(var(--size-3xs) - var(--size-4xs));
+                padding-right: calc(var(--size-3xs) - var(--size-4xs));
+            }
+        }
+    }
+}

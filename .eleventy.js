@@ -10,9 +10,12 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const pluginTOC = require('@uncenter/eleventy-plugin-toc');
 
 module.exports = function (eleventyConfig) {
-    eleventyConfig.addPlugin(eleventyNavigation);
-    eleventyConfig.addWatchTarget("./src/assets/css/");
+    eleventyConfig.setBrowserSyncConfig({
+		files: './_site/css/**/*.css'
+	});
 
+    eleventyConfig.addPlugin(eleventyNavigation);
+    
     eleventyConfig.addNunjucksGlobal("nanoid", () => nanoid());
 
     eleventyConfig.addNunjucksGlobal("isHtmlElement", function (string) {

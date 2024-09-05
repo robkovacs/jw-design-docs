@@ -1,0 +1,39 @@
+.input-message {
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-2xs);
+    
+    &__list {
+        margin-top: var(--size-xs);
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-2xs);
+    }
+
+    &--type {
+        &-help {
+            color: var(--color-gray-600);
+        }
+
+        &-error {
+            color: var(--color-red-600);
+        }
+        
+        &-success {
+            color: var(--color-green-600);
+        }
+        
+        &-warning {
+            color: var(--color-yellow-600);
+        }
+    }
+}
+
+.input-label:has(+ .input-message--type-help) {
+    margin-bottom: var(--size-2xs);
+}
+
+.form-field .input-message--type-help {
+    margin-bottom: var(--size-xs);
+}
+

@@ -76,6 +76,43 @@ eleventyNavigation:
                 disabled: true
             }) }}
         {% endcall %}
+
+        {% call row() %}
+            {{ button({
+                content: "Buttons can be disabled",
+                loading: true
+            }) }}
+            {{ button({
+                content: "Even if they're outlined",
+                variant: "outlined",
+                loading: true
+            }) }}
+            {{ button({
+                content: "Or ghost",
+                variant: "ghost",
+                loading: true
+            }) }}
+        {% endcall %}
+
+        {% call row() %}
+            {{ button({
+                content: "Buttons can be disabled",
+                disabled: true,
+                loading: true
+            }) }}
+            {{ button({
+                content: "Even if they're outlined",
+                variant: "outlined",
+                disabled: true,
+                loading: true
+            }) }}
+            {{ button({
+                content: "Or ghost",
+                variant: "ghost",
+                disabled: true,
+                loading: true
+            }) }}
+        {% endcall %}
     {% endcall %}
 {% endblock %}
 

@@ -1,0 +1,80 @@
+.badge {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: var(--size-3xs);
+    font-weight: 700;
+
+    &--emphasis-strong {
+        color: var(--color-white);
+    
+        &.badge--color {
+            &-neutral {
+                background-color: var(--color-gray-600);
+            }
+
+            &-brand {
+                background-color: var(--color-blue-600);
+            }
+            
+            &-danger {
+                background-color: var(--color-red-600);   
+            }
+            
+            &-warning {
+                background-color: var(--color-yellow-600);   
+            }
+            
+            &-new {
+                background-color: var(--color-purple-600);   
+            }
+        }
+    }
+
+    &--emphasis-subtle {
+        &.badge--color {
+            &-neutral {
+                background-color: var(--color-gray-100);
+                color: var(--color-gray-600);
+            }
+
+            &-brand {
+                background-color: var(--color-blue-100);
+                color: var(--color-blue-600);
+            }
+            
+            &-danger {
+                background-color: var(--color-red-100);
+                color: var(--color-red-600);
+            }
+            
+            &-success {
+                background-color: var(--color-green-100);
+                color: var(--color-green-600);
+            }
+            
+            &-warning {
+                background-color: var(--color-yellow-100);
+                color: var(--color-yellow-600);
+            }
+            
+            &-new {
+                background-color: var(--color-purple-100);
+                color: var(--color-purple-600);
+            }
+        }
+    }
+
+    &--size {
+        &-sm {
+            padding: var(--size-4xs) var(--size-3xs);
+            font-size: var(--size-2xs);
+            line-height: var(--size-xs);    
+        }
+
+        &-md {
+            padding: var(--size-3xs) var(--size-2xs);
+            font-size: var(--size-xs);
+            line-height: var(--size-md);
+        }
+    }
+}

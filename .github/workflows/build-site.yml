@@ -34,10 +34,7 @@ jobs:
       - name: Webpack build
         run: |
             npm install
-            npx webpack
-      - name: Eleventy build
-        run: |
-            npx @11ty/eleventy
+            npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

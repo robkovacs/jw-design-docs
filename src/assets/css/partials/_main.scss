@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+
+*:focus-visible, select:focus {
+    outline-offset: var(--size-4xs);
+    outline: var(--color-blue-500) solid var(--size-4xs);
+    box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
+    border-radius: var(--size-3xs);
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    background-color: var(--color-white);
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-white);
+
+    @media screen and (min-width: 30rem) {
+        min-height: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+    }
+}
+
+a {
+    border-radius: var(--size-3xs);
+    display: inline-block;
+    line-height: inherit;
+    font-size: inherit;
+    vertical-align: top;
+
+    &:link, &:visited {
+        color: var(--color-blue-600);
+        text-decoration: none;
+    }
+
+    &:active {
+        color: var(--color-blue-800);
+        text-decoration: underline;
+    }
+
+    @media (hover: hover) {
+        &:hover, &:hover:visited {
+            color: var(--color-blue-700);
+            text-decoration: underline;
+        }
+    
+        &:hover:active {
+            color: var(--color-blue-800);
+        }
+    }
+}
+
+main {
+    @media screen and (min-width: 30rem) {
+        flex: 1 1 calc(var(--ui-max-width) - var(--nav-width));
+        padding: var(--size-5xl);
+        overflow-wrap: anywhere;
+    }
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-5xl);
+}
+
+.body-content {
+    flex: 3 0;
+}
+
+.breadcrumbs {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--size-sm);
+    line-height: var(--size-md);
+    margin-bottom: var(--size-2xs);
+    color: var(--color-gray-700);
+
+    &, & li {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--size-3xs);
+    }
+
+    & > li:after {
+        content: "/";
+    }
+}
+
+article {
+    max-width: 40rem;
+}
+
+section + section {
+    margin-top: 4rem;
+}
+
+section:has(h2:only-child, h3:only-child, h4:only-child) + section {
+    margin-top: 0;
+}
+
+figure {
+    margin: 0 0 var(--size-xl);
+}

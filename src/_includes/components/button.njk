@@ -14,7 +14,7 @@
     {% endset %}
 
     <button
-        class="button button--{{ variant }} button--size-{{ size }} {{ classes }}"
+        class="button button--{{ variant }} button--size-{{ size }} {{ 'button--loading' if options.loading }} {{ classes }}"
         {% for key, value in options.attributes %}
             {{ key }}="{{ value | safe }}"
         {% endfor %}

@@ -1,0 +1,37 @@
+.textarea {
+    padding: calc(var(--size-xs) - var(--size-5xs)) calc(var(--size-md) - var(--size-5xs));
+    border-radius: var(--size-3xs);
+    font-family: inherit;
+    font-size: var(--size-md);
+    line-height: var(--size-xl);
+    border: var(--size-5xs) solid var(--color-gray-500);
+    width: 100%;
+    background-color: var(--color-white);
+    color: inherit;
+
+    &.resizable {
+        &--none {
+            resize: none;
+        }
+
+        &--horizontal {
+            resize: horizontal;
+        }
+        
+        &--vertical {
+            resize: vertical;
+        }
+        &--both {
+            resize: both;
+        }
+    }
+
+
+    @media (hover: hover) {
+        &:hover {
+            border-color: var(--color-gray-600);
+        }
+    }
+}
+
+/* TODO: error state */

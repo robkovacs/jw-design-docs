@@ -1,6 +1,13 @@
 {% macro render(options) %}
     <label class="radio-button{{ ' radio-button--framed' if options.framed }}">
-        <input type="radio" name="{{ options.name }}" class="radio-button__control" {{ 'required' if options.required }}/>
+        <input
+            type="radio"
+            name="{{ options.name }}"
+            class="radio-button__control"
+            {{ ('aria-disabled="true"' | safe) if options.disabled }}
+            {{ 'required' if options.required }}
+            {{ ('checked="true"' | safe) if options.checked }}
+        />
         <span class="radio-button__content">
             <span class="radio-button__label">{{ options.content }}</span>
             {%- if options.description and options.framed -%}

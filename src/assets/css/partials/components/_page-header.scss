@@ -1,0 +1,28 @@
+.page-header {
+    &__link-to-parent {
+        margin-bottom: var(--size-3xs);
+    }
+
+    &__title {
+        font-size: var(--size-3xl);    
+        line-height: var(--size-4xl);
+        font-weight: 800;
+        margin-bottom: var(--size-2xs);
+    }
+
+    &__title,
+    &__description {
+        max-width: 55rem; /* Will need adjusting */
+    }
+
+    &:not(:has(.divider)) {
+        margin-bottom: var(--size-4xl);
+    }
+
+    &:not(:has(.page-header__description)) .page-header__title {
+        margin-bottom: 0;
+    }
+}
+
+
+
