@@ -3,7 +3,7 @@ title: Textarea
 eleventyNavigation: 
     key: Textarea
     parent: Components
-    order: 12
+    order: 15
 ---
 {% extends '../_includes/layout.njk' %}
 
@@ -13,5 +13,36 @@ eleventyNavigation:
             label: "This is a textarea",
             helpText: "It's used when you expect answers that are multiple lines long"
         }) }}
+        {{ textarea({
+            label: "This is a textarea",
+            helpText: "It's disabled though",
+            disabled: true
+        }) }}
     </article>
 {% endblock %}
+
+
+{% set localJs %}
+    /*
+        Disable aria-disabled textareas on this page
+        Note that in real life there might be other earlier click events on here that these won't catch
+    */
+    let disabledTextareas = document.querySelectorAll('.textarea[aria-disabled="true"]');
+    
+    disabledTextareas.forEach((textarea) => {
+        textarea.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        });
+
+        textarea.addEventListener('focus', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        });
+
+        textarea.addEventListener('keydown', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        });
+    });
+{% endset %}

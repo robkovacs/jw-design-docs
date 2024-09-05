@@ -30,9 +30,11 @@
                 {% endfor %}
                 id="{{ id | safe }}"
                 {{ 'required' if required }}
+                {{ ('aria-disabled="true"' | safe) if options.disabled }}    
                 type="text"
                 placeholder="{{ placeholder | safe }}"    
-                title="{{ placeholder | safe }}"    
+                title="{{ placeholder | safe }}"
+                {{ ('value=' + options.value) if options.value }}
             />
         {% if options.messages %}
             <div class="input-message__list">

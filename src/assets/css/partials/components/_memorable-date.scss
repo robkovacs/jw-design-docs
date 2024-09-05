@@ -1,0 +1,31 @@
+.memorable-date {
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-md);
+
+    & .input-label {
+        font-weight: 400;
+    }
+
+    & &__month, & &__day, & &__year {
+        font-variant-numeric: tabular-nums;
+    }
+
+    & .form-field {
+        &:has(.memorable-date__month) {
+            flex: 0 1 12rem;
+        }
+
+        &:has(.memorable-date__day) {
+            flex: 0 0 3.5rem;
+        }
+
+        &:has(.memorable-date__year) {
+            flex: 0 0 4.5rem;
+        }
+
+        & .input-label__optional {
+            display: none;
+        }
+    }
+}

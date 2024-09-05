@@ -1,0 +1,38 @@
+.chip {
+    font-family: inherit;
+    border-radius: var(--size-md);
+    font-size: var(--size-sm);
+    line-height: var(--size-md);
+    border: none;
+    background-color: var(--color-gray-100);
+    padding: var(--size-2xs) var(--size-xs);
+    display: inline-flex;
+    flex-direction: row;
+    gap: var(--size-2xs);
+    align-items: center;
+    color: var(--color-gray-900);
+}
+
+.chip--dismissible {
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--color-gray-200);
+
+            &:disabled, &[aria-disabled="true"] {
+                background-color: var(--color-gray-100);
+            }
+        }
+    }
+
+    &:active {
+        background-color: var(--color-gray-300);
+
+        &:disabled, &[aria-disabled="true"] {
+            background-color: var(--color-gray-100);
+        }
+    }
+
+    &:disabled, &[aria-disabled="true"] {
+        color: var(--color-gray-500);
+    }
+}

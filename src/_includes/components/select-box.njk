@@ -33,6 +33,7 @@
                     {% endfor %}
                     id="{{ id | safe }}"
                     {{ 'required' if required }}
+                    {{ ('aria-disabled="true"' | safe) if options.disabled }}
                     title="{{ placeholder | safe }}"
                 >
                     <option hidden disabled selected value>{{ placeholder | safe }}</option>

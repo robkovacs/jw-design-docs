@@ -31,6 +31,8 @@
                 {% endfor %}
                 id="{{ id | safe }}"
                 {{ 'required' if required }}
+                {{ ('aria-disabled="true"' | safe) if options.disabled }}  
+                placeholder="{{ placeholder | safe }}"   
                 title="{{ placeholder | safe }}"
             >
                 {{- options.value -}}

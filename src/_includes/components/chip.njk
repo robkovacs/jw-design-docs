@@ -1,0 +1,21 @@
+{% from './system-icon.njk' import render as systemIcon %}
+
+{%- macro render(options) -%}
+    {%- if options.dismissible -%}
+        <button
+            class="chip chip--dismissible"
+            {{ ('aria-disabled="true"' | safe) if options.disabled }}
+        >
+    {%- else -%}
+        <span class="chip">
+    {%- endif -%}
+
+            {{ options.content }}
+
+    {%- if options.dismissible -%}
+            {{ systemIcon("close", "xs") }}
+        </button>
+    {%- else -%}
+        </span>
+    {%- endif -%}    
+{%- endmacro -%}

@@ -1,30 +1,41 @@
 ---
-title: Text box
+title: Date inputs
 eleventyNavigation: 
-    key: Text box
+    key: Date inputs
     parent: Components
-    order: 14
+    order: 5
 ---
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
-
-    {% call stack() %}
-        {{ textBox({
-            label: "Enter a value",
-            helpText: "You must use only numbers (0-9)",
-            attributes: { pattern: "\\d+" }
-        }) }}
-
-        {{ textBox({
-            label: "Enter a value",
-            helpText: "Just kidding, this is disabled",
+    <article>
+        {{ memorableDate({
+            label: "Date of birth",
+            required: false,
             disabled: true
         }) }}
-    {% endcall %}
+    </article>
 {% endblock %}
 
 {% set localJs %}
+    /*
+        Disable aria-disabled select boxes on this page
+        Note that in real life there might be other earlier click events on here that these won't catch
+    */
+    let disabledSelectBoxes = document.querySelectorAll('.select-box[aria-disabled="true"]');
+    
+    disabledSelectBoxes.forEach((selectBox) => {
+        selectBox.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        });
+
+        selectBox.addEventListener('keydown', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        });
+    });
+
     /*
         Disable aria-disabled text boxes on this page
         Note that in real life there might be other earlier click events on here that these won't catch

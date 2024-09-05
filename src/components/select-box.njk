@@ -3,7 +3,7 @@ title: Select box
 eleventyNavigation:
     key: Select box
     parent: Components
-    order: 10
+    order: 12
 hasTOC: true
 ---
 {% extends '../_includes/layout.njk' %}
@@ -1039,3 +1039,23 @@ hasTOC: true
     </section>
 </article>
 {% endblock content %}
+
+{% set localJs %}
+    /*
+        Disable aria-disabled select boxes on this page
+        Note that in real life there might be other earlier click events on here that these won't catch
+    */
+    let disabledSelectBoxes = document.querySelectorAll('.select-box[aria-disabled="true"]');
+    
+    disabledSelectBoxes.forEach((selectBox) => {
+        selectBox.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        });
+
+        selectBox.addEventListener('keydown', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        });
+    });
+{% endset %}

@@ -8,21 +8,18 @@
     border: var(--size-5xs) solid var(--color-gray-500);
     background-color: var(--color-white);
     color: inherit;
+    width: 100%;
+
+    &::placeholder {
+        color: var(--color-gray-500);
+    }
 
     &:not(:placeholder-shown) {
         border-color: var(--color-red-500);
-
-        &:active {
-            border-color: var(--color-red-700);
-        }
     }
 
     &:valid {
         border-color: var(--color-gray-500);
-
-        &:active {
-            border-color: var(--color-gray-700);
-        }
     }
 
     @media (hover: hover) {
@@ -34,6 +31,35 @@
             &:valid {
                 border-color: var(--color-gray-600);
             }
+
+            &:disabled, &[aria-disabled="true"] {
+                border-color: var(--color-gray-400);
+            }
+        }
+    }
+
+    &:active {
+        &:not(:placeholder-shown) {
+            border-color: var(--color-red-700);
+        }
+
+        &:valid {
+            border-color: var(--color-gray-700);
+        }
+    
+        &:disabled, &[aria-disabled="true"] {
+            border-color: var(--color-gray-400);
+        }
+    }
+    
+    &:disabled, &[aria-disabled="true"] {
+        background-color: var(--color-gray-200);
+        border-color: var(--color-gray-400);
+        color: var(--color-gray-500);
+        cursor: not-allowed;
+
+        &::placeholder {
+            color: var(--color-gray-400);
         }
     }
 }

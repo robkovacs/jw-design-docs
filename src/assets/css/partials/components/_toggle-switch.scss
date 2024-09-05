@@ -103,6 +103,10 @@
         & .toggle-switch__background {
             fill: var(--color-gray-300);
         }
+
+        & .toggle-switch__description {
+            color: var(--color-gray-500);
+        }
     }
 
     &[aria-checked="true"]:disabled, &[aria-checked="true"][aria-disabled="true"] {

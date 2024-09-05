@@ -5,11 +5,11 @@
     "scripts": {
         "build": "npm run build:sass && npm run build:webpack && npm run build:eleventy",
         "build:eleventy": "npx @11ty/eleventy",
-    	"build:sass": "npx sass src/assets/css:dist/assets/css",
+    	"build:sass": "npx sass src/assets/css/main.scss dist/assets/css/main.css",
         "build:webpack": "npx webpack",
     	"watch": "npm run watch:sass & npm run watch:webpack & npm run watch:eleventy",
         "watch:eleventy": "npx @11ty/eleventy --serve",
-        "watch:sass": "npx sass src/assets/css:dist/assets/css --watch",
+        "watch:sass": "npx sass src/assets/css/main.scss dist/assets/css/main.css --watch",
         "watch:webpack": "npx webpack --watch"
     },
     "dependencies": {

@@ -1,0 +1,50 @@
+---
+title: Chip
+eleventyNavigation: 
+    key: Chip
+    parent: Components
+    order: 4
+---
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+    <article>
+        {{ chip({
+            content: "It's a chip",
+            dismissible: true
+        }) }}
+
+        {{- chip({
+            content: "It's a chip",
+            dismissible: false
+        }) -}}
+
+        {{ chip({
+            content: "It's a chip",
+            dismissible: true,
+            disabled: true
+        }) }}
+    </article>
+{% endblock %}
+
+{% set localJs %}
+    /*
+        Disable aria-disabled chips on this page
+        Note that in real life there might be other earlier click events on here that these won't catch
+    */
+    let dismissibleChips = document.querySelectorAll('.chip--dismissible:not([aria-disabled="true"])');
+
+    dismissibleChips.forEach((chip) => {
+        chip.addEventListener('click', (e) => {
+            e.target.style.display = 'none';
+        });
+    });
+    let disabledChips = document.querySelectorAll('.chip[aria-disabled="true"]');
+
+    disabledChips.forEach((chip) => {
+        chip.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        });
+    });
+{% endset %}

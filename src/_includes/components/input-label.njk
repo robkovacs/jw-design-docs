@@ -1,5 +1,5 @@
-{%- macro render(content, isRequired = true, forId = 'id') -%}
-<label
+{%- macro render(content, isRequired = true, forId = 'id', as = "label") -%}
+<{{ as }}
     class="input-label"
     {% if forId %}
         for="{{ forId | safe }}"
@@ -9,5 +9,5 @@
     {% if isRequired == false %}
         <span class="input-label__optional">Optional</label>
     {% endif %}
-</label>
+</{{ as }}>
 {% endmacro %}

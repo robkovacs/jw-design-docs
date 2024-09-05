@@ -1,0 +1,85 @@
+{% from './input-label.njk' import render as inputLabel %}
+{% from './input-message.njk' import render as inputMessage %}
+{% from './select-box.njk' import render as selectBox %}
+{% from './text-box.njk' import render as textBox %}
+
+{% macro render(options) %}
+    {% set required = (options.required | default(true)) %}
+    {% set disabled = (options.disabled | default(false)) %}
+    {% set id %}{{ options.id | default(nanoid()) }}{% endset %}
+    
+    {% set classes -%}
+    {#- TODO: make this into a custom filter -#}
+        {%- if options.classes -%}
+            {%- if options.classes == (options.classes | string) -%}
+                {{ options.classes }}
+            {%- else -%}
+                {{ options.classes | join(' ') }}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endset %}
+
+    {% if options.label or options.messages %}
+        <fieldset class="form-field">
+    {% endif %}
+            {{ inputLabel(options.label, required, id, "legend") if options.label }}
+            {{ inputMessage("help", options.helpText) if options.helpText }}
+            
+            <div class="memorable-date">
+            {% call selectBox({
+                    label: "Month",
+                    classes: "memorable-date__month",
+                    required: required,
+                    disabled: disabled
+                }) %}
+                    <option>01 - January</option>
+                    <option>02 - February</option>
+                    <option>03 - March</option>
+                    <option>04 - April</option>
+                    <option>05 - May</option>
+                    <option>06 - June</option>
+                    <option>07 - July</option>
+                    <option>08 - August</option>
+                    <option>09 - September</option>
+                    <option>10 - October</option>
+                    <option>11 - November</option>
+                    <option>12 - December</option>
+                {% endcall %}
+
+                 {{ textBox({
+                    label: "Day",
+                    classes: "memorable-date__day",
+                    required: required,
+                    disabled: disabled,
+                    attributes: {
+                        pattern: "\\d{1,2}",
+                        inputmode: "numeric",
+                        minlength: "1",
+                        maxlength: "2"
+                    }
+                }) }}
+
+                {{ textBox({
+                    label: "Year",
+                    classes: "memorable-date__year",
+                    required: required,
+                    disabled: disabled,
+                    attributes: {
+                        pattern: "\\d{4}",
+                        inputmode: "numeric",
+                        minlength: "4",
+                        maxlength: "4"
+                    }
+                }) }}
+            </div>
+    {% if options.messages %}
+        <div class="input-message__list">
+           {% for message in options.messages %}
+                {{ inputMessage(message.type, message.message) }}
+           {% endfor %} 
+        </div>
+    {% endif %}
+    {% if options.label or options.messages %}
+        </fieldset>
+    {% endif %}
+{% endmacro %}
