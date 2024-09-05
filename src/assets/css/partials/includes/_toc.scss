@@ -6,12 +6,12 @@
 }
 
 .toc__container {
-    flex: 1 0;
     order: 2;
+    flex: 1 0;
+    align-self: flex-start;
     position: sticky;
     top: var(--size-3xl);
     right: var(--size-3xl);
-    align-self: flex-start;
 }
 
 .toc {
@@ -21,21 +21,21 @@
     }
 
     & ol {
-        list-style-type: none;
         margin: 0;
         padding: 0;
+        list-style-type: none;
     }
 
     & li {
         & > ol {
-            margin-left: var(--size-md);
             margin-bottom: var(--size-md);
+            margin-left: var(--size-md);
         }
 
         & a {
             padding: var(--size-2xs);
-            border-radius: 0;
             border-left: var(--size-4xs) solid transparent;
+            border-radius: 0;
         }
     }
 }

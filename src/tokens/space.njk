@@ -11,7 +11,7 @@ eleventyNavigation:
 {% block content %}
     <h2>Base spacing</h2>
 
-    <div class="space-swatch-list">
+    <div class="space-swatches__list">
     {% for level in spaceData %}
         {% for value in level.values %}
             {% set figmaName = level["prefix-figma"] + value.name %}

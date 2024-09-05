@@ -1,5 +1,6 @@
 .textarea {
-    padding: calc(var(--size-xs) - var(--size-5xs)) calc(var(--size-md) - var(--size-5xs));
+    padding: calc(var(--size-xs) - var(--size-5xs))
+        calc(var(--size-md) - var(--size-5xs));
     border-radius: var(--size-3xs);
     font-family: inherit;
     font-size: var(--size-md);
@@ -17,7 +18,7 @@
         &--horizontal {
             resize: horizontal;
         }
-        
+
         &--vertical {
             resize: vertical;
         }
@@ -25,7 +26,6 @@
             resize: both;
         }
     }
-
 
     @media (hover: hover) {
         &:hover {

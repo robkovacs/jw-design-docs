@@ -18,19 +18,21 @@
             font-weight: 700;
             margin-top: 0;
             margin-bottom: var(--size-md);
-            
-            &:link, &:visited {
+
+            &:link,
+            &:visited {
                 color: var(--color-gray-900);
-            } 
+            }
 
             @media (hover: hover) {
                 &:hover,
                 &:visited:hover {
                     color: var(--color-gray-900);
-                }    
+                }
             }
 
-            &:active, &:visited:active {
+            &:active,
+            &:visited:active {
                 color: var(--color-gray-900);
             }
         }
@@ -58,18 +60,21 @@
         }
 
         &__link {
-            &:link, &:visited {
+            &:link,
+            &:visited {
                 color: var(--color-gray-600);
                 text-decoration: none;
             }
 
             @media (hover: hover) {
-                &:hover, &:visited:hover {
+                &:hover,
+                &:visited:hover {
                     color: var(--color-gray-700);
                 }
             }
 
-            &:active, &:visited:active {
+            &:active,
+            &:visited:active {
                 color: var(--color-gray-800);
             }
         }

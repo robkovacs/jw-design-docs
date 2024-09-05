@@ -1,5 +1,6 @@
 .text-box {
-    padding: calc(var(--size-xs) - var(--size-5xs)) calc(var(--size-md) - var(--size-5xs));
+    padding: calc(var(--size-xs) - var(--size-5xs))
+        calc(var(--size-md) - var(--size-5xs));
     border-radius: var(--size-3xs);
     font-family: inherit;
     font-size: var(--size-md);
@@ -13,7 +14,7 @@
 
         &:active {
             border-color: var(--color-red-700);
-        }        
+        }
     }
 
     &:valid {
@@ -21,7 +22,7 @@
 
         &:active {
             border-color: var(--color-gray-700);
-        }        
+        }
     }
 
     @media (hover: hover) {
@@ -29,11 +30,11 @@
             &:not(:placeholder-shown) {
                 border-color: var(--color-red-600);
             }
-    
+
             &:valid {
                 border-color: var(--color-gray-600);
             }
-        }   
+        }
     }
 }
 

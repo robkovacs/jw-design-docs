@@ -1,8 +1,16 @@
+@media screen and (min-width: 30rem) {
+    :root {
+        --nav-width: 16rem;
+        --ui-max-width: 90rem;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
 
-*:focus-visible, select:focus {
+*:focus-visible,
+select:focus {
     outline-offset: var(--size-4xs);
     outline: var(--color-blue-500) solid var(--size-4xs);
     box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
@@ -35,7 +43,8 @@ a {
     font-size: inherit;
     vertical-align: top;
 
-    &:link, &:visited {
+    &:link,
+    &:visited {
         color: var(--color-blue-600);
         text-decoration: none;
     }
@@ -46,11 +55,12 @@ a {
     }
 
     @media (hover: hover) {
-        &:hover, &:hover:visited {
+        &:hover,
+        &:hover:visited {
             color: var(--color-blue-700);
             text-decoration: underline;
         }
-    
+
         &:hover:active {
             color: var(--color-blue-800);
         }
@@ -84,7 +94,8 @@ main {
     margin-bottom: var(--size-2xs);
     color: var(--color-gray-700);
 
-    &, & li {
+    &,
+    & li {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;

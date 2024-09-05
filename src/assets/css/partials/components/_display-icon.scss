@@ -17,14 +17,14 @@
         &-md {
             & > svg {
                 width: 5rem;
-                height: 5rem;                
+                height: 5rem;
             }
         }
 
         &-lg {
             & > svg {
                 width: 8rem;
-                height: 8rem;                
+                height: 8rem;
             }
         }
     }
@@ -32,7 +32,7 @@
     &__ink {
         fill: var(--color-gray-900);
     }
-    
+
     &--inverse .display-icon__ink {
         fill: var(--color-white);
     }
@@ -52,7 +52,7 @@
                 }
                 & .display-icon__fill-2 {
                     fill: var(--color-blue-800);
-                }            
+                }
             }
         }
 
@@ -70,7 +70,7 @@
                 }
                 & .display-icon__fill-2 {
                     fill: var(--color-green-800);
-                }            
+                }
             }
         }
 
@@ -88,7 +88,7 @@
                 }
                 & .display-icon__fill-2 {
                     fill: var(--color-red-700);
-                }            
+                }
             }
         }
 
@@ -106,7 +106,7 @@
                 }
                 & .display-icon__fill-2 {
                     fill: var(--color-yellow-800);
-                }            
+                }
             }
         }
 
@@ -124,7 +124,7 @@
                 }
                 & .display-icon__fill-2 {
                     fill: var(--color-gray-700);
-                }            
+                }
             }
         }
 
@@ -142,7 +142,7 @@
                 }
                 & .display-icon__fill-2 {
                     fill: var(--color-purple-700);
-                }            
+                }
             }
         }
 
@@ -160,7 +160,7 @@
                 }
                 & .display-icon__fill-2 {
                     fill: var(--color-purple-700);
-                }            
+                }
             }
         }
 
@@ -178,7 +178,7 @@
                 }
                 & .display-icon__fill-2 {
                     fill: var(--color-yellow-600);
-                }            
+                }
             }
         }
 
@@ -196,7 +196,7 @@
                 }
                 & .display-icon__fill-2 {
                     fill: var(--color-yellow-600);
-                }            
+                }
             }
         }
 
@@ -214,7 +214,7 @@
                 }
                 & .display-icon__fill-2 {
                     fill: var(--color-green-600);
-                }            
+                }
             }
         }
     }

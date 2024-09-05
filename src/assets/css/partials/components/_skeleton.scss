@@ -22,7 +22,7 @@
                 rgba(255, 255, 255, 0)
             );
             animation: shimmer 2s infinite;
-            content: '';
+            content: "";
 
             @media (prefers-reduced-motion: true) {
                 animation: shimmer 6s infinite;

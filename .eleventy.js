@@ -11,7 +11,7 @@ const pluginTOC = require('@uncenter/eleventy-plugin-toc');
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.setBrowserSyncConfig({
-		files: './_site/css/**/*.css'
+		files: './dist/css/**/*.css'
 	});
 
     eleventyConfig.addPlugin(eleventyNavigation);

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     gap: var(--size-2xs);
-    
+
     &__list {
         margin-top: var(--size-xs);
         display: flex;
@@ -18,11 +18,11 @@
         &-error {
             color: var(--color-red-600);
         }
-        
+
         &-success {
             color: var(--color-green-600);
         }
-        
+
         &-warning {
             color: var(--color-yellow-600);
         }
@@ -36,4 +36,3 @@
 .form-field .input-message--type-help {
     margin-bottom: var(--size-xs);
 }
-

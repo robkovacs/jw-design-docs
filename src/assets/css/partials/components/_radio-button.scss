@@ -23,7 +23,8 @@
                     border-color: var(--color-gray-600);
                 }
 
-                &:disabled, &[aria-disabled="true"] { 
+                &:disabled,
+                &[aria-disabled="true"] {
                     background-color: var(--color-gray-200);
                     border-color: var(--color-gray-400);
 
@@ -94,7 +95,7 @@
                 &:has(:invalid) {
                     border-color: var(--color-gray-600);
                 }
-                    
+
                 &:has(:disabled, [aria-disabled="true"]) {
                     background-color: var(--color-white);
                     border-color: var(--color-gray-500);
@@ -137,7 +138,7 @@
                 border-color: var(--color-gray-700);
             }
 
-            &:has(:disabled, [aria-disabled="true"]) { 
+            &:has(:disabled, [aria-disabled="true"]) {
                 background-color: var(--color-white);
                 border-color: var(--color-gray-500);
                 cursor: not-allowed;
@@ -146,7 +147,7 @@
             & .radio-button__control {
                 border-color: var(--color-gray-500);
                 background-color: var(--color-white);
-    
+
                 &:checked {
                     border-color: var(--color-gray-500);
                     background-color: var(--color-white);
@@ -155,7 +156,7 @@
                         background-color: var(--color-blue-600);
                     }
                 }
-    
+
                 &:invalid {
                     border-color: var(--color-gray-500);
                     background-color: var(--color-white);
@@ -201,7 +202,7 @@
         width: 0.625rem;
         border-radius: 50%;
         display: none;
-        content: '';
+        content: "";
     }
 
     &:checked {
@@ -216,14 +217,16 @@
 
     &:invalid {
         border-color: var(--color-gray-500);
-    }    
+    }
 
-    &:disabled, &[aria-disabled="true"] {
+    &:disabled,
+    &[aria-disabled="true"] {
         &::before {
             background-color: var(--color-gray-200);
         }
 
-        &, &:active {
+        &,
+        &:active {
             background-color: var(--color-gray-200);
             border-color: var(--color-gray-400);
         }
@@ -281,7 +284,8 @@
     gap: var(--size-2xs);
 }
 
-.radio-button__label, .radio-button__description {
+.radio-button__label,
+.radio-button__description {
     display: block;
 }
 

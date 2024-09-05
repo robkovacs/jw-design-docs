@@ -8,7 +8,7 @@
         text-decoration-skip-ink: none;
         text-decoration-color: var(--color-blue-600);
         text-underline-offset: var(--size-4xs);
-        
+
         @media (hover: hover) {
             &:hover {
                 color: var(--color-gray-700);
@@ -50,7 +50,7 @@
 
     &__arrow {
         position: absolute;
-        background-color: var(--color-gray-900);;
+        background-color: var(--color-gray-900);
         width: var(--size-2xs);
         height: var(--size-2xs);
         transform: rotate(45deg);

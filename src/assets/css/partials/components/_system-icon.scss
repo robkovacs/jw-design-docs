@@ -5,7 +5,7 @@
     & > svg {
         vertical-align: top;
     }
-    
+
     &--size {
         &-xs {
             & > svg {
@@ -17,28 +17,28 @@
         &-sm {
             & > svg {
                 width: var(--size-lg);
-                height: var(--size-lg);                
+                height: var(--size-lg);
             }
         }
 
         &-md {
             & > svg {
                 width: var(--size-xl);
-                height: var(--size-xl);                
+                height: var(--size-xl);
             }
         }
 
         &-lg {
             & > svg {
                 width: var(--size-2xl);
-                height: var(--size-2xl);                
+                height: var(--size-2xl);
             }
         }
 
         &-xl {
             & > svg {
                 width: var(--size-4xl);
-                height: var(--size-4xl);                
+                height: var(--size-4xl);
             }
         }
     }

@@ -15,13 +15,13 @@
         line-height: var(--size-md);
         padding: var(--size-2xs);
         transition: opacity 500ms ease-out;
-    
+
         &.fade-out {
             opacity: 0;
         }
-        
+
         & + & {
             margin-top: var(--size-2xs);
         }
-    }    
+    }
 }

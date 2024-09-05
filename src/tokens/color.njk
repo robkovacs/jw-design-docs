@@ -13,7 +13,7 @@ eleventyNavigation:
     <h2>{{ level.name }}</h2>
     {% for group in level.groups %}
         <h3>{{ group.name }}</h3>
-        <div class="color-swatch-list">
+        <div class="color-swatches__list">
             {% if group.colors %}
                 {% for color in group.colors %}
                     {% set figmaName = level["prefix-figma"] + group["prefix-figma"] + color.name %}

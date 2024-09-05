@@ -90,34 +90,35 @@
             &:hover {
                 background-color: var(--color-blue-100);
                 color: var(--color-blue-700);
-                
+
                 &[aria-disabled="true"] {
                     background-color: transparent;
                     color: var(--color-gray-500);
                     cursor: not-allowed;
                 }
-            }            
+            }
         }
 
         &:active {
             background-color: var(--color-blue-200);
             color: var(--color-blue-800);
         }
-        
+
         &:disabled,
         &[aria-disabled="true"],
         &:active[aria-disabled="true"] {
             background-color: transparent;
             color: var(--color-gray-500);
             cursor: not-allowed;
-        }        
+        }
     }
 
     &--size {
         &-md {
             font-size: var(--size-md);
             line-height: var(--size-xl);
-            padding: calc(var(--size-xs) - var(--size-4xs)) calc(var(--size-md) - var(--size-4xs));
+            padding: calc(var(--size-xs) - var(--size-4xs))
+                calc(var(--size-md) - var(--size-4xs));
 
             &:has(.system-icon + span:empty) {
                 padding-left: calc(var(--size-xs) - var(--size-4xs));
@@ -128,7 +129,8 @@
         &-sm {
             font-size: var(--size-sm);
             line-height: var(--size-md);
-            padding: calc(var(--size-2xs) - var(--size-4xs)) calc(var(--size-xs) - var(--size-4xs));
+            padding: calc(var(--size-2xs) - var(--size-4xs))
+                calc(var(--size-xs) - var(--size-4xs));
 
             & > .system-icon > svg {
                 width: var(--size-md);
@@ -144,7 +146,8 @@
         &-xs {
             font-size: var(--size-sm);
             line-height: var(--size-md);
-            padding: calc(var(--size-3xs) - var(--size-4xs)) calc(var(--size-3xs) - var(--size-4xs));
+            padding: calc(var(--size-3xs) - var(--size-4xs))
+                calc(var(--size-3xs) - var(--size-4xs));
 
             & > .system-icon > svg {
                 width: var(--size-md);

@@ -6,9 +6,8 @@
 
     & > .index-card {
         flex: 0 0 calc(25% - var(--size-xl));
-    }    
+    }
 }
-
 
 .index-card {
     display: block;
@@ -31,7 +30,7 @@
             text-decoration: none;
             color: var(--color-gray-900);
         }
-        
+
         &:hover {
             border-color: var(--color-gray-400);
             box-shadow: var(--box-shadow-level-2);
@@ -47,5 +46,3 @@
         margin-bottom: var(--size-md);
     }
 }
-
-

@@ -11,9 +11,9 @@
 
         & .system-icon {
             margin-right: var(--size-2xs);
-        }        
+        }
     }
-    
+
     &--type {
         &-danger {
             background-color: var(--color-red-300);
@@ -22,22 +22,22 @@
         &-info {
             background-color: var(--color-blue-200);
         }
-        
+
         &-success {
             background-color: var(--color-green-300);
         }
-        
+
         &-warning {
             background-color: var(--color-yellow-200);
         }
-        
+
         &-new {
             background-color: var(--color-purple-300);
         }
-        
+
         &-neutral {
             background-color: var(--color-gray-200);
-        }        
+        }
     }
 
     &__content {
