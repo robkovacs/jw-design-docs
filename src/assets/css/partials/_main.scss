@@ -36,6 +36,11 @@ body {
     }
 }
 
+.preload * { 
+    transition: none !important;
+    animation-duration: 0.001s !important; 
+}
+
 html:has(.main-nav--open), body:has(.main-nav--open) {
     height: 100%;
     width: 100%;

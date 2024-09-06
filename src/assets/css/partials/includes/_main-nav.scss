@@ -197,10 +197,23 @@
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         transition: opacity 150ms ease-in;
+
     }
 
     & .theme-button__icon--dark {
         opacity: 0;
+    }
+    
+    &:focus-visible {
+        outline: none;
+        box-shadow: none;
+
+        & .theme-button__frame {
+            outline: var(--color-blue-500) solid var(--size-4xs);
+            outline-offset: var(--size-4xs);
+            box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
+            border-radius: var(--size-md);
+        }
     }
 
     &[aria-checked="true"] {

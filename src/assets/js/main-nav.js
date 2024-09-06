@@ -2,6 +2,10 @@ let mainNav = document.querySelector('.main-nav');
 let mainNavButton = document.querySelector('.mobile-header__menu-button');
 let mainNavBackdrop = document.querySelector('.main-nav__backdrop');
 
+window.addEventListener("load", () => {
+    document.body.classList.remove("preload");
+});
+
 function toggleMainNav() {
     if (mainNav.classList.contains('main-nav--open')) {
         closeMainNav();
@@ -48,6 +52,7 @@ setClass(isDark);
 
 function setClass(dark) {
     let themeButton = document.querySelectorAll('.theme-button');
+    
     if (dark) {
         document.documentElement.dataset.appearanceMode = "dark";
         themeButton.forEach((button) => {
