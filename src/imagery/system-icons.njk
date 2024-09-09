@@ -89,25 +89,33 @@ eleventyNavigation:
         font-size: 1rem;
         line-height: 1.25rem;
         border-radius: 0.25rem;
-        border: 0.0625rem solid #848890;
+        border: 0.0625rem solid var(--color-gray-500);
         width: 100%;
         max-width: 24rem;
         height: 3rem;
         position: relative;
+        background-color: var(--color-white);
+        color: var(--color-gray-900);
     }
 
-    #system-icon-search-input input:hover {
-        border-color: #6D717A;
+    #system-icon-search-input input::placeholder {
+        color: var(--color-gray-400);
+    }
+
+    @media (hover: hover) {
+        #system-icon-search-input input:hover {
+            border-color: var(--color-gray-600);
+        }
     }
 
     #system-icon-search-input::before {
         content: "";
         z-index: 1;
-        background-image: url('../../assets/img/system-icons/search.svg');
-        background-position: center;
-        background-size: 1.5rem;
-        background-repeat: no-repeat;
-        opacity: 0.5;
+        background-color: var(--color-gray-400);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: var(--size-xl);
+        mask-image: url('../../assets/img/system-icons/search.svg');
         position: absolute;
         left: 0;
         top: 0;
@@ -122,13 +130,23 @@ eleventyNavigation:
         right: 0;
         width: 3rem;
         height: 3rem;
-        background-color: transparent;
-        background-image: url('../../assets/img/system-icons/close-circle.svg');
-        background-position: center;
-        background-size: 1.5rem;
-        background-repeat: no-repeat;
+        background-color: var(--color-gray-900);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: var(--size-xl);
+        mask-image: url('../../assets/img/system-icons/close-circle.svg');
         border: none;
         border-radius: 0.25rem;
+    }
+
+    @media (hover: hover) {
+        #clear-search-input:hover {
+            background-color: var(--color-gray-700);
+        }
+    }
+
+    #clear-search-input:active {
+        background-color: var(--color-gray-800);
     }
 
     #system-icon-count {
@@ -159,7 +177,7 @@ eleventyNavigation:
         right: 2rem;
         flex: 1;
         padding: 2rem;
-        background-color: #f7f8fb;
+        background-color: var(--color-gray-100);
         border-radius: 0.5rem;
         max-height: calc(100vh - 4rem);
         overflow-y: scroll;
@@ -199,31 +217,33 @@ eleventyNavigation:
         font-size: inherit;
         line-height: inherit;
         color: inherit;
-        background-color: #fff;
-        border: 0.0625rem solid #d9dce1;
+        background-color: var(--color-white);
+        border: 0.0625rem solid var(--color-gray-300);
         border-radius: 0.25rem;
         margin: 0.0625rem;
     }
 
     #system-icon-gallery button:hover {
-        background-color: #f7f8fb;
+        background-color: var(--color-gray-100);
     }
 
     #system-icon-gallery button:active {
-        background-color: #eef0f4;
+        background-color: var(--color-gray-200);
     }
 
     #system-icon-gallery .current {
-        border: 0.125rem solid #0070d4;
-        background-color: #e5f3ff;
+        border: 0.125rem solid var(--color-blue-600);
+        background-color: var(--color-blue-100);
     }
 
-    #system-icon-gallery .current:hover {
-        background-color: #b6e5ff;
+    @media (hover: hover) {
+        #system-icon-gallery .current:hover {
+            background-color: var(--color-blue-200);
+        }
     }
 
     #system-icon-gallery .current:active {
-        background-color: #6dc8ff;
+        background-color: var(--color-blue-300);
     }
 
     .icon-summary {
@@ -245,11 +265,11 @@ eleventyNavigation:
     }
 
     .deprecated-dot {
-        background-color: #f3b715;
+        background-color: var(--color-yellow-300);
     }
 
     .new-dot {
-        background-color: #65c9a3;
+        background-color: var(--color-green-300);
     }
 
     .icon-summary .icon-preview {
@@ -266,12 +286,14 @@ eleventyNavigation:
         color: inherit;
     }
 
-    #system-icon-inspector button:hover {
-        background-color: #f7f8fb;
+    @media (hover: hover) {
+        #system-icon-inspector button:hover {
+            background-color: var(--color-gray-100);
+        }
     }
 
     #system-icon-inspector button:active {
-        background-color: #eef0f4;
+        background-color: var(--color-gray-200);
     }
 
     .icon-detail .icon-preview {
@@ -300,26 +322,17 @@ eleventyNavigation:
     }
 
     .deprecated-badge {
-        background-color: #ffeed1;
-        color: #ad5e0d;
+        background-color: var(--color-yellow-100);
+        color: var(--color-yellow-600);
     }
 
     .new-badge {
-        background-color: #ddf3ea;
-        color: #008354;
+        background-color:  var(--color-green-100);
+        color:  var(--color-green-600);
     }
 
     .icon-detail figure {
         margin-bottom: 1rem;
-    }
-
-    code {
-        display: inline-block;
-        padding: 0.25rem;
-        background-color: #d9dce1;
-        border-radius: 0.25rem;
-        font-size: 0.75rem;
-        line-height: 1rem;
     }
 
     .icon-tag-list {
@@ -338,7 +351,7 @@ eleventyNavigation:
         text-align: center;
         font-size: 0.75rem;
         line-height: 1rem;
-        border: 0.0625rem solid #848890;
+        border: 0.0625rem solid var(--color-gray-500);
         border-radius: 9999rem;
         padding: 0.25rem 0.5rem;
         background-color: transparent;
@@ -359,7 +372,7 @@ eleventyNavigation:
     }
 
     .empty-state {
-        color: #5e6167;
+        color: var(--color-gray-600);
         grid-column: 1 / -1;
     }
 {% endset %}
