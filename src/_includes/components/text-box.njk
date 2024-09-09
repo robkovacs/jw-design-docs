@@ -4,6 +4,7 @@
 {% macro render(options) %}
     {% set required = (options.required | default(true)) %}
     {% set id %}{{ options.id | default(nanoid()) }}{% endset %}
+    {% set locale = options.locale | default("en_US") %}
     
     {% set classes -%}
     {#- TODO: make this into a custom filter -#}
@@ -19,7 +20,7 @@
     {% if options.label or options.messages %}
         <div class="form-field">
     {% endif %}
-            {{ inputLabel(options.label, required, id) if options.label }}
+            {{ inputLabel(options.label, required, id, locale = locale) if options.label }}
             {{ inputMessage("help", options.helpText) if options.helpText }}
             <input
                 class="text-box {{ classes }}"

@@ -3,10 +3,84 @@
 {% from './select-box.njk' import render as selectBox %}
 {% from './text-box.njk' import render as textBox %}
 
+{% macro renderMonth(monthStrings, locale) %}
+    {% call selectBox({
+        label: monthStrings.label,
+        locale: locale,
+        classes: "memorable-date__month",
+        required: required,
+        disabled: disabled
+    }) %}
+        {% for month in monthStrings.months %}
+            <option>{{ month }}</option>
+        {% endfor %}
+    {% endcall %}
+{% endmacro %}
+
+
+{% macro renderDay(label, locale) %}
+    {{ textBox({
+    label: label,
+    locale: locale,
+    classes: "memorable-date__day",
+    required: required,
+    disabled: disabled,
+    attributes: {
+        pattern: "\\d{1,2}",
+        inputmode: "numeric",
+        minlength: "1",
+        maxlength: "2"
+    }
+}) }}
+{% endmacro %}
+
+{% macro renderYear(label, locale) %}
+    {{ textBox({
+        label: label,
+        locale: locale,
+        classes: "memorable-date__year",
+        required: required,
+        disabled: disabled,
+        attributes: {
+            pattern: "\\d{4}",
+            inputmode: "numeric",
+            minlength: "4",
+            maxlength: "4"
+        }
+    }) }}
+{% endmacro %}
+
+{% set localeData = {
+    "en_US": {
+        order: ['month', 'day', 'year'],
+        strings: {
+            month: {
+                label: "Month",
+                months: ["01 - January", "02 - February", "03 - March", "04 - April", "05 - May", "06 - June", "07 - July", "08 - August", "09 - September", "10 - October", "11 - November", "12 - December"]
+            },
+            day: "Day",
+            year: "Year"
+        }
+    },
+    "de_DE": {
+        order: ['day', 'month', 'year'],
+        strings: {
+            month: {
+                label: "Monat",
+                months: ["01 - Januar", "02 - Februar", "03 - März", "04 - April", "05 - Mai", "06 - Juni", "07 - Juli", "08 - August", "09 - September", "10 - Oktober", "11 - November", "12 - Dezember"]
+            },
+            day: "Tag",
+            year: "Jahr"
+        }        
+    }
+} %}
+
 {% macro render(options) %}
     {% set required = (options.required | default(true)) %}
     {% set disabled = (options.disabled | default(false)) %}
     {% set id %}{{ options.id | default(nanoid()) }}{% endset %}
+    {% set locale = options.locale | default("en_US") %}
+    {% set order = localeData[locale].order %}
     
     {% set classes -%}
     {#- TODO: make this into a custom filter -#}
@@ -22,55 +96,19 @@
     {% if options.label or options.messages %}
         <fieldset class="form-field">
     {% endif %}
-            {{ inputLabel(options.label, required, id, "legend") if options.label }}
+            {{ inputLabel(options.label, required, id, "legend", locale = locale) if options.label }}
             {{ inputMessage("help", options.helpText) if options.helpText }}
             
             <div class="memorable-date">
-            {% call selectBox({
-                    label: "Month",
-                    classes: "memorable-date__month",
-                    required: required,
-                    disabled: disabled
-                }) %}
-                    <option>01 - January</option>
-                    <option>02 - February</option>
-                    <option>03 - March</option>
-                    <option>04 - April</option>
-                    <option>05 - May</option>
-                    <option>06 - June</option>
-                    <option>07 - July</option>
-                    <option>08 - August</option>
-                    <option>09 - September</option>
-                    <option>10 - October</option>
-                    <option>11 - November</option>
-                    <option>12 - December</option>
-                {% endcall %}
-
-                 {{ textBox({
-                    label: "Day",
-                    classes: "memorable-date__day",
-                    required: required,
-                    disabled: disabled,
-                    attributes: {
-                        pattern: "\\d{1,2}",
-                        inputmode: "numeric",
-                        minlength: "1",
-                        maxlength: "2"
-                    }
-                }) }}
-
-                {{ textBox({
-                    label: "Year",
-                    classes: "memorable-date__year",
-                    required: required,
-                    disabled: disabled,
-                    attributes: {
-                        pattern: "\\d{4}",
-                        inputmode: "numeric",
-                        minlength: "4",
-                        maxlength: "4"
-                    }
-                }) }}
+                {% for item in order %}
+                    {% if item == 'month' %}
+                        {{ renderMonth(localeData[locale].strings.month, locale) }}
+                    {% elseif item == 'day' %}
+                        {{ renderDay(localeData[locale].strings.day, locale) }}
+                    {% elseif item == 'year' %}
+                        {{ renderYear(localeData[locale].strings.year, locale) }}
+                    {% endif %}
+                {% endfor %}
             </div>
     {% if options.messages %}
         <div class="input-message__list">

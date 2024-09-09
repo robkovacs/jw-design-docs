@@ -9,10 +9,20 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        {{ memorableDate({
-            label: "Date of birth",
-            required: false
-        }) }}
+        <h2>Memorable date input</h2>
+        <p>Useful when a date picker or calendar isn't all that helpful, usually because you're entering a specific date far in the past or future. Avoids user uncertainty around acceptable date formats—although we do recommend ordering the fields, and populating their labels and data, as appropriate for the user's locale.</p>
+        {% call stack() %}
+            {{ memorableDate({
+                label: "Date of birth",
+                required: false
+            }) }}
+
+            {{ memorableDate({
+                label: "Geburtsdatum",
+                required: false,
+                locale: "de_DE"
+            }) }}
+        {% endcall %}
     </article>
 {% endblock %}
 

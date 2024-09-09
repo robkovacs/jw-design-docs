@@ -2,10 +2,20 @@
 {% from './input-label.njk' import render as inputLabel %}
 {% from './input-message.njk' import render as inputMessage %}
 
+{% set localeData = {
+    "en_US": {
+        placeholder: "Select&hellip;"
+    },
+    "de_DE": {
+        placeholder: "Wählen&hellip;"
+    }
+} %}
+
 {% macro render(options) %}
-    {% set placeholder %}{{ options.placeholder | default('Select&hellip;' | safe ) }}{% endset %}
     {% set required = (options.required | default(true)) %}
     {% set id %}{{ options.id | default(nanoid()) }}{% endset %}
+    {% set locale = options.locale | default("en_US") %}
+    {% set placeholder = options.placeholder | default(localeData[locale].placeholder) %}
     
     {% set classes -%}
     {#- TODO: make this into a custom filter -#}
@@ -21,7 +31,7 @@
     {% if options.label or options.messages %}
         <div class="form-field">
     {% endif %}
-            {{ inputLabel(options.label, required, id) if options.label }}
+            {{ inputLabel(options.label, required, id, locale = locale) if options.label }}
             {{ inputMessage("help", options.helpText) if options.helpText }}
             <span class="select-box__wrapper">
                 <select

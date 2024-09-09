@@ -1,4 +1,12 @@
-{%- macro render(content, isRequired = true, forId = 'id', as = "label") -%}
+{% set localeData = {
+    "en_US": {
+        optional: "Optional"
+    },
+    "de_DE": {
+        optional: "Freiwillig"
+    }
+} %}
+{%- macro render(content, isRequired = true, forId = 'id', as = "label", locale = 'en_US') -%}
 <{{ as }}
     class="input-label"
     {% if forId %}
@@ -7,7 +15,7 @@
 >
     {{ content }}
     {% if isRequired == false %}
-        <span class="input-label__optional">Optional</label>
+        <span class="input-label__optional">{{ localeData[locale].optional }}</label>
     {% endif %}
 </{{ as }}>
 {% endmacro %}
