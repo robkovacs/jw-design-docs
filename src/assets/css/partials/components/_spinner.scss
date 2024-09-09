@@ -1,6 +1,7 @@
 .spinner {
     display: inline-block;
     vertical-align: middle;
+    animation: rotate 1s infinite linear;
 
     &--size {
         &-xs {
@@ -27,11 +28,6 @@
             width: var(--size-4xl);
             height: var(--size-4xl);
         }
-    }
-
-    &__axis {
-        animation: rotate 1s infinite linear;
-        transform-origin: center;
     }
 
     &__shape {
