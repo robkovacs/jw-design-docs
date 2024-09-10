@@ -1,3 +1,5 @@
+@import '../../_breakpoints.scss';
+
 .grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -97,7 +99,7 @@
         }
     }
 
-    @media (min-width: 24rem) {
+    @media (min-width: $breakpoint-sm) {
         &--col-sm {
             &-12 {
                 grid-column: auto / span 12;
@@ -121,7 +123,7 @@
         }
     }
 
-    @media (min-width: 48rem) {
+    @media (min-width: $breakpoint-md) {
         &--col-md {
             &-12 {
                 grid-column: auto / span 12;
@@ -145,7 +147,7 @@
         }
     }
 
-    @media (min-width: 72rem) {
+    @media (min-width: $breakpoint-lg) {
         &--col-lg {
             &-12 {
                 grid-column: auto / span 12;
@@ -169,7 +171,7 @@
         }
     }
 
-    @media (width > 72rem) {
+    @media (width > $breakpoint-lg) {
         &--col-xl {
             &-12 {
                 grid-column: auto / span 12;

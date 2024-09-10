@@ -1,12 +1,17 @@
-@media screen and (min-width: 30rem) {
-    :root {
-        --nav-width: 16rem;
-        --ui-max-width: 90rem;
-    }
-}
+@import './_breakpoints.scss';
 
 * {
     box-sizing: border-box;
+}
+
+
+:root {
+    --nav-width: 0;
+    --ui-max-width: 90rem;
+
+    @media screen and (min-width: $breakpoint-md) {
+        --nav-width: 16rem;
+    }
 }
 
 *:focus-visible,
@@ -27,7 +32,7 @@ body {
     margin: 0;
     background-color: var(--color-white);
 
-    @media screen and (min-width: 48rem) {
+    @media screen and (min-width: $breakpoint-md) {
         min-height: 100%;
         display: flex;
         flex-direction: row;
@@ -83,8 +88,13 @@ main {
     flex: 1 1 100%;
     padding: var(--size-xl);
 
-    @media screen and (min-width: 48rem) {
-        flex: 1 1 calc(var(--ui-max-width) - var(--nav-width));
+    @media screen and (min-width: $breakpoint-md) {
+        :root {
+            --nav-width: 16rem;
+            --ui-max-width: 90rem;
+        }
+
+        flex: 0 1 calc(var(--ui-max-width) - var(--nav-width));
         padding: var(--size-5xl);
         overflow-wrap: anywhere;
     }
@@ -95,7 +105,7 @@ main {
     gap: var(--size-5xl);
     flex-direction: column;
     
-    @media screen and (min-width: 72rem) {
+    @media screen and (min-width: $breakpoint-lg) {
         flex-direction: row;
     }  
 }

@@ -1,4 +1,5 @@
-/* TODO: update the call to the TOC plugin to give everything BEM-y classnames */
+/* TODO: update the call to the TOC plugin to give everything BEM-y class names */
+@import '../_breakpoints.scss';
 
 .toc__heading {
     margin-top: calc(-1 * var(--size-3xl));
@@ -11,14 +12,14 @@
     top: var(--size-3xl);
     right: var(--size-3xl);
 
-    @media (min-width: 72rem) {
+    @media (min-width: $breakpoint-lg) {
         position: sticky;
         order: 2;
     }
 }
 
 .toc {
-    @media (min-width: 72rem) {
+    @media (min-width: $breakpoint-lg) {
         & .current {
             background-color: var(--color-blue-100);
             border-left: var(--size-4xs) solid var(--color-blue-600);
@@ -41,7 +42,7 @@
             padding: var(--size-3xs);
         }
         
-        @media (min-width: 72rem) {
+        @media (min-width: $breakpoint-lg) {
             & a {
                 padding: var(--size-2xs);
                 border-left: var(--size-4xs) solid transparent;

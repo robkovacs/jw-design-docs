@@ -5,6 +5,7 @@
 {% if not isHtmlElement(options.trigger) %}
     <span role="button" tabindex="0" aria-describedby="{{ id }}" class="tooltip__trigger tooltip__trigger--string">{{- options.trigger -}}</span>
 {% else %}
+    {# TODO: addClass returns the first HTML element, even if you pass a bunch. Tooltips on tooltips won't work, which is maybe OK... but not being able to do tooltips and menus might be more concerning #}
     {% set trigger = addClass(options.trigger, 'tooltip__trigger') %}
     {{ addAttribute(trigger, { 'aria-describedby': id }) | safe }}
 {% endif %}
