@@ -4,6 +4,7 @@ eleventyNavigation:
     key: Select box
     parent: Components
     order: 12
+    excerpt: "Choose one, and hide the choices when you're not choosing."
 hasTOC: true
 ---
 {% extends '../_includes/layout.njk' %}
@@ -102,7 +103,16 @@ hasTOC: true
         </section>
         <section>
             <h2 class="toc__heading" id="anatomy">Anatomy</h2>
-            <img src="/assets/img/components/select-anatomy.png" style="width: 100%" />
+            <picture>
+                <source
+                    srcset="/assets/img/components/select-box/anatomy-dark.png"
+                    media="(prefers-color-scheme: dark)"
+                />
+                <img
+                    src="/assets/img/components/select-box/anatomy.png"
+                    alt="A breakdown of the different elements of a select box"
+                />
+            </picture>
             <dl class="annotation-list">
                 <dt>Select input</dt>
                 <dd>The area which will be focused when this component is focused; will contain the placeholder when the field is empty and the value when an option is selected.</dd>
