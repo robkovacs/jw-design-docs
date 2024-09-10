@@ -9,9 +9,10 @@
         {% endif %}
     {% endset %}
     {% set gap = (options.gap | default("md")) %}
+    {% set alignItems = (options.alignItems | default("flex-start")) %}
 
     <div
-        class="row row--gap-{{ gap }} {{ classes }}"
+        class="row row--gap-{{ gap }} row--align-items-{{ alignItems }} {{ classes }}"
         {% for key, value in options.attributes %}
             {{ key }}="{{ value | safe }}"
         {% endfor %}

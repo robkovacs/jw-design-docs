@@ -1,0 +1,54 @@
+{%- macro grid(options) -%}
+    {% set classes %}
+        {% if options.classes %}
+            {% if options.classes == (options.classes | string) %}
+                {{ options.classes }}
+            {% else %}
+                {{ options.classes | join(' ') }}
+            {% endif %}
+        {% endif %}
+    {% endset %}
+
+    {% set alignItems = (options.alignItems | default("flex-start")) %}
+    {% set colGap = (options.colGap | default("3xl")) %}
+    {% set rowGap = (options.rowGap | default("xl")) %}
+    
+    <div
+        class="grid grid--row-gap-{{ rowGap }} grid--align-items-{{ alignItems }} grid--col-gap-{{ colGap }} {{ classes }}"
+        {% for key, value in options.attributes %}
+            {{ key }}="{{ value | safe }}"
+        {% endfor %}
+    >
+        {{ caller() | safe }}
+    </div>
+{%- endmacro -%}
+
+{%- macro gridCell(options) -%}
+    {% set classes %}
+        {% if options.classes %}
+            {% if options.classes == (options.classes | string) %}
+                {{ options.classes }}
+            {% else %}
+                {{ options.classes | join(' ') }}
+            {% endif %}
+        {% endif %}
+    {% endset %}
+
+    {% set spans = (options.spans | default({ "xs": 12 })) %}
+    {% for breakpoint, span in spans %}
+        {% if classes %}
+            {% set classes = classes + " grid__cell--col-" + breakpoint + '-' + span %}
+        {% else %}
+            {% set classes = " grid__cell--col-" + breakpoint + '-' + span %}
+        {% endif %}
+    {% endfor %}
+
+    <div
+        class="grid__cell {{ classes }}"
+        {% for key, value in options.attributes %}
+            {{ key }}="{{ value | safe }}"
+        {% endfor %}
+    >
+        {{ caller() | safe }}
+    </div>
+{%- endmacro -%}

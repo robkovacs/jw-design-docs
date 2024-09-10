@@ -9,21 +9,21 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        {{ chip({
-            content: "I'm a dismissible chip",
-            dismissible: true
-        }) }}
-
-        {{- chip({
-            content: "I'm a boring old chip",
-            dismissible: false
-        }) -}}
-
-        {{ chip({
-            content: "I'm dismissible, but disabled",
-            dismissible: true,
-            disabled: true
-        }) }}
+        {% call row() %}
+            {{ chip({
+                content: "I'm a dismissible chip",
+                dismissible: true
+            }) }}
+            {{ chip({
+                content: "I'm a boring old static chip",
+                dismissible: false
+            }) }}
+            {{ chip({
+                content: "I'm dismissible, but disabled",
+                dismissible: true,
+                disabled: true
+            }) }}
+        {% endcall %}
     </article>
 {% endblock %}
 

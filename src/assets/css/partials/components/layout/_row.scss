@@ -1,6 +1,7 @@
 .row {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 
     &--gap-2xs {
         gap: var(--size-2xs);
@@ -24,5 +25,19 @@
 
     &--gap-6xl {
         gap: var(--size-6xl);
+    }
+
+    &--align-items {
+        &-flex-start {
+            align-items: flex-start;
+        }
+
+        &-center {
+            align-items: center;
+        }
+
+        &-flex-end {
+            align-items: flex-end;
+        }
     }
 }

@@ -53,6 +53,10 @@ p {
     margin-bottom: var(--size-md);
 }
 
+p:last-child {
+    margin-bottom: 0;
+}
+
 kbd,
 code {
     display: inline-block;

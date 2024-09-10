@@ -10,7 +10,7 @@ eleventyNavigation:
 {% block content %}
     <article>
         {% call stack () %}
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem; align-items: center">
+            {% call row() %}
                 {{ badge({
                     content: "Badge",
                     size: "md",
@@ -47,8 +47,8 @@ eleventyNavigation:
                     color: "neutral",
                     emphasis: "strong"
                 }) }}
-            </div>
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem; align-items: center">
+            {% endcall %}
+            {% call row() %}
                 {{ badge({
                     content: "Badge",
                     size: "md",
@@ -85,8 +85,8 @@ eleventyNavigation:
                     color: "neutral",
                     emphasis: "subtle"
                 }) }}
-            </div>
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem; align-items: center">
+            {% endcall %}
+            {% call row() %}
                 {{ badge({
                     content: "Badge",
                     size: "sm",
@@ -123,8 +123,8 @@ eleventyNavigation:
                     color: "neutral",
                     emphasis: "strong"
                 }) }}
-            </div>
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem; align-items: center">
+            {% endcall %}
+            {% call row() %}
                 {{ badge({
                     content: "Badge",
                     size: "sm",
@@ -161,7 +161,7 @@ eleventyNavigation:
                     color: "neutral",
                     emphasis: "subtle"
                 }) }}
-            </div>
+            {% endcall %}
         {% endcall %}
     </article>
 {% endblock %}

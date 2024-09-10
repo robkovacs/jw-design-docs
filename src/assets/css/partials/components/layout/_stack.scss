@@ -25,4 +25,18 @@
     &--gap-6xl {
         gap: var(--size-6xl);
     }
+
+    &--align-items {
+        &-flex-start {
+            align-items: flex-start;
+        }
+
+        &-center {
+            align-items: center;
+        }
+
+        &-flex-end {
+            align-items: flex-end;
+        }
+    }
 }

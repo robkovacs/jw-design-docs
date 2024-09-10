@@ -122,8 +122,8 @@ hasTOC: true
         </section>
         <section>
             <h2 class="toc__heading" id="when-to-use-or-not">When to use (or not)</h2>
-            <div class="two-columns">
-                <div>
+            {% call grid() %}
+                {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                     <div class="h3" style="color: var(--color-green-600)">{{ systemIcon('check-circle') }}&nbsp; When to use</div>
                     <ul class="bulleted-list">
                         <li>If the user is being presented with at least 4 options</li>
@@ -131,8 +131,8 @@ hasTOC: true
                         <li>If the options to choose from can be represented in a single line of plain text</li>
                         <li>If the options to choose from have either no hierarchy, or a single level of hierarchy</li>
                     </ul>
-                </div>
-                <div>
+                {% endcall %}
+                {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                     <div class="h3" style="color: var(--color-red-600)">{{ systemIcon('error') }}&nbsp; When not to use</div>
                     <ul class="bulleted-list">
                         <li>If the user has 4 or fewer options to choose from, and can only choose one, use <strong>radio buttons</strong></li>
@@ -140,8 +140,8 @@ hasTOC: true
                         <li>If the user only can only make a binary or Boolean choice (e.g. on/off, yes/no, enabled/disabled, show/hide), and their choice is intended to take effect immediately, use a <strong>toggle switch</strong></li>
                         <li>If the user can select multiple options at once, and there are more than 4 to choose from, use a <strong>multi-select</strong></li>
                     </ul>
-                </div>
-            </div>
+                {% endcall %}
+            {% endcall %}
         </section>
         <section>
             <h2 class="toc__heading" id="content-guidance">Content</h2>
@@ -151,113 +151,115 @@ hasTOC: true
             
             <p>The most logical order for a given use case may not always be alphabetical. Maybe you're presenting a set of statuses that are generally expected to be in being in a certain order. Maybe there are more commonly-used options that belong at the top of the list—whatever makes sense.</p>
             
-            <div class="two-columns" style="border-radius: 12px; padding: var(--size-xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0 var(--size-2xl)">
-                <div>
-                    {% call selectBox({
-                        label: "Favorite U.S. president",
-                        placeholder: "Choose a president"
-                    }) %}
-                        <option>George Washington</option>
-                        <option>John Adams</option>
-                        <option>Thomas Jefferson</option>
-                        <option>James Madison</option>
-                        <option>James Monroe</option>
-                        <option>John Quincy Adams</option>
-                        <option>Andrew Jackson</option>
-                        <option>Martin van Buren</option>
-                        <option>William Henry Harrison</option>
-                        <option>John Tyler</option>
-                        <option>James K. Polk</option>
-                        <option>Zachary Taylor</option>
-                        <option>Millard Fillmore</option>
-                        <option>Franklin Pierce</option>
-                        <option>James Buchanan</option>
-                        <option>Abraham Lincoln</option>
-                        <option>Andrew Johnson</option>
-                        <option>Ulysses S. Grant</option>
-                        <option>Rutherford B. Hayes</option>
-                        <option>James A. Garfield</option>
-                        <option>Chester A. Arthur</option>
-                        <option>Grover Cleveland</option>
-                        <option>Benjamin Harrison</option>
-                        <option>William McKinley</option>
-                        <option>Theodore Roosevelt</option>
-                        <option>William Howard Taft</option>
-                        <option>Woodrow Wilson</option>
-                        <option>Warren G. Harding</option>
-                        <option>Calvin Coolidge</option>
-                        <option>Herbert Hoover</option>
-                        <option>Franklin D. Roosevelt</option>
-                        <option>Harry S. Truman</option>
-                        <option>Dwight D. Eisenhower</option>
-                        <option>John F. Kennedy</option>
-                        <option>Lyndon B. Johnson</option>
-                        <option>Richard Nixon</option>
-                        <option>Gerald Ford</option>
-                        <option>Jimmy Carter</option>
-                        <option>Ronald Reagan</option>
-                        <option>George Bush</option>
-                        <option>Bill Clinton</option>
-                        <option>George W. Bush</option>
-                        <option>Barack Obama</option>
-                        <option>Donald Trump</option>
-                        <option>Joe Biden</option>
+            <div style="border-radius: 12px; padding: var(--size-3xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0 var(--size-2xl)">
+                {% call grid() %}
+                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
+                        {% call selectBox({
+                            label: "Favorite U.S. president",
+                            placeholder: "Choose a president"
+                        }) %}
+                            <option>George Washington</option>
+                            <option>John Adams</option>
+                            <option>Thomas Jefferson</option>
+                            <option>James Madison</option>
+                            <option>James Monroe</option>
+                            <option>John Quincy Adams</option>
+                            <option>Andrew Jackson</option>
+                            <option>Martin van Buren</option>
+                            <option>William Henry Harrison</option>
+                            <option>John Tyler</option>
+                            <option>James K. Polk</option>
+                            <option>Zachary Taylor</option>
+                            <option>Millard Fillmore</option>
+                            <option>Franklin Pierce</option>
+                            <option>James Buchanan</option>
+                            <option>Abraham Lincoln</option>
+                            <option>Andrew Johnson</option>
+                            <option>Ulysses S. Grant</option>
+                            <option>Rutherford B. Hayes</option>
+                            <option>James A. Garfield</option>
+                            <option>Chester A. Arthur</option>
+                            <option>Grover Cleveland</option>
+                            <option>Benjamin Harrison</option>
+                            <option>William McKinley</option>
+                            <option>Theodore Roosevelt</option>
+                            <option>William Howard Taft</option>
+                            <option>Woodrow Wilson</option>
+                            <option>Warren G. Harding</option>
+                            <option>Calvin Coolidge</option>
+                            <option>Herbert Hoover</option>
+                            <option>Franklin D. Roosevelt</option>
+                            <option>Harry S. Truman</option>
+                            <option>Dwight D. Eisenhower</option>
+                            <option>John F. Kennedy</option>
+                            <option>Lyndon B. Johnson</option>
+                            <option>Richard Nixon</option>
+                            <option>Gerald Ford</option>
+                            <option>Jimmy Carter</option>
+                            <option>Ronald Reagan</option>
+                            <option>George Bush</option>
+                            <option>Bill Clinton</option>
+                            <option>George W. Bush</option>
+                            <option>Barack Obama</option>
+                            <option>Donald Trump</option>
+                            <option>Joe Biden</option>
+                        {% endcall %}
+                        {{ dosDonts("do") }}
                     {% endcall %}
-                    {{ dosDonts("do") }}
-                </div>
-                <div>
-                    {% call selectBox({
-                        label: "Favorite U.S. president",
-                        placeholder: "Choose a president"
-                    }) %}
-                        <option>Abraham Lincoln</option>
-                        <option>Andrew Jackson</option>
-                        <option>Andrew Johnson</option>
-                        <option>Barack Obama</option>
-                        <option>Benjamin Harrison</option>
-                        <option>Bill Clinton</option>
-                        <option>Calvin Coolidge</option>
-                        <option>Chester A. Arthur</option>
-                        <option>Donald Trump</option>
-                        <option>Dwight D. Eisenhower</option>
-                        <option>Franklin D. Roosevelt</option>
-                        <option>Franklin Pierce</option>
-                        <option>George Bush</option>
-                        <option>George W. Bush</option>
-                        <option>George Washington</option>
-                        <option>Gerald Ford</option>
-                        <option>Grover Cleveland</option>
-                        <option>Harry S. Truman</option>
-                        <option>Herbert Hoover</option>
-                        <option>James A. Garfield</option>
-                        <option>James Buchanan</option>
-                        <option>James K. Polk</option>
-                        <option>James Madison</option>
-                        <option>James Monroe</option>
-                        <option>Jimmy Carter</option>
-                        <option>Joe Biden</option>
-                        <option>John Adams</option>
-                        <option>John F. Kennedy</option>
-                        <option>John Quincy Adams</option>
-                        <option>John Tyler</option>
-                        <option>Lyndon B. Johnson</option>
-                        <option>Martin van Buren</option>
-                        <option>Millard Fillmore</option>
-                        <option>Richard Nixon</option>
-                        <option>Ronald Reagan</option>
-                        <option>Rutherford B. Hayes</option>
-                        <option>Theodore Roosevelt</option>
-                        <option>Thomas Jefferson</option>
-                        <option>Ulysses S. Grant</option>
-                        <option>Warren G. Harding</option>
-                        <option>William Henry Harrison</option>
-                        <option>William Howard Taft</option>
-                        <option>William McKinley</option>
-                        <option>Woodrow Wilson</option>
-                        <option>Zachary Taylor</option>
+                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
+                        {% call selectBox({
+                            label: "Favorite U.S. president",
+                            placeholder: "Choose a president"
+                        }) %}
+                            <option>Abraham Lincoln</option>
+                            <option>Andrew Jackson</option>
+                            <option>Andrew Johnson</option>
+                            <option>Barack Obama</option>
+                            <option>Benjamin Harrison</option>
+                            <option>Bill Clinton</option>
+                            <option>Calvin Coolidge</option>
+                            <option>Chester A. Arthur</option>
+                            <option>Donald Trump</option>
+                            <option>Dwight D. Eisenhower</option>
+                            <option>Franklin D. Roosevelt</option>
+                            <option>Franklin Pierce</option>
+                            <option>George Bush</option>
+                            <option>George W. Bush</option>
+                            <option>George Washington</option>
+                            <option>Gerald Ford</option>
+                            <option>Grover Cleveland</option>
+                            <option>Harry S. Truman</option>
+                            <option>Herbert Hoover</option>
+                            <option>James A. Garfield</option>
+                            <option>James Buchanan</option>
+                            <option>James K. Polk</option>
+                            <option>James Madison</option>
+                            <option>James Monroe</option>
+                            <option>Jimmy Carter</option>
+                            <option>Joe Biden</option>
+                            <option>John Adams</option>
+                            <option>John F. Kennedy</option>
+                            <option>John Quincy Adams</option>
+                            <option>John Tyler</option>
+                            <option>Lyndon B. Johnson</option>
+                            <option>Martin van Buren</option>
+                            <option>Millard Fillmore</option>
+                            <option>Richard Nixon</option>
+                            <option>Ronald Reagan</option>
+                            <option>Rutherford B. Hayes</option>
+                            <option>Theodore Roosevelt</option>
+                            <option>Thomas Jefferson</option>
+                            <option>Ulysses S. Grant</option>
+                            <option>Warren G. Harding</option>
+                            <option>William Henry Harrison</option>
+                            <option>William Howard Taft</option>
+                            <option>William McKinley</option>
+                            <option>Woodrow Wilson</option>
+                            <option>Zachary Taylor</option>
+                        {% endcall %}
+                        {{ dosDonts("dont") }}
                     {% endcall %}
-                    {{ dosDonts("dont") }}
-                </div>
+                {% endcall %}
             </div>
             <p style="color: var(--color-gray-600)">A list of U.S. presidents might make more sense to be put in chronological order, not alphabetical order by first name.</p>
         </section>
@@ -359,7 +361,7 @@ hasTOC: true
                     {% endcall %}
                     {{ dosDonts("do") }}  
                 </div>
-                <div style="width: 15rem">
+                <div style="width: 20rem">
                     {% call selectBox({
                         label: "Favorite Nicolas Cage movie",
                         placeholder: "It's hard to choose just one, but do it anyway"
@@ -500,8 +502,8 @@ hasTOC: true
             <p>Whatever you do, don't use a placeholder in place of a label. Screen readers don't read them, and even sighted users may find them hard to read. They're a nice-to-have, if anything.</p>
 
             <div style="border-radius: 12px; padding: var(--size-xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
-                <div class="two-columns" style="align-items: flex-end">
-                    <div>
+                {% call grid({ alignItems: "flex-end" }) %}
+                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
                         {% call selectBox({
                             label: "Status",
                             placeholder: "Choose a status"
@@ -513,8 +515,8 @@ hasTOC: true
                             <option>Done</option>
                         {% endcall %}
                         {{ dosDonts("do") }}    
-                    </div>    
-                    <div>
+                    {% endcall %}                
+                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
                         {% call selectBox({
                             placeholder: "Status"
                         }) %}
@@ -525,8 +527,8 @@ hasTOC: true
                             <option>Done</option>
                         {% endcall %}
                         {{ dosDonts("dont") }}               
-                    </div>    
-                </div>    
+                    {% endcall %}
+                {% endcall %}
             </div>
         </section>
         <section>
@@ -535,8 +537,8 @@ hasTOC: true
             <p>Also, <code>aria-hidden</code> doesn't work inside of an option list, so screen readers will be stuck reading out the emoji name(s), even if you only intend to use them for decoration.</p>
 
             <div style="border-radius: 12px; padding: var(--size-xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
-                <div class="two-columns" style="align-items: flex-end">
-                    <div>
+                {% call grid() %}
+                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
                         {% call selectBox({
                             label: "Country",
                             placeholder: "Choose a country"
@@ -782,8 +784,8 @@ hasTOC: true
                             <option>Zimbabwe</option>
                         {% endcall %}
                         {{ dosDonts("do") }}    
-                    </div>    
-                    <div>
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
                         {% call selectBox({
                             label: "Country",
                             placeholder: "Choose a country"
@@ -1033,8 +1035,8 @@ hasTOC: true
                             <option>🇿🇼 Zimbabwe</option>
                         {% endcall %}
                         {{ dosDonts("dont") }}               
-                    </div>    
-                </div>    
+                    {% endcall %}
+                {% endcall %}    
             </div>
         </section>
     </article>

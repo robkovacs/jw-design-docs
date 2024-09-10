@@ -10,7 +10,7 @@ eleventyNavigation:
 {% block content %}
     <article>
         {% call stack() %}
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem; align-items: center">
+            {% call row({ alignItems: "center" }) %}
                 {{ avatar({
                     fullName: "Meredith Palmer",
                     size: "xs"
@@ -35,8 +35,8 @@ eleventyNavigation:
                     fullName: "Michael Scott",
                     size: "2xl"    
                 }) }}
-            </div>
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem; align-items: center">
+            {% endcall %}
+            {% call row({ alignItems: "center" }) %}
                 {{ avatar({
                     fullName: "Meredith Palmer",
                     size: "xs",
@@ -67,7 +67,7 @@ eleventyNavigation:
                     size: "2xl",
                     photoUrl: "/assets/img/components/avatar/michael-scott.jpg"    
                 }) }}
-            </div>
+            {% endcall %}
         {% endcall %}
     </article>
 {% endblock %}

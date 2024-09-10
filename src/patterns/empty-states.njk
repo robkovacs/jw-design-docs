@@ -18,6 +18,21 @@ eleventyNavigation:
             <p class="empty-state__secondary-text">Once they’ve accepted their invite, you’ll be able to start paying them in Justworks, and other fun stuff.</p>
             {{ button({ content: 'Invite contractor', variant: 'outlined' } )}}
         </div>
+
+        {% call grid() %}
+            {% call gridCell({ spans: { "xs": 4, "sm": 2, "md": 1 } }) %}
+                lumpy
+            {% endcall %}
+            {% call gridCell({ spans: { "xs": 4, "sm": 2, "md": 1 } }) %}
+                dumpy
+            {% endcall %}
+            {% call gridCell({ spans: { "xs": 4, "sm": 2, "md": 1 } }) %}
+                chumpy
+            {% endcall %}
+            {% call gridCell({ spans: { "xs": 4, "sm": 2, "md": 1 } }) %}
+                grumpy
+            {% endcall %}
+        {% endcall %}
     </article>
 {% endblock %}
 
