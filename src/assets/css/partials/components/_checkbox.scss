@@ -1,6 +1,7 @@
 .checkbox {
     display: flex;
     gap: var(--size-xs);
+    width: 100%;
 
     &:has(:disabled, [aria-disabled="true"]) {
         color: var(--color-gray-500);
@@ -143,7 +144,7 @@
 }
 
 .checkbox--framed {
-    width: auto;
+    width: 100%;
     padding: var(--size-md);
     border: var(--size-5xs) solid var(--color-gray-500);
     border-radius: var(--size-3xs);

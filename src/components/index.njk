@@ -7,5 +7,18 @@ eleventyNavigation:
 ---
 {% extends '../_includes/layout.njk' %}
 
+
 {% block content %}
+{# needs actual cardData :) #}
+    {% call grid({ alignItems: "stretch", rowGap: "3xl" }) %}
+        {% for cardData in cards %}
+            {% call gridCell({ spans: { xs: 12, sm: 6, lg: 3 } }) %}
+                {{ indexCard({
+                    href: cardData.href,
+                    title: cardData.title,
+                    description: cardData.description
+                }) }}
+            {% endcall %}
+        {% endfor %}
+    {% endcall %}
 {% endblock %}

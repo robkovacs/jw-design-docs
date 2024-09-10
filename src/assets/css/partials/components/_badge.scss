@@ -1,7 +1,6 @@
 .badge {
     display: inline-block;
     vertical-align: middle;
-    border-radius: var(--size-3xs);
     font-weight: 700;
 
     &--emphasis-strong {
@@ -73,12 +72,14 @@
             padding: var(--size-4xs) var(--size-3xs);
             font-size: var(--size-2xs);
             line-height: var(--size-xs);
+            border-radius: var(--size-2xs);
         }
 
         &-md {
             padding: var(--size-3xs) var(--size-2xs);
             font-size: var(--size-xs);
             line-height: var(--size-md);
+            border-radius: var(--size-xs);
         }
     }
 }

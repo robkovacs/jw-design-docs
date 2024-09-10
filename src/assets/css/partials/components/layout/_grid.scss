@@ -56,16 +56,20 @@
     }
 
     &--align-items {
-        &-flex-start {
-            align-items: flex-start;
-        }
-
         &-center {
             align-items: center;
         }
 
+        &-flex-start {
+            align-items: flex-start;
+        }
+
         &-flex-end {
             align-items: flex-end;
+        }
+
+        &-stretch {
+            align-items: stretch;
         }
     }
 }
@@ -85,7 +89,7 @@
         }
 
         &-4 {
-            grid-column: auto / span 3;
+            grid-column: auto / span 4;
         }
 
         &-3 {
@@ -108,7 +112,7 @@
             }
     
             &-4 {
-                grid-column: auto / span 3;
+                grid-column: auto / span 4;
             }
     
             &-3 {
@@ -132,7 +136,7 @@
             }
     
             &-4 {
-                grid-column: auto / span 3;
+                grid-column: auto / span 4;
             }
     
             &-3 {
@@ -156,7 +160,7 @@
             }
     
             &-4 {
-                grid-column: auto / span 3;
+                grid-column: auto / span 4;
             }
     
             &-3 {
@@ -180,7 +184,7 @@
             }
     
             &-4 {
-                grid-column: auto / span 3;
+                grid-column: auto / span 4;
             }
     
             &-3 {
