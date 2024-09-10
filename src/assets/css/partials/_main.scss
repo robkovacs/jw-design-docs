@@ -141,3 +141,8 @@ section:has(h2:only-child, h3:only-child, h4:only-child) + section {
 figure {
     margin: 0 0 var(--size-xl);
 }
+
+img {
+    display: block;
+    max-width: 100%;
+}

@@ -56,6 +56,16 @@ function toggle() {
     )
 }
 
+document.querySelectorAll('.theme-button').forEach((themeButton) => {
+  themeButton.addEventListener("click", (e) => {
+      const currentState = e.target.getAttribute("aria-checked") === "true";
+      const newState = String(!currentState);
+      e.target.setAttribute("aria-checked", newState);
+  
+      toggle();
+  });
+});
+
 query.onchange = (e) => {
     if (userPreference === 'auto') {
         setClass((isDark = e.matches));
