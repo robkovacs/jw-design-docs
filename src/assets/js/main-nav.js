@@ -43,39 +43,3 @@ document.querySelectorAll('.theme-button').forEach((themeButton) => {
         toggle();
     });
 });
-
-let userPreference = localStorage.getItem('appearance') || 'auto';
-const query = window.matchMedia('(prefers-color-scheme: dark)');
-let isDark = userPreference === 'auto' ? query.matches : userPreference === 'dark';
-
-setClass(isDark);
-
-function setClass(dark) {
-    let themeButton = document.querySelectorAll('.theme-button');
-    
-    if (dark) {
-        document.documentElement.dataset.appearanceMode = "dark";
-        themeButton.forEach((button) => {
-            button.setAttribute("aria-checked", "true");
-        });
-    } else {
-        document.documentElement.removeAttribute('data-appearance-mode');
-        themeButton.forEach((button) => {
-            button.setAttribute("aria-checked", "false");
-        });
-    }
-}
-  
-function toggle() {
-    setClass((isDark = !isDark));
-    localStorage.setItem(
-        'appearance',
-        (userPreference = isDark ? (query.matches ? 'auto' : 'dark') : query.matches ? 'light' : 'auto')
-    )
-}
-
-query.onchange = (e) => {
-    if (userPreference === 'auto') {
-        setClass((isDark = e.matches));
-    }
-}
