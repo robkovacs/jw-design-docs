@@ -40,7 +40,7 @@ eleventyNavigation:
                 {% call stack({ gap: "xs" }) %}
                     {{ radioButton({
                         name: "radio-group-3",
-                        content: "These three have an error state if you leave them blank",
+                        content: "These three have an error state if you don't pick one",
                         required: true
                     }) }}
                     {{ radioButton({
@@ -64,7 +64,7 @@ eleventyNavigation:
                 }) }}
                 {{ radioButton({
                     name: "radio-group-4",
-                    content: "And so is this one",
+                    content: "And so is this one (even though it's selected)",
                     disabled: true,
                     checked: true
                 }) }}
@@ -72,15 +72,15 @@ eleventyNavigation:
 
             {% call stack({ gap: "xs" }) %}
                 {{ radioButton({
-                    name: "radio-group-4",
+                    name: "radio-group-5",
                     content: "This one is disabled",
                     description: "Here's some extra context.",
                     disabled: true,
                     framed: true
                 }) }}
                 {{ radioButton({
-                    name: "radio-group-4",
-                    content: "And so is this one",
+                    name: "radio-group-5",
+                    content: "And so is this one (even though it's selected)",
                     description: "Here's some extra context.",
                     disabled: true,
                     checked: true,

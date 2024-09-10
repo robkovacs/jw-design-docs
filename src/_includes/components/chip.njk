@@ -4,14 +4,13 @@
     {%- if options.dismissible -%}
         <button
             class="chip chip--dismissible"
+            aria-label="{{ options.content }} (Click to remove)"
             {{ ('aria-disabled="true"' | safe) if options.disabled }}
         >
     {%- else -%}
         <span class="chip">
     {%- endif -%}
-
             {{ options.content }}
-
     {%- if options.dismissible -%}
             {{ systemIcon("close", "xs") }}
         </button>

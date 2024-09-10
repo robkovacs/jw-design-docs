@@ -28,12 +28,8 @@
                     background-color: var(--color-gray-200);
                     border-color: var(--color-gray-400);
 
-                    &:checked {
-                        background-color: var(--color-gray-300);
-
-                        &::before {
-                            background-color: var(--color-gray-500);
-                        }
+                    &::before {
+                        background-color: var(--color-gray-500);
                     }
                 }
             }
@@ -105,6 +101,9 @@
 
         &:checked {
             background-color: var(--color-gray-300);
+            &::before {
+                display: block;
+            }
         }
     }
 }
@@ -180,6 +179,10 @@
 
                     &::before {
                         background-color: var(--color-blue-600);
+                    }
+
+                    &:disabled::before, &[aria-disabled="true"]::before {
+                        background-color: var(--color-gray-500);
                     }
                 }
 
