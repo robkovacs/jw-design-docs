@@ -9,7 +9,7 @@
         {% endif %}
     {% endset %}
     {% set gap = (options.gap | default("3xl")) %}
-    {% set alignItems = (options.alignItems | default("flex-start")) %}
+    {% set alignItems = (options.alignItems | default("normal")) %}
 
     <div
         class="stack stack--gap-{{ gap }} stack--align-items-{{ alignItems }} {{ classes }}"
