@@ -57,6 +57,16 @@ p:last-child {
     margin-bottom: 0;
 }
 
+.intro {
+    font-size: var(--size-lg);
+    line-height: var(--size-3xl);
+    margin-bottom: var(--size-3xl);
+
+    &:has(+ .intro) {
+        margin-bottom: var(--size-md);
+    }
+}
+
 kbd,
 code {
     display: inline-block;
@@ -74,10 +84,6 @@ code {
     margin-top: 0;
     margin-bottom: var(--size-xl);
     padding-left: var(--size-3xl);
-
-    p + & {
-        margin-top: calc(-1 * var(--size-xs));
-    }
 
     & > li + li {
         margin-top: var(--size-2xs);

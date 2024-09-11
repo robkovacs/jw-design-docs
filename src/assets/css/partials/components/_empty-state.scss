@@ -1,0 +1,30 @@
+.empty-state {
+    width: 100%;
+    max-width: 24rem;
+    margin-left: var(--size-5xl);
+    margin-bottom: var(--size-5xl);
+
+
+    &__icon {
+        display: inline-block;
+        margin-bottom: 1rem;
+
+        & > svg {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+    
+    &__primary-text {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+    
+    &__secondary-text {
+        margin-top: 0;
+        margin-bottom: var(--size-xl);
+        color: var(--color-gray-600);
+    }
+}

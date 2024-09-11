@@ -1,5 +1,7 @@
+{% from './components/meta/callout.njk' import render as callout %}
 {% from './components/meta/figure.njk' import render as figure %}
 {% from './components/meta/index-card.njk' import render as indexCard %}
+{% from './components/meta/dos-donts.njk' import render as dosDonts %}
 {% from './components/anchor.njk' import render as anchor %}
 {% from './components/avatar.njk' import render as avatar %}
 {% from './components/badge.njk' import render as badge %}
@@ -8,6 +10,7 @@
 {% from './components/chip.njk' import render as chip %}
 {% from './components/display-icon.njk' import render as displayIcon %}
 {% from './components/divider.njk' import render as divider %}
+{% from './components/empty-state.njk' import render as emptyState %}
 {% from './components/input-label.njk' import render as inputLabel %}
 {% from './components/input-message.njk' import render as inputMessage %}
 {% from './components/memorable-date.njk' import render as memorableDate %}
@@ -58,7 +61,7 @@
                     {% block content %}{% endblock %}
                 {% endset %}
                 
-                {% if localContent and hasTOC %}
+                {% if (localContent | toc) %}
                     <aside class="toc__container" data-pagefind-ignore>
                         <div class="h4">Table of contents</div>
                         {{ localContent | toc | safe }}

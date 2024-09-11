@@ -15,8 +15,6 @@ function updateSourceMedia(colorPreference) {
         `);
    
       sources.forEach((source) => {
-        // Preserve the source `media` as a data-attribute
-        // to be able to switch between preferences
         if (source?.media.includes('prefers-color-scheme')) {
           source.dataset.media = source.media;
         }

@@ -1,0 +1,19 @@
+{% from './display-icon.njk' import render as displayIcon %}
+{% from './button.njk' import render as button %}
+
+{% macro render(options) %}
+    <div class="empty-state">
+        {% if options.displayIcon %}
+            {{ displayIcon({
+                iconName: options.displayIcon.name,
+                color: options.displayIcon.color,
+                classes: ['empty-state__icon']
+            }) }}
+        {% endif %}
+        <div class="empty-state__primary-text">{{ options.primaryText }}</div>
+        <p class="empty-state__secondary-text">{{ options.secondaryText }}</p>
+        {% if options.action %}
+            {{ button({ content: options.action, variant: 'outlined' } )}}
+        {% endif %}
+    </div>
+{% endmacro %}

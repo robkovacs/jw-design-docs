@@ -1,0 +1,73 @@
+.callout {
+    padding: var(--size-md);
+    border-radius: var(--size-3xs);
+    margin-bottom: var(--size-3xl);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--size-xs);
+
+    & .system-icon {
+        height: var(--size-xl);
+        flex: 0 0 var(--size-xl);
+    }
+    
+    &--type {
+        &-danger {
+            background-color: var(--color-red-100);
+
+            & .system-icon {
+                color: var(--color-red-600);
+            }
+        }
+
+        &-info {
+            background-color: var(--color-blue-100);
+
+            & .system-icon {
+                color: var(--color-blue-600);
+            }
+        }
+
+        &-success {
+            background-color: var(--color-green-100);
+        
+            & .system-icon {
+                color: var(--color-green-600);
+            }
+        }
+
+        &-warning {
+            background-color: var(--color-yellow-100);
+
+            & .system-icon {
+                color: var(--color-yellow-600);
+            }
+        }
+
+        &-new {
+            background-color: var(--color-purple-100);
+
+            & .system-icon {
+                color: var(--color-purple-600);
+            }
+        }
+
+        &-neutral {
+            background-color: var(--color-gray-100);
+        }
+    }
+
+    &__content {
+        flex: 1 1;
+        & .bulleted-list {
+            &:first-child {
+                margin-top: var(--size-xs);
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

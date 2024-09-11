@@ -1,0 +1,23 @@
+{% from '../system-icon.njk' import render as systemIcon %}
+
+{% macro render(options) %}
+{% set type = (options.type | default('info')) %}
+{%- set calloutIcon -%}
+    {%- if type == "danger" -%}
+        error
+    {%- elif type == "warning" -%}
+        warning
+    {%- elif type == "success" -%}
+        check-circle
+    {%- elif type == "new" -%}
+        whats-new
+    {%- elif type == "info" -%}
+        info-circle
+    {%- endif -%}
+{%- endset -%}
+
+<div class="callout callout--type-{{ type }}">
+    {{- systemIcon(calloutIcon) if calloutIcon -}}
+    {% if caller() %}<div class="callout__content">{{ caller() }}</div>{% endif %}
+</div>
+{% endmacro %}

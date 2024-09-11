@@ -10,63 +10,241 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        <div class="empty-state">
-            {{ displayIcon({
-                iconName: 'toolbox',
-                classes: ['empty-state__icon']
-            }) }}
-            <div class="empty-state__primary-text">Invite your first contractor</div>
-            <p class="empty-state__secondary-text">Once they’ve accepted their invite, you’ll be able to start paying them in Justworks, and other fun stuff.</p>
-            {{ button({ content: 'Invite contractor', variant: 'outlined' } )}}
-        </div>
+        <section>
+            <h2 class="toc__heading" style="display: none" id="intro">Introduction</h2>
+            <p class="intro">Sometimes a space that usually displays content won't have any to show. This can be <strong>confusing</strong>, <strong>discouraging</strong>, or <strong>disorienting</strong>.</p>
+            <p class="intro">Empty states help people understand why there's no content to show, and what they can do about it, in a way that's just as welcoming as any other part of the Justworks experience.</p>
+        </section>
+        <section>
+            <h2 class="toc__heading" id="types-of-empty-states">Types of empty states</h2>
+            <p>People typically reach an empty state for one of these reasons:</p>
+            <ul class="bulleted-list">
+                <li>This person, or their company, has yet to do whatever would add content to this space—so this is a <strong>first-time experience</strong> for them.</li>
+                <li>There's been an <strong>error</strong>—the content that's supposed to be here didn't load.</li>
+                <li>An action has been taken that means there's no content to show here ...for now. It's <strong>temporary</strong>.</li>
+            </ul>
+            <p>How we approach the elements of an empty state differs slightly in each case.</p>
+        </section>
+        <section>
+            <h2 class="toc__heading" id="anatomy">Anatomy</h2>
+            {% call figure() %}
+                <picture>
+                    <source
+                        srcset="/assets/img/components/empty-state/anatomy-dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    />
+                    <img
+                        src="/assets/img/components/empty-state/anatomy.png"
+                        alt="A breakdown of the different elements of an empty state"
+                    />
+                </picture>
+            {% endcall %}
 
-        {% call grid() %}
-            {% call gridCell({ spans: { "xs": 4, "sm": 2, "md": 1 } }) %}
-                lumpy
+            <dl class="annotation-list">
+                <dt>
+                    Image &nbsp;
+                    {{ badge({
+                        content: "Optional",
+                        size: "md",
+                        color: "neutral",
+                        emphasis: "subtle"
+                    }) }}
+                </dt>
+                <dd>A visual shorthand for the type of content normally shown here, the reason for the empty state, or the steps that can be taken to fix it.</dd>
+                <dt>Primary text</dt>
+                <dd>
+                    <ul class="bulleted-list">
+                        <li>If this is a <strong>first-time experience</strong>, encourage the user to try out the relevant feature.</li>
+                        <li>If there’s been an <strong>error</strong>, summarize what went wrong as concisely as possible.</li>
+                        <li>If this is <strong>temporary</strong>, summarize why the space is currently empty.</li>
+                    </ul>
+
+                    {% call callout({ type: "warning" }) %}
+                        If it isn’t paired with secondary text, primary text should be styled like secondary text.
+                    {% endcall %}
+                </dd>
+                <dt>
+                    Secondary text &nbsp;
+                    {{ badge({
+                        content: "Optional",
+                        size: "md",
+                        color: "neutral",
+                        emphasis: "subtle"
+                    }) }}
+                </dt>
+                <dd>
+                    <ul class="bulleted-list">
+                        <li>If this is a <strong>first-time experience</strong>, you can further explain the benefits of using this feature for the first time.</li>
+                        <li>If there’s been an <strong>error</strong>, you can suggest what actions can be taken to fix it.</li>
+                        <li>If this is <strong>temporary</strong>, you can use this space to explain what can be done to populate this space with content.</li>
+                    </ul>
+                </dd>
+                <dt>
+                    Action &nbsp;
+                    {{ badge({
+                        content: "Optional",
+                        size: "md",
+                        color: "neutral",
+                        emphasis: "subtle"
+                    }) }}
+                </dt>
+                <dd>If there’s an action that can be taken within Justworks to clear this empty state, include a button that can be used to take that action.</dd>
+            </dl>
+        </section>
+        <section>
+            <h2 class="toc__heading" id="dos-and-donts">Dos and don'ts</h2>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="empty-states-not-for-loading">Empty states are not loading states</h3>
+            <p>Don’t use an empty state to show there’s not content here yet, but there will be in a few seconds. That’s what loading states are for!</p>
+            {% call figure() %}
+                {% call stack({ gap: "6xl" }) %}
+                    <div>
+                        {{ emptyState({
+                            displayIcon: {
+                                name: 'money-sign',
+                                color: "greenYellow"
+                            },
+                            primaryText: "Transactions are loading",
+                            secondaryText: "Should be just a few more seconds..."
+
+                        })}}
+                        {{ dosDonts("dont") }}
+                    </div>
+                    <div>
+                        {% call grid({ rowGap: "md", colGap: "md" }) %}
+                            {% call gridCell({ spans: { xs: 2 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                            {% call gridCell({ spans: { xs: 4 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                            {% call gridCell({ spans: { xs: 3 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                            {% call gridCell({ spans: { xs: 3 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                            {% call gridCell({ spans: { xs: 2 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                            {% call gridCell({ spans: { xs: 4 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                            {% call gridCell({ spans: { xs: 3 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                            {% call gridCell({ spans: { xs: 3 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                            {% call gridCell({ spans: { xs: 2 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                            {% call gridCell({ spans: { xs: 4 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                            {% call gridCell({ spans: { xs: 3 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                            {% call gridCell({ spans: { xs: 3 } }) %}
+                                {{ skeleton('text') }}
+                            {% endcall %}
+                        {% endcall %}
+                        {{ dosDonts("do") }}
+                    </div>
+                {% endcall %}
             {% endcall %}
-            {% call gridCell({ spans: { "xs": 4, "sm": 2, "md": 1 } }) %}
-                dumpy
+        </section>
+        <section>
+            <h3 class="toc__heading" id="no-buttons-for-browser-default-actions">Don't provide buttons for browser-default actions</h3>
+            <p>If the browser already has a button for the action you're suggesting for clearing the empty state, don't include an extra one. Include it in the secondary text.</p>
+            {% call figure() %}
+                {% call stack({ gap: "6xl" }) %}
+                    <div>
+                        {{ emptyState({
+                            displayIcon: {
+                                name: 'caution-sign',
+                                color: "red"
+                            },
+                            primaryText: "We couldn't load accounting firms",
+                            secondaryText: "This might be a one-time thing.",
+                            action: "Reload page"
+                        })}}
+                        {{ dosDonts("dont") }}
+                    </div>
+                    <div>
+                        {{ emptyState({
+                            displayIcon: {
+                                name: 'caution-sign',
+                                color: "red"
+                            },
+                            primaryText: "We couldn't load accounting firms",
+                            secondaryText: "This might be a one-time thing. Reload the page to try again."
+                        })}}
+                        {{ dosDonts("do") }}
+                    </div>
+                {% endcall %}
             {% endcall %}
-            {% call gridCell({ spans: { "xs": 4, "sm": 2, "md": 1 } }) %}
-                chumpy
+        </section>
+        <section>
+            <h3 class="toc__heading" id="no-buttons-for-browser-default-actions">Don't provide buttons for browser-default actions</h3>
+            <p>If the browser already has a button for the action you're suggesting for clearing the empty state, don't include an extra one. Include it in the secondary text.</p>
+            {% call figure() %}
+                {% call stack({ gap: "6xl" }) %}
+                    <div>
+                        <div class="h1">Benefits</div>
+                        
+                        <div class="h2">Medical</div>
+                        {{ emptyState({
+                            displayIcon: {
+                                name: 'caution-sign',
+                                color: "red"
+                            },
+                            primaryText: "We couldn't load your medical benefits",
+                            secondaryText: "This might be a one-time thing. Reload the page to try again."
+                        }) }}
+                        
+                        <div class="h2">Dental</div>
+                        {{ emptyState({
+                            displayIcon: {
+                                name: 'caution-sign',
+                                color: "red"
+                            },
+                            primaryText: "We couldn't load your dental benefits",
+                            secondaryText: "This might be a one-time thing. Reload the page to try again."
+                        }) }}
+
+                        <div class="h2">Vision</div>
+                        {{ emptyState({
+                            displayIcon: {
+                                name: 'caution-sign',
+                                color: "red"
+                            },
+                            primaryText: "We couldn't load your vision benefits",
+                            secondaryText: "This might be a one-time thing. Reload the page to try again."
+                        }) }}                        
+                        {{ dosDonts("dont") }}
+                    </div>
+                    <div>
+                        <div class="h1">Benefits</div>
+                        {{ emptyState({
+                            displayIcon: {
+                                name: 'caution-sign',
+                                color: "red"
+                            },
+                            primaryText: "We couldn't load your benefits",
+                            secondaryText: "This might be a one-time thing. Reload the page to try again."
+                        })}}
+                        {{ dosDonts("do") }}
+                    </div>
+                {% endcall %}
             {% endcall %}
-            {% call gridCell({ spans: { "xs": 4, "sm": 2, "md": 1 } }) %}
-                grumpy
-            {% endcall %}
-        {% endcall %}
+        </section>
+        <section>
+            <h2 class="toc__heading" id="examples">Examples</h2>
+            <div class="figma-embed">
+                <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F9krwXqHpvNu7GIloNxodj8%2FDesign-System---Patterns%3Fm%3Dauto%26node-id%3D2777-5460%26t%3DPDpd9VnQt54HDnhk-1" allowfullscreen></iframe>
+            </div>
+        </section>
     </article>
 {% endblock %}
-
-{% set localCss %}
-.empty-state {
-    margin-bottom: 1rem;
-    width: 100%;
-    max-width: 24rem;
-}
-
-.empty-state__icon {
-    display: inline-block;
-    margin-bottom: 1rem;
-}
-
-.empty-state__icon > svg {
-    width: 3rem;
-    height: 3rem;
-}
-
-.empty-state__primary-text {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-}
-
-.empty-state__secondary-text {
-    margin-top: 0;
-    color: #5e6167;
-}
-
-.empty-state__icon > svg {
-    width: 3rem; height: 3rem;
-}
-{% endset %}

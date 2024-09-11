@@ -101,6 +101,10 @@
         &-3 {
             grid-column: auto / span 3;
         }
+
+        &-2 {
+            grid-column: auto / span 2;
+        }
     }
 
     @media (min-width: $breakpoint-sm) {
@@ -123,6 +127,10 @@
     
             &-3 {
                 grid-column: auto / span 3;
+            }
+
+            &-2 {
+                grid-column: auto / span 2;
             }
         }
     }
@@ -148,6 +156,10 @@
             &-3 {
                 grid-column: auto / span 3;
             }
+
+            &-2 {
+                grid-column: auto / span 2;
+            }
         }
     }
 
@@ -172,6 +184,10 @@
             &-3 {
                 grid-column: auto / span 3;
             }
+
+            &-2 {
+                grid-column: auto / span 2;
+            }
         }
     }
 
@@ -195,6 +211,10 @@
     
             &-3 {
                 grid-column: auto / span 3;
+            }
+
+            &-2 {
+                grid-column: auto / span 2;
             }
         }
     }

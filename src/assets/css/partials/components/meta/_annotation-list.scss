@@ -1,27 +1,42 @@
 .annotation-list {
     counter-reset: annotations;
-    
-    & dt,
-    & dd {
-        margin-left: var(--size-5xl);
-    }
 
     & dt {
         position: relative;
-        padding: var(--size-3xs) 0;
+        font-size: var(--size-lg);
+        line-height: var(--size-xl);
         font-weight: 700;
+        margin-bottom: var(--size-md);
+    }
 
-        &::before {
+    & dd {
+        margin-bottom: var(--size-xl);
+        margin-left: 0;
+    }
+
+    &--numbered {
+        & dt,
+        & dd {
+            margin-left: var(--size-5xl);
+        }
+
+        & dt {
+            padding: var(--size-3xs) 0;
+            font-size: var(--size-md);
+            margin-bottom: 0;
+        }
+
+        & dt::before {
             display: block;
             position: absolute;
             left: calc(-1 * var(--size-5xl));
             font-weight: 700;
             color: var(--color-blue-600);
-            border: 1px solid var(--color-blue-600);
+            border: var(--size-5xs) solid var(--color-blue-600);
             background-color: var(--color-blue-100);
             font-size: var(--size-md);
             line-height: var(--size-md);
-            padding: var(--size-2xs);
+            padding: calc(var(--size-2xs) - var(--size-5xs));
             text-align: center;
             min-width: var(--size-md);
             border-radius: 100%;
@@ -29,9 +44,5 @@
             content: counter(annotations);
             counter-increment: annotations;
         }
-    }
-
-    & dd {
-        margin-bottom: var(--size-xl);
     }
 }

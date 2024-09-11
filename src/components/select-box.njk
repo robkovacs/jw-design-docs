@@ -5,17 +5,15 @@ eleventyNavigation:
     parent: Components
     order: 12
     excerpt: "Choose one, and hide the choices when you're not choosing."
-hasTOC: true
 ---
 {% extends '../_includes/layout.njk' %}
-{% from '../_includes/components/meta/dos-donts.njk' import render as dosDonts %}
 
 {% block content %}
     <article>
         <section>
             <h2 class="toc__heading" style="display: none" id="intro">Introduction</h2>
         
-            <p style="font-size: 20px; line-height: 32px">A <strong>select box</strong> allows someone to choose one option from many. It's most appropriate when there are 4 or more options to choose from, and those options can be represented in a one- or two-level list of short, text-only labels.</p>
+            <p class="intro">A <strong>select box</strong> allows someone to choose one option from many. It's most appropriate when there are 4 or more options to choose from, and those options can be represented in a one- or two-level list of short, text-only labels.</p>
 
             <ul style="list-style-type: none; padding: 0; margin: var(--size-3xl) 0 0 0; display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--size-md)">
                 <li>
@@ -52,7 +50,7 @@ hasTOC: true
 
             {% call figure() %}
                 {% call stack({
-                    attributes: { style: "max-width: 20rem; margin: -1rem auto 0" }
+                    attributes: { style: "max-width: 20rem; margin: 0 auto" }
                 }) %}
                     {% call selectBox({
                             label: "Favorite fruit",
@@ -113,7 +111,7 @@ hasTOC: true
                     alt="A breakdown of the different elements of a select box"
                 />
             </picture>
-            <dl class="annotation-list">
+            <dl class="annotation-list annotation-list--numbered">
                 <dt>Select input</dt>
                 <dd>The area which will be focused when this component is focused; will contain the placeholder when the field is empty and the value when an option is selected.</dd>
                 <dt>Label</dt>
