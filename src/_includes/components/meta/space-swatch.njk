@@ -4,12 +4,12 @@
 {% macro render(name, sizePx, figmaName, cssName) %}
 <div class="space-swatch">
     <div class="space-swatch__name">{{ name }}</div>
-    <div class="space-swatch__preview">
-        <div style="width: {{sizePx}}px"></div>
-    </div>
     <div class="space-swatch__specs">
         {{ sizePx }}px
         <span class="space-swatch__specs--rem">({{ ((sizePx | int) / 16) }}rem)</span>
+    </div>
+    <div class="space-swatch__preview">
+        <div style="width: {{sizePx}}px"></div>
     </div>
     <ul class="space-swatch__button-list">
         <li>
