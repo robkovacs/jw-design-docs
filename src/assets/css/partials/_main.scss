@@ -89,14 +89,14 @@ main {
     padding: var(--size-xl);
 
     @media screen and (min-width: $breakpoint-md) {
+        flex: 0 1 calc(var(--ui-max-width) - var(--nav-width));
+        padding: var(--size-5xl);
+        overflow-wrap: anywhere;
+        
         :root {
             --nav-width: 16rem;
             --ui-max-width: 90rem;
         }
-
-        flex: 0 1 calc(var(--ui-max-width) - var(--nav-width));
-        padding: var(--size-5xl);
-        overflow-wrap: anywhere;
     }
 }
 

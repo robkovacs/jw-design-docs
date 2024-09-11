@@ -3,12 +3,15 @@
 .main-nav {
     padding: var(--size-xl) var(--size-3xl);
     background-color: var(--color-gray-100);
+    width: 16rem;
     height: 100vh;
     height: 100dvh;
-    overflow-y: auto;
+    position: absolute;
     left: -16rem;
-    transition: left 150ms ease-in;
     top: 0;
+    z-index: 2;
+    overflow-y: auto;
+    transition: left 150ms ease-in;
 
     &.main-nav--open {
         left: 0;
@@ -28,10 +31,6 @@
         }
         
     }
-
-    position: absolute;
-    z-index: 2;
-    width: 16rem;
 
     @media (min-width: $breakpoint-md) {
         position: sticky;

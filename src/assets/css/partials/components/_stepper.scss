@@ -34,8 +34,14 @@
     
     &__counter {
         flex: 0 0 var(--size-3xl);
+        display: block;
+        height: var(--size-3xl);
+        width: var(--size-3xl);
+        border-radius: var(--size-md);
+        border: var(--size-5xs) solid transparent;
+        margin-bottom: var(--size-xs);        
         position: relative;
-        
+    
         &::before {
             content: counter(steps);
             line-height: var(--size-3xl);
@@ -50,12 +56,6 @@
             transform: translateX(-50%) translateY(-50%);
         }
 
-        display: block;
-        height: var(--size-3xl);
-        width: var(--size-3xl);
-        border-radius: var(--size-md);
-        border: var(--size-5xs) solid transparent;
-        margin-bottom: var(--size-xs);
     }
 
     &--type {
@@ -76,6 +76,9 @@
 
         &-complete {
             & .step__counter {
+                background-color: var(--color-green-600);
+                color: var(--color-white);
+                
                 &::before {
                     content: '';
                     background-color: var(--color-white);
@@ -87,8 +90,6 @@
                     width: var(--size-lg);
                     height: var(--size-lg);
                 }
-                background-color: var(--color-green-600);
-                color: var(--color-white);
             }
         }
 
