@@ -1,0 +1,6 @@
+{% macro render(caption) %}
+    <figure class="figure">
+        {% if caller() %}<div class="figure__figure">{{ caller() }}</div>{% endif %}
+        {% if caption %}<figcaption class="figure__caption">{{ caption | safe }}</figcaption>{% endif %}
+    </figure>
+{% endmacro %}

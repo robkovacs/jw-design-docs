@@ -50,7 +50,7 @@ hasTOC: true
                 </li>
             </ul>
 
-            <div style="border-radius: 12px; padding: var(--size-5xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
+            {% call figure() %}
                 {% call stack({
                     attributes: { style: "max-width: 20rem; margin: -1rem auto 0" }
                 }) %}
@@ -89,7 +89,7 @@ hasTOC: true
                         </optgroup>
                     {% endcall %}
                 {% endcall %}
-            </div>
+            {% endcall %}
 
             <div class="h4">Also known as:</div>
             <ul class="bulleted-list">
@@ -161,7 +161,7 @@ hasTOC: true
             
             <p>The most logical order for a given use case may not always be alphabetical. Maybe you're presenting a set of statuses that are generally expected to be in being in a certain order. Maybe there are more commonly-used options that belong at the top of the list—whatever makes sense.</p>
             
-            <div style="border-radius: 12px; padding: var(--size-3xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0 var(--size-2xl)">
+            {% call figure("A list of U.S. presidents might make more sense to be put in chronological order, not alphabetical order by first name.") %}
                 {% call grid() %}
                     {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         {% call selectBox({
@@ -270,207 +270,206 @@ hasTOC: true
                         {{ dosDonts("dont") }}
                     {% endcall %}
                 {% endcall %}
-            </div>
-            <p style="color: var(--color-gray-600)">A list of U.S. presidents might make more sense to be put in chronological order, not alphabetical order by first name.</p>
+            {% endcall %}
         </section>
         <section>
             <h3 class="toc__heading" id="make-it-wide-enough">Ensure the select box will be wide enough for its contents</h3>
             <p>The placeholder will be displayed as a single line of text in an empty select box, and the selected value will be displayed on a single line. So make sure the select box can accommodate that, whenever possible. Pay extra close attention to this if your option values are derived from user-generated data!</p>
 
-            <div style="border-radius: 12px; padding: var(--size-xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
+            {% call figure() %}
                 {% call stack() %}
-                <div>
-                    {% call selectBox({
-                        label: "Favorite Nicolas Cage movie",
-                        placeholder: "It's hard to choose just one, but do it anyway"
-                    }) %}
-                        <option>Fast Times at Ridgemont High (1982)</option>
-                        <option>Valley Girl (1983)</option>
-                        <option>Rumble Fish (1983)</option>
-                        <option>Racing with the Moon (1984)</option>
-                        <option>The Cotton Club (1984)</option>
-                        <option>Birdy (1984)</option>
-                        <option>The Boy in Blue (1986)</option>
-                        <option>Peggy Sue Got Married (1986)</option>
-                        <option>Raising Arizona (1987)</option>
-                        <option>Moonstruck (1987)</option>
-                        <option>Vampire's Kiss (1988)</option>
-                        <option>Time to Kill (1989)</option>
-                        <option>Wild at Heart (1990)</option>
-                        <option>Fire Birds (1990)</option>
-                        <option>Honeymoon in Vegas (1992)</option>
-                        <option>Amos &amp; Andrew (1993)</option>
-                        <option>Red Rock West (1993)</option>
-                        <option>Deadfall (1993)</option>
-                        <option>Guarding Tess (1994)</option>
-                        <option>It Could Happen to You (1994)</option>
-                        <option>Trapped in Paradise (1994)</option>
-                        <option>Kiss of Death (1995)</option>
-                        <option>Leaving Las Vegas (1995)</option>
-                        <option>The Rock (1996)</option>
-                        <option>Con Air (1996)</option>
-                        <option>Face/Off (1997)</option>
-                        <option>City of Angels (1998)</option>
-                        <option>Snake Eyes (1998)</option>
-                        <option>8MM (1999)</option>
-                        <option>Bringing Out the Dead (1999)</option>
-                        <option>Gone in 60 Seconds (2000)</option>
-                        <option>The Family Man (2000)</option>
-                        <option>Captain Corelli's Mandolin (2001)</option>
-                        <option>Christmas Carol: The Movie (2001)</option>
-                        <option>Windtalkers (2002)</option>
-                        <option>Sonny (2002)</option>
-                        <option>Adaptation. (2002)</option>
-                        <option>Matchstick Men (2003)</option>
-                        <option>National Treasure (2004)</option>
-                        <option>Lord of War (2005)</option>
-                        <option>The Weather Man (2005)</option>
-                        <option>The Ant Bully (2006)</option>
-                        <option>World Trade Center (2006)</option>
-                        <option>The Wicker Man (2006)</option>
-                        <option>Ghost Rider (2007)</option>
-                        <option>Next (2007)</option>
-                        <option>National Treasure: Book of Secrets (2007)</option>
-                        <option>Bangkok Dangerous (2008)</option>
-                        <option>Knowing (2009)</option>
-                        <option>G-Force (2009)</option>
-                        <option>Bad Lieutenant: Port of Call New Orleans (2009)</option>
-                        <option>Astro Boy (2009)</option>
-                        <option>Kick-Ass (2010)</option>
-                        <option>The Sorcerer's Apprentice (2010)</option>
-                        <option>Season of the Witch (2011)</option>
-                        <option>Drive Angry (2011)</option>
-                        <option>Seeking Justice (2011)</option>
-                        <option>Trespass (2011)</option>
-                        <option>Ghost Rider: Spirit of Vengeance (2011)</option>
-                        <option>A Thousand Words (2012)</option>
-                        <option>Stolen (2012)</option>
-                        <option>The Croods (2013)</option>
-                        <option>Joe (2013)</option>
-                        <option>Left Behind (2014)</option>
-                        <option>Snowden (2016)</option>
-                        <option>Vengeance: A Love Story (2017)</option>
-                        <option>Mandy (2018)</option>
-                        <option>Teen Titans Go! To the Movies (2018)</option>
-                        <option>Spider-Man: Into the Spider-Verse (2018)</option>
-                        <option>Love, Antosha (2019)</option>
-                        <option>The Croods: A New Age (2020)</option>
-                        <option>Prisoners of the Ghostland (2021)</option>
-                        <option>Willy's Wonderland (2021)</option>
-                        <option>Pig (2021)</option>
-                        <option selected>The Unbearable Weight of Massive Talent (2022)</option>
-                        <option>Butcher's Crossing (2023)</option>
-                        <option>Renfield (2023)</option>
-                        <option>The Flash (2023)</option>
-                        <option>Sympathy for the Devil (2023)</option>
-                        <option>The Retirement Plan (2023)</option>
-                        <option>Dream Scenario (2023)</option>
-                        <option>Arcadian (2024)</option>
-                        <option>The Surfer (2024)</option>
-                        <option>Longlegs (2024)</option>
-                    {% endcall %}
-                    {{ dosDonts("do") }}  
-                </div>
-                <div style="width: 20rem">
-                    {% call selectBox({
-                        label: "Favorite Nicolas Cage movie",
-                        placeholder: "It's hard to choose just one, but do it anyway"
-                    }) %}
-                        <option>Fast Times at Ridgemont High (1982)</option>
-                        <option>Valley Girl (1983)</option>
-                        <option>Rumble Fish (1983)</option>
-                        <option>Racing with the Moon (1984)</option>
-                        <option>The Cotton Club (1984)</option>
-                        <option>Birdy (1984)</option>
-                        <option>The Boy in Blue (1986)</option>
-                        <option>Peggy Sue Got Married (1986)</option>
-                        <option>Raising Arizona (1987)</option>
-                        <option>Moonstruck (1987)</option>
-                        <option>Vampire's Kiss (1988)</option>
-                        <option>Time to Kill (1989)</option>
-                        <option>Wild at Heart (1990)</option>
-                        <option>Fire Birds (1990)</option>
-                        <option>Honeymoon in Vegas (1992)</option>
-                        <option>Amos &amp; Andrew (1993)</option>
-                        <option>Red Rock West (1993)</option>
-                        <option>Deadfall (1993)</option>
-                        <option>Guarding Tess (1994)</option>
-                        <option>It Could Happen to You (1994)</option>
-                        <option>Trapped in Paradise (1994)</option>
-                        <option>Kiss of Death (1995)</option>
-                        <option>Leaving Las Vegas (1995)</option>
-                        <option>The Rock (1996)</option>
-                        <option>Con Air (1996)</option>
-                        <option>Face/Off (1997)</option>
-                        <option>City of Angels (1998)</option>
-                        <option>Snake Eyes (1998)</option>
-                        <option>8MM (1999)</option>
-                        <option>Bringing Out the Dead (1999)</option>
-                        <option>Gone in 60 Seconds (2000)</option>
-                        <option>The Family Man (2000)</option>
-                        <option>Captain Corelli's Mandolin (2001)</option>
-                        <option>Christmas Carol: The Movie (2001)</option>
-                        <option>Windtalkers (2002)</option>
-                        <option>Sonny (2002)</option>
-                        <option>Adaptation. (2002)</option>
-                        <option>Matchstick Men (2003)</option>
-                        <option>National Treasure (2004)</option>
-                        <option>Lord of War (2005)</option>
-                        <option>The Weather Man (2005)</option>
-                        <option>The Ant Bully (2006)</option>
-                        <option>World Trade Center (2006)</option>
-                        <option>The Wicker Man (2006)</option>
-                        <option>Ghost Rider (2007)</option>
-                        <option>Next (2007)</option>
-                        <option>National Treasure: Book of Secrets (2007)</option>
-                        <option>Bangkok Dangerous (2008)</option>
-                        <option>Knowing (2009)</option>
-                        <option>G-Force (2009)</option>
-                        <option selected>Bad Lieutenant: Port of Call New Orleans (2009)</option>
-                        <option>Astro Boy (2009)</option>
-                        <option>Kick-Ass (2010)</option>
-                        <option>The Sorcerer's Apprentice (2010)</option>
-                        <option>Season of the Witch (2011)</option>
-                        <option>Drive Angry (2011)</option>
-                        <option>Seeking Justice (2011)</option>
-                        <option>Trespass (2011)</option>
-                        <option>Ghost Rider: Spirit of Vengeance (2011)</option>
-                        <option>A Thousand Words (2012)</option>
-                        <option>Stolen (2012)</option>
-                        <option>The Croods (2013)</option>
-                        <option>Joe (2013)</option>
-                        <option>Left Behind (2014)</option>
-                        <option>Snowden (2016)</option>
-                        <option>Vengeance: A Love Story (2017)</option>
-                        <option>Mandy (2018)</option>
-                        <option>Teen Titans Go! To the Movies (2018)</option>
-                        <option>Spider-Man: Into the Spider-Verse (2018)</option>
-                        <option>Love, Antosha (2019)</option>
-                        <option>The Croods: A New Age (2020)</option>
-                        <option>Prisoners of the Ghostland (2021)</option>
-                        <option>Willy's Wonderland (2021)</option>
-                        <option>Pig (2021)</option>
-                        <option>The Unbearable Weight of Massive Talent (2022)</option>
-                        <option>Butcher's Crossing (2023)</option>
-                        <option>Renfield (2023)</option>
-                        <option>The Flash (2023)</option>
-                        <option>Sympathy for the Devil (2023)</option>
-                        <option>The Retirement Plan (2023)</option>
-                        <option>Dream Scenario (2023)</option>
-                        <option>Arcadian (2024)</option>
-                        <option>The Surfer (2024)</option>
-                        <option>Longlegs (2024)</option>
-                    {% endcall %}
-                    {{ dosDonts("dont") }}
-                </div>
-            </div>
+                    <div>
+                        {% call selectBox({
+                            label: "Favorite Nicolas Cage movie",
+                            placeholder: "It's hard to choose just one, but do it anyway"
+                        }) %}
+                            <option>Fast Times at Ridgemont High (1982)</option>
+                            <option>Valley Girl (1983)</option>
+                            <option>Rumble Fish (1983)</option>
+                            <option>Racing with the Moon (1984)</option>
+                            <option>The Cotton Club (1984)</option>
+                            <option>Birdy (1984)</option>
+                            <option>The Boy in Blue (1986)</option>
+                            <option>Peggy Sue Got Married (1986)</option>
+                            <option>Raising Arizona (1987)</option>
+                            <option>Moonstruck (1987)</option>
+                            <option>Vampire's Kiss (1988)</option>
+                            <option>Time to Kill (1989)</option>
+                            <option>Wild at Heart (1990)</option>
+                            <option>Fire Birds (1990)</option>
+                            <option>Honeymoon in Vegas (1992)</option>
+                            <option>Amos &amp; Andrew (1993)</option>
+                            <option>Red Rock West (1993)</option>
+                            <option>Deadfall (1993)</option>
+                            <option>Guarding Tess (1994)</option>
+                            <option>It Could Happen to You (1994)</option>
+                            <option>Trapped in Paradise (1994)</option>
+                            <option>Kiss of Death (1995)</option>
+                            <option>Leaving Las Vegas (1995)</option>
+                            <option>The Rock (1996)</option>
+                            <option>Con Air (1996)</option>
+                            <option>Face/Off (1997)</option>
+                            <option>City of Angels (1998)</option>
+                            <option>Snake Eyes (1998)</option>
+                            <option>8MM (1999)</option>
+                            <option>Bringing Out the Dead (1999)</option>
+                            <option>Gone in 60 Seconds (2000)</option>
+                            <option>The Family Man (2000)</option>
+                            <option>Captain Corelli's Mandolin (2001)</option>
+                            <option>Christmas Carol: The Movie (2001)</option>
+                            <option>Windtalkers (2002)</option>
+                            <option>Sonny (2002)</option>
+                            <option>Adaptation. (2002)</option>
+                            <option>Matchstick Men (2003)</option>
+                            <option>National Treasure (2004)</option>
+                            <option>Lord of War (2005)</option>
+                            <option>The Weather Man (2005)</option>
+                            <option>The Ant Bully (2006)</option>
+                            <option>World Trade Center (2006)</option>
+                            <option>The Wicker Man (2006)</option>
+                            <option>Ghost Rider (2007)</option>
+                            <option>Next (2007)</option>
+                            <option>National Treasure: Book of Secrets (2007)</option>
+                            <option>Bangkok Dangerous (2008)</option>
+                            <option>Knowing (2009)</option>
+                            <option>G-Force (2009)</option>
+                            <option>Bad Lieutenant: Port of Call New Orleans (2009)</option>
+                            <option>Astro Boy (2009)</option>
+                            <option>Kick-Ass (2010)</option>
+                            <option>The Sorcerer's Apprentice (2010)</option>
+                            <option>Season of the Witch (2011)</option>
+                            <option>Drive Angry (2011)</option>
+                            <option>Seeking Justice (2011)</option>
+                            <option>Trespass (2011)</option>
+                            <option>Ghost Rider: Spirit of Vengeance (2011)</option>
+                            <option>A Thousand Words (2012)</option>
+                            <option>Stolen (2012)</option>
+                            <option>The Croods (2013)</option>
+                            <option>Joe (2013)</option>
+                            <option>Left Behind (2014)</option>
+                            <option>Snowden (2016)</option>
+                            <option>Vengeance: A Love Story (2017)</option>
+                            <option>Mandy (2018)</option>
+                            <option>Teen Titans Go! To the Movies (2018)</option>
+                            <option>Spider-Man: Into the Spider-Verse (2018)</option>
+                            <option>Love, Antosha (2019)</option>
+                            <option>The Croods: A New Age (2020)</option>
+                            <option>Prisoners of the Ghostland (2021)</option>
+                            <option>Willy's Wonderland (2021)</option>
+                            <option>Pig (2021)</option>
+                            <option selected>The Unbearable Weight of Massive Talent (2022)</option>
+                            <option>Butcher's Crossing (2023)</option>
+                            <option>Renfield (2023)</option>
+                            <option>The Flash (2023)</option>
+                            <option>Sympathy for the Devil (2023)</option>
+                            <option>The Retirement Plan (2023)</option>
+                            <option>Dream Scenario (2023)</option>
+                            <option>Arcadian (2024)</option>
+                            <option>The Surfer (2024)</option>
+                            <option>Longlegs (2024)</option>
+                        {% endcall %}
+                        {{ dosDonts("do") }}  
+                    </div>
+                    <div style="width: 20rem">
+                        {% call selectBox({
+                            label: "Favorite Nicolas Cage movie",
+                            placeholder: "It's hard to choose just one, but do it anyway"
+                        }) %}
+                            <option>Fast Times at Ridgemont High (1982)</option>
+                            <option>Valley Girl (1983)</option>
+                            <option>Rumble Fish (1983)</option>
+                            <option>Racing with the Moon (1984)</option>
+                            <option>The Cotton Club (1984)</option>
+                            <option>Birdy (1984)</option>
+                            <option>The Boy in Blue (1986)</option>
+                            <option>Peggy Sue Got Married (1986)</option>
+                            <option>Raising Arizona (1987)</option>
+                            <option>Moonstruck (1987)</option>
+                            <option>Vampire's Kiss (1988)</option>
+                            <option>Time to Kill (1989)</option>
+                            <option>Wild at Heart (1990)</option>
+                            <option>Fire Birds (1990)</option>
+                            <option>Honeymoon in Vegas (1992)</option>
+                            <option>Amos &amp; Andrew (1993)</option>
+                            <option>Red Rock West (1993)</option>
+                            <option>Deadfall (1993)</option>
+                            <option>Guarding Tess (1994)</option>
+                            <option>It Could Happen to You (1994)</option>
+                            <option>Trapped in Paradise (1994)</option>
+                            <option>Kiss of Death (1995)</option>
+                            <option>Leaving Las Vegas (1995)</option>
+                            <option>The Rock (1996)</option>
+                            <option>Con Air (1996)</option>
+                            <option>Face/Off (1997)</option>
+                            <option>City of Angels (1998)</option>
+                            <option>Snake Eyes (1998)</option>
+                            <option>8MM (1999)</option>
+                            <option>Bringing Out the Dead (1999)</option>
+                            <option>Gone in 60 Seconds (2000)</option>
+                            <option>The Family Man (2000)</option>
+                            <option>Captain Corelli's Mandolin (2001)</option>
+                            <option>Christmas Carol: The Movie (2001)</option>
+                            <option>Windtalkers (2002)</option>
+                            <option>Sonny (2002)</option>
+                            <option>Adaptation. (2002)</option>
+                            <option>Matchstick Men (2003)</option>
+                            <option>National Treasure (2004)</option>
+                            <option>Lord of War (2005)</option>
+                            <option>The Weather Man (2005)</option>
+                            <option>The Ant Bully (2006)</option>
+                            <option>World Trade Center (2006)</option>
+                            <option>The Wicker Man (2006)</option>
+                            <option>Ghost Rider (2007)</option>
+                            <option>Next (2007)</option>
+                            <option>National Treasure: Book of Secrets (2007)</option>
+                            <option>Bangkok Dangerous (2008)</option>
+                            <option>Knowing (2009)</option>
+                            <option>G-Force (2009)</option>
+                            <option selected>Bad Lieutenant: Port of Call New Orleans (2009)</option>
+                            <option>Astro Boy (2009)</option>
+                            <option>Kick-Ass (2010)</option>
+                            <option>The Sorcerer's Apprentice (2010)</option>
+                            <option>Season of the Witch (2011)</option>
+                            <option>Drive Angry (2011)</option>
+                            <option>Seeking Justice (2011)</option>
+                            <option>Trespass (2011)</option>
+                            <option>Ghost Rider: Spirit of Vengeance (2011)</option>
+                            <option>A Thousand Words (2012)</option>
+                            <option>Stolen (2012)</option>
+                            <option>The Croods (2013)</option>
+                            <option>Joe (2013)</option>
+                            <option>Left Behind (2014)</option>
+                            <option>Snowden (2016)</option>
+                            <option>Vengeance: A Love Story (2017)</option>
+                            <option>Mandy (2018)</option>
+                            <option>Teen Titans Go! To the Movies (2018)</option>
+                            <option>Spider-Man: Into the Spider-Verse (2018)</option>
+                            <option>Love, Antosha (2019)</option>
+                            <option>The Croods: A New Age (2020)</option>
+                            <option>Prisoners of the Ghostland (2021)</option>
+                            <option>Willy's Wonderland (2021)</option>
+                            <option>Pig (2021)</option>
+                            <option>The Unbearable Weight of Massive Talent (2022)</option>
+                            <option>Butcher's Crossing (2023)</option>
+                            <option>Renfield (2023)</option>
+                            <option>The Flash (2023)</option>
+                            <option>Sympathy for the Devil (2023)</option>
+                            <option>The Retirement Plan (2023)</option>
+                            <option>Dream Scenario (2023)</option>
+                            <option>Arcadian (2024)</option>
+                            <option>The Surfer (2024)</option>
+                            <option>Longlegs (2024)</option>
+                        {% endcall %}
+                        {{ dosDonts("dont") }}
+                    </div>
+                {% endcall %}
             {% endcall %}
         </section>
         <section>
             <h3 class="toc__heading" id="keep-options-short">Keep option names short</h3>
             <p>Some browsers truncate long option names in their option lists. Even for those that don’t, shorter option names will be inherently easier for users to parse. As we mentioned in the previous section, placeholders and values need to fit on a single line as well.</p>
 
-            <div style="border-radius: 12px; padding: var(--size-xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
+            {% call figure() %}
                 {% call stack() %}
                     <div style="max-width: 20rem">
                         {% call selectBox({
@@ -499,7 +498,7 @@ hasTOC: true
                         {{ dosDonts("dont") }}
                     </div>
                 {% endcall %}
-            </div>
+            {% endcall %}
         </section>
         <section>
             <h2 class="toc__heading" id="accessibility-guidance">Accessibility</h2>
@@ -511,7 +510,7 @@ hasTOC: true
             <p>In very rare cases, it may be important to not provide a visual label. But if so, use <code>aria-label</code>, <code>aria-labelledby</code>, or hide the label visually while keeping it available to screen readers.</p>
             <p>Whatever you do, don't use a placeholder in place of a label. Screen readers don't read them, and even sighted users may find them hard to read. They're a nice-to-have, if anything.</p>
 
-            <div style="border-radius: 12px; padding: var(--size-xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
+            {% call figure() %}
                 {% call grid({ alignItems: "flex-end" }) %}
                     {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         {% call selectBox({
@@ -539,14 +538,14 @@ hasTOC: true
                         {{ dosDonts("dont") }}               
                     {% endcall %}
                 {% endcall %}
-            </div>
+            {% endcall %}
         </section>
         <section>
             <h3 class="toc__heading" id="dont-use-emojis">Don't use emojis in option names</h3>
             <p>One of the built-in features of option lists in many browsers is that the user can start typing with the option list open, and use that to navigate to the next option value that matches what they've typed. Introducing emojis into your option names makes this difficult, if not impossible.</p>
             <p>Also, <code>aria-hidden</code> doesn't work inside of an option list, so screen readers will be stuck reading out the emoji name(s), even if you only intend to use them for decoration.</p>
 
-            <div style="border-radius: 12px; padding: var(--size-xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
+            {% call figure() %}
                 {% call grid() %}
                     {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         {% call selectBox({
@@ -1046,8 +1045,8 @@ hasTOC: true
                         {% endcall %}
                         {{ dosDonts("dont") }}               
                     {% endcall %}
-                {% endcall %}    
-            </div>
+                {% endcall %}
+            {% endcall %}
         </section>
     </article>
 {% endblock content %}
