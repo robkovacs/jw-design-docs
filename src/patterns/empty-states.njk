@@ -187,8 +187,8 @@ eleventyNavigation:
             {% endcall %}
         </section>
         <section>
-            <h3 class="toc__heading" id="no-buttons-for-browser-default-actions">Don't provide buttons for browser-default actions</h3>
-            <p>If the browser already has a button for the action you're suggesting for clearing the empty state, don't include an extra one. Include it in the secondary text.</p>
+            <h3 class="toc__heading" id="dont-repeat-empty-states">Don’t repeat empty states on a page</h3>
+            <p>Even if for technical reasons they need to be loaded separately, if contiguous parts of a page have the same type of empty state, for the same reason, with the same resolution, summarize it in a single empty state.</p>
             {% call figure() %}
                 {% call stack({ gap: "6xl" }) %}
                     <div>
