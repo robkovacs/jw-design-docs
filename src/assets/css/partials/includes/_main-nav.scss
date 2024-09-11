@@ -122,9 +122,9 @@
     z-index: 1;
 
     background-color: var(--color-gray-100);
-    padding: var(--size-2xs) var(--size-xs);
+    padding: var(--size-2xs) var(--size-xs) calc(var(--size-2xs) - var(--size-5xs));
 
-    border-bottom: 1px solid var(--color-gray-300);
+    border-bottom: var(--size-5xs) solid var(--color-gray-300);
 
 
     &__menu-button {
