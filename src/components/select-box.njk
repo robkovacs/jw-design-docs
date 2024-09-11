@@ -163,7 +163,7 @@ hasTOC: true
             
             <div style="border-radius: 12px; padding: var(--size-3xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0 var(--size-2xl)">
                 {% call grid() %}
-                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         {% call selectBox({
                             label: "Favorite U.S. president",
                             placeholder: "Choose a president"
@@ -216,7 +216,7 @@ hasTOC: true
                         {% endcall %}
                         {{ dosDonts("do") }}
                     {% endcall %}
-                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         {% call selectBox({
                             label: "Favorite U.S. president",
                             placeholder: "Choose a president"
@@ -472,7 +472,7 @@ hasTOC: true
 
             <div style="border-radius: 12px; padding: var(--size-xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
                 {% call stack() %}
-                    <div style="width: 100%; max-width: 20rem">
+                    <div style="max-width: 20rem">
                         {% call selectBox({
                             label: "Assigned employee",
                             placeholder: "Choose an employee"
@@ -513,7 +513,7 @@ hasTOC: true
 
             <div style="border-radius: 12px; padding: var(--size-xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
                 {% call grid({ alignItems: "flex-end" }) %}
-                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         {% call selectBox({
                             label: "Status",
                             placeholder: "Choose a status"
@@ -526,7 +526,7 @@ hasTOC: true
                         {% endcall %}
                         {{ dosDonts("do") }}    
                     {% endcall %}                
-                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         {% call selectBox({
                             placeholder: "Status"
                         }) %}
@@ -548,7 +548,7 @@ hasTOC: true
 
             <div style="border-radius: 12px; padding: var(--size-xl); border: var(--size-5xs) solid var(--color-gray-200); box-shadow: var(--box-shadow-level-3); background-color: var(--color-white); margin: var(--size-4xl) 0">
                 {% call grid() %}
-                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         {% call selectBox({
                             label: "Country",
                             placeholder: "Choose a country"
@@ -795,7 +795,7 @@ hasTOC: true
                         {% endcall %}
                         {{ dosDonts("do") }}    
                     {% endcall %}
-                    {% call gridCell({ spans: { xs: 12, sm: 8, lg: 6 } }) %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         {% call selectBox({
                             label: "Country",
                             placeholder: "Choose a country"
