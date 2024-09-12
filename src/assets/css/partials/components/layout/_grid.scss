@@ -1,33 +1,42 @@
 @import '../../_breakpoints.scss';
 
+@mixin colspans() {
+    @for $i from 1 through 12 {
+        &-#{$i} {
+            grid-column: auto / span $i;
+        }    
+    }
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
+    width: 100%;
 
     &--col-gap {
         &-2xs {
-            column-gap: var(--size-2xs);
+            column-gap: min(8.3333333%, var(--size-2xs));
         }
 
         &-xs {
-            column-gap: var(--size-xs);
+            column-gap: min(8.3333333%, var(--size-xs));
         }
 
         &-md {
-            column-gap: var(--size-md);
+            column-gap: min(8.3333333%, var(--size-md));
         }
 
         &-xl {
-            column-gap: var(--size-xl);
+            column-gap: min(8.3333333%, var(--size-xl));
         }
 
         &-3xl {
-            column-gap: var(--size-3xl);
+            column-gap: min(8.3333333%, var(--size-3xl));
         }
 
         &-6xl {
-            column-gap: var(--size-6xl);
+            column-gap: min(8.3333333%, var(--size-6xl));
         }
     }
 
@@ -82,140 +91,30 @@
 
 .grid__cell {
     &--col-xs {
-        &-12 {
-            grid-column: auto / span 12;
-        }
-
-        &-8 {
-            grid-column: auto / span 8;
-        }
-
-        &-6 {
-            grid-column: auto / span 6;
-        }
-
-        &-4 {
-            grid-column: auto / span 4;
-        }
-
-        &-3 {
-            grid-column: auto / span 3;
-        }
-
-        &-2 {
-            grid-column: auto / span 2;
-        }
+        @include colspans();
     }
 
     @media (min-width: $breakpoint-sm) {
         &--col-sm {
-            &-12 {
-                grid-column: auto / span 12;
-            }
-    
-            &-8 {
-                grid-column: auto / span 8;
-            }
-    
-            &-6 {
-                grid-column: auto / span 6;
-            }
-    
-            &-4 {
-                grid-column: auto / span 4;
-            }
-    
-            &-3 {
-                grid-column: auto / span 3;
-            }
-
-            &-2 {
-                grid-column: auto / span 2;
-            }
+            @include colspans();
         }
     }
 
     @media (min-width: $breakpoint-md) {
         &--col-md {
-            &-12 {
-                grid-column: auto / span 12;
-            }
-    
-            &-8 {
-                grid-column: auto / span 8;
-            }
-    
-            &-6 {
-                grid-column: auto / span 6;
-            }
-    
-            &-4 {
-                grid-column: auto / span 4;
-            }
-    
-            &-3 {
-                grid-column: auto / span 3;
-            }
-
-            &-2 {
-                grid-column: auto / span 2;
-            }
+            @include colspans();
         }
     }
 
     @media (min-width: $breakpoint-lg) {
         &--col-lg {
-            &-12 {
-                grid-column: auto / span 12;
-            }
-    
-            &-8 {
-                grid-column: auto / span 8;
-            }
-    
-            &-6 {
-                grid-column: auto / span 6;
-            }
-    
-            &-4 {
-                grid-column: auto / span 4;
-            }
-    
-            &-3 {
-                grid-column: auto / span 3;
-            }
-
-            &-2 {
-                grid-column: auto / span 2;
-            }
+            @include colspans();
         }
     }
 
     @media (width > $breakpoint-lg) {
         &--col-xl {
-            &-12 {
-                grid-column: auto / span 12;
-            }
-    
-            &-8 {
-                grid-column: auto / span 8;
-            }
-    
-            &-6 {
-                grid-column: auto / span 6;
-            }
-    
-            &-4 {
-                grid-column: auto / span 4;
-            }
-    
-            &-3 {
-                grid-column: auto / span 3;
-            }
-
-            &-2 {
-                grid-column: auto / span 2;
-            }
+            @include colspans();
         }
     }
 }

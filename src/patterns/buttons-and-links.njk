@@ -173,56 +173,57 @@ eleventyNavigation:
             <p>It's important to ensure that screen reader users who won't see the icon attached to your link still get the additional context it provides.</p>
             <p>For file downloads, the filetype (if common), plus <code>Download:</code>, can be prefixed to the link text. For external links, append <code>: Opens in a new tab</code>.</p>
 
-            {% call stack() %}
-                {% call grid() %}             
-                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
-                        <div class="h4">Given this link...</div>
-                        {{ anchor({
-                            href: "javascript:return false;",
-                            leftIcon: "document-pdf",
-                            content: "Plan overview",
-                            attributes: {
-                                "aria-label": "PDF download: Plan overview"
-                            }
-                        }) }}
-                    {% endcall %}             
-                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
-                        <div class="h4">...on focus, a screen reader will say:</div>
-                        <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"PDF download: Plan overview."</samp>
-                    {% endcall %}        
-                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
-                        <div class="h4">Given this link...</div>
-                        {{ anchor({
-                            href: "javascript:return false;",
-                            leftIcon: "document",
-                            content: "QuickBooks Desktop (2019 or later)",
-                            attributes: {
-                                "aria-label": "Download: QuickBooks Desktop (2019 or later)"
-                            }
-                        }) }}
-                    {% endcall %}
-                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
-                        <div class="h4">...on focus, a screen reader will say:</div>
-                        <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"Download: QuickBooks Desktop (2019 or later)."</samp>
-                    {% endcall %}        
-                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}            
-                        <div class="h4">Given this link...</div>
-                        {{ anchor({
-                            href: "javascript:return false;",
-                            rightIcon: "external-link",
-                            content: "IRS guidelines for FLSA status",
-                            attributes: {
-                                "aria-label": "IRS guidelines for FLSA status: Opens in a new tab"
-                            }
-                        }) }}
-                    {% endcall %}
-                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+            {% call figure() %}
+                {% call stack() %}
+                    {% call grid() %}             
+                        {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                            <div class="h4">Given this link...</div>
+                            {{ anchor({
+                                href: "javascript:return false;",
+                                leftIcon: "document-pdf",
+                                content: "Plan overview",
+                                attributes: {
+                                    "aria-label": "PDF download: Plan overview"
+                                }
+                            }) }}
+                        {% endcall %}             
+                        {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
                             <div class="h4">...on focus, a screen reader will say:</div>
-                            <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"IRS guidelines for FLSA status: Opens in a new tab."</samp>
+                            <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"PDF download: Plan overview."</samp>
+                        {% endcall %}        
+                        {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                            <div class="h4">Given this link...</div>
+                            {{ anchor({
+                                href: "javascript:return false;",
+                                leftIcon: "document",
+                                content: "QuickBooks Desktop (2019 or later)",
+                                attributes: {
+                                    "aria-label": "Download: QuickBooks Desktop (2019 or later)"
+                                }
+                            }) }}
+                        {% endcall %}
+                        {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                            <div class="h4">...on focus, a screen reader will say:</div>
+                            <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"Download: QuickBooks Desktop (2019 or later)."</samp>
+                        {% endcall %}        
+                        {% call gridCell({ spans: { xs: 12, md: 6 } }) %}            
+                            <div class="h4">Given this link...</div>
+                            {{ anchor({
+                                href: "javascript:return false;",
+                                rightIcon: "external-link",
+                                content: "IRS guidelines for FLSA status",
+                                attributes: {
+                                    "aria-label": "IRS guidelines for FLSA status: Opens in a new tab"
+                                }
+                            }) }}
+                        {% endcall %}
+                        {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                                <div class="h4">...on focus, a screen reader will say:</div>
+                                <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"IRS guidelines for FLSA status: Opens in a new tab."</samp>
+                        {% endcall %}
                     {% endcall %}
                 {% endcall %}
             {% endcall %}
-
             <p>Typically this is accomplished using the link's <code>aria-label</code> attribute.</p>
         </section>
     </article>

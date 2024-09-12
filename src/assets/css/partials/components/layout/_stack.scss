@@ -1,7 +1,8 @@
 .stack {
     display: flex;
     flex-direction: column;
-
+    width: 100%;
+    
     &--gap-2xs {
         gap: var(--size-2xs);
     }

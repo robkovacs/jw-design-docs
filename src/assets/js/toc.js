@@ -32,11 +32,11 @@ const observer = new IntersectionObserver((entries) => {
                 currentLink.classList.remove('current');
             }
             document.querySelector('.toc a[href="#' + targetId + '"]').classList.add('current');
-            window.history.pushState(null, null, '#'+targetId);
+            window.history.replaceState(null, null, '#'+targetId);
         }
     });
 }, {
-    rootMargin: "0px 0px -50% 0px",
+    rootMargin: "0px 0px -75% 0px",
     threshold: 0
 });
 

@@ -10,12 +10,208 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        <p>{{ spinner() }}</p>
-        <p style="margin-bottom: 0.5rem">{{ skeleton('image', { width: '100px', height: '100px', borderRadius: 'md' }) }}</p>
-        <p>
-            {{ skeleton('text', { width: '400px'}) }}<br />
-            {{ skeleton('text', { width: '500px'}) }}<br />
-            {{ skeleton('text', { width: '400px'}) }}
-        </p>
+        <section>
+            <h2 style="display: none" class="toc__heading" id="intro">Introduction</h2>
+            <p class="intro">Sometimes we can't help but have a noticeable delay between when content is requested and when it's ready to be shown. We can manage this situation by making sure people understand what's happening and limiting the time where they can't view information or take action.</p>
+        </section>
+        <section>
+            <h2 class="toc__heading" id="types">Types of loading states</h2>
+            <p>There are two types of loading states: indeterminate and determinate.</p>
+
+            {% call grid() %}
+                {% call gridCell({ spans: { xs: 12, sm: 3, lg: 2 } }) %}
+                    <img
+                        src="/assets/img/patterns/loading-states/macos-cursors.png"
+                        alt='Some macOS cursors: "wait" and the infamous "beach ball"'
+                    />
+                {% endcall %}
+                {% call gridCell({ spans: { xs: 12, sm: 9, lg: 10 } }) %}
+                    <p>An <strong>indeterminate</strong> loading state is used when you don't know how long the loading process is going to take, or you know that level of detail is not relevant. Like when you see these cursors show up in macOS.</p>
+                {% endcall %}
+            {% endcall %}
+
+            <p><strong>Determinate</strong> loading states are used when you know how far along the loading process is, and that providing that context to your user is valuable. Like this:</p>
+            <p><img
+                src="/assets/img/patterns/loading-states/macos-software-update.png"
+                alt="An example of a determinate loading state: the progress bar shown while downloading macOS updates"
+            /></p>"
+
+            {% call callout("info") %}
+                <p>At Justworks, we can almost always get by with just indeterminate loading states. Loading processes in our interfaces are typically short and simple enough that a determinate loading state isn't necessary.</p>
+                <p>If that ever changes, of course we'll standardize on an approach to determinate loading states too. But not yet...</p>
+            {% endcall %}
+        </section>
+
+        <section>
+            <h2 class="toc__heading" id="how-we-show-loading-states">How we represent loading states</h2>
+        </section>
+
+        <section>
+            <h3 class="toc__heading" id="spinners">Spinners</h3>
+            <p>As the name suggests,  spinners spin indefinitely while the associated content is loading. When using a spinner, it should be centered horizontally and vertically within the space where the content being loaded will display.</p>
+            {% call figure() %}
+                <p style="text-align: center">{{ spinner() }}</p>
+            {% endcall %}
+            <h4>Accessibility</h4>
+            <p>For screen reader users, provide an accessible alternative that describes the process being waited on—not just "Loading..."</p>
+            {% call figure() %}
+                {% call stack("3xl") %}
+                    {% call grid() %}
+                        {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                            <div class="h5">Given this loading button...</div>
+                            {{ button({
+                                content: "Add employee",
+                                loading: true,
+                                attributes: {
+                                    "aria-label": "Adding employee..."
+                                }
+                            }) }}
+                        {% endcall %}
+                        {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                            <div class="h5">...on focus, a screen reader will say:</div>
+                            <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"Adding employee..."</samp>
+                        {% endcall %}
+                    {% endcall %}
+
+                    {% call grid() %}
+                        {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                            <div class="h5">Given this (fake) select box...</div>
+                            <div class="fake-select-box" aria-label="Loading accounts...">Choose an account&hellip; {{ systemIcon("chevron-down") }}</div>
+                            <div class="fake-select-box__listbox">
+                                {{ spinner() }}
+                            </div>
+                        {% endcall %}
+                        {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                            <div class="h5">...on focus, a screen reader should (if it was real) say:</div>
+                            <span aria-label="">&#x1F5E3;&#xFE0F;</span> <samp>"Loading accounts..."</samp>
+                        {% endcall %}
+                    {% endcall %}                
+                {% endcall %}                
+            {% endcall %}  
+
+            <h4>Spinner color</h4>
+            <p>The spinner color should be set to a color that is appropriate for the background it's on (at least 3:1 color contrast), and the content it's replacing. That means typically, on a white background, it should be <strong>gray 500</strong>. Other common colors would be <strong>white</strong>, or <strong>gray 900</strong>. But other colors are possibilities too (see <a href="../../components/button/">Button</a>, where the spinner might be a shade of blue or red).
+
+            <h4>Spinner size</h4>
+            <p>The spinner has one size: 1.5rem (24px) square. If your instinct is to go larger to better fill a space, that's likely a sign that a skeleton is more appropriate. Keep reading!</p>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="skeletons">Skeletons</h3>
+            <p>Like a spinner, a skeleton also animates indefinitely&hellip; but is made up of shapes that represent an idealized version of the content being loaded.</p>
+            <p>This can create a perception of shorter loading time—it's as if the structure of the content has already loaded, and we're just waiting on the content. Also, that structure can give us a head start on understanding the soon-to-be content.</p>
+            <p>We almost always won't know the exact structure of the incoming content, and that's OK. The skeleton can be used to approximate it based on typical data.</p>
+            <p>If you can break down the content into logical chunks that load every couple seconds, in priority order, do it; rather than make people wait until <strong>all</strong> the content is loaded to see any of it. In the example below, we get to see, in order:</p>
+            <ol class="numbered-list">
+                <li>The type of benefit, and the provider (and it turns out, there's only two)</li>
+                <li>The monthly contribution amount</li>
+                <li>The supporting images</li>
+            </ol>
+
+            {% call figure() %}
+                <div class="h4">Financial benefits</div>
+                {% call grid({ colGap: "xl" }) %}
+                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                        <div class="benefit-box">
+                            {% call row() %}
+                                {{ skeleton("image", { width: "2.5rem", height: "2.5rem", borderRadius: "md", classes: "benefit-icon" }) }}
+                                {% call stack({ gap: "2xs", attributes: { style: "width: calc(100% - 3.5rem)" } }) %}
+                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-type", width: "100%; max-width: 15rem" }) }}
+                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-provider", width: "80%; max-width: 10rem" }) }}
+                                {% endcall %}
+                            {% endcall %}
+                            {{ divider("md") }}
+                            {% call stack({ gap: "2xs" }) %}
+                                {{ skeleton("text", { variant: "heading", size: "xs", width: "50%; max-width: 6rem", classes: "contrib-heading" }) }}
+                                {{ skeleton("text", { variant: "heading", size: "xs", width: "80%; max-width: 10rem", classes: "contrib-amount" }) }}
+                            {% endcall %}
+                        </div>
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                        <div class="benefit-box">
+                            {% call row() %}
+                                {{ skeleton("image", { width: "2.5rem", height: "2.5rem", borderRadius: "md", classes: "benefit-icon" }) }}
+                                {% call stack({ gap: "2xs", attributes: { style: "width: calc(100% - 3.5rem)" } }) %}
+                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-type", width: "100%; max-width: 15rem" }) }}
+                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-provider", width: "80%; max-width: 10rem" }) }}
+                                {% endcall %}
+                            {% endcall %}
+                            {{ divider("md") }}
+                            {% call stack({ gap: "2xs" }) %}
+                                {{ skeleton("text", { variant: "heading", size: "xs", width: "50%; max-width: 6rem", classes: "contrib-heading" }) }}
+                                {{ skeleton("text", { variant: "heading", size: "xs", width: "80%; max-width: 10rem", classes: "contrib-amount" }) }}
+                            {% endcall %}
+                        </div>
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                        <div class="benefit-box">
+                            {% call row() %}
+                                {{ skeleton("image", { width: "2.5rem", height: "2.5rem", borderRadius: "md", classes: "benefit-icon" }) }}
+                                {% call stack({ gap: "2xs", attributes: { style: "width: calc(100% - 3.5rem)" } }) %}
+                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-type", width: "100%; max-width: 15rem" }) }}
+                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-provider", width: "80%; max-width: 10rem" }) }}
+                                {% endcall %}
+                            {% endcall %}
+                            {{ divider("md") }}
+                            {% call stack({ gap: "2xs" }) %}
+                                {{ skeleton("text", { variant: "heading", size: "xs", width: "50%; max-width: 6rem", classes: "contrib-heading" }) }}
+                                {{ skeleton("text", { variant: "heading", size: "xs", width: "80%; max-width: 10rem", classes: "contrib-amount" }) }}
+                            {% endcall %}
+                        </div>
+                    {% endcall %}
+                {% endcall %}
+            {% endcall %}
+        </section>
     </article>
 {% endblock %}
+
+{% set localCss %}
+    .fake-select-box {
+        color: var(--color-gray-400);
+        background-color: var(--color-white);
+        border: var(--size-5xs) solid var(--color-gray-500);
+        border-radius: var(--size-3xs);
+        width: 100%;
+        padding: calc(var(--size-xs) - var(--size-5xs));
+        position: relative;
+        cursor: default;
+        
+        /* Fake focus ring! oH nOeS */
+        outline-offset: var(--size-4xs);
+        outline: var(--color-blue-500) solid var(--size-4xs);
+        box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
+        border-radius: var(--size-3xs);
+    }
+    
+    .fake-select-box .system-icon {
+        position: absolute;
+        color: var(--color-gray-900);
+        top: var(--size-xs);
+        right: var(--size-xs);
+    }
+
+    .fake-select-box__listbox {
+        cursor: wait;
+        width: 100%;
+        height: 10rem;
+        background-color: var(--color-white);
+        border: var(--size-5xs) solid var(--color-gray-500);
+        border-radius: var(--size-3xs);
+        position: relative;
+        top: calc(-1 * var(--size-5xs));
+    }
+
+    .fake-select-box__listbox .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: calc(-1 * var(--size-xs));
+        margin-top: calc(-1 * var(--size-xs));
+    }
+
+    .benefit-box {
+        border-radius: var(--size-2xs);
+        border: var(--size-5xs) solid var(--color-gray-300);
+        padding: calc(var(--size-xl) - var(--size-5xs));
+        background-color: var(--color-white);
+    }
+{% endset %}

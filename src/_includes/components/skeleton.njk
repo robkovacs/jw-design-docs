@@ -1,12 +1,22 @@
 {% macro render(type, options) %}
+    {% set classes %}
+        {% if options.classes %}
+            {% if options.classes == (options.classes | string) %}
+                {{ options.classes }}
+            {% else %}
+                {{ options.classes | join(' ') }}
+            {% endif %}
+        {% endif %}
+    {% endset %}
+
     {% if type == 'image' %}
         {% set width %}{{ options.width | default('100px') }}{% endset %}
         {% set height %}{{ options.height | default('100px') }}{% endset %}
-        <span class="skeleton-image {{ 'skeleton-image--border-radius-' + options.borderRadius if options.borderRadius }}" style="width: {{ width | safe }}; height: {{ height | safe }} "></span>
+        <span class="skeleton-image {{ 'skeleton-image--border-radius-' + options.borderRadius if options.borderRadius }} {{ classes }}" style="width: {{ width | safe }}; height: {{ height | safe }} "></span>
     {% elif type == 'text' %}
         {% set variant %}{{ options.variant | default('body') }}{% endset %}
-        {% set size %}{{ options.variant | default('md') }}{% endset %}
+        {% set size %}{{ options.size | default('md') }}{% endset %}
         {% set width %}{{ options.width | default('100%') }}{% endset %}
-        <span class="skeleton-text skeleton-text--variant-{{ variant }}  skeleton-text--size-{{ size }}" style="width: {{ width | safe }}"></span>
+        <span class="skeleton-text skeleton-text--variant-{{ variant }} skeleton-text--size-{{ size }} {{ classes }}" style="width: {{ width | safe }}"></span>
     {% endif %}
 {% endmacro %}

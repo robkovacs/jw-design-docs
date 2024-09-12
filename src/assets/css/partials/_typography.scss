@@ -48,9 +48,18 @@ h4,
     margin-bottom: var(--size-md);
 }
 
-p {
+h5,
+.h5 {
+    font-size: var(--size-sm);
+    line-height: var(--size-md);
+    font-weight: 700;
     margin-top: 0;
     margin-bottom: var(--size-md);
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: var(--size-xl);
 }
 
 p:last-child {

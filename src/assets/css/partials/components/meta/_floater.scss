@@ -1,0 +1,17 @@
+.floater {
+    margin-bottom: var(--size-md);
+
+    &--left {
+        float: left;
+        margin-right: var(--size-md);
+    }
+
+    &--right {
+        float: right;
+        margin-left: var(--size-md);
+    }
+}
+
+p:has(.floater)::after {
+    clear: both;
+}

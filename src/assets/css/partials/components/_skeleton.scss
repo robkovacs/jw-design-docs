@@ -2,6 +2,7 @@
     &-text,
     &-image {
         display: inline-block;
+        width: 100%;
         position: relative;
         overflow: hidden;
         background-color: var(--color-gray-300);
@@ -37,6 +38,17 @@
             &.skeleton-text--size-md {
                 height: 1rem;
                 margin: 0.25rem 0;
+            }
+            &.skeleton-text--size-sm {
+                height: 0.875rem;
+                margin: 0.1875rem 0;
+            }
+        }
+
+        &--variant-heading {
+            &.skeleton-text--size-xs {
+                height: 0.875rem;
+                margin: 0.0625rem 0;
             }
         }
     }
