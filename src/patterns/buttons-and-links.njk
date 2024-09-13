@@ -133,7 +133,7 @@ eleventyNavigation:
             {% call grid({ alignItems: "center" }) %}             
                 {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
                     <p>Use a <kbd><samp>document-*<samp></kbd> icon to indicate that this link points to a file, with the icon specific to that filetype if available. If not, use <kbd><samp>document<samp></kbd>.</p>
-                    <p>Links to files will either trigger a download or open the file in a new tab, depending on the user's browser configuration and the file's type.</p>
+                    <p>Links to files will either trigger a download or open the file directly in the browser, depending on the user's browser configuration and the file's type. You can suggest it get treated as a download, but the browser may be set up to respond differently.</p>
                 {% endcall %}
                 {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
                     {% call stack() %}
