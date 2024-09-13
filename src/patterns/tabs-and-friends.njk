@@ -9,4 +9,94 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
+    <article>
+        <section>
+            <h2 class="toc__heading" style="display: none" id="intro">Introduction</h2>
+            <p class="intro">Historically at Justworks, we've used a single UI component, <strong>tabs</strong>, to fulfill several different use cases. To help people better recognize these distinct use cases, we should instead use visually-distinct components to represent them.</p>
+        </section>
+        <section>
+            <h2 class="toc__heading" id="tabs">Tabs</h2>
+            <p>Tabs are used to separate distinct panes of content, and only show one of them at a time.</p>
+            <p>The horizontal line under a set of tabs is used to indicate that those tabs control the content below them. This means that:</p>
+            <ul class="bulleted-list">
+                <li>tabs should not control the content above, to the left, or to the right of them</li>
+                <li>there should not be content below the tabs, in the same container, that the tabs do not control</li>
+            </ul>
+
+            {% call figure() %}
+                <picture>
+                    <source
+                        srcset="/assets/img/patterns/tabs-and-friends/tabs-dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    />
+                    <img
+                        src="/assets/img/patterns/tabs-and-friends/tabs.png"
+                        alt="A diagram visualizing that tabs control what's below them, but not above, to the left, or to the right"
+                    />
+                </picture>
+            {% endcall %}
+        </section>
+        <section>
+            <h2 class="toc__heading" id="segmented-controls">Segmented controls</h2>
+            <p>Segmented controls are used to show a specific subset of a larger collection of items, that are all displayed in the same way.</p>
+            <p>In other words, they function as a filter on a list of items. So it's usually a good idea to have one of the controls show the entire list.</p>
+
+            {% call figure() %}
+                <picture>
+                    <source
+                        srcset="/assets/img/patterns/tabs-and-friends/segmented-controls-1-dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    />
+                    <img
+                        src="/assets/img/patterns/tabs-and-friends/segmented-controls-1.png"
+                        alt="A simple example of segmented controls, segmenting a list of employees by full-time, part-time, or all"
+                    />
+                </picture>
+            {% endcall %}
+            {% call figure() %}
+                <picture>
+                    <source
+                        srcset="/assets/img/patterns/tabs-and-friends/segmented-controls-2-dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    />
+                    <img
+                        src="/assets/img/patterns/tabs-and-friends/segmented-controls-2.png"
+                        alt="A visually more complex example of segmented controls, segmented a card-based list of integrations by type"
+                    />
+                </picture>
+            {% endcall %}
+        </section>
+        <section>
+            <h2 class="toc__heading" id="in-page-navigation">In-page navigation</h2>
+            <p>In-page navigation functions as a convenient way to scroll to different key landmarks within a page. As someone scrolls, the in-page navigation is always visible, and used to indicate to them where they are within the content.</p>
+            <p>Unlike tabs, all of the content that in-page navigation is associated with is always showing on the page. We’re not showing and hiding parts of our content, just scrolling to different points within it.</p>
+            {% call figure() %}
+                <picture>
+                    <source
+                        srcset="/assets/img/patterns/tabs-and-friends/in-page-navigation-dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    />
+                    <img
+                        src="/assets/img/patterns/tabs-and-friends/in-page-navigation.png"
+                        alt="An example of in-page navigation, moving the reader between sections of a page"
+                    />
+                </picture>
+            {% endcall %}
+        </section>
+        <section>
+            <h2 class="toc__heading" id="accordions">Accordions</h2>
+            <p>An accordion functions as another way to break up a continuous piece of content into sections. One can choose to view a single section, all of the sections at once, none of them, or anywhere in between.</p>
+            {% call figure() %}
+                <picture>
+                    <source
+                        srcset="/assets/img/patterns/tabs-and-friends/accordion-dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    />
+                    <img
+                        src="/assets/img/patterns/tabs-and-friends/accordion.png"
+                        alt="An example of an accordion, showing only the sections of content that the user has opened"
+                    />
+                </picture>
+            {% endcall %}            
+        </section>
 {% endblock %}
