@@ -34,7 +34,7 @@ eleventyNavigation:
             <p><img
                 src="/assets/img/patterns/loading-states/macos-software-update.png"
                 alt="An example of a determinate loading state: the progress bar shown while downloading macOS updates"
-            /></p>"
+            /></p>
 
             {% call callout("info") %}
                 <p>At Justworks, we can almost always get by with just indeterminate loading states. Loading processes in our interfaces are typically short and simple enough that a determinate loading state isn't necessary.</p>
@@ -90,7 +90,8 @@ eleventyNavigation:
             {% endcall %}  
 
             <h4>Spinner color</h4>
-            <p>The spinner color should be set to a color that is appropriate for the background it's on (at least 3:1 color contrast), and the content it's replacing. That means typically, on a white background, it should be <strong>gray 500</strong>. Other common colors would be <strong>white</strong>, or <strong>gray 900</strong>. But other colors are possibilities too (see <a href="../../components/button/">Button</a>, where the spinner might be a shade of blue or red).
+            <p>The spinner color should be set to a color that is appropriate for the background it's on (at least 3:1 color contrast), and the content it's replacing.</p>
+            <p>That means typically, on a white background, it should be <strong>gray 500</strong>. Other common colors would be <strong>white</strong>, or <strong>gray 900</strong>. In rare cases, other colors can be used (see <a href="../../components/button/">Button</a>, where the spinner might be a shade of blue or red).
 
             <h4>Spinner size</h4>
             <p>The spinner has one size: 1.5rem (24px) square. If your instinct is to go larger to better fill a space, that's likely a sign that a skeleton is more appropriate. Keep reading!</p>
@@ -107,59 +108,114 @@ eleventyNavigation:
                 <li>The supporting images</li>
             </ol>
 
-            {% call figure() %}
+            {% call figure("Because this loops, we're saving space for the third box in this case. We wouldn't normally do that.") %}
                 <div class="h4">Financial benefits</div>
-                {% call grid({ colGap: "xl" }) %}
-                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                {% call grid({ colGap: "xl", classes: "benefit-boxes" }) %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         <div class="benefit-box">
                             {% call row() %}
-                                {{ skeleton("image", { width: "2.5rem", height: "2.5rem", borderRadius: "md", classes: "benefit-icon" }) }}
-                                {% call stack({ gap: "2xs", attributes: { style: "width: calc(100% - 3.5rem)" } }) %}
-                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-type", width: "100%; max-width: 15rem" }) }}
-                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-provider", width: "80%; max-width: 10rem" }) }}
+                                <div class="benefit-image">
+                                    {{ skeleton("image", { width: "2.5rem", height: "2.5rem", borderRadius: "md" }) }}
+                                    {{ displayIcon({ iconName: "piggy-bank-with-cross", color: "green", size: "sm" }) }}
+                                </div>
+                                {% call stack({ gap: "3xs", attributes: { style: "width: calc(100% - 3.5rem)" } }) %}
+                                    <div class="benefit-type">
+                                        {{ skeleton("text", { variant: "heading", size: "xs", width: "100%; max-width: 15rem" }) }}
+                                        <div class="h5">401(k)</div>
+                                    </div>
+                                    <div class="benefit-provider">
+                                        {{ skeleton("text", { width: "80%; max-width: 10rem" }) }}
+                                        <div>Guideline</div>
+                                    </div>
                                 {% endcall %}
                             {% endcall %}
                             {{ divider("md") }}
-                            {% call stack({ gap: "2xs" }) %}
-                                {{ skeleton("text", { variant: "heading", size: "xs", width: "50%; max-width: 6rem", classes: "contrib-heading" }) }}
-                                {{ skeleton("text", { variant: "heading", size: "xs", width: "80%; max-width: 10rem", classes: "contrib-amount" }) }}
+                            {% call stack({ gap: "3xs" }) %}
+                                <div class="contrib-heading">
+                                    {{ skeleton("text", { variant: "heading", size: "xs", width: "50%; max-width: 6rem" }) }}
+                                    <div class="h5">Monthly contribution</div>
+                                </div>
+                                <div class="contrib-amount">
+                                    {{ skeleton("text", { width: "80%; max-width: 10rem" }) }}
+                                    <div>6%</div>
+                                </div>
                             {% endcall %}
                         </div>
                     {% endcall %}
-                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         <div class="benefit-box">
                             {% call row() %}
-                                {{ skeleton("image", { width: "2.5rem", height: "2.5rem", borderRadius: "md", classes: "benefit-icon" }) }}
-                                {% call stack({ gap: "2xs", attributes: { style: "width: calc(100% - 3.5rem)" } }) %}
-                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-type", width: "100%; max-width: 15rem" }) }}
-                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-provider", width: "80%; max-width: 10rem" }) }}
+                                <div class="benefit-image">
+                                    {{ skeleton("image", { width: "2.5rem", height: "2.5rem", borderRadius: "md" }) }}
+                                    {{ displayIcon({ iconName: "hsa-card", color: "green", size: "sm" }) }}
+                                </div>
+                                {% call stack({ gap: "3xs", attributes: { style: "width: calc(100% - 3.5rem)" } }) %}
+                                    <div class="benefit-type">
+                                        {{ skeleton("text", { variant: "heading", size: "xs", width: "100%; max-width: 15rem" }) }}
+                                        <div class="h5">Health savings account</div>
+                                    </div>
+                                    <div class="benefit-provider">
+                                        {{ skeleton("text", { width: "80%; max-width: 10rem" }) }}
+                                        <div>Optum Financial</div>
+                                    </div>
                                 {% endcall %}
                             {% endcall %}
                             {{ divider("md") }}
-                            {% call stack({ gap: "2xs" }) %}
-                                {{ skeleton("text", { variant: "heading", size: "xs", width: "50%; max-width: 6rem", classes: "contrib-heading" }) }}
-                                {{ skeleton("text", { variant: "heading", size: "xs", width: "80%; max-width: 10rem", classes: "contrib-amount" }) }}
+                            {% call stack({ gap: "3xs" }) %}
+                                <div class="contrib-heading">
+                                    {{ skeleton("text", { variant: "heading", size: "xs", width: "50%; max-width: 6rem" }) }}
+                                    <div class="h5">Monthly contribution</div>
+                                </div>
+                                <div class="contrib-amount">
+                                    {{ skeleton("text", { width: "80%; max-width: 10rem" }) }}
+                                    <div>$75.00</div>
+                                </div>
                             {% endcall %}
                         </div>
                     {% endcall %}
-                    {% call gridCell({ spans: { xs: 12, md: 6 } }) %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         <div class="benefit-box">
                             {% call row() %}
-                                {{ skeleton("image", { width: "2.5rem", height: "2.5rem", borderRadius: "md", classes: "benefit-icon" }) }}
-                                {% call stack({ gap: "2xs", attributes: { style: "width: calc(100% - 3.5rem)" } }) %}
-                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-type", width: "100%; max-width: 15rem" }) }}
-                                    {{ skeleton("text", { variant: "heading", size: "xs", classes: "benefit-provider", width: "80%; max-width: 10rem" }) }}
+                                <div class="benefit-image">
+                                    {{ skeleton("image", { width: "2.5rem", height: "2.5rem", borderRadius: "md" }) }}
+                                </div>
+                                {% call stack({ gap: "3xs", attributes: { style: "width: calc(100% - 3.5rem)" } }) %}
+                                    <div class="benefit-type">
+                                        {{ skeleton("text", { variant: "heading", size: "xs", width: "100%; max-width: 15rem" }) }}
+                                    </div>
+                                    <div class="benefit-provider">
+                                        {{ skeleton("text", { width: "80%; max-width: 10rem" }) }}
+                                    </div>
                                 {% endcall %}
                             {% endcall %}
                             {{ divider("md") }}
-                            {% call stack({ gap: "2xs" }) %}
-                                {{ skeleton("text", { variant: "heading", size: "xs", width: "50%; max-width: 6rem", classes: "contrib-heading" }) }}
-                                {{ skeleton("text", { variant: "heading", size: "xs", width: "80%; max-width: 10rem", classes: "contrib-amount" }) }}
+                            {% call stack({ gap: "3xs" }) %}
+                                <div class="contrib-heading">{{ skeleton("text", { variant: "heading", size: "xs", width: "50%; max-width: 6rem" }) }}</div>
+                                <div class="contrib-amount">
+                                    {{ skeleton("text", { width: "80%; max-width: 10rem" }) }}
+                                </div>
                             {% endcall %}
                         </div>
                     {% endcall %}
+
                 {% endcall %}
             {% endcall %}
+        </section>
+        <section>
+            <h2 class="toc__heading" id="spinners-vs-skeletons">When to use spinners vs. skeletons</h2>
+            <p>The main deciding factor: <strong>typically, how long does this content take to load</strong>? Use your best guess, or for extra credit, start tracking load times in production.
+            <h3>0-1 seconds: Do nothing</h3>
+            <p>This is such a short timeframe that the loading state won't be noticeable, and the flash of it might even be distracting or confusing.</p>
+            <h3>1-3 seconds: Use a spinner</h3>
+            <p>In this case, a spinner is just enough to give people the sense that content is being loaded, without being too heavy.</p>
+            {% call callout({type: "warning"}) %}
+                One exception! If there's value in exposing the structure of the underlying content, go with a skeleton.
+            {% endcall %}
+            <h3>3-10 seconds: Use a skeleton</h3>
+            <p>A skeleton can improve the perception of loading time by giving people a sense of the structure of the content being loaded.</p>
+            <p>The content within should be loaded in chunks whenever possible, prioritizing the most important content within the space.</p>
+            <h3>More than 10 seconds: Fix it! Or... skeleton</h3>
+            <p>In this case, your primary goal should be to decrease the loading time! But if you absolutely cannot, a skeleton is a good fallback.</p>
         </section>
     </article>
 {% endblock %}
@@ -174,6 +230,7 @@ eleventyNavigation:
         padding: calc(var(--size-xs) - var(--size-5xs));
         position: relative;
         cursor: default;
+        user-select: none;
         
         /* Fake focus ring! oH nOeS */
         outline-offset: var(--size-4xs);
@@ -214,4 +271,108 @@ eleventyNavigation:
         padding: calc(var(--size-xl) - var(--size-5xs));
         background-color: var(--color-white);
     }
+
+    .benefit-box .h5 {
+        margin-bottom: 0;
+    }
+
+    .benefit-type,
+    .contrib-heading {
+        line-height: var(--size-md);
+    }
+
+    .benefit-image > span:nth-child(2),
+    .benefit-type > div:nth-child(2),
+    .benefit-provider > div:nth-child(2),
+    .contrib-heading > div:nth-child(2),
+    .contrib-amount > div:nth-child(2) {
+        display: none;
+    }
+{% endset %}
+
+{% set localJs %}
+    function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    function step1() {
+        // "load" benefit types and providers
+        let benefitBoxes = Array.from(document.querySelectorAll(".benefit-box"));
+        benefitBoxes[2].style.visibility = 'hidden';
+        benefitBoxes.pop();
+        benefitBoxes.forEach((box) => {
+            let benefitTypeSkeleton = box.querySelector(".benefit-type .skeleton-text");
+            let benefitType = box.querySelector(".benefit-type div");
+            let benefitProviderSkeleton = box.querySelector(".benefit-provider .skeleton-text");
+            let benefitProvider = box.querySelector(".benefit-provider div");
+
+            benefitTypeSkeleton.style.display = "none";
+            benefitType.style.display = "block";
+            benefitProviderSkeleton.style.display = "none";
+            benefitProvider.style.display = "block";
+        });
+        return sleep(2000).then(step2);
+    }
+
+    function step2() {
+        let benefitBoxes = Array.from(document.querySelectorAll(".benefit-box"));
+        benefitBoxes.pop();
+        benefitBoxes.forEach((box) => {
+            let contribHeadingSkeleton = box.querySelector(".contrib-heading .skeleton-text");
+            let contribHeading = box.querySelector(".contrib-heading div");
+            let contribAmountSkeleton = box.querySelector(".contrib-amount .skeleton-text");
+            let contribAmount = box.querySelector(".contrib-amount div");
+
+            contribHeadingSkeleton.style.display = "none";
+            contribHeading.style.display = "block";
+            contribAmountSkeleton.style.display = "none";
+            contribAmount.style.display = "block";
+        });
+        return sleep(2000).then(step3);
+    };
+
+    function step3() {
+        let benefitBoxes = Array.from(document.querySelectorAll(".benefit-box"));
+        benefitBoxes.pop();
+        benefitBoxes.forEach((box) => {
+            let benefitImageSkeleton = box.querySelector(".benefit-image .skeleton-image");
+            let benefitImage = box.querySelector(".benefit-image .display-icon");
+            
+            benefitImageSkeleton.style.display = "none";
+            benefitImage.style.display = "block";
+        });
+        return sleep(2000).then(reset);
+    };
+
+    function reset() {
+        let benefitBoxes = Array.from(document.querySelectorAll(".benefit-box"));
+        benefitBoxes[2].style.visibility = 'visible';
+        benefitBoxes.pop();
+        benefitBoxes.forEach((box) => {
+            let benefitTypeSkeleton = box.querySelector(".benefit-type .skeleton-text");
+            let benefitType = box.querySelector(".benefit-type div");
+            let benefitProviderSkeleton = box.querySelector(".benefit-provider .skeleton-text");
+            let benefitProvider = box.querySelector(".benefit-provider div");
+            let contribHeadingSkeleton = box.querySelector(".contrib-heading .skeleton-text");
+            let contribHeading = box.querySelector(".contrib-heading div");
+            let contribAmountSkeleton = box.querySelector(".contrib-amount .skeleton-text");
+            let contribAmount = box.querySelector(".contrib-amount div");
+            let benefitImageSkeleton = box.querySelector(".benefit-image .skeleton-image");
+            let benefitImage = box.querySelector(".benefit-image .display-icon");
+            
+            benefitTypeSkeleton.style.display = "block";
+            benefitType.style.display = "none";
+            benefitProviderSkeleton.style.display = "block";
+            benefitProvider.style.display = "none";                
+            contribHeadingSkeleton.style.display = "block";
+            contribHeading.style.display = "none";
+            contribAmountSkeleton.style.display = "block";
+            contribAmount.style.display = "none";                
+            benefitImageSkeleton.style.display = "block";
+            benefitImage.style.display = "none";
+        });            
+        return sleep(2000).then(step1);
+    };
+
+    step1();
 {% endset %}

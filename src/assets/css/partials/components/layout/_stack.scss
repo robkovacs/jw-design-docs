@@ -2,7 +2,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    
+
+    &--gap-3xs {
+        gap: var(--size-3xs);
+    }
+
     &--gap-2xs {
         gap: var(--size-2xs);
     }
