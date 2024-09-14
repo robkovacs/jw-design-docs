@@ -31,7 +31,7 @@
         }
     }
 
-    &:not(:placeholder-shown) {
+    &:not(.has-error) {
         border-color: var(--color-red-500);
     }
 
@@ -41,7 +41,7 @@
     
     @media (hover: hover) {
         &:hover {
-            &:not(:placeholder-shown) {
+            &:not(.has-error) {
                 border-color: var(--color-red-600);
             }
 
@@ -56,7 +56,7 @@
     }
 
     &:active {
-        &:not(:placeholder-shown) {
+        &:not(.has-error) {
             border-color: var(--color-red-700);
         }
 
@@ -82,7 +82,7 @@
 }
 
 .show-error-blank-but-required .textarea:required {
-    &:invalid {
+    &.has-error {
         border-color: var(--color-red-500);
 
         @media (hover: hover) {

@@ -19,7 +19,7 @@
                     }
                 }
 
-                &:invalid {
+                &.has-error {
                     border-color: var(--color-gray-600);
                 }
 
@@ -47,7 +47,7 @@
                 }
             }
 
-            &:invalid {
+            &.has-error {
                 border-color: var(--color-gray-700);
             }
         }
@@ -83,7 +83,7 @@
         }
     }
 
-    &:invalid {
+    &.has-error {
         border-color: var(--color-gray-500);
     }
 
@@ -124,7 +124,7 @@
         background-color: var(--color-blue-100);
     }
 
-    &:has(:invalid) {
+    &:has(.has-error) {
         border-color: var(--color-gray-500);
     }
 
@@ -155,7 +155,7 @@
                 background-color: var(--color-blue-200);
             }
 
-            &:has(:invalid) {
+            &:has(.has-error) {
                 border-color: var(--color-gray-600);
             }
 
@@ -186,7 +186,7 @@
                     }
                 }
 
-                &:invalid {
+                &.has-error {
                     border-color: var(--color-gray-500);
                     background-color: var(--color-white);
                 }
@@ -206,7 +206,7 @@
             }
         }
 
-        &:has(:invalid) {
+        &:has(.has-error) {
             border-color: var(--color-gray-700);
         }
 
@@ -233,7 +233,7 @@
                 }
             }
 
-            &:invalid {
+            &.has-error {
                 border-color: var(--color-gray-500);
                 background-color: var(--color-white);
             }
@@ -259,7 +259,7 @@
             }
         }
 
-        &:invalid {
+        &.has-error {
             border-color: var(--color-gray-500);
             background-color: var(--color-white);
         }
@@ -273,37 +273,37 @@
 
 .show-error-blank-but-required {
     & .radio-button {
-        & .radio-button__control:invalid {
+        & .radio-button__control.has-error {
             border-color: var(--color-red-500);
         }
 
         @media (hover: hover) {
             &:hover {
-                & .radio-button__control:invalid {
+                & .radio-button__control.has-error {
                     border-color: var(--color-red-600);
                 }
             }
         }
 
         &:active {
-            & .radio-button__control:invalid {
+            & .radio-button__control.has-error {
                 border-color: var(--color-red-700);
             }
         }
 
         &--framed {
-            &:has(:invalid) {
+            &:has(.has-error) {
                 border-color: var(--color-red-500);
             }
 
             @media (hover: hover) {
-                :has(:invalid) {
+                :has(.has-error) {
                     border-color: var(--color-red-600);
                 }
             }
 
             &:active {
-                &:has(:invalid) {
+                &:has(.has-error) {
                     border-color: var(--color-red-700);
                 }
             }

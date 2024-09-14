@@ -27,7 +27,7 @@
         pointer-events: none;
     }
 
-    &:invalid {
+    &.has-error {
         border-color: var(--color-red-500);
     }
 
@@ -35,7 +35,7 @@
         &:hover {
             border-color: var(--color-gray-600);
 
-            &:invalid {
+            &.has-error {
                 border-color: var(--color-red-600);
             }
         }
@@ -44,7 +44,7 @@
     &:active {
         border-color: var(--color-gray-700);
 
-        &:invalid {
+        &.has-error {
             border-color: var(--color-gray-700);
         }
     }
@@ -83,7 +83,7 @@
 }
 
 .show-error-blank-but-required .select-box:required {
-    &:invalid {
+    &.has-error {
         border-color: var(--color-red-500);
 
         @media (hover: hover) {

@@ -14,7 +14,7 @@
         color: var(--color-gray-500);
     }
 
-    &:not(:placeholder-shown) {
+    &.has-error {
         border-color: var(--color-red-500);
     }
 
@@ -24,7 +24,7 @@
 
     @media (hover: hover) {
         &:hover {
-            &:not(:placeholder-shown) {
+            &:not(.has-error) {
                 border-color: var(--color-red-600);
             }
 
@@ -39,7 +39,7 @@
     }
 
     &:active {
-        &:not(:placeholder-shown) {
+        &:not(.has-error) {
             border-color: var(--color-red-700);
         }
 
@@ -65,7 +65,7 @@
 }
 
 .show-error-blank-but-required .text-box:required {
-    &:invalid {
+    &.has-error {
         border-color: var(--color-red-500);
 
         @media (hover: hover) {
