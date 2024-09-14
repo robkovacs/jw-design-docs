@@ -59,8 +59,9 @@ module.exports = function (eleventyConfig) {
         if (outputPath.endsWith(".html")) {
             return htmlmin.minify(content, {
                 collapseWhitespace: true,
+                conservativeCollapse: true,
                 removeComments: true,
-                useShortDoctype: true,
+                useShortDoctype: true
             });
         }
 

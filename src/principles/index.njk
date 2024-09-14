@@ -1,0 +1,80 @@
+---
+title: Principles
+eleventyNavigation:
+    key: Principles
+    title: Principles
+    parent: Home
+    order: 1
+---
+
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+    <article>
+        <p>We worked with a cross-functional team from all around the company to create a set of principles to guide the development of design systems at Justworks.</p>
+
+        <p>These serve two main functions:</p>
+
+        <ul class="bulleted-list">
+            <li>for maintainers of the design system, they help us get to better decisions faster</li>
+            <li>for consumers of the design system, they help set expectations for what the design system provides</li>
+        </ul>
+
+        <div class="h3">The Justworks design system is&hellip;</div>
+
+        <h2><span aria-label="">&#x1F332;</span> Evergreen</h2>
+        <ul class="bulleted-list">
+            <li>Every element of the design system should be purposefully curated, and given a clear, documented reason to exist</li>
+            <li>The design system is living and breathing—always improving, adapting, and evolving with Justworks's products, brand, and the people who interact with them</li>
+        </ul>
+
+        <h2><span aria-label="">&#x2728;</span> A catalyst for creativity</h2>
+        <ul class="bulleted-list">
+            <li>Provides the tools to inspire creative designs by solving for the foundational, common design problems</li>
+            <li>Foundations, components, and patterns are crafted with a focus on performance, accessibility, responsiveness, and internationalization</li>
+        </ul>
+
+        <h2><span aria-label="">&#x1F60A;</span> Made for humans</h2>
+        <ul class="bulleted-list">
+            <li>Customers and end users are brought into our process for shared understanding, and to co-create solutions</li>
+            <li>Our design system is able to be used and understood independent of its creators</li>
+        </ul>
+
+        <h3>Further reading</h3>
+        <p>
+            We did a workshop to come up with the initial inputs to these principles. Here's the
+            {{ anchor({
+                content: "slides",
+                href: "https://docs.google.com/presentation/d/1bO6wW4m6VDlDEyIQvruPZNrF8IyZH5qoyFYQ7kDTHlw/edit?usp=sharing",
+                attributes: { target: "_blank" },
+                rightIcon: "external-link"
+            }) }}
+            we went over, and the
+            {{ anchor({
+                content: "FigJam",
+                href: "https://www.figma.com/file/yuXvbhXOeyJ9IO2OD29kTj/2023-11-01-Design-System-Principles-Workshop?type=whiteboard&t=sKyseZ2CfRfdTtgi-0",
+                attributes: { target: "_blank" },
+                rightIcon: "external-link"
+            }) }}
+            where we first collected our thoughts.
+        </p>
+
+        <p>
+            We reviewed the final principles during a Monthly Design System Forum call. Here's the
+            {{ anchor({
+                content: "slides",
+                href: "https://docs.google.com/presentation/d/1ttQ1ICGNtuCwCzdrElWmRqVHCWVjraZRNeK4lPNDHWY/edit?usp=sharing",
+                attributes: { target: "_blank" },
+                rightIcon: "external-link"
+            }) }}
+            from that, and the
+            {{ anchor({
+                content: "recording",
+                href: "https://justworks.zoom.us/rec/share/Kcb-b-ZLB4vEV4ODmvgtlXlaHm6KpsgWFlQx0XKHdjN0SP8vXW9ro4s8-WMSyACY.nJ2cgXMk8kUq3XVo",
+                attributes: { target: "_blank" },
+                rightIcon: "external-link"
+            }) }}        
+            (password: <code>eY$Mz=y9</code>).
+        </p>
+    </article>
+{% endblock %}
