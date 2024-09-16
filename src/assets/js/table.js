@@ -3,7 +3,7 @@ function setLeftShadowPosition() {
 
     leftShadows.forEach((shadow) => {
         let widthBasis = shadow.nextElementSibling.querySelector("th:first-child");
-        shadow.style.left = ((widthBasis.offsetWidth) / 16) + "rem";
+        shadow.style.left = widthBasis.offsetWidth + "px";
     });
 }
 

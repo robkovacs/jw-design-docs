@@ -19,57 +19,57 @@ eleventyNavigation:
     <section>
         <h2>Tables</h2>
         <p>Tables are meant to organize two-dimensional data, and allow users to easily scan the entries of the table across one of those dimensions.</p>
-        <p>A basic weekly timecard is a good example of this:</p>
+        <p>This simplified weekly timecard is a good example:</p>
         
         {% call figure() %}
             {{ table({
                 columns: [{
                     width: "8rem"
                 },{
-                    name: 'Sun<br/>Dec 10',
+                    name: 'Sun<br/><span style="font-weight: 400">Dec 10</span>',
                     alignment: "right",
                     numeric: true,
                     width: "6rem"
                 },
                 {
-                    name: "Mon<br/> Dec 11",
+                    name: 'Mon<br/><span style="font-weight: 400">Dec 11</span>',
                     alignment: "right",
                     numeric: true,
                     width: "6rem"
                 },
                 {
-                    name: "Tue<br/> Dec 12",
+                    name: 'Tue<br/><span style="font-weight: 400">Dec 12</span>',
                     alignment: "right",
                     numeric: true,
                     width: "6rem"
                 },
                 {
-                    name: "Wed<br/> Dec 13",
+                    name: 'Wed<br/><span style="font-weight: 400">Dec 13</span>',
                     alignment: "right",
                     numeric: true,
                     width: "6rem"
                 },
                 {
-                    name: "Thu<br/> Dec 14",
+                    name: 'Thu<br/><span style="font-weight: 400">Dec 14</span>',
                     alignment: "right",
                     numeric: true,
                     width: "6rem"
                 },
                 {
-                    name: "Fri<br/> Dec 15",
+                    name: 'Fri<br/><span style="font-weight: 400">Dec 15</span>',
                     alignment: "right",
                     numeric: true,
                     width: "6rem"
                 },
                 {
-                    name: "Sat<br/> Dec 16",
+                    name: 'Sat<br/><span style="font-weight: 400">Dec 16</span>',
                     alignment: "right",
                     numeric: true,
                     width: "6rem"
                 }],
                 rows: [
                     {
-                        name: "Regular<br/> ($40.00/hr)",
+                        name: 'Regular<br/><span style="font-weight: 400">($40.00/hr)</span>',
                         data: [
                             "—",
                             "6h 35m",
@@ -81,7 +81,7 @@ eleventyNavigation:
                         ]   
                     },
                     {
-                        name: "Admin work<br/> ($30.00/hr)",
+                        name: 'Admin work<br/><span style="font-weight: 400">($30.00/hr)</span>',
                         data: [
                             "—",
                             "1h 25m",
@@ -93,7 +93,7 @@ eleventyNavigation:
                         ]   
                     },
                     {
-                        name: "PTO<br/> ($40.00/hr)",
+                        name: 'PTO<br/><span style="font-weight: 400">$40.00/hr)</span>',
                         data: [
                             "—",
                             "—",
@@ -107,7 +107,7 @@ eleventyNavigation:
                 ]
             }) }}
         {% endcall %}
-        <p>Each data point on a timecard—an amount of hours worked—has two dimensions to it:</p>
+        <p>Each data point on this timecard—an amount of hours worked—has two dimensions to it:</p>
         <ol class="numbered-list">
             <li>the <strong>rate</strong> being paid for that work</li>
             <li>the <strong>date</strong> on which the work was done</li>
