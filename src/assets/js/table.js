@@ -3,8 +3,6 @@ function setLeftShadowPosition() {
 
     leftShadows.forEach((shadow) => {
         let widthBasis = shadow.nextElementSibling.querySelector("th:first-child");
-        
-        console.log(widthBasis.offsetWidth);
         shadow.style.left = ((widthBasis.offsetWidth) / 16) + "rem";
     });
 }
@@ -25,22 +23,22 @@ tableContainers.forEach((container) => {
     let table = container.querySelector(".table");
     let leftShadow = container.querySelector(".table__scroll-shadow--left");
     let rightShadow = container.querySelector(".table__scroll-shadow--right");
-    
+    let shadowWidth = window.getComputedStyle(leftShadow, ":before").width;
+        
+    if (container.offsetWidth < table.offsetWidth) {
+        container.classList.add("table__container--scrollable-horizontal");
+    }
+
     container.addEventListener("scroll", (e) => {
-        console.log(e.target.scrollLeft, e.target.offsetWidth, table.offsetWidth);
-        if (e.target.scrollLeft > 0) {
-            leftShadow.style.opacity = 1;
-            leftShadow.style.minWidth = "0.75rem";
+        if (e.target.scrollLeft > parseInt(shadowWidth, 10)) {
+            e.target.classList.add('table__container--scrolled-right');
             if (e.target.scrollLeft + e.target.offsetWidth >= table.offsetWidth) {
-                rightShadow.style.opacity = 0;
-                rightShadow.style.minWidth = 0;
+                e.target.classList.add('table__container--scrolled-to-right');
             } else {
-                rightShadow.style.opacity = 1;
-                rightShadow.style.minWidth = "0.75rem";
+                e.target.classList.remove('table__container--scrolled-to-right'); 
             }
-        } else if (e.target.scrollLeft <= 0) {
-            leftShadow.style.opacity = 0;
-            leftShadow.style.minWidth = 0;
+        } else if (e.target.scrollLeft <= parseInt(shadowWidth, 10)) {
+            e.target.classList.remove('table__container--scrolled-right');
         }
     });
 
