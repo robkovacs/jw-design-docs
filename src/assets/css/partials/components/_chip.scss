@@ -35,4 +35,8 @@
     &:disabled, &[aria-disabled="true"] {
         color: var(--color-gray-500);
     }
+
+    & .system-icon {
+        pointer-events: none;
+    }
 }
