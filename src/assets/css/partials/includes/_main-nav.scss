@@ -9,7 +9,7 @@
     position: absolute;
     left: -16rem;
     top: 0;
-    z-index: 2;
+    z-index: 3;
     overflow-y: auto;
     transition: left 150ms ease-in;
 
@@ -22,7 +22,7 @@
             right: 0;
             bottom: 0;
             top: 0;
-            z-index: 1;
+            z-index: 2;
             background-color: rgba(0, 0, 0, 0.2);
 
             html[data-appearance-mode="dark"] & {
@@ -118,7 +118,7 @@
     position: sticky;
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 
     background-color: var(--color-gray-100);
     padding: var(--size-2xs) var(--size-xs) calc(var(--size-2xs) - var(--size-5xs));
