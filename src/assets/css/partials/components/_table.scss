@@ -1,0 +1,96 @@
+.table__container {
+    width: 100%;
+    overflow-x: scroll;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    overflow-wrap: normal;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 0 0 100%;
+    // margin-bottom: var(--size-3xl);
+
+    & .table-cell {
+        &--align-left {
+            text-align: left;
+        }
+
+        &--align-right {
+            text-align: right;
+        }
+
+        &--numeric {
+            font-variant-numeric: tabular-nums;
+        }
+    }
+
+    & td, & th {
+        padding: var(--size-md);
+        background-color: var(--color-white);
+    }
+
+    th[scope="col"] {
+        padding-bottom: calc(var(--size-md) - var(--size-5xs));
+        border-bottom: var(--size-5xs) solid var(--color-gray-300);
+
+        &:empty {
+            padding-right: calc(var(--size-md) - var(--size-5xs));
+            border-right: var(--size-5xs) solid var(--color-gray-300);    
+        }
+    }
+
+    th[scope="row"] {
+        padding-right: calc(var(--size-md) - var(--size-5xs));
+        border-right: var(--size-5xs) solid var(--color-gray-300);
+    }
+
+    tbody tr:not(:last-child) {
+        & th[scope="row"], & td {
+            padding-bottom: calc(var(--size-md) - var(--size-5xs));
+            border-bottom: var(--size-5xs) solid var(--color-gray-300);
+        }
+    }
+
+    &__scroll-shadow {
+        position: sticky;
+        top: 0;
+        overflow: hidden;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 100ms ease-in-out;
+        
+        &--left::before, &--right::before {
+            content: '';
+            width: 12px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+
+        &--left {
+            left: 0;
+
+            &::before {
+                left: -12px;
+                box-shadow: var(--box-shadow-level-2);
+            }
+        }
+
+
+        &--right {
+            right: 0;
+
+            &::before {
+                right: -12px;
+                box-shadow: var(--box-shadow-level-2-left);
+            }
+        }
+    }
+
+    & th:first-child, & td:first-child {
+        position: sticky;
+        left: 0;
+    }
+}

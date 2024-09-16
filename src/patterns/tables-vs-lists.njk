@@ -1,0 +1,124 @@
+---
+title: Tables vs. lists
+eleventyNavigation:
+    key: Tables vs. lists
+    parent: Patterns
+    order: 4
+    excerpt: "Tables and lists are often confused, but have distinct purposes."
+---
+
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+<article>
+    <p class="intro">Not sure whether to use a table or a list? Keep in mind:</p>
+    <ul class="bulleted-list intro">
+        <li>Tables are meant to help people <strong>scan</strong> and <strong>compare</strong> two-dimensional data</li>
+        <li>Lists are meant to help people <strong>find</strong> and <strong>interact</strong> with objects in a collection</li>
+    </ul>
+    <section>
+        <h2>Tables</h2>
+        <p>Tables are meant to organize two-dimensional data, and allow users to easily scan the entries of the table across one of those dimensions.</p>
+        <p>A basic weekly timecard is a good example of this:</p>
+        
+        {% call figure() %}
+            {{ table({
+                columns: [{
+                    width: "10rem"
+                },{
+                    name: "Sun<br/>Dec 10",
+                    alignment: "right",
+                    numeric: true,
+                    width: "6rem"
+                },
+                {
+                    name: "Mon<br/> Dec 11",
+                    alignment: "right",
+                    numeric: true,
+                    width: "6rem"
+                },
+                {
+                    name: "Tue<br/> Dec 12",
+                    alignment: "right",
+                    numeric: true,
+                    width: "6rem"
+                },
+                {
+                    name: "Wed<br/> Dec 13",
+                    alignment: "right",
+                    numeric: true,
+                    width: "6rem"
+                },
+                {
+                    name: "Thu<br/> Dec 14",
+                    alignment: "right",
+                    numeric: true,
+                    width: "6rem"
+                },
+                {
+                    name: "Fri<br/> Dec 15",
+                    alignment: "right",
+                    numeric: true,
+                    width: "6rem"
+                },
+                {
+                    name: "Sat<br/> Dec 16",
+                    alignment: "right",
+                    numeric: true,
+                    width: "6rem"
+                }],
+                rows: [
+                    {
+                        name: "Regular<br/> ($40.00/hr)",
+                        data: [
+                            "—",
+                            "6h 35m",
+                            "5h 15m",
+                            "—",
+                            "6h 00m",
+                            "6h 45m",
+                            "—"
+                        ]   
+                    },
+                    {
+                        name: "Admin work<br/> ($30.00/hr)",
+                        data: [
+                            "—",
+                            "1h 25m",
+                            "2h 45m",
+                            "—",
+                            "2h 00m",
+                            "1h 15m",
+                            "—"
+                        ]   
+                    },
+                    {
+                        name: "PTO<br/> ($40.00/hr)",
+                        data: [
+                            "—",
+                            "—",
+                            "—",
+                            "8h 00m",
+                            "—",
+                            "—",
+                            "—"
+                        ]   
+                    }                
+                ]
+            }) }}
+        {% endcall %}
+        <p>Each data point on a timecard—an amount of hours worked—has two dimensions to it:</p>
+        <ol class="numbered-list">
+            <li>the <strong>rate</strong> being paid for that work</li>
+            <li>the <strong>date</strong> on which the work was done</li>
+        </ol>
+
+        <p>Laying out this data as a table allows the user to:</p>
+        <ul class="bulleted-list">
+            <li><strong>Scan each column</strong> to find out how much time was spent working at each rate in a given day</li>
+            <li><strong>Scan each row</strong> to find out how much time was spent working at a given rate throughout the week</li>
+            <li><strong>Find a specific data point</strong>, using the column and row headings: the hours worked at a given rate, on a given date</li>
+        </ul>
+    </section>
+</article>
+{% endblock %}

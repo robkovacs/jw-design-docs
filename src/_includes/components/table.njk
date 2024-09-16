@@ -1,0 +1,30 @@
+{% macro render(options) %}
+<div class="table__container">
+    <div class="table__scroll-shadow table__scroll-shadow--left"></div>
+    <table class="table">
+        <thead>
+            <tr>
+            {% for column in options.columns %}
+                {% set align = column.alignment | default("left") %}
+                <th scope="col" class="table-cell--align-{{ align }}" style="min-width: {{ column.width }}">{{ column.name | safe if column.name }}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in options.rows %}
+            <tr>
+            {% if row.name %}
+                <th scope="row" class="table-cell--align-right">{{ row.name | safe }}</th>
+            {% endif %}
+            {% for cell in row.data %}
+            {% set align = options.columns[loop.index].alignment | default("left") %}
+            {% set numeric = options.columns[loop.index].numeric | default(false) %}
+                <td class="table-cell--align-{{ align }} {{ 'table-cell--numeric' if numeric }}">{{ cell }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="table__scroll-shadow table__scroll-shadow--right"></div>
+</div>
+{% endmacro %}

@@ -8,6 +8,50 @@
     --drop-shadow-level-2: drop-shadow(-2px -2px 4px rgba(63, 65, 71, 0.07)) drop-shadow(2px 2px 4px rgba(63, 65, 71, 0.28));
     --drop-shadow-level-3: drop-shadow(-4px -4px 8px rgba(63, 65, 71, 0.06)) drop-shadow(4px 4px 8px rgba(63, 65, 71, 0.24));
     --drop-shadow-level-4: drop-shadow(-8px -8px 16px rgba(63, 65, 71, 0.06)) drop-shadow(8px 8px 16px rgba(63, 65, 71, 0.24));
+
+    /* Top: x offset = 0; y offset flipped */
+    --box-shadow-level-1-top: 0 1px 2px 0px rgba(63, 65, 71, 0.07), 0 -1px 2px 0px rgba(63, 65, 71, 0.28);
+    --box-shadow-level-2-top: 0 2px 4px 0px rgba(63, 65, 71, 0.07), 0 -2px 4px 0px rgba(63, 65, 71, 0.28);
+    --box-shadow-level-3-top: 0 4px 8px 0px rgba(63, 65, 71, 0.06), 0 -4px 8px 0px rgba(63, 65, 71, 0.24);
+    --box-shadow-level-4-top: 0 8px 16px 0px rgba(63, 65, 71, 0.06), 0 -8px 16px 0px rgba(63, 65, 71, 0.24);
+
+    --drop-shadow-level-1-top: drop-shadow(0 -1px 2px rgba(63, 65, 71, 0.07)) drop-shadow(0 1px 2px 0px rgba(63, 65, 71, 0.28));
+    --drop-shadow-level-2-top: drop-shadow(0 -2px 4px rgba(63, 65, 71, 0.07)) drop-shadow(0 2px 4px rgba(63, 65, 71, 0.28));
+    --drop-shadow-level-3-top: drop-shadow(0 -4px 8px rgba(63, 65, 71, 0.06)) drop-shadow(0 4px 8px rgba(63, 65, 71, 0.24));
+    --drop-shadow-level-4-top: drop-shadow(0 -8px 16px rgba(63, 65, 71, 0.06)) drop-shadow(0 8px 16px rgba(63, 65, 71, 0.24));
+
+    /* Left: x offset flipped */
+    --box-shadow-level-1-left: 1px -1px 2px 0px rgba(63, 65, 71, 0.07), -1px 1px 2px 0px rgba(63, 65, 71, 0.28);
+    --box-shadow-level-2-left: 2px -2px 4px 0px rgba(63, 65, 71, 0.07), -2px 2px 4px 0px rgba(63, 65, 71, 0.28);
+    --box-shadow-level-3-left: 4px -4px 8px 0px rgba(63, 65, 71, 0.06), -4px 4px 8px 0px rgba(63, 65, 71, 0.24);
+    --box-shadow-level-4-left: 8px -8px 16px 0px rgba(63, 65, 71, 0.06), -8px 8px 16px 0px rgba(63, 65, 71, 0.24);
+
+    --drop-shadow-level-1-left: drop-shadow(1px -1px 2px rgba(63, 65, 71, 0.07)) drop-shadow(-1px 1px 2px 0px rgba(63, 65, 71, 0.28));
+    --drop-shadow-level-2-left: drop-shadow(2px -2px 4px rgba(63, 65, 71, 0.07)) drop-shadow(-2px 2px 4px rgba(63, 65, 71, 0.28));
+    --drop-shadow-level-3-left: drop-shadow(4px -4px 8px rgba(63, 65, 71, 0.06)) drop-shadow(-4px 4px 8px rgba(63, 65, 71, 0.24));
+    --drop-shadow-level-4-left: drop-shadow(8px -8px 16px rgba(63, 65, 71, 0.06)) drop-shadow(-8px 8px 16px rgba(63, 65, 71, 0.24));
+
+    /* Bottom: x offset = 0 */
+    --box-shadow-level-1-bottom: 0 -1px 2px 0px rgba(63, 65, 71, 0.07), 0 1px 2px 0px rgba(63, 65, 71, 0.28);
+    --box-shadow-level-2-bottom: 0 -2px 4px 0px rgba(63, 65, 71, 0.07), 0 2px 4px 0px rgba(63, 65, 71, 0.28);
+    --box-shadow-level-3-bottom: 0 -4px 8px 0px rgba(63, 65, 71, 0.06), 0 4px 8px 0px rgba(63, 65, 71, 0.24);
+    --box-shadow-level-4-bottom: 0 -8px 16px 0px rgba(63, 65, 71, 0.06), 0 8px 16px 0px rgba(63, 65, 71, 0.24);
+
+    --drop-shadow-level-1-bottom: drop-shadow(0 -1px 2px rgba(63, 65, 71, 0.07)) drop-shadow(0 1px 2px 0px rgba(63, 65, 71, 0.28));
+    --drop-shadow-level-2-bottom: drop-shadow(0 -2px 4px rgba(63, 65, 71, 0.07)) drop-shadow(0 2px 4px rgba(63, 65, 71, 0.28));
+    --drop-shadow-level-3-bottom: drop-shadow(0 -4px 8px rgba(63, 65, 71, 0.06)) drop-shadow(0 4px 8px rgba(63, 65, 71, 0.24));
+    --drop-shadow-level-4-bottom: drop-shadow(0 -8px 16px rgba(63, 65, 71, 0.06)) drop-shadow(0 8px 16px rgba(63, 65, 71, 0.24));
+
+    /* Right: default */
+    --box-shadow-level-1-right: var(--box-shadow-level-1);
+    --box-shadow-level-2-right: var(--box-shadow-level-1);
+    --box-shadow-level-3-right: var(--box-shadow-level-1);
+    --box-shadow-level-4-right: var(--box-shadow-level-1);
+    
+    --drop-shadow-level-1-right: var(--drop-shadow-level-1);
+    --drop-shadow-level-2-right: var(--drop-shadow-level-2);
+    --drop-shadow-level-3-right: var(--drop-shadow-level-3);
+    --drop-shadow-level-4-right: var(--drop-shadow-level-4);
 }
 
 html[data-appearance-mode="dark"] {
@@ -20,4 +64,48 @@ html[data-appearance-mode="dark"] {
     --drop-shadow-level-2: drop-shadow(-2px -2px 4px rgba(238, 240, 244, 0.07)) drop-shadow(2px 2px 4px rgba(238, 240, 244, 0.28));
     --drop-shadow-level-3: drop-shadow(-4px -4px 8px rgba(238, 240, 244, 0.06)) drop-shadow(4px 4px 8px rgba(238, 240, 244, 0.24));
     --drop-shadow-level-4: drop-shadow(-8px -8px 16px rgba(238, 240, 244, 0.06)) drop-shadow(8px 8px 16px rgba(238, 240, 244, 0.24));
+
+    /* Top: x offset = 0; y offset flipped */
+    --box-shadow-level-1-top: 0 1px 2px 0px rgba(238, 240, 244, 0.07), 0 -1px 2px 0px rgba(238, 240, 244, 0.28);
+    --box-shadow-level-2-top: 0 2px 4px 0px rgba(238, 240, 244, 0.07), 0 -2px 4px 0px rgba(238, 240, 244, 0.28);
+    --box-shadow-level-3-top: 0 4px 8px 0px rgba(238, 240, 244, 0.06), 0 -4px 8px 0px rgba(238, 240, 244, 0.24);
+    --box-shadow-level-4-top: 0 8px 16px 0px rgba(238, 240, 244, 0.06), 0 -8px 16px 0px rgba(238, 240, 244, 0.24);
+
+    --drop-shadow-level-1-top: drop-shadow(0 -1px 2px rgba(238, 240, 244, 0.07)) drop-shadow(0 1px 2px 0px rgba(238, 240, 244, 0.28));
+    --drop-shadow-level-2-top: drop-shadow(0 -2px 4px rgba(238, 240, 244, 0.07)) drop-shadow(0 2px 4px rgba(238, 240, 244, 0.28));
+    --drop-shadow-level-3-top: drop-shadow(0 -4px 8px rgba(238, 240, 244, 0.06)) drop-shadow(0 4px 8px rgba(238, 240, 244, 0.24));
+    --drop-shadow-level-4-top: drop-shadow(0 -8px 16px rgba(238, 240, 244, 0.06)) drop-shadow(0 8px 16px rgba(238, 240, 244, 0.24));
+
+    /* Left: x offset flipped */
+    --box-shadow-level-1-left: 1px -1px 2px 0px rgba(238, 240, 244, 0.07), -1px 1px 2px 0px rgba(238, 240, 244, 0.28);
+    --box-shadow-level-2-left: 2px -2px 4px 0px rgba(238, 240, 244, 0.07), -2px 2px 4px 0px rgba(238, 240, 244, 0.28);
+    --box-shadow-level-3-left: 4px -4px 8px 0px rgba(238, 240, 244, 0.06), -4px 4px 8px 0px rgba(238, 240, 244, 0.24);
+    --box-shadow-level-4-left: 8px -8px 16px 0px rgba(238, 240, 244, 0.06), -8px 8px 16px 0px rgba(238, 240, 244, 0.24);
+
+    --drop-shadow-level-1-left: drop-shadow(1px -1px 2px rgba(238, 240, 244, 0.07)) drop-shadow(-1px 1px 2px 0px rgba(238, 240, 244, 0.28));
+    --drop-shadow-level-2-left: drop-shadow(2px -2px 4px rgba(238, 240, 244, 0.07)) drop-shadow(-2px 2px 4px rgba(238, 240, 244, 0.28));
+    --drop-shadow-level-3-left: drop-shadow(4px -4px 8px rgba(238, 240, 244, 0.06)) drop-shadow(-4px 4px 8px rgba(238, 240, 244, 0.24));
+    --drop-shadow-level-4-left: drop-shadow(8px -8px 16px rgba(238, 240, 244, 0.06)) drop-shadow(-8px 8px 16px rgba(238, 240, 244, 0.24));
+
+    /* Bottom: x offset = 0 */
+    --box-shadow-level-1-bottom: 0 -1px 2px 0px rgba(238, 240, 244, 0.07), 0 1px 2px 0px rgba(238, 240, 244, 0.28);
+    --box-shadow-level-2-bottom: 0 -2px 4px 0px rgba(238, 240, 244, 0.07), 0 2px 4px 0px rgba(238, 240, 244, 0.28);
+    --box-shadow-level-3-bottom: 0 -4px 8px 0px rgba(238, 240, 244, 0.06), 0 4px 8px 0px rgba(238, 240, 244, 0.24);
+    --box-shadow-level-4-bottom: 0 -8px 16px 0px rgba(238, 240, 244, 0.06), 0 8px 16px 0px rgba(238, 240, 244, 0.24);
+
+    --drop-shadow-level-1-bottom: drop-shadow(0 -1px 2px rgba(238, 240, 244, 0.07)) drop-shadow(0 1px 2px 0px rgba(238, 240, 244, 0.28));
+    --drop-shadow-level-2-bottom: drop-shadow(0 -2px 4px rgba(238, 240, 244, 0.07)) drop-shadow(0 2px 4px rgba(238, 240, 244, 0.28));
+    --drop-shadow-level-3-bottom: drop-shadow(0 -4px 8px rgba(238, 240, 244, 0.06)) drop-shadow(0 4px 8px rgba(238, 240, 244, 0.24));
+    --drop-shadow-level-4-bottom: drop-shadow(0 -8px 16px rgba(238, 240, 244, 0.06)) drop-shadow(0 8px 16px rgba(238, 240, 244, 0.24));
+
+    /* Left: default */
+    --box-shadow-level-1-right: var(--box-shadow-level-1);
+    --box-shadow-level-2-right: var(--box-shadow-level-1);
+    --box-shadow-level-3-right: var(--box-shadow-level-1);
+    --box-shadow-level-4-left: var(--box-shadow-level-1);
+    
+    --drop-shadow-level-1-right: var(--drop-shadow-level-1);
+    --drop-shadow-level-2-right: var(--drop-shadow-level-2);
+    --drop-shadow-level-3-right: var(--drop-shadow-level-3);
+    --drop-shadow-level-4-right: var(--drop-shadow-level-4);
 }
