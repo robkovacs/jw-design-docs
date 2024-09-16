@@ -32,15 +32,13 @@ tableContainers.forEach((container) => {
             leftShadow.style.opacity = 1;
             leftShadow.style.minWidth = "0.75rem";
             if (e.target.scrollLeft + e.target.offsetWidth >= table.offsetWidth) {
-                console.log("end");
                 rightShadow.style.opacity = 0;
                 rightShadow.style.minWidth = 0;
             } else {
                 rightShadow.style.opacity = 1;
                 rightShadow.style.minWidth = "0.75rem";
             }
-        } else if (e.target.scrollLeft == 0) {
-            console.log("beginning");
+        } else if (e.target.scrollLeft <= 0) {
             leftShadow.style.opacity = 0;
             leftShadow.style.minWidth = 0;
         }
