@@ -31,17 +31,13 @@
         }
     }
 
-    &:not(.has-error) {
+    &.has-error {
         border-color: var(--color-red-500);
-    }
-
-    &:valid {
-        border-color: var(--color-gray-500);
     }
     
     @media (hover: hover) {
         &:hover {
-            &:not(.has-error) {
+            &.has-error {
                 border-color: var(--color-red-600);
             }
 
@@ -56,7 +52,7 @@
     }
 
     &:active {
-        &:not(.has-error) {
+        &.has-error {
             border-color: var(--color-red-700);
         }
 
@@ -77,22 +73,6 @@
 
         &::placeholder {
             color: var(--color-gray-400);
-        }
-    }
-}
-
-.show-error-blank-but-required .textarea:required {
-    &.has-error {
-        border-color: var(--color-red-500);
-
-        @media (hover: hover) {
-            &:hover {
-                border-color: var(--color-red-600);
-            }
-        }
-
-        &:active {
-            border-color: var(--color-red-700);
         }
     }
 }
