@@ -1,0 +1,43 @@
+.menu {
+    display: none;
+    width: max-content;
+    max-width: 16rem;
+    max-height: 16rem;
+    overflow-x: scroll;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow-level-2);
+    border-radius: var(--size-3xs);
+    padding: var(--size-2xs) var(--size-3xs);
+
+    & .menu__item {
+        padding: var(--size-2xs) var(--size-md);
+        color: var(--color-gray-900);
+        display: block;
+        width: 100%;
+        border: none;
+        background-color: var(--color-white);
+        text-align: left;
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--color-gray-900);
+                background-color: var(--color-gray-100);
+            }
+        }
+
+        &:active {
+            color: var(--color-gray-900);
+            background-color: var(--color-gray-200);            
+        }
+        
+        &--link {
+            text-decoration: none;
+        }
+
+        &--button {
+            appearance: none;
+            font-size: var(--size-md);
+            font-family: inherit;
+        }
+    }
+}

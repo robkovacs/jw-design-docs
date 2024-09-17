@@ -23,10 +23,7 @@ let hideTooltip = function (tooltip) {
 
 let showTooltip = function (trigger, tooltip) {
     tooltip.style.display = "block";
-    update(trigger, tooltip);
-};
-
-let update = function (trigger, tooltip) {
+    
     let arrowElement = tooltip.querySelector(".tooltip__arrow");
 
     computePosition(trigger, tooltip, {
@@ -63,6 +60,7 @@ let update = function (trigger, tooltip) {
             [staticSide]: "-4px",
         });
     });
+
 };
 
 triggers.forEach((el) => {

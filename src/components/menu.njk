@@ -1,0 +1,51 @@
+---
+title: Menu
+eleventyNavigation: 
+    key: Menu
+    parent: Components
+    order: 9
+    excerpt: "Expose a list of actions or destinations."
+---
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+    <article>
+        {{ menu({
+            trigger: button({ content: "Look at me" }),
+            menuItems: [
+                {
+                    title: "Delete",
+                    href: "javascript: console.log('item 1');"
+                },
+                {
+                    title: "Duplicate",
+                    onClick: "javascript: console.log('item 2'); return false;"
+                },
+                {
+                    title: "Edit this thingy... let's see what happens if this gets real real long",
+                    href: "javascript: console.log('item 1');"
+                },
+                {
+                    title: "Reschedule",
+                    onClick: "javascript: console.log('item 2'); return false;"
+                },
+                                {
+                    title: "Delete",
+                    href: "javascript: console.log('item 1');"
+                },
+                {
+                    title: "Cancel",
+                    onClick: "javascript: console.log('item 2'); return false;"
+                },
+                                {
+                    title: "Delete",
+                    href: "javascript: console.log('item 1');"
+                },
+                {
+                    title: "Duplicate",
+                    onClick: "javascript: console.log('item 2'); return false;"
+                }
+            ]
+        }) }}
+    </article>
+{% endblock %}

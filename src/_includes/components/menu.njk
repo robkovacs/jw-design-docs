@@ -1,0 +1,15 @@
+{% macro render(options) %}
+    {% set id = nanoid() %}
+    {% set trigger = addClass(options.trigger, 'menu__trigger') %}
+    {{ addAttribute(trigger, { 'aria-describedby': id }) | safe }}
+
+    <div class="menu" id="{{ id }}" tabindex="1">
+{% for item in options.menuItems %}
+    {% if item.href %}
+        <a href="{{ item.href | safe }}" class="menu__item menu__item--link">{{ item.title }}</a>
+    {% elseif item.onClick %}
+        <button onclick="{{ item.onClick | safe }}" class="menu__item menu__item--button">{{ item.title }}</button>
+    {% endif %}
+{% endfor %}
+    </div>
+{% endmacro %}
