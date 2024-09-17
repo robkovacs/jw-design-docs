@@ -27,7 +27,7 @@
 
         <span class="button__content">
             {{- systemIcon(options.leftIcon) if options.leftIcon -}}
-            <span class="button__label">{{- options.content -}}</span>
+            <span class="button__label">{{- options.content | safe -}}</span>
             {{- systemIcon(options.rightIcon) if options.rightIcon -}}
         </span>
     </button>

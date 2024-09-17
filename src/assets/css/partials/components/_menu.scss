@@ -1,5 +1,6 @@
 .menu {
     display: none;
+    position: absolute;
     width: max-content;
     max-width: 16rem;
     max-height: 16rem;
@@ -7,7 +8,7 @@
     background-color: var(--color-white);
     box-shadow: var(--box-shadow-level-2);
     border-radius: var(--size-3xs);
-    padding: var(--size-2xs) var(--size-3xs);
+    padding: var(--size-3xs);
 
     & .menu__item {
         padding: var(--size-2xs) var(--size-md);

@@ -10,42 +10,87 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        {{ menu({
-            trigger: button({ content: "Click or focus me", rightIcon: "caret-down" }),
-            menuItems: [
-                {
-                    title: "Delete",
-                    href: "javascript: console.log('item 1');"
-                },
-                {
-                    title: "Duplicate",
-                    onClick: "javascript: console.log('item 2'); return false;"
-                },
-                {
-                    title: "Edit this thingy... let's see what happens if this gets real real long",
-                    href: "javascript: console.log('item 1');"
-                },
-                {
-                    title: "Reschedule",
-                    onClick: "javascript: console.log('item 2'); return false;"
-                },
-                                {
-                    title: "Delete",
-                    href: "javascript: console.log('item 1');"
-                },
-                {
-                    title: "Cancel",
-                    onClick: "javascript: console.log('item 2'); return false;"
-                },
-                                {
-                    title: "Delete",
-                    href: "javascript: console.log('item 1');"
-                },
-                {
-                    title: "Duplicate",
-                    onClick: "javascript: console.log('item 2'); return false;"
-                }
-            ]
-        }) }}
+        {% call stack() %}
+            <div>
+                {{ menu({
+                    trigger: button({ content: "Click or focus me", rightIcon: "caret-down" }),
+                    menuItems: [
+                        {
+                            title: "Delete",
+                            href: "javascript: console.log('item 1');"
+                        },
+                        {
+                            title: "Duplicate",
+                            onClick: "javascript: console.log('item 2'); return false;"
+                        },
+                        {
+                            title: "Edit this thingy... let's see what happens if this gets real real long",
+                            href: "javascript: console.log('item 1');"
+                        },
+                        {
+                            title: "Reschedule",
+                            onClick: "javascript: console.log('item 2'); return false;"
+                        },
+                                        {
+                            title: "Delete",
+                            href: "javascript: console.log('item 1');"
+                        },
+                        {
+                            title: "Cancel",
+                            onClick: "javascript: console.log('item 2'); return false;"
+                        },
+                                        {
+                            title: "Delete",
+                            href: "javascript: console.log('item 1');"
+                        },
+                        {
+                            title: "Duplicate",
+                            onClick: "javascript: console.log('item 2'); return false;"
+                        }
+                    ]
+                }) }}
+            </div>
+            {% call row({ gap: "3xs" }) %}
+                {{ button({ content: "Edit", variant: "ghost" }) }}
+                {{ button({ content: "Delete", variant: "ghost" }) }}
+                {{ menu({
+                    trigger: button({ leftIcon: "ellipsis", variant: "ghost" }),
+                    menuItems: [
+                        {
+                            title: "Delete",
+                            href: "javascript: console.log('item 1');"
+                        },
+                        {
+                            title: "Duplicate",
+                            onClick: "javascript: console.log('item 2'); return false;"
+                        },
+                        {
+                            title: "Edit this thingy... let's see what happens if this gets real real long",
+                            href: "javascript: console.log('item 1');"
+                        },
+                        {
+                            title: "Reschedule",
+                            onClick: "javascript: console.log('item 2'); return false;"
+                        },
+                        {
+                            title: "Delete",
+                            href: "javascript: console.log('item 1');"
+                        },
+                        {
+                            title: "Cancel",
+                            onClick: "javascript: console.log('item 2'); return false;"
+                        },
+                                        {
+                            title: "Delete",
+                            href: "javascript: console.log('item 1');"
+                        },
+                        {
+                            title: "Duplicate",
+                            onClick: "javascript: console.log('item 2'); return false;"
+                        }
+                    ]
+                }) }}
+            {% endcall %}
+        {% endcall %}
     </article>
 {% endblock %}

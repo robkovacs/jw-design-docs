@@ -16,24 +16,16 @@ let showMenu = function (trigger, menu) {
     computePosition(trigger, menu, {
         middleware: [
             autoPlacement({
-                alignment: "top",
+                alignment: "bottom",
                 crossAxis: true,
             }),
-            shift({ padding: 16 }),
-            offset(8)
+            shift({ padding: 16 })
         ],
-    }).then(({ x, y, placement, middlewareData }) => {
+    }).then(({ x, y }) => {
         Object.assign(menu.style, {
             left: `${x}px`,
             top: `${y}px`,
         });
-
-        const staticSide = {
-            top: "bottom",
-            right: "left",
-            bottom: "top",
-            left: "right",
-        }[placement.split("-")[0]];
     });
 
 };
@@ -83,3 +75,8 @@ function getDescendantNodes(node, all = []) {
     
     return all;
 }
+
+/*
+TODO: needs to support a lot more keyboard interactions, as described in
+https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-actions-active-descendant/
+*/
