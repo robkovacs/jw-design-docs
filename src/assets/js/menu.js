@@ -45,7 +45,6 @@ triggers.forEach((el) => {
     let menu = el.nextElementSibling;
 
     trigger.addEventListener("click", () => {
-        console.log("hi!");
         showMenu(trigger, menu);
     });
 
@@ -70,7 +69,6 @@ document.addEventListener("click", (e) => {
         let triggerChildNodesArray = getDescendantNodes(menu.previousElementSibling);
         let thisMenuTargeted = (e.target == menu || e.target == menu.previousElementSibling || menuChildNodesArray.indexOf(e.target) !== -1 || triggerChildNodesArray.indexOf(e.target) !== -1);
         if (menu.style.display = "block" && !thisMenuTargeted) {
-            console.log(e.target, triggerChildNodesArray.indexOf(e.target));
             hideMenu(menu);
         }
     });
