@@ -12,11 +12,12 @@ eleventyNavigation:
     <article>
         {{ tooltip({
             trigger: "Look at me",
-            content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size."
+            content: "It's time for these two tooltips to be different. That way they can be recognized individually."
         }) }}
 
         {{ tooltip({
             trigger: button({ content: "Look at me" }),
+            placement: "left",
             content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size."
         }) }}
     </article>

@@ -14,7 +14,7 @@
     class="tooltip__tooltip {{ 'tooltip__tooltip--inverse' if options.inverse }}"
     {% if options.placement %}data-placement="{{ options.placement | safe }}"{% endif %}
 >
-    {{ options.content | safe }}
+    <span class="tooltip__content">{{ options.content | safe }}</span>
     <span class="tooltip__arrow"></span>
 </span>
 
