@@ -35,8 +35,9 @@ class Menu {
             middleware: [
                 flip(),
                 size({
-                    apply({ availableHeight, elements }) {
+                    apply({ availableWidth, availableHeight, elements }) {
                         Object.assign(elements.floating.style, {
+                            maxWidth: `${Math.min(256, Math.max(128, availableWidth - 8))}px`,
                             maxHeight: `${Math.min(256, Math.max(128, availableHeight - 8))}px`,
                         });
                     },
