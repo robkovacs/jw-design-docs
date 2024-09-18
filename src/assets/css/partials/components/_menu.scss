@@ -9,6 +9,7 @@
     box-shadow: var(--box-shadow-level-2);
     border-radius: var(--size-3xs);
     padding: var(--size-3xs);
+    z-index: 3;
 
     & .menu__item {
         padding: var(--size-2xs) var(--size-md);

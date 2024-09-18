@@ -1,69 +1,96 @@
 import {
     computePosition,
-    autoPlacement,
-    shift,
-    offset
+    flip,
+    autoUpdate
 } from "@floating-ui/dom";
 
-let hideMenu = function (menu) {
-    menu.scrollTop = 0;
-    menu.style.display = "none";
-};
+class Menu {
+    constructor(trigger, menu) {
+        this.trigger = trigger;
+        this.menu = menu;
+        this.autoUpdating = false;
+        this.menuHidden = true;
 
-let showMenu = function (trigger, menu) {
-    menu.style.display = "block";
-    
-    computePosition(trigger, menu, {
-        middleware: [
-            autoPlacement({
-                alignment: "bottom",
-                crossAxis: true,
-            }),
-            shift({ padding: 16 })
-        ],
-    }).then(({ x, y }) => {
-        Object.assign(menu.style, {
-            left: `${x}px`,
-            top: `${y}px`,
+        this.addEventListeners();
+    }
+
+    startUpdating() {
+        if (!this.autoUpdating) {
+            this.autoUpdater = autoUpdate(this.trigger, this.menu, () => {
+                this.updatePosition();
+            });
+            this.autoUpdating = true;
+        }
+    }
+
+    stopUpdating() {
+        let newMenu = this.menu.cloneNode(true);
+        newMenu.removeAttribute("style");
+        this.menu.remove();
+        this.autoUpdater();
+        this.trigger.after(newMenu);
+        this.menu = newMenu;
+        this.autoUpdating = false;
+    }
+
+    updatePosition() {
+        computePosition(this.trigger, this.menu, {
+            placement: "bottom-start",
+            middleware: [flip()],
+        }).then(({ x, y }) => {
+            Object.assign(this.menu.style, {
+                left: `${x}px`,
+                top: `${y}px`,
+            });
+        });   
+    }
+
+    hideMenu() {
+        this.menu.scrollTop = 0;
+        this.menu.style.display = "none";
+        this.menuHidden = true;
+        this.stopUpdating();
+    }
+
+    showMenu() {
+        this.menu.style.display = "block";
+        this.startUpdating();
+        this.menuHidden = false;
+    }
+
+    addEventListeners() {
+        this.trigger.addEventListener("click", () => {
+            this.showMenu(); 
         });
-    });
 
-};
+        this.trigger.addEventListener("focus", (e) => {
+            this.showMenu();
+        });
+
+        this.trigger.addEventListener("blur", (e) => {
+            if (e.relatedTarget === null) {
+                this.hideMenu();
+            } else if (!e.relatedTarget.classList.contains("menu") && !e.relatedTarget.classList.contains("menu__item")) {
+                this.hideMenu();
+            }
+        });
+
+        document.addEventListener("click", (e) => {
+            let triggerNodes = getDescendantNodes(this.trigger);
+            let menuNodes = getDescendantNodes(this.menu);
+            let thisMenuTargeted = (e.target == this.menu || e.target == this.trigger || menuNodes.indexOf(e.target) !== -1 || triggerNodes.indexOf(e.target) !== -1);
+            if (!this.menuHidden && !thisMenuTargeted) {
+                this.hideMenu();
+            }
+        });
+    }
+}
 
 let triggers = document.querySelectorAll(".menu__trigger");
+triggers.forEach((trigger) => {
+    let menu = trigger.nextElementSibling;
 
-triggers.forEach((el) => {
-    let trigger = el;
-    let menu = el.nextElementSibling;
-
-    trigger.addEventListener("click", () => {
-        showMenu(trigger, menu);
-    });
-
-    trigger.addEventListener("focus", () => {
-        showMenu(trigger, menu);
-    });
-
-    trigger.addEventListener("blur", (e) => {
-        if (e.relatedTarget === null) {
-            hideMenu(menu);
-        } else if (!e.relatedTarget.classList.contains("menu") && !e.relatedTarget.classList.contains("menu__item")) {
-            hideMenu(menu);
-        }
-    });
-});
-
-document.addEventListener("click", (e) => {
-    let menus = document.querySelectorAll(".menu");
-    
-    menus.forEach((menu) => {
-        let menuChildNodesArray = getDescendantNodes(menu);
-        let triggerChildNodesArray = getDescendantNodes(menu.previousElementSibling);
-        let thisMenuTargeted = (e.target == menu || e.target == menu.previousElementSibling || menuChildNodesArray.indexOf(e.target) !== -1 || triggerChildNodesArray.indexOf(e.target) !== -1);
-        if (menu.style.display = "block" && !thisMenuTargeted) {
-            hideMenu(menu);
-        }
-    });
+    new Menu(trigger, menu);
 });
 
 function getDescendantNodes(node, all = []) {
