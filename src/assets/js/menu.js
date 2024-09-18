@@ -1,6 +1,7 @@
 import {
     computePosition,
     flip,
+    size,
     autoUpdate
 } from "@floating-ui/dom";
 
@@ -36,8 +37,15 @@ class Menu {
     updatePosition() {
         computePosition(this.trigger, this.menu, {
             placement: "bottom-start",
-            middleware: [flip()],
-        }).then(({ x, y }) => {
+            middleware: [flip(), size({
+                apply({availableHeight, elements}) {
+                  Object.assign(elements.floating.style, {
+                    maxHeight: `${Math.min(256, Math.max(128, availableHeight - 8))}px`,
+                  });
+                },
+              })],
+        }).then(async ({ x, y }) => {
+
             Object.assign(this.menu.style, {
                 left: `${x}px`,
                 top: `${y}px`,
