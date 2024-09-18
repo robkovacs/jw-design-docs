@@ -226,5 +226,105 @@ eleventyNavigation:
             {% endcall %}
             <p>Typically this is accomplished using the link's <code>aria-label</code> attribute.</p>
         </section>
+
+        <section>
+            <h2 class="toc__heading" id="button-groups">Button groups</h2>
+            <p>Sometimes a single element has multiple possible actions associated with it, meaning there will be a group of buttons.</p>
+            <p>You should only have one filled button per surface, so that it really stands out. So a button group should only ever have one filled button.</p> 
+            {% call figure() %}
+                {% call row({ gap: "2xs" }) %}
+                    {{ button({ content: "Action 1" })}}
+                    {{ button({ content: "Action 2" })}}
+                    {{ button({ content: "Action 3", variant: "ghost" })}}
+                {% endcall %}
+                {{ dosDonts("dont") }}
+            {% endcall %}
+
+            <p>Within a single element (such as a card or list item), we should only ever use one outlined button. Multiple outlined buttons are too noisy, and when grouped with filled or ghost buttons, they don't stand out enough.</p>
+
+            {% call figure() %}
+                {% call stack() %}
+                    {% call row({ gap: "2xs" }) %}
+                        {{ button({ content: "Action 1", variant: "outlined" })}}
+                        {{ button({ content: "Action 2", variant: "outlined" })}}
+                    {% endcall %}
+
+                    {% call row({ gap: "2xs" }) %}
+                        {{ button({ content: "Action 1" })}}
+                        {{ button({ content: "Action 2", variant: "outlined" })}}
+                    {% endcall %}
+
+                    {% call row({ gap: "2xs" }) %}
+                        {{ button({ content: "Action 1", variant: "outlined" })}}
+                        {{ button({ content: "Action 2", variant: "ghost" })}}
+                    {% endcall %}
+                {% endcall %}
+                {{ dosDonts("dont") }}
+            {% endcall %}
+
+            <p>So that leaves us with two options for button groups: a filled button, and then ghost buttons; or all ghost buttons, if none of the actions are the primary action for this surface.</p>
+
+            {% call figure() %}
+                {% call stack() %}
+                    {% call row({ gap: "2xs" }) %}
+                        {{ button({ content: "Action 1" })}}
+                        {{ button({ content: "Action 2", variant: "ghost" })}}
+                        {{ button({ content: "Action 3", variant: "ghost" })}}
+                    {% endcall %}
+
+                    {% call row({ gap: "2xs" }) %}
+                        {{ button({ content: "Action 1", variant: "ghost" })}}
+                        {{ button({ content: "Action 2", variant: "ghost" })}}
+                        {{ button({ content: "Action 3", variant: "ghost" })}}
+                    {% endcall %}
+                {% endcall %}
+                {{ dosDonts("do") }}
+            {% endcall %}
+
+            <p>If you have more than 3 actions to show, collapse the third one and beyond into an overflow menu.</p>
+            {% call figure() %}
+                {% call stack() %}
+                    <div>
+                        {% call row({ gap: "2xs" }) %}
+                            {{ button({ content: "Action 1" })}}
+                            {{ button({ content: "Action 2", variant: "ghost" })}}
+                            {{ button({ content: "Action 3", variant: "ghost" })}}
+                            {{ button({ content: "Action 4", variant: "ghost" })}}
+                            {{ button({ content: "Action 5", variant: "ghost" })}}
+                            {{ button({ content: "Action 6", variant: "ghost" })}}
+                        {% endcall %}
+                        {{ dosDonts("dont") }}
+                    </div>
+                    <div>
+                        {% call row({ gap: "2xs" }) %}
+                            {{ button({ content: "Action 1", variant: "ghost" })}}
+                            {{ button({ content: "Action 2", variant: "ghost" })}}
+                            {{ menu({
+                                trigger: button({ leftIcon: "ellipsis", attributes: { 'aria-label': "More actions..." }, variant: "ghost" }),
+                                menuItems: [
+                                    {
+                                        title: "Action 3",
+                                        onClick: "javascript: return false;"
+                                    },
+                                    {
+                                        title: "Action 4",
+                                        onClick: "javascript: return false;"
+                                    },
+                                    {
+                                        title: "Action 5",
+                                        onClick: "javascript: return false;"
+                                    },
+                                    {
+                                        title: "Action 6",
+                                        onClick: "javascript: return false;"
+                                    }
+                                ]
+                            }) }}
+                        {% endcall %}
+                        {{ dosDonts("do") }}
+                    </div>
+                {% endcall %}
+            {% endcall %}
+        </section>
     </article>
 {% endblock %}
