@@ -1,6 +1,7 @@
 let mainNav = document.querySelector(".main-nav");
 let mainNavButton = document.querySelector(".mobile-header__menu-button");
 let mainNavBackdrop = document.querySelector(".main-nav__backdrop");
+let skipToMain = document.querySelector(".skip-to-main");
 
 window.addEventListener("load", () => {
     document.body.classList.remove("preload");
@@ -33,3 +34,7 @@ window.addEventListener("orientationchange", () => {
         closeMainNav();
     }
 });
+
+skipToMain.addEventListener("click", () => {
+    closeMainNav();
+})

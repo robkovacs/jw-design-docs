@@ -48,17 +48,18 @@
         <link rel="manifest" href="/manifest.webmanifest">
         {% if localCss %}<style>{{ localCss | cssmin | safe }}</style>{% endif %}
     </head>
-    <body class="preload">      
+    <body class="preload">
+        <a href="#main" class="skip-to-main">Skip to main content</a>      
         {% include 'main-nav.njk' %}
         <main data-pagefind-body>
         {% if includePageHeader !== false %}
             <div data-pagefind-ignore>
                 {{ collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key) | eleventyNavigationToHtml({ 'listClass': 'breadcrumbs' }) | safe }}
             </div>
-            <h1>{{ title }}</h1>
+            <h1 id="main">{{ title }}</h1>
         {% endif %}
 
-            <div class="main-content">
+            <div class="main-content" {{ 'id="main"' | safe if includePageHeader == false }}>
                 {% set localContent %}
                     {% block content %}{% endblock %}
                 {% endset %}

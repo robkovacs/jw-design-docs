@@ -240,3 +240,43 @@
     align-items: center;
     margin-bottom: var(--size-md);
 }
+
+body:has(.skip-to-main:focus) {
+    margin-top: calc(3rem + (4 * var(--size-4xs)));
+}
+
+.skip-to-main {
+    position: absolute;
+    background-color: var(--color-gray-200);
+    text-align: center;
+    padding: var(--size-xs) 0;
+    top: calc(-3rem - var(--size-3xs));
+    left: var(--size-3xs);
+    right: var(--size-3xs);
+    z-index: 4;
+
+    &:focus {
+        top: var(--size-3xs);
+    }
+}
+
+body:has(.main-nav--open) {
+    &:has(.skip-to-main:focus) {
+        overflow: visible;
+    }
+
+    & .skip-to-main:focus {
+        top: calc(-3rem - var(--size-3xs));
+    }
+}
+
+#main {
+    padding-top: 8rem;
+    margin-top: -8rem;
+
+    
+    @media (min-width: $breakpoint-md) {
+        padding-top: 4rem;
+        margin-top: -4rem;
+    }
+}
