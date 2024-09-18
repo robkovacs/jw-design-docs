@@ -11,6 +11,12 @@
     padding: var(--size-3xs);
     z-index: 3;
 
+    & .menu__item-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
     & .menu__item {
         padding: var(--size-2xs) var(--size-md);
         color: var(--color-gray-900);

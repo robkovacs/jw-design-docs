@@ -4,12 +4,14 @@
     {{ addAttribute(trigger, { 'aria-describedby': id }) | safe }}
 
     <div class="menu" id="{{ id }}" tabindex="1">
-{% for item in options.menuItems %}
-    {% if item.href %}
-        <a href="{{ item.href | safe }}" class="menu__item menu__item--link">{{ item.title }}</a>
-    {% elseif item.onClick %}
-        <button onclick="{{ item.onClick | safe }}" class="menu__item menu__item--button">{{ item.title }}</button>
-    {% endif %}
-{% endfor %}
+        <ul class="menu__item-list">
+    {% for item in options.menuItems %}
+        {% if item.href %}
+            <li><a href="{{ item.href | safe }}" class="menu__item menu__item--link">{{ item.title }}</a></li>
+        {% elseif item.onClick %}
+            <li><button onclick="{{ item.onClick | safe }}" class="menu__item menu__item--button">{{ item.title }}</button></li>
+        {% endif %}
+    {% endfor %}
+        </ul>
     </div>
 {% endmacro %}
