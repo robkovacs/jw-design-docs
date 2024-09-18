@@ -232,10 +232,17 @@ eleventyNavigation:
             <p>Sometimes a single element has multiple possible actions associated with it, meaning there will be a group of buttons.</p>
             <p>You should only have one filled button per surface, so that it really stands out. So a button group should only ever have one filled button.</p> 
             {% call figure() %}
-                {% call row({ gap: "2xs" }) %}
-                    {{ button({ content: "Action 1" })}}
-                    {{ button({ content: "Action 2" })}}
-                    {{ button({ content: "Action 3", variant: "ghost" })}}
+                {% call stack() %}
+                    {% call row({ gap: "2xs" }) %}
+                        {{ button({ content: "Action 1" })}}
+                        {{ button({ content: "Action 2" })}}
+                        {{ button({ content: "Action 3", variant: "ghost" })}}
+                    {% endcall %}
+                    {% call row({ gap: "2xs" }) %}
+                        {{ button({ content: "Action 1" })}}
+                        {{ button({ content: "Action 2" })}}
+                        {{ button({ content: "Action 3", variant: "outlined" })}}
+                    {% endcall %}
                 {% endcall %}
                 {{ dosDonts("dont") }}
             {% endcall %}
