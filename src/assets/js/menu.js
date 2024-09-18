@@ -1,9 +1,4 @@
-import {
-    computePosition,
-    flip,
-    size,
-    autoUpdate
-} from "@floating-ui/dom";
+import { computePosition, flip, size, autoUpdate } from "@floating-ui/dom";
 
 class Menu {
     constructor(trigger, menu) {
@@ -37,20 +32,22 @@ class Menu {
     updatePosition() {
         computePosition(this.trigger, this.menu, {
             placement: "bottom-start",
-            middleware: [flip(), size({
-                apply({availableHeight, elements}) {
-                  Object.assign(elements.floating.style, {
-                    maxHeight: `${Math.min(256, Math.max(128, availableHeight - 8))}px`,
-                  });
-                },
-              })],
+            middleware: [
+                flip(),
+                size({
+                    apply({ availableHeight, elements }) {
+                        Object.assign(elements.floating.style, {
+                            maxHeight: `${Math.min(256, Math.max(128, availableHeight - 8))}px`,
+                        });
+                    },
+                }),
+            ],
         }).then(async ({ x, y }) => {
-
             Object.assign(this.menu.style, {
                 left: `${x}px`,
                 top: `${y}px`,
             });
-        });   
+        });
     }
 
     hideMenu() {
@@ -68,7 +65,7 @@ class Menu {
 
     addEventListeners() {
         this.trigger.addEventListener("click", () => {
-            this.showMenu(); 
+            this.showMenu();
         });
 
         this.trigger.addEventListener("focus", (e) => {
@@ -78,7 +75,10 @@ class Menu {
         this.trigger.addEventListener("blur", (e) => {
             if (e.relatedTarget === null) {
                 this.hideMenu();
-            } else if (!e.relatedTarget.classList.contains("menu") && !e.relatedTarget.classList.contains("menu__item")) {
+            } else if (
+                !e.relatedTarget.classList.contains("menu") &&
+                !e.relatedTarget.classList.contains("menu__item")
+            ) {
                 this.hideMenu();
             }
         });
@@ -86,7 +86,11 @@ class Menu {
         document.addEventListener("click", (e) => {
             let triggerNodes = getDescendantNodes(this.trigger);
             let menuNodes = getDescendantNodes(this.menu);
-            let thisMenuTargeted = (e.target == this.menu || e.target == this.trigger || menuNodes.indexOf(e.target) !== -1 || triggerNodes.indexOf(e.target) !== -1);
+            let thisMenuTargeted =
+                e.target == this.menu ||
+                e.target == this.trigger ||
+                menuNodes.indexOf(e.target) !== -1 ||
+                triggerNodes.indexOf(e.target) !== -1;
             if (!this.menuHidden && !thisMenuTargeted) {
                 this.hideMenu();
             }
@@ -103,11 +107,11 @@ triggers.forEach((trigger) => {
 
 function getDescendantNodes(node, all = []) {
     all.push(...node.childNodes);
-    
+
     for (const child of node.childNodes) {
-      getDescendantNodes(child, all);
+        getDescendantNodes(child, all);
     }
-    
+
     return all;
 }
 
