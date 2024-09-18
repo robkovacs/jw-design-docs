@@ -4,7 +4,7 @@ import {
     shift,
     offset,
     arrow,
-    inline
+    inline,
 } from "@floating-ui/dom";
 
 /*
@@ -23,7 +23,7 @@ let hideTooltip = function (tooltip) {
 
 let showTooltip = function (trigger, tooltip) {
     tooltip.style.display = "block";
-    
+
     let arrowElement = tooltip.querySelector(".tooltip__arrow");
 
     computePosition(trigger, tooltip, {
@@ -60,7 +60,6 @@ let showTooltip = function (trigger, tooltip) {
             [staticSide]: "-4px",
         });
     });
-
 };
 
 triggers.forEach((el) => {

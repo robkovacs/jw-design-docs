@@ -1,4 +1,4 @@
-const { execSync } = require('child_process')
+const { execSync } = require("child_process");
 const cleanCSS = require("clean-css");
 const htmlmin = require("html-minifier-terser");
 const { minify } = require("terser");
@@ -7,15 +7,15 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const eleventyNavigation = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
-const pluginTOC = require('@uncenter/eleventy-plugin-toc');
+const pluginTOC = require("@uncenter/eleventy-plugin-toc");
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.setBrowserSyncConfig({
-		files: './dist/css/**/*.css'
-	});
+        files: "./dist/css/**/*.css",
+    });
 
     eleventyConfig.addPlugin(eleventyNavigation);
-    
+
     eleventyConfig.addNunjucksGlobal("nanoid", () => nanoid());
 
     eleventyConfig.addNunjucksGlobal("isHtmlElement", function (string) {
@@ -31,9 +31,9 @@ module.exports = function (eleventyConfig) {
         const dom = new JSDOM(string);
         const newNode = dom.window.document.querySelector("body").firstChild;
         for (const attribute in toAdd) {
-			newNode.setAttribute(`${attribute}`, `${toAdd[attribute]}`);
-		}
-		
+            newNode.setAttribute(`${attribute}`, `${toAdd[attribute]}`);
+        }
+
         return newNode.outerHTML;
     });
 
@@ -61,72 +61,84 @@ module.exports = function (eleventyConfig) {
                 collapseWhitespace: true,
                 conservativeCollapse: true,
                 removeComments: true,
-                useShortDoctype: true
+                useShortDoctype: true,
             });
         }
 
         return content;
     });
 
-
     function findNavigationEntries(nodes = [], key = "") {
         let pages = [];
-        
+
         for (let entry of nodes) {
             if (entry.data && entry.data.eleventyNavigation) {
                 let nav = entry.data.eleventyNavigation;
-                if (!key && !nav.parent || nav.parent === key) {
-                    pages.push(Object.assign(
-                        {},
-                        nav,
-                        {
-                            url: nav.url || entry.data.page.url,
-                            excerpt: nav.excerpt || entry.data.page.excerpt,
-                            pluginType: "eleventy-navigation"
-                        },
-                        key ? { parentKey: key } : {}
-                    ));
+                if ((!key && !nav.parent) || nav.parent === key) {
+                    pages.push(
+                        Object.assign(
+                            {},
+                            nav,
+                            {
+                                url: nav.url || entry.data.page.url,
+                                excerpt: nav.excerpt || entry.data.page.excerpt,
+                                pluginType: "eleventy-navigation",
+                            },
+                            key ? { parentKey: key } : {},
+                        ),
+                    );
                 }
             }
         }
 
-        return pages.sort(function(a, b) {
-            return (a.order || 0) - (b.order || 0);
-        }).map(function (entry) {
-            if (!entry.title) {
-                entry.title = entry.key;
-            }
-            if (entry.key) {
-                entry.children = findNavigationEntries(nodes, entry.key);
-            }
-            return entry;
-        });
+        return pages
+            .sort(function (a, b) {
+                return (a.order || 0) - (b.order || 0);
+            })
+            .map(function (entry) {
+                if (!entry.title) {
+                    entry.title = entry.key;
+                }
+                if (entry.key) {
+                    entry.children = findNavigationEntries(nodes, entry.key);
+                }
+                return entry;
+            });
     }
-    eleventyConfig.addFilter("eleventyNavigationWithExcerpts", function (nodes = [], key = "") {
-        return findNavigationEntries(nodes, key);
-    });
+    eleventyConfig.addFilter(
+        "eleventyNavigationWithExcerpts",
+        function (nodes = [], key = "") {
+            return findNavigationEntries(nodes, key);
+        },
+    );
 
-
-    eleventyConfig.addNunjucksAsyncFilter("jsmin", async function (code, callback) {
-        try {
-            const minified = await minify(code);
-            callback(null, minified.code);
-        } catch (err) {
-            console.error("Terser error: ", err);
-            callback(null, code);
-        }
-    });
+    eleventyConfig.addNunjucksAsyncFilter(
+        "jsmin",
+        async function (code, callback) {
+            try {
+                const minified = await minify(code);
+                callback(null, minified.code);
+            } catch (err) {
+                console.error("Terser error: ", err);
+                callback(null, code);
+            }
+        },
+    );
 
     eleventyConfig.addPassthroughCopy("src/assets/img");
     eleventyConfig.addPassthroughCopy({ "src/assets/img/favicons": "." });
-    eleventyConfig.addPassthroughCopy({ "src/imagery/system-icons.json": "assets/js/system-icons.json" });
+    eleventyConfig.addPassthroughCopy({
+        "src/imagery/system-icons.json": "assets/js/system-icons.json",
+    });
 
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
     eleventyConfig.addPlugin(pluginTOC);
 
-    eleventyConfig.on('eleventy.after', () => {
-		execSync(`npx pagefind --site dist --glob \"**/*.html\"`, { encoding: 'utf-8' })
-	});
+    eleventyConfig.on("eleventy.after", () => {
+        execSync(`npx pagefind --site dist --glob \"**/*.html\"`, {
+            encoding: "utf-8",
+        });
+    });
 
     return {
         pathPrefix: "/eleventy-demo/",

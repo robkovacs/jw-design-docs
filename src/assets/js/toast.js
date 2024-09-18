@@ -1,9 +1,9 @@
-async function createToast (textToWrite, toastMessage) {
+async function createToast(textToWrite, toastMessage) {
     try {
         await navigator.clipboard.writeText(textToWrite);
 
         let toaster = document.querySelector(".toaster");
-        
+
         if (!toaster) {
             toaster = document.createElement("div");
             toaster.classList.add("toaster");
@@ -20,11 +20,13 @@ async function createToast (textToWrite, toastMessage) {
         let thisToast = toaster.lastChild;
         window.setTimeout(() => {
             thisToast.classList.add("fade-out");
-            window.setTimeout(() => { thisToast.remove(); }, 500);
+            window.setTimeout(() => {
+                thisToast.remove();
+            }, 500);
         }, 3000);
     } catch (err) {
         console.error("Failed to copy: ", err);
     }
-};
+}
 
 export default createToast;

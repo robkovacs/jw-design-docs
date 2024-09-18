@@ -8,4 +8,3 @@ spaceSwatchButton.forEach((el) => {
         createToast(e.currentTarget.dataset.copyText, "Copied!");
     });
 });
-
