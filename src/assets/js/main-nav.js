@@ -37,4 +37,4 @@ window.addEventListener("orientationchange", () => {
 
 skipToMain.addEventListener("click", () => {
     closeMainNav();
-})
+});

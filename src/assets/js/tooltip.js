@@ -5,7 +5,7 @@ import {
     flip,
     inline,
     offset,
-    size
+    size,
 } from "@floating-ui/dom";
 
 class Tooltip {
@@ -39,13 +39,15 @@ class Tooltip {
     }
 
     updatePosition() {
-        let placement = this.tooltip.dataset.placement ? this.tooltip.dataset.placement : 'top';
+        let placement = this.tooltip.dataset.placement
+            ? this.tooltip.dataset.placement
+            : "top";
         computePosition(this.trigger, this.tooltip, {
             placement: placement,
             middleware: [
                 inline(),
                 flip({
-                    fallbackAxisSideDirection: "start"
+                    fallbackAxisSideDirection: "start",
                 }),
                 offset(8),
                 size({
