@@ -3,12 +3,10 @@
 
 .toc__heading {
     /* Larger offset to account for mobile header */
-    margin-top: calc(-1 * var(--size-7xl));
-    padding-top: var(--size-7xl);
+    scroll-margin-top: var(--size-7xl);
     
     @media (min-width: $breakpoint-md) {
-        margin-top: calc(-1 * var(--size-3xl));
-        padding-top: var(--size-3xl);
+        scroll-margin-top: var(--size-3xl);
     }
 }
 

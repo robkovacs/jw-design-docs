@@ -271,12 +271,9 @@ body:has(.main-nav--open) {
 }
 
 #main {
-    padding-top: 8rem;
-    margin-top: -8rem;
-
+    scroll-margin-top: 8rem;
     
     @media (min-width: $breakpoint-md) {
-        padding-top: 4rem;
-        margin-top: -4rem;
+        scroll-margin-top: 4rem;
     }
 }
