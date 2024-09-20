@@ -67,14 +67,19 @@ p:last-child {
     margin-bottom: 0;
 }
 
-.intro {
+.paragraph--large {
     font-size: var(--size-lg);
     line-height: var(--size-3xl);
     margin-bottom: var(--size-3xl);
 
-    &:has(+ .intro) {
+    &:has(+ .paragraph--large) {
         margin-bottom: var(--size-md);
     }
+}
+
+.paragraph--small {
+    font-size: var(--size-sm);
+    line-height: var(--size-lg);
 }
 
 kbd,
