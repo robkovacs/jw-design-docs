@@ -1,0 +1,29 @@
+.shadow-swatch {
+    background-color: var(--color-gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--size-3xs);
+    height: 5rem;
+    font-size: var(--size-sm);
+    line-height: var(--size-md);
+    max-width: 16rem;
+
+    &--level {
+        &-1 {
+            box-shadow: var(--box-shadow-level-1);
+        }
+
+        &-2 {
+            box-shadow: var(--box-shadow-level-2);
+        }
+        
+        &-3 {
+            box-shadow: var(--box-shadow-level-3);
+        }
+
+        &-4 {
+            box-shadow: var(--box-shadow-level-4);
+        }
+    }
+}

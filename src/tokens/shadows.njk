@@ -1,0 +1,93 @@
+---
+title: Shadows
+eleventyNavigation:
+    key: Shadows
+    parent: Tokens
+    order: 4
+    excerpt: We use shadows to represent depth or elevation.
+---
+
+{% extends '../_includes/layout.njk' %}
+{% from '../_includes/components/meta/shadow-swatch.njk' import render as shadowSwatch %}
+
+{% block content %}
+    <article>
+        <p class="intro"><strong>Shadows</strong> are used in our design system to create an illusion of depth. In other words, they make it appear that a given surface is closer to, or further above, the base surface of the UI.
+        <section>
+            <h2 class="toc__heading" id="usage">Usage</h2>
+            <section>
+                {% call grid({ alignItems: "center", rowGap: "3xl" }) %}
+                    {% call gridCell({ spans: { xs: 12, md: 8 } })%}
+                        <h3 class="h4">Level 1</h3>
+                        <ul class="bulleted-list">
+                            <li>Resting state for elements where you need to emphasize that they're interactive (e.g. cards)</li>
+                        </ul>
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, md: 4 } })%}
+                        {{ shadowSwatch("1") }}
+                    {% endcall %}
+                {% endcall %}
+            </section>
+            <section>
+                {% call grid({ alignItems: "center", rowGap: "3xl" }) %}
+                    {% call gridCell({ spans: { xs: 12, md: 8 } })%}
+                        <h3 class="h4">Level 2</h3>
+                        <ul class="bulleted-list">
+                            <li><em>Hover</em> state for elements where you need to emphasize that they're interactive (e.g. cards)</li>
+                            <li>Listboxes and menus</li>
+                        </ul>
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, md: 4 } })%}
+                        {{ shadowSwatch("2") }}
+                    {% endcall %}
+                {% endcall %}
+            </section>
+            <section>
+                {% call grid({ alignItems: "center", rowGap: "3xl" }) %}
+                    {% call gridCell({ spans: { xs: 12, md: 8 } })%}
+                        <h3 class="h4">Level 3</h3>
+                        <ul class="bulleted-list">
+                            <li>Tooltips</li>
+                            <li>Popovers</li>
+                        </ul>
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, md: 4 } })%}
+                        {{ shadowSwatch("3") }}
+                    {% endcall %}
+                {% endcall %}
+            </section>
+            <section>
+                {% call grid({ alignItems: "center", rowGap: "3xl" }) %}
+                    {% call gridCell({ spans: { xs: 12, md: 8 } })%}
+                        <h3 class="h4">Level 4</h3>
+                        <ul class="bulleted-list">
+                            <li>Sticky headers or footers</li>
+                            <li>Modal dialogs or drawers</li>
+                        </ul>
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, md: 4 } })%}
+                        {{ shadowSwatch("4") }}
+                    {% endcall %}
+                {% endcall %}
+            </section>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="usage-figma">Usage in Figma</h3>
+            <p>Shadows in Figma are applied using Effects. With the element you want to add a shadow to selected, scroll to the Effects section of the right sidebar, click on the <kbd>&#x2E2C;</kbd> symbol, and they should be listed there.</p>
+            {% call figure() %}
+                <picture>
+                    <source
+                        srcset="/assets/img/tokens/shadows/figma-dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    />
+                    <img
+                        src="/assets/img/tokens/shadows/figma.png"
+                        alt="The Shared Styles panel, under the Effects panel, in Figma, showing our design system's shadow options"
+                        style="max-width: 15rem; margin: 0 auto"
+                    />
+                </picture>
+            {% endcall %}
+        </section>
+    </article>
+{% endblock %}
+    
