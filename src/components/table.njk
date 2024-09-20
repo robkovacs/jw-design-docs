@@ -1,0 +1,70 @@
+---
+title: Table
+eleventyNavigation:
+    key: Table
+    parent: Components
+    order: 15
+    excerpt: "Put two-dimensional data in rows and columns."
+---
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+    <article>
+        <p class="intro">A <strong>table</strong> allows you to arrange data in rows and columns, to help users scan and compare that data.</p>
+
+            <ul class="reference-list">
+                <li>
+                    {{ anchor({ 
+                        href: "https://www.figma.com/design/2XUAgVi6sCaQZ1qm4N34GA/Design-System---Components?node-id=10172-13682",
+                        leftIcon: "brand-figma",
+                        content: "Figma",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+                <li>
+                    {{ anchor({ 
+                        href: "https://main--63c9ba51287fc47003f73128.chromatic.com/?path=/docs/core-table--docs",
+                        leftIcon: "brand-storybook",
+                        content: "Storybook",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+                <li>
+                    {{ anchor({ 
+                        href: "https://github.com/justworkshr/milo-components/tree/main/packages/components/core/src/table",
+                        leftIcon: "brand-github",
+                        content: "GitHub",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+            </ul>
+
+
+        {% call callout("info") %}
+            Right now, this page is focused on how to work with the Table component in Figma. We've created a series of Loom videos that break it down below. More to come soon!
+        {% endcall %}
+        
+        <section>
+            <h2>Part 1: Overall layout</h2>
+            <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/45379076614f4d528de43f3d150c44c6?sid=281f432c-436a-4298-ad71-0b46a538188d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+        </section>
+        <section>            
+            <h2>Part 2: Table headers</h2>
+            <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/e5ff7f8dce684873a6b61a7d534969d0?sid=5619aaec-0620-4e1d-b848-7361a8d41aff" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+        </section>
+        <section>
+            <h2>Part 3: Table body</h2>
+            <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/b7496a82aebb42859de64073094c9d5c?sid=3958c984-cde4-44f2-af24-417292565604" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+        </section>
+        <section>
+            <h2>Part 4: Adjusting column widths</h2>
+            <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/a221e674edec4a00bdf86eb196f0a0c4?sid=a5324812-325a-45a4-805a-2353ce91b53e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+        </section>
+    </article>
+{% endblock %}
