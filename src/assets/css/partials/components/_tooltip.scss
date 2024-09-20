@@ -37,7 +37,6 @@
         border-radius: var(--size-3xs);
         font-size: var(--size-sm);
         line-height: var(--size-lg);
-        z-index: 3;
 
         html[data-appearance-mode="dark"] & {
             background-color: var(--color-gray-900);

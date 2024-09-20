@@ -1,4 +1,4 @@
-import { computePosition, flip, size, autoUpdate } from "@floating-ui/dom";
+import { computePosition, flip, shift, autoUpdate } from "@floating-ui/dom";
 
 class Menu {
     constructor(trigger, menu) {
@@ -32,17 +32,7 @@ class Menu {
     updatePosition() {
         computePosition(this.trigger, this.menu, {
             placement: "bottom-start",
-            middleware: [
-                flip(),
-                size({
-                    apply({ availableWidth, availableHeight, elements }) {
-                        Object.assign(elements.floating.style, {
-                            maxWidth: `${Math.min(256, Math.max(128, availableWidth - 8))}px`,
-                            maxHeight: `${Math.min(256, Math.max(128, availableHeight - 8))}px`,
-                        });
-                    },
-                }),
-            ],
+            middleware: [flip(), shift({ padding: 32 })],
         }).then(async ({ x, y }) => {
             Object.assign(this.menu.style, {
                 left: `${x}px`,
@@ -83,20 +73,6 @@ class Menu {
                 this.hideMenu();
             }
         });
-
-        // this.menu.addEventListener("scroll", () => {
-        //     if (this.menu.scrollTop > 0) {
-        //         this.menu.classList.add("scrolling");
-        //     } else if (this.menu.scrollTop <= 0) {
-        //         this.menu.classList.remove("scrolling");
-        //     }
-
-        //     if (this.menu.scrollTop >= this.menu.querySelector('.menu__item-list').offsetHeight - this.menu.offsetHeight) {
-        //         this.menu.classList.add("scrolled--to-bottom");
-        //     } else {
-        //         this.menu.classList.remove("scrolled--to-bottom");
-        //     }
-        // });
 
         document.addEventListener("click", (e) => {
             let triggerNodes = getDescendantNodes(this.trigger);

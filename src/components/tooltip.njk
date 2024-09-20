@@ -178,7 +178,7 @@ eleventyNavigation:
                     {% endcall %}
                     {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 } }) %}
                         {{ tooltip({
-                            trigger: button({ content: "bottom-start" }),
+                            trigger: button({ content: "bottom-start", attributes: { "style": "overflow-wrap: anywhere" } }),
                             placement: "bottom-start",
                             content: "I'm aligned to the bottom-start of the button, probably"
                         }) }}
@@ -192,7 +192,7 @@ eleventyNavigation:
                     {% endcall %}
                     {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 }, attributes: { "style": "display: flex; flex-direction: row; justify-content: flex-end" } }) %}
                         {{ tooltip({
-                            trigger: button({ content: "bottom-end" }),
+                            trigger: button({ content: "bottom-end", attributes: { "style": "overflow-wrap: anywhere" } }),
                             placement: "bottom-end",
                             content: "I'm aligned to the bottom-end of the button, probably"
                         }) }}
@@ -269,7 +269,7 @@ eleventyNavigation:
         <section>
             <h3 class="toc__heading" id="content-keep-it-short">Keep it under 80 characters</h3>
             <p>Tooltips are meant to hold a sentence or so, not paragraphs. On small screens especially, it might be impossible to find a place where all the content can fit, the user's gonna try to scroll to read it all, and the tooltip's probably going to disappear in the process.</p>
-            {% call figure("This don't is a real example from our past. Learn from thisssssss...") %}
+            {% call figure() %}
                 {% call grid({}) %}
                     {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
                         {{ tooltip({
@@ -326,7 +326,7 @@ eleventyNavigation:
         <section>
             <h3 class="toc__heading" id="accessibility-no-focusables-in-tooltips">Don't put a focusable element inside of a tooltip</h3>
             <p>Tooltips <em>can</em> have HTML inside of them, which means you can do things like bold part of the text, or add special characters. But that doesn't mean you should add things like links, buttons, or forms. Again, if users would typically be able to focus on it, it can't go in a tooltip.</p>
-            {% call figure("Have fun trying to click that link, by the way.") %}
+            {% call figure("On a device that supports hover, it's going to be hard to click the link at all.") %}
                 {{ tooltip({
                     trigger: "deductible",
                     content: "How much members pay for covered services before their health insurance plan kicks in. <a href=\"javascript:return false;\">Learn more about deductibles in the Help Center.</a>"

@@ -5,6 +5,7 @@ import {
     flip,
     inline,
     offset,
+    shift,
     size,
 } from "@floating-ui/dom";
 
@@ -50,14 +51,7 @@ class Tooltip {
                     fallbackAxisSideDirection: "start",
                 }),
                 offset(8),
-                size({
-                    apply({ availableWidth, availableHeight, elements }) {
-                        Object.assign(elements.floating.style, {
-                            maxWidth: `${Math.min(256, Math.max(128, availableWidth - 8))}px`,
-                            maxHeight: `${Math.min(256, Math.max(128, availableHeight - 8))}px`,
-                        });
-                    },
-                }),
+                shift({ padding: 32 }),
                 arrow({ element: this.arrow }),
             ],
         }).then(({ x, y, placement, middlewareData }) => {
@@ -66,14 +60,41 @@ class Tooltip {
                 top: `${y}px`,
             });
 
-            const { x: arrowX, y: arrowY } = middlewareData.arrow;
+            let { x: arrowX, y: arrowY } = middlewareData.arrow;
+
+            let placementSide = placement.split("-")[0];
+            let placementAlignment = placement.split("-")[1];
 
             const staticSide = {
                 top: "bottom",
                 right: "left",
                 bottom: "top",
                 left: "right",
-            }[placement.split("-")[0]];
+            }[placementSide];
+
+            let arrowSide;
+
+            if (placementAlignment == "start") {
+                arrowSide = {
+                    top: "left",
+                    right: "top",
+                    bottom: "left",
+                    left: "top",
+                }[placementSide];
+            } else if (placementAlignment == "end") {
+                arrowSide = {
+                    top: "right",
+                    right: "bottom",
+                    bottom: "right",
+                    left: "bottom",
+                }[placementSide];
+            }
+
+            if (arrowSide == "left" || arrowSide == "right") {
+                arrowX = null;
+            } else if (arrowSide == "top" || arrowSide == "bottom") {
+                arrowY = null;
+            }
 
             Object.assign(this.arrow.style, {
                 left: arrowX != null ? `${arrowX}px` : "",
@@ -81,6 +102,7 @@ class Tooltip {
                 right: "",
                 bottom: "",
                 [staticSide]: "-4px",
+                [arrowSide]: "8px",
             });
         });
     }
@@ -110,6 +132,16 @@ class Tooltip {
 
         this.trigger.addEventListener("blur", () => {
             this.hideTooltip();
+        });
+
+        document.addEventListener("click", (e) => {
+            let tooltipNodes = getDescendantNodes(this.tooltip);
+            let thisTooltipTargered =
+                e.target == this.tooltip ||
+                tooltipNodes.indexOf(e.target) !== -1;
+            if (!thisTooltipTargered) {
+                this.hideTooltip();
+            }
         });
     }
 }
