@@ -216,9 +216,14 @@ eleventyNavigation:
             <p>The content within should be loaded in chunks whenever possible, prioritizing the most important content within the space.</p>
             <h3>More than 10 seconds: Fix it! Or... skeleton</h3>
             <p>In this case, your primary goal should be to decrease the loading time! But if you absolutely cannot, a skeleton is a good fallback.</p>
-            <div class="figma-embed">
-                <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/9krwXqHpvNu7GIloNxodj8/Design-System---Patterns?m=auto&node-id=3948-1085&embed-host=share" allowfullscreen></iframe>
-            </div>
+        </section>
+        <section>
+            {% call callout({type: "info"}) %}
+                <div class="h4">Prefer a flow chart? Today's your lucky day!</div>
+                <div style="margin-bottom: -1rem">
+                    {{ figmaEmbed("https://embed.figma.com/design/9krwXqHpvNu7GIloNxodj8/Design-System---Patterns?m=auto&node-id=3948-1085&embed-host=share") }}
+                </div>
+            {% endcall %}
         </section>
     </article>
 {% endblock %}

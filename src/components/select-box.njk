@@ -12,10 +12,9 @@ eleventyNavigation:
     <article>
         <section>
             <h2 class="toc__heading" style="display: none" id="intro">Introduction</h2>
-        
             <p class="intro">A <strong>select box</strong> allows someone to choose one option from many. It's most appropriate when there are 4 or more options to choose from, and those options can be represented in a one- or two-level list of short, text-only labels.</p>
 
-            <ul style="list-style-type: none; padding: 0; margin: var(--size-3xl) 0 0 0; display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--size-md)">
+            <ul class="reference-list">
                 <li>
                     {{ anchor({ 
                         href: "https://www.figma.com/design/2XUAgVi6sCaQZ1qm4N34GA/Design-System---Components?node-id=10172-19141",
@@ -101,16 +100,18 @@ eleventyNavigation:
         </section>
         <section>
             <h2 class="toc__heading" id="anatomy">Anatomy</h2>
-            <picture>
-                <source
-                    srcset="/assets/img/components/select-box/anatomy-dark.png"
-                    media="(prefers-color-scheme: dark)"
-                />
-                <img
-                    src="/assets/img/components/select-box/anatomy.png"
-                    alt="A breakdown of the different elements of a select box"
-                />
-            </picture>
+            {% call figure() %}
+                <picture>
+                    <source
+                        srcset="/assets/img/components/select-box/anatomy-dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    />
+                    <img
+                        src="/assets/img/components/select-box/anatomy.png"
+                        alt="A breakdown of the different elements of a select box"
+                    />
+                </picture>
+            {% endcall %}
             <dl class="annotation-list annotation-list--numbered">
                 <dt>Select input</dt>
                 <dd>The area which will be focused when this component is focused; will contain the placeholder when the field is empty and the value when an option is selected.</dd>

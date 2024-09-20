@@ -90,12 +90,23 @@ code {
     font-family: monospace;
 }
 
+em {
+    font-family: var(--font-family-system);
+}
+
 .bulleted-list {
     margin-top: 0;
     margin-bottom: var(--size-xl);
     padding-left: var(--size-3xl);
 
-    & > li + li {
+    & > li + li,
+    & .bulleted-list li:first-child {
         margin-top: var(--size-2xs);
     }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
+
+

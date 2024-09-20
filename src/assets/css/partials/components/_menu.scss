@@ -5,6 +5,7 @@
     max-width: 16rem;
     max-height: 16rem;
     overflow-x: scroll;
+    overscroll-behavior: contain;
     background-color: var(--color-white);
     box-shadow: var(--box-shadow-level-2);
     border-radius: var(--size-3xs);

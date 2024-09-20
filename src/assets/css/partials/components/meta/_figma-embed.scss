@@ -1,6 +1,7 @@
 .figma-embed {
     padding-top: 66.66666%;
     position: relative;
+    margin-bottom: var(--size-xl);
 
     & iframe {
         position: absolute;
@@ -9,6 +10,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        border: 0;
+        border: var(--size-5xs) solid var(--color-gray-300);
+        border-radius: var(--size-3xs);
     }
 }

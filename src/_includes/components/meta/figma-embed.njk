@@ -1,0 +1,5 @@
+{% macro render(url) %}
+<div class="figma-embed">
+    <iframe src="{{ url | safe }}" allowfullscreen></iframe>
+</div>
+{% endmacro %}

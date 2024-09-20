@@ -6,12 +6,15 @@
         optional: "Freiwillig"
     }
 } %}
-{%- macro render(content, isRequired = true, forId = 'id', as = "label", locale = 'en_US') -%}
+{%- macro render(content, isRequired = true, forId = 'id', as = "label", locale = 'en_US', attributes = {}) -%}
 <{{ as }}
     class="input-label"
     {% if forId %}
         for="{{ forId | safe }}"
     {% endif %}
+    {% for key, value in attributes %}
+        {{ key }}="{{ value | safe }}"
+    {% endfor %}
 >
     {{ content }}
     {% if isRequired == false %}

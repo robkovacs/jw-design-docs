@@ -6,16 +6,20 @@
         padding: var(--size-3xl);
         background-color: var(--color-white);
         border: var(--size-5xs) solid var(--color-gray-200);
-        border-radius: 12px;
+        border-radius: var(--size-xs);
         box-shadow: var(--box-shadow-level-3);
     }
 
     &__figure:has(+ &__caption) {
-        margin-bottom: var(--size-xl);
+        margin-bottom: var(--size-md);
     }
 
     &__caption {
         color: var(--color-gray-600);
         margin-bottom: var(--size-3xl);
+        font-size: var(--size-sm);
+        line-height: var(--size-lg);
+        margin-left: var(--size-xs);
+        margin-right: var(--size-xs);
     }
 }

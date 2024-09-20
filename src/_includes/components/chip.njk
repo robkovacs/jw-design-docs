@@ -10,7 +10,7 @@
     {%- else -%}
         <span class="chip">
     {%- endif -%}
-            {{ options.content }}
+            {{ options.content | safe }}
     {%- if options.dismissible -%}
             {{ systemIcon("close", "xs") }}
         </button>

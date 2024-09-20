@@ -10,15 +10,372 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        {{ tooltip({
-            trigger: "Look at me",
-            content: "It's time for these two tooltips to be different. That way they can be recognized individually."
-        }) }}
+        <section>
+            <h2 class="toc__heading" style="display: none" id="intro">Introduction</h2>
+            <p class="intro">A <strong>tooltip</strong> provides brief, informative, contextual, but non-essential information when its triggering element is hovered, focused, or tapped.</p>
 
-        {{ tooltip({
-            trigger: button({ content: "Look at me" }),
-            placement: "left",
-            content: "I've got a tooltip! Even if this tooltip gets really long, it's got a max-width of 16rem, aka 256px at default zoom and font size."
-        }) }}
+            <ul class="reference-list">
+                <li>
+                    {{ anchor({ 
+                        href: "https://www.figma.com/design/2XUAgVi6sCaQZ1qm4N34GA/Design-System---Components?node-id=10172-19109",
+                        leftIcon: "brand-figma",
+                        content: "Figma",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+                <li>
+                    {{ anchor({ 
+                        href: "https://main--63c9ba51287fc47003f73128.chromatic.com/?path=/docs/tooltip-tooltip--docs",
+                        leftIcon: "brand-storybook",
+                        content: "Storybook",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+                <li>
+                    {{ anchor({ 
+                        href: "https://github.com/justworkshr/milo-components/tree/main/packages/components/tooltip/src/",
+                        leftIcon: "brand-github",
+                        content: "GitHub",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+            </ul>
+
+            {% call figure() %}
+                <div style="max-width: 20rem; margin: 0 auto">
+                    {% call stack({ gap: "xl" }) %}
+                        <span>
+                            This sentence has an {{ tooltip({
+                                trigger: "unfamiliar term",
+                                content: "This tooltip can provide a definition!"
+                            }) }}
+                        </span>
+
+                        {{ tooltip({
+                            trigger: button({ content: "A big scary button", attributes: { style: "align-self: start" } }),
+                            content: "This tooltip can explain what this button does!"
+                        }) }}
+
+                        {% call row({ gap: "3xs", alignItems: "center" }) %}
+                            {{ inputLabel("An input label", attributes = { style: "margin-bottom: 0" } ) }}
+                            {{ tooltip({
+                                trigger: button({ leftIcon: "help", size: "sm", variant: "ghost", attributes: { style: "align-self: start" } }),
+                                placement: "right",
+                                content: "This tooltip can provide more context about this form field!"
+                            }) }}
+                        {% endcall %}
+                    {% endcall %}
+                </div>
+            {% endcall %}
+        </section>
+
+        <section>
+            <h2 class="toc__heading" id="anatomy">Anatomy</h2>
+            {% call figure() %}
+                <picture>
+                    <source
+                        srcset="/assets/img/components/tooltip/anatomy-dark.png"
+                        media="(prefers-color-scheme: dark)"
+                    />
+                    <img
+                        src="/assets/img/components/tooltip/anatomy.png"
+                        alt="A breakdown of the different elements of a tooltip"
+                    />
+                </picture>
+            {% endcall %}
+            <dl class="annotation-list annotation-list--numbered">
+                <dt>Tooltip</dt>
+                <dd>The container for tooltip contents, which includes the arrow.</dd>
+                <dt>Tooltip contents</dt>
+                <dd>The text inside the tooltip, that provides helpful information relating to the tooltip trigger.</dd>
+                <dt>Arrow</dt>
+                <dd>The small triangle on the outer edge of tooltip that points back to the tooltip trigger.</dd>
+                <dt>Trigger</dt>
+                <dd>The element that, when interacted with, causes the tooltip to appear.</dd>
+            <dl>
+        </section>
+        
+        <section>
+            <h2 class="toc__heading" id="when-to-use-or-not">When to use (or not)</h2>
+            {% call grid() %}
+                {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
+                    <div class="h3" style="color: var(--color-green-600)">{{ systemIcon('check-circle') }}&nbsp; When to use</div>
+                    <ul class="bulleted-list">
+                        <li>To describe the function or meaning of an element when it <em>might</em> be ambiguous
+                        <li>To provide a label for icon-only buttons</li>
+                        <li>To provide a definition for potentially-unfamiliar terms or acronyms</li>
+                    </ul>
+                {% endcall %}
+                {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
+                    <div class="h3" style="color: var(--color-red-600)">{{ systemIcon('error') }}&nbsp; When not to use</div>
+                    <ul class="bulleted-list">
+                        <li>To provide essential information</li>
+                        <li>To display focusable content such as links, buttons, or form fields</li>
+                        <li>Inside focusable elements, such as links, buttons, or form field labels</li>
+                        <li>For information that you want to show up on page load</li>
+                    </ul>
+                {% endcall %}
+            {% endcall %}
+        </section>
+        <section>
+            <h3 class="toc__heading" id="figma-usage">Usage in Figma</h3>
+            <div class="h4">Tooltips triggered by text</div>
+            <p>If you want a Tooltip to be triggered by a piece of otherwise-static text, use the <strong>Tooltip Trigger Text</strong> Figma component (say that ten times fast!).</p>
+            <p>If the text is part of a sentence or paragraph, it might be easiest to put the full sentence or paragraph in one layer, and the Tooltip Trigger Text directly above the matching text in that layer. Here's an example:</p>
+
+            {{ figmaEmbed("https://embed.figma.com/design/TBIH60N0E8ocJTEugiI3U2/Design-System---Doc-Embeds?node-id=12630-20662&embed-host=share") }}
+
+            <div class="h4">Tooltip placement</div>
+            <p>In the next section we'll talk about the different placement possibilities for tooltips. In code, the tooltip will be placed that way automatically; in Figma, you have to do it manually.</p>
+        </section>
+        <section>
+            <h2 class="toc__heading" id="options">Options</h2>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="options-position">Position</h3>
+            <p><strong>Default:</strong> Top</p>
+            <p>Where you want the tooltip to appear relative to the trigger, if space allows. In code, it'll get repositioned automatically as needed.</p>
+            <p>In Figma, you have to place the tooltip yourself, but this option will at least put the arrow in the right place.</p>
+            <p>You've got twelve options, in total:</p>
+            <ul class="bulleted-list">
+                <li>The four sides: <strong>top</strong>, <strong>bottom</strong>, <strong>left</strong>, and <strong>right</strong></li>
+                <li>Within each side, three options:
+                    <ul class="bulleted-list">
+                        <li>the <strong>start</strong> of that side (e.g. <code>top-start</code>)</li>
+                        <li>the <strong>end</strong> (e.g. <code>right-end</code>)</li>
+                        <li>or right in the middle of that side, without a suffix (e.g. <code>bottom</code>)</li>
+                    </ul>
+                </li>
+            </ul>
+            {% call figure("Remember, the tooltips here might not pop up in the specified place if there's not room for them. Sorry, but it's for the best...") %}
+                {% call grid() %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "top-start" }),
+                            placement: "top-start",
+                            content: "I'm aligned to the top-start of the button, probably"
+                        }) }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 }, attributes: { "style": "display: flex; flex-direction: row; justify-content: center" } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "top" }),
+                            placement: "top",
+                            content: "I'm aligned to the top of the button, probably"
+                        }) }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 }, attributes: { "style": "display: flex; flex-direction: row; justify-content: flex-end" } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "top-end" }),
+                            placement: "top-end",
+                            content: "I'm aligned to the top-end of the button, probably"
+                        }) }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "bottom-start" }),
+                            placement: "bottom-start",
+                            content: "I'm aligned to the bottom-start of the button, probably"
+                        }) }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 }, attributes: { "style": "display: flex; flex-direction: row; justify-content: center" } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "bottom" }),
+                            placement: "bottom",
+                            content: "I'm aligned to the bottom of the button, probably"
+                        }) }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 }, attributes: { "style": "display: flex; flex-direction: row; justify-content: flex-end" } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "bottom-end" }),
+                            placement: "bottom-end",
+                            content: "I'm aligned to the bottom-end of the button, probably"
+                        }) }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "left-start" }),
+                            placement: "left-start",
+                            content: "I'm aligned to the left-start of the button, probably. (It can be hard to tell sometimes, so let's make this a little taller.)"
+                        }) }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 }, attributes: { "style": "display: flex; flex-direction: row; justify-content: center" } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "left" }),
+                            placement: "left",
+                            content: "I'm aligned to the left of the button, probably. (It can be hard to tell sometimes, so let's make this a little taller.)"
+                        }) }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 }, attributes: { "style": "display: flex; flex-direction: row; justify-content: flex-end" } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "left-end" }),
+                            placement: "left-end",
+                            content: "I'm aligned to the left-end of the button, probably. (It can be hard to tell sometimes, so let's make this a little taller.)"
+                        }) }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "right-start" }),
+                            placement: "right-start",
+                            content: "I'm aligned to the right-start of the button, probably.  (It can be hard to tell sometimes, so let's make this a little taller.)"
+                        }) }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 }, attributes: { "style": "display: flex; flex-direction: row; justify-content: center" } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "right" }),
+                            placement: "right",
+                            content: "I'm aligned to the right of the button, probably. (It can be hard to tell sometimes, so let's make this a little taller.)"
+                        }) }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, sm: 4, md: 4, lg: 4 }, attributes: { "style": "display: flex; flex-direction: row; justify-content: flex-end" } }) %}
+                        {{ tooltip({
+                            trigger: button({ content: "right-end" }),
+                            placement: "right-end",
+                            content: "I'm aligned to the right-end of the button, probably. (It can be hard to tell sometimes, so let's make this a little taller.)"
+                        }) }}
+                    {% endcall %}
+                {% endcall %}
+            {% endcall %}
+        </section>
+        <section>
+            <h3 class="toc__heading" id="options-inverse">Inverse</h3>
+            <p><strong>Default:</strong> false</p>
+            <p>Set this to <strong>true</strong> on inverse backgrounds (dark backgrounds in light mode; light backgrounds in dark mode). That way the tooltip will always stand out against the background color.</p>
+            {% call figure("Try flipping back and forth between dark and light mode!") %}
+                <div style="padding: var(--size-8xl); display: flex; flex-direction: row; justify-content: center">
+                    {{ tooltip({
+                        trigger: button({ content: "not inverse" }),
+                        inverse: false,
+                        content: "I'm on the usual background color, so I don't have to change anything."
+                    }) }}                    
+                </div>
+                <div style="padding: var(--size-8xl); background-color: var(--color-gray-900); display: flex; flex-direction: row; justify-content: center">
+                    {{ tooltip({
+                        trigger: button({ content: "inverse" }),
+                        inverse: true,
+                        content: "I'm on an inverse background color, so I'm also set to inverse."
+                    }) }}                    
+                </div>
+            {% endcall %}
+        </section>
+        <section>
+            <h2 class="toc__heading" id="content">Content</h2>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="content-keep-it-short">Keep it under 80 characters</h3>
+            <p>Tooltips are meant to hold a sentence or so, not paragraphs. On small screens especially, it might be impossible to find a place where all the content can fit, the user's gonna try to scroll to read it all, and the tooltip's probably going to disappear in the process.</p>
+            {% call figure("This don't is a real example from our past. Learn from thisssssss...") %}
+                {% call grid({}) %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
+                        {{ tooltip({
+                            trigger: "deductible",
+                            content: "The amount you'll spend on covered services before coverage kicks in"
+                        }) }}
+                        {{ dosDonts("do") }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
+                        {{ tooltip({
+                            trigger: "deductible",
+                            content: "A deductible is the amount members pay for covered services before their health insurance plan kicks in. Members' deductible amount depends on their coverage tier (how many people are on the plan). The cost of certain services may be completely covered or specify a copay amount regardless of whether someone has reached their deductible."
+                        }) }}                    
+                        {{ dosDonts("dont") }}
+                    {% endcall %}
+                {% endcall %}
+            {% endcall %}
+        </section>
+        <section>
+            <h2 class="toc__heading" id="accessibility">Accessibility</h2>
+            <p>In terms of accessibility, there are two things to keep in mind</p>
+            <ul class="bulleted-list">
+                <li>a tooltip trigger is a focusable element</li>
+                <li>Focusable elements (e.g. buttons, links, form field labels, form fields, etc.) inside of other focusable elements are <strong>ignored by screen readers</strong>.
+            </ul>
+            <p>So that means:</p>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="accessibility-no-tooltips-in-focusables">Don't put a tooltip trigger inside of a focusable element</h3>
+            <p>Tooltips can be put on a focusable element, but not inside them. In these examples, the tooltip is set to be triggered by part of the link text, or part of the button label. Not good!</p>
+            {% call figure() %}
+                {% call grid({ alignItems: "flex-end" }) %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
+                        <a href="javascript:return false;">
+                            Learn more about the
+                            {{ tooltip({
+                                trigger: "CARES Act",
+                                content: "Also known as the Coronavirus Aid, Relief, and Economic Security Act"
+                            }) }}
+                        </a>
+                        {{ dosDonts("dont") }}
+                    {% endcall %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
+                        {% set tooltipInButton = tooltip({
+                            trigger: "PDF",
+                            content: "Portable Document Format"
+                        }) %}
+                        {{ button({ content: "Download " + tooltipInButton }) }}                    
+                        {{ dosDonts("dont") }}
+                    {% endcall %}
+                {% endcall %}
+            {% endcall %}
+        </section>
+        <section>
+            <h3 class="toc__heading" id="accessibility-no-focusables-in-tooltips">Don't put a focusable element inside of a tooltip</h3>
+            <p>Tooltips <em>can</em> have HTML inside of them, which means you can do things like bold part of the text, or add special characters. But that doesn't mean you should add things like links, buttons, or forms. Again, if users would typically be able to focus on it, it can't go in a tooltip.</p>
+            {% call figure("Have fun trying to click that link, by the way.") %}
+                {{ tooltip({
+                    trigger: "deductible",
+                    content: "How much members pay for covered services before their health insurance plan kicks in. <a href=\"javascript:return false;\">Learn more about deductibles in the Help Center.</a>"
+                }) }}                    
+                {{ dosDonts("dont") }}
+            {% endcall %}
+        </section>
     </article>
 {% endblock %}
+
+{% set localCss %}
+    /* I feel awful even doing this... */
+    .tooltip__tooltip a {
+        display: inline;
+        color: inherit;
+        text-decoration: underline;
+    }
+
+    a .tooltip__trigger--string,
+    button .tooltip__trigger--string {
+        color: inherit;
+    }
+
+    button .tooltip__trigger--string {
+        text-decoration-color: inherit;
+    }
+
+
+    button .tooltip__tooltip {
+        font-weight: 400;
+    }
+
+    @media (hover: hover) {
+        a:hover .tooltip__trigger--string,
+        button:hover .tooltip__trigger--string {
+            color: inherit;
+        }
+
+        button:hover .tooltip__trigger--string {
+            text-decoration-color: inherit;
+        }        
+    }
+
+    a:active .tooltip__trigger--string,
+    button:active .tooltip__trigger--string {
+        color: inherit;
+    }
+
+    button:active .tooltip__trigger--string {
+        text-decoration-color: inherit;
+    }    
+{% endset %}
