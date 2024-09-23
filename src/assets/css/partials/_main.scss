@@ -26,7 +26,6 @@ html {
     height: 100%;
     margin: 0;
     background-color: var(--color-white);
-    scroll-behavior: smooth;
 }
 
 body {
@@ -92,7 +91,6 @@ main {
     @media screen and (min-width: $breakpoint-md) {
         flex: 0 1 calc(var(--ui-max-width) - var(--nav-width));
         padding: var(--size-5xl);
-        overflow-wrap: anywhere;
         
         :root {
             --nav-width: 16rem;
@@ -109,6 +107,11 @@ main {
     @media screen and (min-width: $breakpoint-lg) {
         flex-direction: row;
     }  
+}
+
+#main {
+    /* Don't let page titles with a long word in them might stretch out the layout */
+    overflow-wrap: anywhere;
 }
 
 .body-content {
@@ -145,15 +148,19 @@ section + section {
     margin-top: 4rem;
 }
 
-section + section:has(section > h3:first-child) {
+section + section:has(h3:first-child) {
     margin-top: 2rem;
 }
 
-section + section:has(section > h4:first-child) {
+section + section:has(h4:first-child) {
     margin-top: 1rem;
 }
 
-section:has(section > h2:only-child, section > h3:only-child, section > h4:only-child) + section {
+section + section:has(h5:first-child) {
+    margin-top: 0.5rem;
+}
+
+section:has(h2:only-child, h3:only-child, h4:only-child) + section {
     margin-top: 0;
 }
 

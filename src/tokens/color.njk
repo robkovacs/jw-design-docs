@@ -9,20 +9,156 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 {% from '../_includes/components/meta/color-swatch.njk' import render as colorSwatch %}
 
+{% macro renderSemanticColors(group, parentPrefixes, headingLevel = 3) %}
+    {% if group.colors %}
+        <section>
+            <h{{ headingLevel}}>{{ group.name }}</h{{ headingLevel}}>
+            <div class="color-swatches__list">
+                {% for color in group.colors %}
+                    {% set figmaName = parentPrefixes["prefix-figma"] + group["prefix-figma"] + color.name %}
+                    {% set cssName = parentPrefixes["prefix-css"] + group["prefix-css"] + color.name %}
+                    {{ colorSwatch(color.name, color.hex, figmaName, cssName, color.needsBg, color.localCss) }}
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+    
+    {% if group.groups %}
+        {% if headingLevel == 3 %}
+            <section>
+                <h4 class="h3 toc__heading" id="base-colors-{{ group.name | slugify }}">{{ group.name }}</h4>
+            </section>
+        {% else %}
+            <section>
+                <h{{ headingLevel }}>{{ group.name }}</h{{ headingLevel }}>
+            </section>
+        {% endif %}
+
+        {% set parentPrefixes = { "prefix-figma": parentPrefixes['prefix-figma'] + group['prefix-figma'], "prefix-css": parentPrefixes['prefix-css'] + group['prefix-css'] } %}
+        
+        {% for childGroup in group.groups %}
+            {{ renderSemanticColors(childGroup, parentPrefixes, headingLevel + 1) }}
+        {% endfor %}  
+    {% endif %}
+{% endmacro %}
+
 {% block content %}
-{% for level in colorData %}
-    <h2>{{ level.name }}</h2>
-    {% for group in level.groups %}
-        <h3>{{ group.name }}</h3>
+<article>
+    <section>
+        <h2 class="toc__heading" id="about-semantic-colors">About semantic colors</h2>
+        <p><strong>Semantic colors are what you should use most of the time.</strong> Only use a base color when you can't seem to find a semantic color for your use case. If that happens, let us know!</p>
+
+        <p>Semantic colors are defined by a combination of:</p>
+
+        <ul class="bulleted-list">
+            <li><strong>target:</strong> what the color is being applied to</li>
+            <li><strong>role:</strong> what meaning the color is meant to convey</li>
+            <li><strong>emphasis level:</strong> how much you want the color to stand out from its surroundings</li>
+            <li><strong>interactive state:</strong> how the user is currently interacting with the element being colored</li>
+        </ul>
+        <p>Let's break these down a little bit...</p>
+
+        <h3>Targets</h3>
+        <dl class="annotation-list annotation-list--small">
+            <dt>Backgrounds (BG)</dt>
+            <dd>Used for surfaces on which content or interactions will live; or for non-interactive, decorative content. No specific color contrast requirements.</dd>
+            <dt>Interactions (UI)</dt>
+            <dd>Backgrounds for things that are interactive—buttons, form controls, etc. To adhere to WCAG guidelines, color contrasts against typical background colors (e.g. white and gray 100) will be <strong>>= 4.5:1</strong>.</dd>
+            <dt>Text</dt>
+            <dd>Text and non-decorative icons. To adhere to WCAG guidelines, color contrasts against typical background colors (e.g. white and gray 100) will be <strong>>= 4.5:1</strong>.</dd>
+            <dt>Borders</dt>
+            <dd>Borders for interactive UI elements. To adhere to WCAG guidelines, color contrasts against typical background colors (e.g. white and gray 100) will be <strong>>= 3:1</strong>.</dd>
+            <dt>Lines</dt>
+            <dd>Separators between non-interactive elements. No specific WCAG color contrast requirements.</dd>
+        </dl>
+
+        <h3>Roles</h3>
+        <dl class="annotation-list annotation-list--small">
+            <dt>Neutral</dt>
+            <dd>For default text, and lower-priority UI elements.</dd>
+            <dt>Brand</dt>
+            <dd>For primary UI elements, or elements that are meant to tie into Justworks branding.</dd>
+            <dt>Danger</dt>
+            <dd>For destructive actions or error states.</dd>
+            <dt>Inverse</dt>
+            <dd>The opposite of neutral, for use on strong backgrounds.</dd>
+            <dt>Disabled</dt>
+            <dd>For elements that the user temporarily can't interact with (other than perhaps to see a message explaining why).</dd>
+            <dt>Success</dt>
+            <dd>For a favorable outcome, or completion of a task.</dd>
+            <dt>Warning</dt>
+            <dd>For when a user should take caution, to possibly prevent an error from occurring.</dd>
+            <dt>New</dt>
+            <dd>For highlighting content or functionality that is new to the current user.</dd>                                                                        
+            <dt>Info</dt>
+            <dd>For particularly important content that you want to draw users' attention.</dd>
+        </dl>
+
+        <h3>Emphasis</h3>
+        <p>Emphasis can be expressed on one of two scales (least to most):</p>
+        <ul class="bulleted-list">
+            <li>subtle, default, strong</li>
+            <li>tertiary, secondary, primary</li>
+        </ul>
+
+        <h3>Interactive states</h3>
+        <dl class="annotation-list annotation-list--small">
+            <dt>Resting</dt>
+	        <dd>When the user is not interacting with the element.</dd>
+            <dt>Hover</dt>
+            <dd>When the user's mouse cursor intersects with the element.</dd>
+            <dt>Pressed</dt>
+	        <dd>
+                <p>While the user is clicking, tapping, or otherwise activating the element, but hasn't let go yet.</p>
+                <p>In CSS, this is called <code>active</code>, but we call it "pressed" to disambiguate it from another common use of the term "active": when something has been selected, or is associated with a previous selection.</p>
+            </dd>
+        </dl>
+    </section>
+    <section>
+        <h3 class="h2 toc__heading" id="semantic-color-palette">Semantic color palette</h3>
+    </section>
+  
+    {% for group in colorData.semantic.groups %}
+        {{ renderSemanticColors(group, { "prefix-figma": colorData.semantic['prefix-figma'], "prefix-css": colorData.semantic['prefix-css'] }) }}
+    {% endfor %}
+
+    <section>
+        <h2 class="toc__heading" id="about-base-colors">About base colors</h2>
+        <p>Base colors are simply our way of saying: out of all the colors out there in the world, we want to use <strong>these</strong> ones. You should only use them directly if there isn't a semantic color definition that matches your use case.</p>
+        <p>They've been set up to meet certain key color contrast ratios for accessibility purposes, on a white or gray 100 background:</p>
+        <ul class="bulleted-list">
+            <li>
+                500s (and up) will be at least <strong>3:1</strong> against white (or black, in dark mode) or gray 100
+            </li>
+            <li>
+                600s (and up) will be at least <strong>4.5:1</strong> against white (or black, in dark mode) or gray 100
+            </li>
+        </ul>
+        {% call callout("info") %}
+            Not sure when these color contrast ratios are relevant? Here's some more detail, straight from the source:
+            <ul class="bulleted-list">
+                <li>{{ anchor({ href: "https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum", content: "Understanding SC 1.4.3:Contrast (Minimum) (Level AA)", rightIcon: "external-link", attributes: { target: "_blank" } }) }}</li>
+                <li>{{ anchor({ href: "https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast", content: "Understanding SC 1.4.11: Non-text Contrast (Level AA)", rightIcon: "external-link", attributes: { target: "_blank" } }) }}</li>
+            </ul>
+        {% endcall %}
+    </section>
+
+    <section>
+        <h3 class="h2 toc__heading" id="base-color-palette">Base color palette</h3>    
+    </section>
+{% for group in colorData.base.groups %}
+    <section>
+        <h4 class="h3 toc__heading" id="base-colors-{{ group.name | slugify }}">{{ group.name }}</h4>
         <div class="color-swatches__list">
             {% if group.colors %}
                 {% for color in group.colors %}
-                    {% set figmaName = level["prefix-figma"] + group["prefix-figma"] + color.name %}
-                    {% set cssName = level["prefix-css"] + group["prefix-css"] + color.name %}
-                    {{ colorSwatch(color.name, color.hex, figmaName, cssName) }}
+                    {% set figmaName = colorData.base["prefix-figma"] + group["prefix-figma"] + color.name %}
+                    {% set cssName = colorData.base["prefix-css"] + group["prefix-css"] + color.name %}
+                    {{ colorSwatch(color.name, color.hex, figmaName, cssName, false, color.localCss) }}
                 {% endfor %}
             {% endif %}
         </div>
-    {% endfor %}
+    </section>
 {% endfor %}
+</article>
 {% endblock %}

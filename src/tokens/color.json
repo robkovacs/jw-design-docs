@@ -1,7 +1,570 @@
 {
-    "colorData": [
-        {
-            "name": "Base colors",
+    "colorData": {
+        "semantic": {
+            "prefix-figma": "intent/color/",
+            "prefix-css": "--intent-color-",
+            "groups": [
+                {
+                    "name": "Backgrounds",
+                    "prefix-figma": "bg/",
+                    "prefix-css": "bg-",
+                    "groups": [
+                        {
+                            "name": "Neutral",
+                            "prefix-figma": "neutral/",
+                            "prefix-css": "neutral-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-gray-100"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-white"
+                                },
+                                {
+                                    "name": "strong",
+                                    "localCss": "--color-gray-300"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Brand",
+                            "prefix-figma": "brand/",
+                            "prefix-css": "brand-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-blue-200"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-blue-400"
+                                },
+                                {
+                                    "name": "strong",
+                                    "localCss": "--color-blue-900"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Danger",
+                            "prefix-figma": "danger/",
+                            "prefix-css": "danger-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-red-300"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-red-500"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Inverse",
+                            "prefix-figma": "inverse/",
+                            "prefix-css": "inverse-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-gray-700"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-gray-900"
+                                },
+                                {
+                                    "name": "strong",
+                                    "localCss": "--color-gray-800"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Success",
+                            "prefix-figma": "success/",
+                            "prefix-css": "success-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-green-300"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-green-500"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Warning",
+                            "prefix-figma": "warning/",
+                            "prefix-css": "warning-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-yellow-200"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-yellow-300"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "New",
+                            "prefix-figma": "new/",
+                            "prefix-css": "new-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-purple-300"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-purple-500"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Info",
+                            "prefix-figma": "info/",
+                            "prefix-css": "info-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-blue-200"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-blue-400"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Interactions",
+                    "prefix-figma": "ui/",
+                    "prefix-css": "ui-",
+                    "groups": [
+                        {
+                            "name": "Neutral",
+                            "prefix-figma": "neutral/",
+                            "prefix-css": "neutral-",
+                            "groups": [
+                                {
+                                    "name": "Primary",
+                                    "prefix-figma": "primary/",
+                                    "prefix-css": "primary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-gray-900"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-gray-700"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-gray-800"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Secondary",
+                                    "prefix-figma": "secondary/",
+                                    "prefix-css": "secondary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-gray-100"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-gray-200"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-gray-300"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Tertiary",
+                                    "prefix-figma": "tertiary/",
+                                    "prefix-css": "tertiary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "transparent",
+                                            "needsBg": true
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-gray-900_10",
+                                            "needsBg": true
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-white"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Brand",
+                            "prefix-figma": "brand/",
+                            "prefix-css": "brand-",
+                            "groups": [
+                                {
+                                    "name": "Primary",
+                                    "prefix-figma": "primary/",
+                                    "prefix-css": "primary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-blue-600"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-blue-700"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-blue-800"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Secondary",
+                                    "prefix-figma": "secondary/",
+                                    "prefix-css": "secondary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-white"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-blue-100"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-blue-200"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Tertiary",
+                                    "prefix-figma": "tertiary/",
+                                    "prefix-css": "tertiary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-transparent",
+                                            "needsBg": true
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-blue-100"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-blue-200"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Danger",
+                            "prefix-figma": "danger/",
+                            "prefix-css": "danger-",
+                            "groups": [
+                                {
+                                    "name": "Primary",
+                                    "prefix-figma": "primary/",
+                                    "prefix-css": "primary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-red-600"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-red-700"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-red-800"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Secondary",
+                                    "prefix-figma": "secondary/",
+                                    "prefix-css": "secondary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-white"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-red-100"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-red-200"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Tertiary",
+                                    "prefix-figma": "tertiary/",
+                                    "prefix-css": "tertiary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-transparent",
+                                            "needsBg": true
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-red-100"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-red-200"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Inverse",
+                            "prefix-figma": "inverse/",
+                            "prefix-css": "inverse-",
+                            "groups": [
+                                {
+                                    "name": "Primary",
+                                    "prefix-figma": "primary/",
+                                    "prefix-css": "primary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-white"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-gray-100"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-gray-200"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Secondary",
+                                    "prefix-figma": "secondary/",
+                                    "prefix-css": "secondary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-gray-800"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-gray-600"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-gray-700"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Tertiary",
+                                    "prefix-figma": "tertiary/",
+                                    "prefix-css": "tertiary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "transparent",
+                                            "needsBg": true
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-white_10",
+                                            "needsBg": true
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-gray-900"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Disabled",
+                            "prefix-figma": "disabled/",
+                            "prefix-css": "disabled-",
+                            "colors": [
+                                {
+                                    "name": "primary",
+                                    "localCss": "--color-gray-300"
+                                },
+                                {
+                                    "name": "secondary",
+                                    "localCss": "--color-gray-200"
+                                },
+                                {
+                                    "name": "tertiary",
+                                    "localCss": "--color-transparent",
+                                    "needsBg": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Success",
+                            "prefix-figma": "success/",
+                            "prefix-css": "success-",
+                            "groups": [
+                                {
+                                    "name": "Primary",
+                                    "prefix-figma": "primary/",
+                                    "prefix-css": "primary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-green-600"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-green-700"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-green-800"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Secondary",
+                                    "prefix-figma": "secondary/",
+                                    "prefix-css": "secondary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-white"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-green-100"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-green-200"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Tertiary",
+                                    "prefix-figma": "tertiary/",
+                                    "prefix-css": "tertiary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-transparent",
+                                            "needsBg": true
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-green-100"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-green-200"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Warning",
+                            "prefix-figma": "warning/",
+                            "prefix-css": "warning-",
+                            "groups": [
+                                {
+                                    "name": "Primary",
+                                    "prefix-figma": "primary/",
+                                    "prefix-css": "primary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-yellow-600"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-yellow-700"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-yellow-800"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Secondary",
+                                    "prefix-figma": "secondary/",
+                                    "prefix-css": "secondary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-white"
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-yellow-100"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-yellow-200"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Tertiary",
+                                    "prefix-figma": "tertiary/",
+                                    "prefix-css": "tertiary-",
+                                    "colors": [
+                                        {
+                                            "name": "resting",
+                                            "localCss": "--color-transparent",
+                                            "needsBg": true
+                                        },
+                                        {
+                                            "name": "hover",
+                                            "localCss": "--color-yellow-100"
+                                        },
+                                        {
+                                            "name": "pressed",
+                                            "localCss": "--color-yellow-200"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "base": {
             "prefix-figma": "base/color/",
             "prefix-css": "--base-color-",
             "groups": [
@@ -12,39 +575,39 @@
                     "colors": [
                         {
                             "name": "100",
-                            "hex": "#f7f8fb"
+                            "localCss": "--color-gray-100"
                         },
                         {
                             "name": "200",
-                            "hex": "#eef0f4"
+                            "localCss": "--color-gray-200"
                         },
                         {
                             "name": "300",
-                            "hex": "#d9dce1"
+                            "localCss": "--color-gray-300"
                         },
                         {
                             "name": "400",
-                            "hex": "#a9adb5"
+                            "localCss": "--color-gray-400"
                         },
                         {
                             "name": "500",
-                            "hex": "#848890"
+                            "localCss": "--color-gray-500"
                         },
                         {
                             "name": "600",
-                            "hex": "#6d717a"
+                            "localCss": "--color-gray-600"
                         },
                         {
                             "name": "700",
-                            "hex": "#5e6167"
+                            "localCss": "--color-gray-700"
                         },
                         {
                             "name": "800",
-                            "hex": "#3f4147"
+                            "localCss": "--color-gray-800"
                         },
                         {
                             "name": "900",
-                            "hex": "#1c1d1f"
+                            "localCss": "--color-gray-900"
                         }
                     ]
                 },
@@ -55,39 +618,39 @@
                     "colors": [
                         {
                             "name": "100",
-                            "hex": "#e5f3ff"
+                            "localCss": "--color-blue-100"
                         },
                         {
                             "name": "200",
-                            "hex": "#b6e5ff"
+                            "localCss": "--color-blue-200"
                         },
                         {
                             "name": "300",
-                            "hex": "#6dc8ff"
+                            "localCss": "--color-blue-300"
                         },
                         {
                             "name": "400",
-                            "hex": "#52b0ff"
+                            "localCss": "--color-blue-400"
                         },
                         {
                             "name": "500",
-                            "hex": "#0092f6"
+                            "localCss": "--color-blue-600"
                         },
                         {
                             "name": "600",
-                            "hex": "#0070d4"
+                            "localCss": "--color-blue-600"
                         },
                         {
                             "name": "700",
-                            "hex": "#0e57b5"
+                            "localCss": "--color-blue-700"
                         },
                         {
                             "name": "800",
-                            "hex": "#1e3d92"
+                            "localCss": "--color-blue-800"
                         },
                         {
                             "name": "900",
-                            "hex": "#15246d"
+                            "localCss": "--color-blue-900"
                         }
                     ]
                 },
@@ -98,35 +661,35 @@
                     "colors": [
                         {
                             "name": "100",
-                            "hex": "#ffefea"
+                            "localCss": "--color-red-100"
                         },
                         {
                             "name": "200",
-                            "hex": "#ffcfbf"
+                            "localCss": "--color-red-200"
                         },
                         {
                             "name": "300",
-                            "hex": "#ff9f82"
+                            "localCss": "--color-red-300"
                         },
                         {
                             "name": "400",
-                            "hex": "#fb7f59"
+                            "localCss": "--color-red-400"
                         },
                         {
                             "name": "500",
-                            "hex": "#df5a31"
+                            "localCss": "--color-red-500"
                         },
                         {
                             "name": "600",
-                            "hex": "#cb431d"
+                            "localCss": "--color-red-600"
                         },
                         {
                             "name": "700",
-                            "hex": "#af2c10"
+                            "localCss": "--color-red-700"
                         },
                         {
                             "name": "800",
-                            "hex": "#832512"
+                            "localCss": "--color-red-800"
                         }
                     ]
                 },
@@ -137,35 +700,35 @@
                     "colors": [
                         {
                             "name": "100",
-                            "hex": "#ddf3ea"
+                            "localCss": "--color-green-100"
                         },
                         {
                             "name": "200",
-                            "hex": "#98e2c5"
+                            "localCss": "--color-green-200"
                         },
                         {
                             "name": "300",
-                            "hex": "#65c9a3"
+                            "localCss": "--color-green-300"
                         },
                         {
                             "name": "400",
-                            "hex": "#2cb987"
+                            "localCss": "--color-green-400"
                         },
                         {
                             "name": "500",
-                            "hex": "#00a46b"
+                            "localCss": "--color-green-500"
                         },
                         {
                             "name": "600",
-                            "hex": "#008354"
+                            "localCss": "--color-green-600"
                         },
                         {
                             "name": "700",
-                            "hex": "#006943"
+                            "localCss": "--color-green-700"
                         },
                         {
                             "name": "800",
-                            "hex": "#005133"
+                            "localCss": "--color-green-800"
                         }
                     ]
                 },
@@ -176,35 +739,35 @@
                     "colors": [
                         {
                             "name": "100",
-                            "hex": "#ffeed1"
+                            "localCss": "--color-yellow-100"
                         },
                         {
                             "name": "200",
-                            "hex": "#ffdb7b"
+                            "localCss": "--color-yellow-200"
                         },
                         {
                             "name": "300",
-                            "hex": "#f3b715"
+                            "localCss": "--color-yellow-300"
                         },
                         {
                             "name": "400",
-                            "hex": "#dd9610"
+                            "localCss": "--color-yellow-400"
                         },
                         {
                             "name": "500",
-                            "hex": "#cb7d14"
+                            "localCss": "--color-yellow-500"
                         },
                         {
                             "name": "600",
-                            "hex": "#ad5e0d"
+                            "localCss": "--color-yellow-600"
                         },
                         {
                             "name": "700",
-                            "hex": "#8f4509"
+                            "localCss": "--color-yellow-700"
                         },
                         {
                             "name": "800",
-                            "hex": "#753204"
+                            "localCss": "--color-yellow-800"
                         }
                     ]
                 },
@@ -215,39 +778,39 @@
                     "colors": [
                         {
                             "name": "100",
-                            "hex": "#f4ebfc"
+                            "localCss": "--color-purple-100"
                         },
                         {
                             "name": "200",
-                            "hex": "#e0d0ff"
+                            "localCss": "--color-purple-200"
                         },
                         {
                             "name": "300",
-                            "hex": "#baaaf9"
+                            "localCss": "--color-purple-300"
                         },
                         {
                             "name": "400",
-                            "hex": "#a993ff"
+                            "localCss": "--color-purple-400"
                         },
                         {
                             "name": "500",
-                            "hex": "#8a73e5"
+                            "localCss": "--color-purple-500"
                         },
                         {
                             "name": "600",
-                            "hex": "#775bdb"
+                            "localCss": "--color-purple-600"
                         },
                         {
                             "name": "700",
-                            "hex": "#5f43ca"
+                            "localCss": "--color-purple-700"
                         },
                         {
                             "name": "800",
-                            "hex": "#4529b4"
+                            "localCss": "--color-purple-800"
                         }
                     ]
                 }
             ]
         }
-    ]
+    }
 }

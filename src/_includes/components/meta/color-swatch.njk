@@ -1,10 +1,16 @@
 {% from '../system-icon.njk' import render as systemIcon %}
 {% from '../button.njk' import render as button %}
 
-{% macro render(name, hex, figmaName, cssName) %}
+{% macro render(name, hex, figmaName, cssName, needsBg, localCss) %}
 <div class="color-swatch">
-    <div class="color-swatch__preview" style="background-color: {{ hex | safe }}"></div>
-    <div class="h4 color-swatch__name">{{ name }}</div>
+    <div class="color-swatch__preview {{ 'color-swatch__preview--needs-bg' if needsBg }}">
+        {%- if localCss -%}
+            <span style="background-color: var({{ localCss | safe }})"></span>
+        {% else %}
+            <span></span>
+        {%- endif -%}
+    </div>
+    <div class="color-swatch__name">{{ name }}</div>
     <ul class="color-swatch__button-list">
         <li>
             {{ button ({
@@ -36,11 +42,10 @@
             {{ button({
                 size: "xs",
                 variant: "ghost",
-                classes: "color-swatch__button",
+                classes: "color-swatch__button color-swatch__button--hex",
                 leftIcon: "copy",
                 content: "Hex",
                 attributes: {
-                    "data-copy-text": ( hex | safe),
                     "aria-label": "Copy Hex"
                 }
             }) }}

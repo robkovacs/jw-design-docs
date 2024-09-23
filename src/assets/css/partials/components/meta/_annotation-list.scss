@@ -45,4 +45,12 @@
             counter-increment: annotations;
         }
     }
+
+    &--small {
+        & dt {
+            font-size: var(--size-md);
+            line-height: var(--size-lg);
+            margin-bottom: var(--size-2xs);
+        }
+    }
 }
