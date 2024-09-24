@@ -561,6 +561,259 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "name": "Text",
+                    "prefix-figma": "text/",
+                    "prefix-css": "text-",
+                    "groups": [
+                        {
+                            "name": "Neutral",
+                            "prefix-figma": "neutral/",
+                            "prefix-css": "neutral-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-gray-600"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-gray-900"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Brand",
+                            "prefix-figma": "brand/",
+                            "prefix-css": "brand-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-blue-900"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-blue-600"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Danger",
+                            "prefix-figma": "danger/",
+                            "prefix-css": "danger-",
+                            "colors": [
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-red-600"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Inverse",
+                            "prefix-figma": "inverse/",
+                            "prefix-css": "inverse-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-gray-400"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-white"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Disabled",
+                            "prefix-figma": "disabled/",
+                            "prefix-css": "disabled-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-gray-400"
+                                },
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-gray-500"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Success",
+                            "prefix-figma": "success/",
+                            "prefix-css": "success-",
+                            "colors": [
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-green-600"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Warning",
+                            "prefix-figma": "warning/",
+                            "prefix-css": "warning-",
+                            "colors": [
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-yellow-600"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "New",
+                            "prefix-figma": "new/",
+                            "prefix-css": "new-",
+                            "colors": [
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-purple-600"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Info",
+                            "prefix-figma": "info/",
+                            "prefix-css": "info-",
+                            "colors": [
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-blue-600"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Border",
+                    "prefix-figma": "border/",
+                    "prefix-css": "border-",
+                    "groups": [
+                        {
+                            "name": "Neutral",
+                            "prefix-figma": "neutral/",
+                            "prefix-css": "neutral-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-gray-400"
+                                },
+                                {
+                                    "name": "resting",
+                                    "localCss": "--color-gray-500"
+                                },
+                                {
+                                    "name": "hover",
+                                    "localCss": "--color-gray-600"
+                                },
+                                {
+                                    "name": "pressed",
+                                    "localCss": "--color-gray-700"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Brand",
+                            "prefix-figma": "brand/",
+                            "prefix-css": "brand-",
+                            "colors": [
+                                {
+                                    "name": "resting",
+                                    "localCss": "--color-blue-500"
+                                },
+                                {
+                                    "name": "hover",
+                                    "localCss": "--color-blue-600"
+                                },
+                                {
+                                    "name": "pressed",
+                                    "localCss": "--color-blue-700"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Danger",
+                            "prefix-figma": "danger/",
+                            "prefix-css": "danger-",
+                            "colors": [
+                                {
+                                    "name": "resting",
+                                    "localCss": "--color-red-500"
+                                },
+                                {
+                                    "name": "hover",
+                                    "localCss": "--color-red-600"
+                                },
+                                {
+                                    "name": "pressed",
+                                    "localCss": "--color-red-700"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Inverse",
+                            "prefix-figma": "inverse/",
+                            "prefix-css": "inverse-",
+                            "colors": [
+                                {
+                                    "name": "subtle",
+                                    "localCss": "--color-gray-700"
+                                },
+                                {
+                                    "name": "resting",
+                                    "localCss": "--color-gray-600"
+                                },
+                                {
+                                    "name": "hover",
+                                    "localCss": "--color-gray-500"
+                                },
+                                {
+                                    "name": "pressed",
+                                    "localCss": "--color-gray-400"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Disabled",
+                            "prefix-figma": "default/",
+                            "prefix-css": "default-",
+                            "colors": [
+                                {
+                                    "name": "resting",
+                                    "localCss": "--color-gray-400"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Line",
+                    "prefix-figma": "line/",
+                    "prefix-css": "line-",
+                    "groups": [
+                        {
+                            "name": "Neutral",
+                            "prefix-figma": "neutral/",
+                            "prefix-css": "neutral-",
+                            "colors": [
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-gray-300"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Inverse",
+                            "prefix-figma": "brand/",
+                            "prefix-css": "brand-",
+                            "colors": [
+                                {
+                                    "name": "default",
+                                    "localCss": "--color-gray-800"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
