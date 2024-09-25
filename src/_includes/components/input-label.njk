@@ -16,7 +16,12 @@
         {{ key }}="{{ value | safe }}"
     {% endfor %}
 >
-    {{ content }}
+    {% if content === (content | string) %}
+        {{ content }}
+    {% else %}
+        {{ content[locale] }}
+    {% endif %}
+    
     {% if isRequired == false %}
         <span class="input-label__optional">{{ localeData[locale].optional }}</label>
     {% endif %}

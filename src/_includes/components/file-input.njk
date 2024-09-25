@@ -1,0 +1,81 @@
+{% from './system-icon.njk' import render as systemIcon %}
+{% from './input-label.njk' import render as inputLabel %}
+{% from './input-message.njk' import render as inputMessage %}
+
+{% set localeData = {
+    "en_US": {
+        "action-empty": "Choose file",
+        "action-filled": "Delete file",
+        "description": "or drag and drop here"
+    },
+    "de_DE": {
+        "action-empty": "Datei wählen",
+        "action-filled": "Datei löschen",
+        "description": "oder hier ziehem und ablegen"
+    }
+} %}
+
+
+{% macro render(options) %}
+    {% set required = (options.required | default(true)) %}
+    {% set filled = (options.filled | default(false)) %}
+    {% set multiple = (options.multiple | default(false)) %}
+    {% set locale = options.locale | default("en_US") %}
+    {% set id %}{{ options.id | default(nanoid()) }}{% endset %}
+    
+    {% set classes -%}
+        {%- if options.classes -%}
+            {%- if options.classes == (options.classes | string) -%}
+                {{ options.classes }}
+            {%- else -%}
+                {{ options.classes | join(' ') }}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endset %}
+
+    {% if options.label or options.messages %}
+        <div class="form-field">
+    {% endif %}
+        {{ inputLabel(options.label, required, id, as = "legend", locale = locale) if options.label }}
+        {{ inputMessage("help", options.helpText) if options.helpText }}
+        
+        <fieldset>
+            <input type="file" class="file-input__input" id="{{ id }}" hidden {{ 'multiple' if multiple }}/>
+            <label for="{{ id }}" class="file-input {{ 'file-input--filled' if filled }} {{ 'file-input--multiple' if multiple }}" tabindex="0">
+                <button class="file-input__button" tabindex="1">
+                    <div class="file-input__action">
+                        <div class="file-input__action-text--empty">
+                            {{ systemIcon("upload", size = "sm") }}
+                            {{ localeData[locale]['action-empty'] }}
+                        </div>
+                        <div class="file-input__action-text--filled">
+                            {{ systemIcon("trash", size = "sm") }}
+                            {{ localeData[locale]['action-filled'] }}
+                        </div>
+                    </div>
+                    <div class="file-input__description">
+                        {{ systemIcon("document", size = "sm") }}
+                        <span class="file-input__description-text--empty">
+                            {{ localeData[locale]['description']}}
+                        </span>
+                        <span class="file-input__description-text--filled">
+                        </span>
+                    </div>
+                </button>
+            </label>
+
+        {% if multiple %}
+            <div class="file-input__file-list"></div>
+        {% endif %}
+        </fieldset>
+    {% if options.messages %}
+        <div class="input-message__list">
+           {% for message in options.messages %}
+                {{ inputMessage(message.type, message.message) }}
+           {% endfor %} 
+        </div>
+    {% endif %}
+    {% if options.label or options.messages %}
+        </div>
+    {% endif %}
+{% endmacro %}

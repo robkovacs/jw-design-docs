@@ -1,10 +1,5 @@
 @import './_breakpoints.scss';
 
-* {
-    box-sizing: border-box;
-}
-
-
 :root {
     --nav-width: 0;
     --ui-max-width: 90rem;
@@ -12,20 +7,6 @@
     @media screen and (min-width: $breakpoint-md) {
         --nav-width: 16rem;
     }
-}
-
-*:focus-visible,
-select:focus {
-    outline-offset: var(--size-4xs);
-    outline: var(--color-blue-500) solid var(--size-4xs);
-    box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
-    border-radius: var(--size-3xs);
-}
-
-html {
-    height: 100%;
-    margin: 0;
-    background-color: var(--color-white);
 }
 
 body {
@@ -38,49 +19,6 @@ body {
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: stretch;
-    }
-}
-
-.preload * { 
-    transition: none !important;
-    animation-duration: 0.001s !important; 
-}
-
-html:has(.main-nav--open), body:has(.main-nav--open) {
-    height: 100%;
-    width: 100%;
-    position: relative;
-    overflow: hidden;   
-}
-
-a {
-    border-radius: var(--size-3xs);
-    display: inline-block;
-    line-height: inherit;
-    font-size: inherit;
-    vertical-align: top;
-
-    &:link,
-    &:visited {
-        color: var(--color-blue-600);
-        text-decoration: none;
-    }
-
-    &:active {
-        color: var(--color-blue-800);
-        text-decoration: underline;
-    }
-
-    @media (hover: hover) {
-        &:hover,
-        &:hover:visited {
-            color: var(--color-blue-700);
-            text-decoration: underline;
-        }
-
-        &:hover:active {
-            color: var(--color-blue-800);
-        }
     }
 }
 
@@ -162,9 +100,4 @@ section + section:has(h5:first-child) {
 
 section:has(h2:only-child, h3:only-child, h4:only-child) + section {
     margin-top: 0;
-}
-
-img {
-    display: block;
-    max-width: 100%;
 }

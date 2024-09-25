@@ -1,0 +1,20 @@
+---
+title: File input
+eleventyNavigation: 
+    key: File input
+    parent: Components
+    order: 7
+    excerpt: "Drop a file or two in the box."
+---
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+    <article>
+        {{ fileInput({
+            label: { "en_US": "File to upload", "de_DE": "Datei zum hochladen" },
+            required: false,
+            multiple: true,
+            locale: "de_DE"
+        }) }}
+    </article>
+{% endblock %}
