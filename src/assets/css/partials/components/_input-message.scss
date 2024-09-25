@@ -4,10 +4,13 @@
     gap: var(--size-2xs);
 
     &__list {
-        margin-top: var(--size-xs);
         display: flex;
         flex-direction: column;
         gap: var(--size-2xs);
+
+        &:not(:empty) {
+            margin-top: var(--size-xs);
+        }
     }
 
     &--type {

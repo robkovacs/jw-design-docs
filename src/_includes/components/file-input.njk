@@ -19,6 +19,8 @@
 
 
 {% macro render(options) %}
+    {% set accept = (options.accept | default(false)) %}
+    {% set maxFileSize = (options.maxFileSize | default(false)) %}
     {% set required = (options.required | default(true)) %}
     {% set filled = (options.filled | default(false)) %}
     {% set multiple = (options.multiple | default(false)) %}
@@ -42,8 +44,18 @@
         {{ inputMessage("help", options.helpText) if options.helpText }}
         
         <fieldset>
-            <input type="file" class="file-input__input" id="{{ id }}" hidden {{ 'multiple' if multiple }}/>
-            <label for="{{ id }}" class="file-input {{ 'file-input--filled' if filled }} {{ 'file-input--multiple' if multiple }}" tabindex="0">
+            <input
+                type="file" class="file-input__input" id="{{ id }}"
+                hidden {{ 'multiple' if multiple }}
+                {% if accept %}
+                accept="{{ accept }}"
+                {% endif -%}
+
+                {%- if maxFileSize %}
+                data-max-file-size="{{ maxFileSize }}"
+                {% endif -%}
+            />
+            <label for="{{ id }}" class="file-input {{ 'file-input--filled' if filled }} {{ 'file-input--multiple' if multiple }}">
                 <button class="file-input__button" tabindex="1">
                     <div class="file-input__action">
                         <div class="file-input__action-text--empty">
