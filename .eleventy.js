@@ -141,7 +141,7 @@ module.exports = function (eleventyConfig) {
     });
 
     return {
-        pathPrefix: "/design-docs/",
+        pathPrefix: "/jw-design-docs/",
         dir: {
             input: "src",
             output: "dist",

@@ -1,5 +1,5 @@
 {
-    "name": "design-docs",
+    "name": "jw-design-docs",
     "version": "0.0.1",
     "main": ".eleventy.js",
     "scripts": {
