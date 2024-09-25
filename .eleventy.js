@@ -141,7 +141,7 @@ module.exports = function (eleventyConfig) {
     });
 
     return {
-        pathPrefix: "/eleventy-demo/",
+        pathPrefix: "/design-docs/",
         dir: {
             input: "src",
             output: "dist",

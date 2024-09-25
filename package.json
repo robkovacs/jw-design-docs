@@ -1,6 +1,6 @@
 {
-    "name": "eleventy-demo",
-    "version": "0.0.1-alpha",
+    "name": "design-docs",
+    "version": "0.0.1",
     "main": ".eleventy.js",
     "scripts": {
         "build": "npm run build:sass && npm run build:webpack && npm run build:eleventy",
