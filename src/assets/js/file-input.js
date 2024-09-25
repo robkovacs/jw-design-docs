@@ -5,7 +5,9 @@ class FileInput {
         this.label = fileInput;
         this.input = fileInput.previousElementSibling;
         this.fileListContainer = fileInput.nextElementSibling;
+        this.multiple = this.input.multiple;
         this.filled = this.label.classList.contains("file-input--filled");
+        this.currentFiles = [];
 
         this.addEventListeners();
     }
@@ -13,8 +15,7 @@ class FileInput {
     populateFileList() {
         this.filled = true;
 
-        if (this.input.files.length === 1) {
-            /* Also check for existing files though, and if so, add to the list */
+        if (!this.multiple) {
             if (!this.label.classList.contains("file-input--filled")) {
                 this.label.classList.add("file-input--filled");
             }
@@ -27,12 +28,26 @@ class FileInput {
             fileNameSlot.innerText = uploadedFile;
             /* TODO: figure out how to truncate the filename how we wanted */
         } else {
+            let tempDataTransfer = new DataTransfer();
+
+            [...this.currentFiles, ...this.input.files].forEach((file) => {
+                tempDataTransfer.items.add(file);
+            });
+    
+            this.input.files = tempDataTransfer.files;
+            this.currentFiles = [...this.input.files];
+
             this.label.classList.remove("file-input--filled");
+
+            this.fileListContainer.querySelectorAll(".file-list-item__button--preview").forEach((link) => {
+                URL.revokeObjectURL(link.getAttribute("href"));
+            });
 
             this.fileListContainer.replaceChildren();
 
             [...this.input.files].forEach((file) => {
-                this.fileListContainer.insertAdjacentHTML("beforeend", `<button class="file-input__file-list-item">${file.name}</button>`);
+                let objectURL = URL.createObjectURL(file);
+                this.fileListContainer.insertAdjacentHTML("beforeend", `<div class="file-list-item">${file.name}<div class="file-list-item__buttons"><a class="file-list-item__button file-list-item__button--preview" href="${objectURL}" target="_blank" aria-label="Preview file"></a><button class="file-list-item__button file-list-item__button--remove" aria-label="Remove file" /></div></div>`);
             });
 
             /* TODO: event handlers on these shiny new file list items */
@@ -41,13 +56,12 @@ class FileInput {
     }
 
     addEventListeners() {
-        this.input.addEventListener("change", () => {
-            this.populateFileList();
-            
+        this.input.addEventListener("change", (e) => {
+            this.populateFileList(); 
         });
 
         this.label.addEventListener("click", (e) => {
-            if (this.filled) {
+            if (!this.multiple && this.filled) {
                 e.preventDefault();
                 this.label.classList.remove("file-input--filled");
                 this.input.value = null;
@@ -71,16 +85,6 @@ class FileInput {
         this.label.addEventListener("drop", (e) => {
             e.preventDefault();
             let tempDataTransfer = new DataTransfer();
-
-            // This lets you add the same file(s) multiple times, once you get at least two files attached. Is that OK?
-            // IIRC the base input type=file will overwrite files that are a match
-            if (this.input.files.length) {
-                [...this.input.files].forEach((file) => {
-                    if (file.type) {
-                        tempDataTransfer.items.add(file);
-                    }
-                });
-            }
 
             if (e.dataTransfer.items) {
                 [...e.dataTransfer.items].forEach((item) => {

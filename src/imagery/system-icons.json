@@ -903,6 +903,20 @@
             "tags": ["autofill", "quick", "shortcut"],
             "description": "Used on timecards to autofill 8 hours a day, Monday through Friday",
             "source": "Phosphor Regular, lightning"
+        },
+        {
+            "name": "zoom-in",
+            "tags": ["zoom", "enlarge", "bigger", "in", "preview", "look"],
+            "description": "Zoom in, or preview file",
+            "source": "Phosphor Regular, magnifying-glass-plus",
+            "isNew": true
+        },
+        {
+            "name": "zoom-out",
+            "tags": ["zoom", "shrink", "smaller", "out"],
+            "description": "Zoom out",
+            "source": "Phosphor Regular, magnifying-glass-minus",
+            "isNew": true
         }
     ]
 }

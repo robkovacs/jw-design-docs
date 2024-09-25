@@ -10,11 +10,15 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        {{ fileInput({
-            label: { "en_US": "File to upload", "de_DE": "Datei zum hochladen" },
-            required: false,
-            multiple: true,
-            locale: "de_DE"
-        }) }}
+        {% call stack() %}
+            {{ fileInput({
+                label: "Single file input"
+            }) }}
+
+            {{ fileInput({
+                label: "Multiple file input",
+                multiple: true
+            }) }}
+        {% endcall %}
     </article>
 {% endblock %}

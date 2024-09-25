@@ -4,12 +4,14 @@
 
 {% set localeData = {
     "en_US": {
-        "action-empty": "Choose file",
+        "action-empty-single": "Choose file",
+        "action-empty-multiple": "Choose file(s)",
         "action-filled": "Delete file",
         "description": "or drag and drop here"
     },
     "de_DE": {
-        "action-empty": "Datei wählen",
+        "action-empty-single": "Datei wählen",
+        "action-empty-multiple": "Datei(en) wählen",
         "action-filled": "Datei löschen",
         "description": "oder hier ziehem und ablegen"
     }
@@ -46,7 +48,8 @@
                     <div class="file-input__action">
                         <div class="file-input__action-text--empty">
                             {{ systemIcon("upload", size = "sm") }}
-                            {{ localeData[locale]['action-empty'] }}
+                            {{ localeData[locale]['action-empty-single'] if not multiple }}
+                            {{ localeData[locale]['action-empty-multiple'] if multiple }}
                         </div>
                         <div class="file-input__action-text--filled">
                             {{ systemIcon("trash", size = "sm") }}
@@ -65,7 +68,7 @@
             </label>
 
         {% if multiple %}
-            <div class="file-input__file-list"></div>
+            <div class="file-list"></div>
         {% endif %}
         </fieldset>
     {% if options.messages %}
