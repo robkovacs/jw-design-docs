@@ -187,7 +187,6 @@ class FileInput {
                     inputMessageList,
                 );
 
-                // TODO: get some error messages in here
                 this.fileListContainer.appendChild(fileListItemHTML);
             });
 
