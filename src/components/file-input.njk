@@ -10,48 +10,181 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        {% call stack() %}
-            {{ fileInput({
-                label: "Single file input"
-            }) }}
+        <section>
+            <h2 class="toc__heading" style="display: none" id="intro">Introduction</h2>
+            <p class="paragraph--large">A <strong>file input</strong> allows someone to choose at least one file from their device, in order to submit it as part of a form.</p>
 
-            {{ fileInput({
-                label: "Multiple file input",
-                multiple: true
-            }) }}
+            <ul class="reference-list">
+                <li>
+                    {{ anchor({ 
+                        href: "https://www.figma.com/design/2XUAgVi6sCaQZ1qm4N34GA/Design-System---Components?node-id=10172-19135",
+                        leftIcon: "brand-figma",
+                        content: "Figma",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+                <li>
+                    {{ anchor({ 
+                        href: "https://main--63c9ba51287fc47003f73128.chromatic.com/?path=/docs/form-fileinput--docs",
+                        leftIcon: "brand-storybook",
+                        content: "Storybook",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+                <li>
+                    {{ anchor({ 
+                        href: "https://github.com/justworkshr/milo-components/tree/main/packages/components/form/src/file-input",
+                        leftIcon: "brand-github",
+                        content: "GitHub",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+            </ul>
 
-            {{ fileInput({
-                label: "Only accepts a single PDF",
-                helpText: "That is, a file with a name ending in <code>.pdf</code>, or a file of MIME type <code>application/pdf</code>",
-                accept: {
-                    fileTypes: "application/pdf, .pdf",
-                    errorMessage: "File must be a PDF"
-                }
-            }) }}
+            {% call figure() %}
+                {% call stack({ attributes: { style: "margin: 0 auto; max-width: 30rem" } }) %}
+                    {{ fileInput({
+                        label: "Single file input",
+                        helpText: "Only accepts one file at a time"
+                    }) }}
 
-            {{ fileInput({
-                label: "Accepts multiple files, but only images",
-                helpText: "That is, files with a MIME type starting with <code>image/</code>",
-                accept: {
-                    fileTypes: "image/*",
-                    errorMessage: "File must be an image"
-                },
-                multiple: true
-            }) }}
+                    {{ fileInput({
+                        label: "Multiple file input",
+                        helpText: "Choose as many files as you feel like!",
+                        multiple: true
+                    }) }}
+                {% endcall %}
+            {% endcall %}
 
-            {{ fileInput({
-                label: "Accepts multiple files, but only images, and only under 10KB",
-                helpText: "That is, files with a MIME type starting with <code>image/</code>",
-                accept: {
-                    fileTypes: "image/*",
-                    errorMessage: "File must be an image"
-                },
-                maxFileSize: {
-                    size: "10240",
-                    errorMessage: "File must be no more than 10KiB"
-                },
-                multiple: true
-            }) }}
-        {% endcall %}
+            <div class="h4">Also known as:</div>
+            <ul class="bulleted-list">
+                <li>File picker</li>
+                <li>File upload / uploader</li>
+                <li>File selector</li>
+                <li>File importer</li>
+                <li>Dropzone</li>
+            </ul>
+        </section>
+        <section>
+            <h2 class="toc__heading" id="content">Content guidelines</h2>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="clear-reqs">Be clear about requirements</h3>
+            <p>Requirements of file inputs can be particularly hard for users to anticipate, compared to something like a text box. Whatever requirements your file input has, be upfront about them—don't leave it up to your users to choose some files and see what happens.</p>
+        
+            {% call figure("Both of these file inputs accept only PDFs. But it might be a surprise in the first case.") %}
+                {% call stack() %}
+                    <div>
+                        {{ fileInput({
+                            label: "Receipt",
+                            accept: {
+                                fileTypes: "application/pdf, .pdf",
+                                errorMessage: "File must be a PDF"
+                            }
+                        }) }}
+                        {{ dosDonts("dont") }}
+                    </div>
+                    <div>
+                        {{ fileInput({
+                            label: "Receipt",
+                            helpText: "Must be a PDF",
+                            accept: {
+                                fileTypes: "application/pdf, .pdf",
+                                errorMessage: "File must be a PDF"
+                            }
+                        }) }}
+                        {{ dosDonts("do") }}
+                    </div>
+                {% endcall %}
+            {% endcall %}
+        </section>
+
+        <section>
+            <h3 class="toc__heading" id="generous-with-types">Be generous with file type requirements</h3>
+            <p>Common use cases for file inputs include text data, tabular data or spreadsheets, and images. But these can come in many, many formats:</p>
+            <ul class="bulleted-list">
+                <li><strong>text:</strong> TXT, RTF, DOC, DOCX, ODF, PAGES...</li>
+                <li><strong>spreadsheets:</strong> CSV, TSV, ODS, XLS, XLSX, XLSM, XLSB, NUMBERS...</li>
+                <li><strong>images:</strong> JPG, PNG, GIF, BMP, HEIC, SVG, WEBP, TIFF, PSD, AI...</li>
+            </ul>
+
+            <p>Whenever possible, let the user provide whatever they have on hand, and have your application take on the responsibility of interpreting it.</p>
+        
+            {% call figure() %}
+                {% call stack() %}
+                    <div>
+                        {{ fileInput({
+                            label: "Receipt",
+                            helpText: "Must be a PDF",
+                    
+                            accept: {
+                                fileTypes: "application/pdf, .pdf",
+                                errorMessage: "File must be a PDF"
+                            }
+                        }) }}
+                        {{ dosDonts("dont") }}
+                    </div>
+                    <div>
+                        {{ fileInput({
+                            label: "Receipt",
+                            helpText: "Can be a PDF, or any image file",
+                            accept: {
+                                fileTypes: "image/*, application/pdf, .pdf",
+                                errorMessage: "File must be a PDF or image"
+                            }
+                        }) }}
+                        {{ dosDonts("do") }}
+                    </div>
+                {% endcall %}
+            {% endcall %}
+        </section>
+
+        <section>
+            <h3 class="toc__heading" id="generous-with-sizes">Be generous with file size requirements</h3>
+            <p>Users may not always have the expertise, the tools, or simply the time or patience, to manipulate the files they're trying to upload.</p>
+            <p>Whenever possible, let the user provide whatever they have on hand, and have your application take on the responsibility of resizing or compressing it to meet your needs.</p>
+            <p>If they're technically <strong>needs</strong> to be a file size limit, but it's really, really, high, don't worry about including it in the help text.</p>
+            
+            {% call figure("<p>In the first example: if the user's receipt image is 10.1 MB, should we really reject it?</p><p>The second example secretly has a file size limit of 64 GB. You won't know unless you actually try to drop in a file that big, and that's OK.</p>") %}
+                {% call stack() %}
+                    <div>
+                        {{ fileInput({
+                            label: "Receipt",
+                            helpText: "Can be a PDF, or any image file. Must be less than 10 MB",
+                            accept: {
+                                fileTypes: "image/*, application/pdf, .pdf",
+                                errorMessage: "File must be a PDF or image"
+                            },
+                            maxFileSize: {
+                                size: "10000000",
+                                errorMessage: "File must be less than 10 MB"
+                            }
+                        }) }}
+                        {{ dosDonts("dont") }}
+                    </div>
+                    <div>
+                        {{ fileInput({
+                            label: "Receipt",
+                            helpText: "Can be a PDF, or any image file",
+                            accept: {
+                                fileTypes: "image/*, application/pdf, .pdf",
+                                errorMessage: "File must be a PDF or image"
+                            },
+                            maxFileSize: {
+                                size: "64000000000",
+                                errorMessage: "File must be less than 64 GB"
+                            }
+                        }) }}
+                        {{ dosDonts("do") }}
+                    </div>
+                {% endcall %}
+            {% endcall %}
+        </section>
     </article>
 {% endblock %}

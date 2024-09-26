@@ -21,6 +21,7 @@
 {% macro render(options) %}
     {% set accept = (options.accept | default(false)) %}
     {% set maxFileSize = (options.maxFileSize | default(false)) %}
+    {% set maxFileCount = (options.maxFileCount | default(false)) %}
     {% set required = (options.required | default(true)) %}
     {% set filled = (options.filled | default(false)) %}
     {% set multiple = (options.multiple | default(false)) %}
@@ -55,24 +56,33 @@
             data-max-file-size="{{ maxFileSize.size }}"
             data-max-file-size-error-message="{{ maxFileSize.errorMessage }}"
             {% endif -%}
+
+            {%- if maxFileCount %}
+            data-max-file-count="{{ maxFileCount.count }}"
+            data-max-file-count-error-message="{{ maxFileCount.errorMessage }}"
+            {% endif -%}
         />
 
         <div for="{{ id }}" class="file-input__dropzone {{ 'file-input__dropzone--filled' if filled }}">
             <button class="file-input__button button button--ghost button--size-sm">
-                <span class="file-input__button-content--empty">
-                    {{ systemIcon("upload", size = "sm") }}
-                    {{ localeData[locale]['button-empty-single'] if not multiple }}
-                    {{ localeData[locale]['button-empty-multiple'] if multiple }}
+                <span class="button__content file-input__button-content--empty">
+                    {{- systemIcon("upload", size = "sm") -}}
+                    <span class="button__label">
+                        {{- localeData[locale]['button-empty-single'] if not multiple -}}
+                        {{- localeData[locale]['button-empty-multiple'] if multiple -}}
+                    </span>
                 </span>
-                <span class="file-input__button-content--filled">
-                    {{ systemIcon("trash", size = "sm") }}
-                    {{ localeData[locale]['button-filled'] }}
+                <span class="button__content file-input__button-content--filled">
+                    {{- systemIcon("trash", size = "sm") -}}
+                    <span class="button__label">
+                        {{- localeData[locale]['button-filled'] -}}
+                    </span>
                 </span>
             </button>
             <div class="file-input__description">
-                {{ systemIcon("document", size = "sm") }}
+                {{- systemIcon("document", size = "sm") -}}
                 <span class="file-input__description-text--empty">
-                    {{ localeData[locale]['description']}}
+                    {{- localeData[locale]['description'] -}}
                 </span>
                 <span class="file-input__description-text--filled">
                 </span>
