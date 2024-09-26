@@ -1,19 +1,86 @@
 .file-input {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--size-3xs);
-    background-color: transparent;
-    border: 1px dashed var(--color-gray-500);
-    padding: var(--size-xl);
-    border-radius: var(--size-2xs);
-    font-family: inherit;
-    font-size: var(--size-sm);
-    line-height: var(--size-lg);
-    width: 100%;
+    &__dropzone {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--size-3xs);
+        background-color: transparent;
+        border: 1px dashed var(--color-gray-500);
+        padding: var(--size-xl);
+        border-radius: var(--size-2xs);
+        font-family: inherit;
+        font-size: var(--size-sm);
+        line-height: var(--size-lg);
+        width: 100%;
 
-    &__button-content--filled {
-        display: none;
+        &.file-input__dropzone--dragged-over {
+            background-color: var(--color-blue-100);
+        }
+
+        &.file-input__dropzone--filled {
+            & .file-input__button {
+                order: 2;
+                color: var(--color-red-600);
+
+                &-content--empty {
+                    display: none;
+                }
+        
+                &-content--filled {
+                    display: block;
+                }
+            }
+
+            & .file-input__description {
+                &-text--empty {
+                    display: none;
+                }
+
+                &-text--filled, & .system-icon {
+                    display: inline;
+                }
+
+                &-text--filled {
+                    color: var(--color-gray-900);
+                }
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    & .file-input__button {
+                        color: var(--color-red-700);
+                    }
+                }
+            }
+
+            &:active {
+                & .file-input__button {
+                    color: var(--color-red-800);
+                }                
+            }
+        }
+    }
+
+    &.has-error {
+        & .file-input__dropzone {
+            border-color: var(--color-red-500);
+
+            @media (hover: hover) {
+                &:hover {
+                    border-color: var(--color-red-600);
+                }
+            }
+            
+            &:active {
+                border-color: var(--color-red-700);
+            }
+        }
+    }
+
+    &__button {
+        &-content--filled {
+            display: none;
+        }
     }
 
     &__description {
@@ -22,68 +89,6 @@
         
         &-text--filled, & .system-icon {
             display: none;
-        }
-    }
-
-    &.file-input--dragged-over {
-        background-color: var(--color-blue-100);
-    }
-
-    &.has-error {
-        border-color: var(--color-red-500);
-
-        @media (hover: hover) {
-            &:hover {
-                border-color: var(--color-red-600);
-            }
-        }
-        
-        &:active {
-            border-color: var(--color-red-700);
-        }
-    }
-
-    &.file-input--filled {
-
-        & .file-input__button {
-            order: 2;
-            color: var(--color-red-600);
-
-            &-content--empty {
-                display: none;
-            }
-    
-            &-content--filled {
-                display: block;
-            }
-        }
-
-        & .file-input__description {
-            &-text--empty {
-                display: none;
-            }
-
-            &-text--filled, & .system-icon {
-                display: inline;
-            }
-
-            &-text--filled {
-                color: var(--color-gray-900);
-            }
-        }
-
-        @media (hover: hover) {
-            &:hover {
-                & .file-input__button {
-                    color: var(--color-red-700);
-                }
-            }
-        }
-
-        &:active {
-            & .file-input__button {
-                color: var(--color-red-800);
-            }                
         }
     }
 }

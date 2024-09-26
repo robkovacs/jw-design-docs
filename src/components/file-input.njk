@@ -23,7 +23,34 @@ eleventyNavigation:
             {{ fileInput({
                 label: "Only accepts a single PDF",
                 helpText: "That is, a file with a name ending in <code>.pdf</code>, or a file of MIME type <code>application/pdf</code>",
-                accept: "application/pdf, .pdf"
+                accept: {
+                    fileTypes: "application/pdf, .pdf",
+                    errorMessage: "File must be a PDF"
+                }
+            }) }}
+
+            {{ fileInput({
+                label: "Accepts multiple files, but only images",
+                helpText: "That is, files with a MIME type starting with <code>image/</code>",
+                accept: {
+                    fileTypes: "image/*",
+                    errorMessage: "File must be an image"
+                },
+                multiple: true
+            }) }}
+
+            {{ fileInput({
+                label: "Accepts multiple files, but only images, and only under 10KB",
+                helpText: "That is, files with a MIME type starting with <code>image/</code>",
+                accept: {
+                    fileTypes: "image/*",
+                    errorMessage: "File must be an image"
+                },
+                maxFileSize: {
+                    size: "10240",
+                    errorMessage: "File must be no more than 10KiB"
+                },
+                multiple: true
             }) }}
         {% endcall %}
     </article>

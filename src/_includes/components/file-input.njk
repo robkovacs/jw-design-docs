@@ -6,7 +6,7 @@
     "en_US": {
         "button-empty-single": "Choose file",
         "button-empty-multiple": "Choose file(s)",
-        "button-filled": "Delete file",
+        "button-filled": "Remove file",
         "description": "or drag and drop here"
     },
     "de_DE": {
@@ -37,56 +37,56 @@
         {%- endif -%}
     {%- endset %}
 
-    {% if options.label or options.messages %}
-        <div class="form-field">
-    {% endif %}
-            {{ inputLabel(options.label, required, id, locale = locale) if options.label }}
-            {{ inputMessage("help", options.helpText) if options.helpText }}
-            <input
-                type="file" class="file-input__input" id="{{ id }}"
-                hidden {{ 'multiple' if multiple }}
-                {% if accept %}
-                accept="{{ accept }}"
-                {% endif -%}
+    <div
+        class="form-field file-input {{ 'file-input--multiple' if multiple }}"
+        {% if accept %}{% endif -%}
+            >
+        {{ inputLabel(options.label, required, id, locale = locale) if options.label }}
+        {{ inputMessage("help", options.helpText) if options.helpText }}
+        <input
+            type="file" class="file-input__input" id="{{ id }}"
+            hidden {{ 'multiple' if multiple }}
+            {% if accept %}
+            accept="{{ accept.fileTypes }}"
+            data-accept-error-message="{{ accept.errorMessage }}"
+            {% endif -%}
 
-                {%- if maxFileSize %}
-                data-max-file-size="{{ maxFileSize }}"
-                {% endif -%}
-            />
+            {%- if maxFileSize %}
+            data-max-file-size="{{ maxFileSize.size }}"
+            data-max-file-size-error-message="{{ maxFileSize.errorMessage }}"
+            {% endif -%}
+        />
 
-            <div for="{{ id }}" class="file-input {{ 'file-input--filled' if filled }} {{ 'file-input--multiple' if multiple }}">
-                <button class="file-input__button button button--ghost button--size-sm">
-                    <span class="file-input__button-content--empty">
-                        {{ systemIcon("upload", size = "sm") }}
-                        {{ localeData[locale]['button-empty-single'] if not multiple }}
-                        {{ localeData[locale]['button-empty-multiple'] if multiple }}
-                    </span>
-                    <span class="file-input__button-content--filled">
-                        {{ systemIcon("trash", size = "sm") }}
-                        {{ localeData[locale]['button-filled'] }}
-                    </span>
-                </button>
-                <div class="file-input__description">
-                    {{ systemIcon("document", size = "sm") }}
-                    <span class="file-input__description-text--empty">
-                        {{ localeData[locale]['description']}}
-                    </span>
-                    <span class="file-input__description-text--filled">
-                    </span>
-                </div>
+        <div for="{{ id }}" class="file-input__dropzone {{ 'file-input__dropzone--filled' if filled }}">
+            <button class="file-input__button button button--ghost button--size-sm">
+                <span class="file-input__button-content--empty">
+                    {{ systemIcon("upload", size = "sm") }}
+                    {{ localeData[locale]['button-empty-single'] if not multiple }}
+                    {{ localeData[locale]['button-empty-multiple'] if multiple }}
+                </span>
+                <span class="file-input__button-content--filled">
+                    {{ systemIcon("trash", size = "sm") }}
+                    {{ localeData[locale]['button-filled'] }}
+                </span>
+            </button>
+            <div class="file-input__description">
+                {{ systemIcon("document", size = "sm") }}
+                <span class="file-input__description-text--empty">
+                    {{ localeData[locale]['description']}}
+                </span>
+                <span class="file-input__description-text--filled">
+                </span>
             </div>
+        </div>
 
-        {% if multiple %}
-            <div class="file-list"></div>
-        {% endif %}
-    {% if options.messages %}
+    {% if multiple %}
+        <div class="file-list"></div>
+    {% endif %}
+
         <div class="input-message__list">
            {% for message in options.messages %}
                 {{ inputMessage(message.type, message.message) }}
            {% endfor %} 
         </div>
-    {% endif %}
-    {% if options.label or options.messages %}
-        </div>
-    {% endif %}
+    </div>
 {% endmacro %}
