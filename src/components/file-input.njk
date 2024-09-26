@@ -21,9 +21,9 @@ eleventyNavigation:
             }) }}
 
             {{ fileInput({
-                label: "Only accepts application/pdf MIME type",
-                accept: "application/pdf, .pdf",
-                maxFileSize: "10000000"
+                label: "Only accepts a single PDF",
+                helpText: "That is, a file with a name ending in <code>.pdf</code>, or a file of MIME type <code>application/pdf</code>",
+                accept: "application/pdf, .pdf"
             }) }}
         {% endcall %}
     </article>
