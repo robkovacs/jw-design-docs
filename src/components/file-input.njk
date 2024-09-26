@@ -151,12 +151,13 @@ eleventyNavigation:
             <p>Whenever possible, let the user provide whatever they have on hand, and have your application take on the responsibility of resizing or compressing it to meet your needs.</p>
             <p>If they're technically <strong>needs</strong> to be a file size limit, but it's really, really, high, don't worry about including it in the help text.</p>
             
-            {% call figure("<p>In the first example: if the user's receipt image is 10.1 MB, should we really reject it?</p><p>The second example secretly has a file size limit of 64 GB. You won't know unless you actually try to drop in a file that big, and that's OK.</p>") %}
+            {% call figure("<p>In the first example: if one of the user's receipt images is 10.1 MB, should we really reject it?</p><p>The second example secretly has a file size limit of 64 GB. You won't know though unless you actually try to drop in a file that big, and that's OK.</p>") %}
                 {% call stack() %}
                     <div>
                         {{ fileInput({
-                            label: "Receipt",
-                            helpText: "Can be a PDF, or any image file. Must be less than 10 MB",
+                            label: "Receipt(s)",
+                            multiple: true,
+                            helpText: "Can be PDFs, or any type of image file. Must each be less than 10 MB",
                             accept: {
                                 fileTypes: "image/*, application/pdf, .pdf",
                                 errorMessage: "File must be a PDF or image"
@@ -170,8 +171,9 @@ eleventyNavigation:
                     </div>
                     <div>
                         {{ fileInput({
-                            label: "Receipt",
-                            helpText: "Can be a PDF, or any image file",
+                            label: "Receipt(s)",
+                            multiple: true,
+                            helpText: "Can be PDFs, or any type of image file",
                             accept: {
                                 fileTypes: "image/*, application/pdf, .pdf",
                                 errorMessage: "File must be a PDF or image"
