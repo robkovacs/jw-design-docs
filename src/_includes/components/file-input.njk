@@ -1,18 +1,19 @@
 {% from './system-icon.njk' import render as systemIcon %}
 {% from './input-label.njk' import render as inputLabel %}
 {% from './input-message.njk' import render as inputMessage %}
+{% from './button.njk' import render as button %}
 
 {% set localeData = {
     "en_US": {
-        "action-empty-single": "Choose file",
-        "action-empty-multiple": "Choose file(s)",
-        "action-filled": "Delete file",
+        "button-empty-single": "Choose file",
+        "button-empty-multiple": "Choose file(s)",
+        "button-filled": "Delete file",
         "description": "or drag and drop here"
     },
     "de_DE": {
-        "action-empty-single": "Datei wählen",
-        "action-empty-multiple": "Datei(en) wählen",
-        "action-filled": "Datei löschen",
+        "button-empty-single": "Datei wählen",
+        "button-empty-multiple": "Datei(en) wählen",
+        "button-filled": "Datei löschen",
         "description": "oder hier ziehem und ablegen"
     }
 } %}
@@ -40,10 +41,8 @@
     {% if options.label or options.messages %}
         <div class="form-field">
     {% endif %}
-        {{ inputLabel(options.label, required, id, as = "legend", locale = locale) if options.label }}
-        {{ inputMessage("help", options.helpText) if options.helpText }}
-        
-        <fieldset>
+            {{ inputLabel(options.label, required, id, locale = locale) if options.label }}
+            {{ inputMessage("help", options.helpText) if options.helpText }}
             <input
                 type="file" class="file-input__input" id="{{ id }}"
                 hidden {{ 'multiple' if multiple }}
@@ -55,34 +54,32 @@
                 data-max-file-size="{{ maxFileSize }}"
                 {% endif -%}
             />
-            <label for="{{ id }}" class="file-input {{ 'file-input--filled' if filled }} {{ 'file-input--multiple' if multiple }}">
-                <button class="file-input__button" tabindex="1">
-                    <div class="file-input__action">
-                        <div class="file-input__action-text--empty">
-                            {{ systemIcon("upload", size = "sm") }}
-                            {{ localeData[locale]['action-empty-single'] if not multiple }}
-                            {{ localeData[locale]['action-empty-multiple'] if multiple }}
-                        </div>
-                        <div class="file-input__action-text--filled">
-                            {{ systemIcon("trash", size = "sm") }}
-                            {{ localeData[locale]['action-filled'] }}
-                        </div>
-                    </div>
-                    <div class="file-input__description">
-                        {{ systemIcon("document", size = "sm") }}
-                        <span class="file-input__description-text--empty">
-                            {{ localeData[locale]['description']}}
-                        </span>
-                        <span class="file-input__description-text--filled">
-                        </span>
-                    </div>
+
+            <div for="{{ id }}" class="file-input {{ 'file-input--filled' if filled }} {{ 'file-input--multiple' if multiple }}">
+                <button class="file-input__button button button--ghost button--size-sm">
+                    <span class="file-input__button-content--empty">
+                        {{ systemIcon("upload", size = "sm") }}
+                        {{ localeData[locale]['button-empty-single'] if not multiple }}
+                        {{ localeData[locale]['button-empty-multiple'] if multiple }}
+                    </span>
+                    <span class="file-input__button-content--filled">
+                        {{ systemIcon("trash", size = "sm") }}
+                        {{ localeData[locale]['button-filled'] }}
+                    </span>
                 </button>
-            </label>
+                <div class="file-input__description">
+                    {{ systemIcon("document", size = "sm") }}
+                    <span class="file-input__description-text--empty">
+                        {{ localeData[locale]['description']}}
+                    </span>
+                    <span class="file-input__description-text--filled">
+                    </span>
+                </div>
+            </div>
 
         {% if multiple %}
             <div class="file-list"></div>
         {% endif %}
-        </fieldset>
     {% if options.messages %}
         <div class="input-message__list">
            {% for message in options.messages %}

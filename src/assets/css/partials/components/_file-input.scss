@@ -1,59 +1,32 @@
 .file-input {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--size-2xs);
+    background-color: transparent;
+    border: 1px dashed var(--color-gray-500);
+    padding: var(--size-xl);
+    border-radius: var(--size-2xs);
+    font-family: inherit;
+    font-size: var(--size-sm);
+    line-height: var(--size-lg);
+    width: 100%;
 
-    &__button {
-        display: flex;
-        flex-direction: column;
-        gap: var(--size-2xs);
-        background-color: transparent;
-        border: 1px dashed var(--color-gray-500);
-        padding: var(--size-xl);
-        border-radius: var(--size-2xs);
-        font-family: inherit;
-        font-size: var(--size-sm);
-        line-height: var(--size-lg);
-        width: 100%;
-    }
-
-    &__action {
-        color: var(--color-blue-600);
-        font-weight: 700;
-        display: block;
-    }
-
-    &__action-text--filled {
+    &__button-content--filled {
         display: none;
     }
 
     &__description {
         color: var(--color-gray-600);
+        text-align: center;
         
         &-text--filled, & .system-icon {
             display: none;
         }
     }
 
-    @media (hover: hover) {
-        &:hover {
-            border-color: var(--color-gray-600);
-            background-color: var(--color-blue-100);
-
-            & .file-input__action {
-                color: var(--color-blue-700);
-            }
-        }
-    }
-
-    &:active {
-        background-color: var(--color-blue-200);
-
-        & .file-input__action {
-            color: var(--color-blue-800);
-        }
-
-        & .file-input__description {
-            color: var(--color-gray-700);
-        }
+    &.file-input--dragged-over {
+        background-color: var(--color-blue-100);
     }
 
     &.has-error {
@@ -72,15 +45,15 @@
 
     &.file-input--filled {
 
-        & .file-input__action {
+        & .file-input__button {
             order: 2;
             color: var(--color-red-600);
 
-            &-text--empty {
+            &-content--empty {
                 display: none;
             }
     
-            &-text--filled {
+            &-content--filled {
                 display: block;
             }
         }
@@ -101,14 +74,14 @@
 
         @media (hover: hover) {
             &:hover {
-                & .file-input__action {
+                & .file-input__button {
                     color: var(--color-red-700);
                 }
             }
         }
 
         &:active {
-            & .file-input__action {
+            & .file-input__button {
                 color: var(--color-red-800);
             }                
         }
