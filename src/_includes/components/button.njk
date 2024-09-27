@@ -3,6 +3,7 @@
 
 {% macro render(options) %}
     {% set variant %}{{ options.variant | default("filled") }}{% endset %}
+    {% set style %}{{ options.style | default("brand") }}{% endset %}
     {% set size %}{{ options.size | default("md") }}{% endset %}
     {% set classes %}
         {% if options.classes %}
@@ -15,7 +16,7 @@
     {% endset %}
 
     <button
-        class="button button--{{ variant }} button--size-{{ size }} {{ 'button--loading' if options.loading }} {{ classes }}"
+        class="button button--{{ variant }} button--style-{{ style }} button--size-{{ size }} {{ 'button--loading' if options.loading }} {{ classes }}"
         {% for key, value in options.attributes %}
             {{ key }}="{{ value | safe }}"
         {% endfor %}

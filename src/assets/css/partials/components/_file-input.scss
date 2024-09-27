@@ -24,7 +24,6 @@
             
             & .file-input__button {
                 order: 2;
-                color: var(--color-red-600);
 
                 &-content--empty {
                     display: none;
@@ -47,20 +46,6 @@
                 &-text--filled {
                     color: var(--color-gray-900);
                 }
-            }
-
-            @media (hover: hover) {
-                &:hover {
-                    & .file-input__button {
-                        color: var(--color-red-700);
-                    }
-                }
-            }
-
-            &:active {
-                & .file-input__button {
-                    color: var(--color-red-800);
-                }                
             }
         }
     }

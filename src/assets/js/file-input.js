@@ -46,6 +46,8 @@ class FileInput {
         this.button.addEventListener("click", (e) => {
             if (!this.multiple && this.input.files.length) {
                 this.dropzone.classList.remove("file-input__dropzone--filled");
+                this.button.classList.remove("button--style-danger");
+                this.button.classList.add("button--style-brand");
                 this.input.value = null;
             } else {
                 this.input.click();
@@ -168,8 +170,10 @@ class FileInput {
                     !this.dropzone.classList.contains(
                         "file-input__dropzone--filled",
                     )
-                ) {
+                ) {                    
                     this.dropzone.classList.add("file-input__dropzone--filled");
+                    this.button.classList.add("button--style-danger");
+                    this.button.classList.remove("button--style-brand");    
                 }
 
                 let fileNameSlot = this.dropzone.querySelector(
@@ -180,6 +184,9 @@ class FileInput {
                 /* TODO: figure out how to truncate the filename how we wanted */
             } else {
                 this.dropzone.classList.remove("file-input__dropzone--filled");
+                this.button.classList.remove("button--style-danger");
+                this.button.classList.add("button--style-brand");
+
                 uiData[0].errorMessages.forEach((message) => {
                     let inputMessageHTML = document
                         .createRange()
