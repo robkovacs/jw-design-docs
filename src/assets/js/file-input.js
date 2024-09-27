@@ -40,7 +40,7 @@ class FileInput {
 
     addEventListeners() {
         this.input.addEventListener("change", (e) => {
-            this.populateUI();
+            this.processNewFiles(e);
         });
 
         this.button.addEventListener("click", (e) => {
@@ -93,24 +93,32 @@ class FileInput {
                 "file-input__dropzone--dragged-over",
             );
 
-            this.processDroppedFiles(e);
+            this.processNewFiles(e);
         });
     }
 
-    processDroppedFiles(e) {
+    processNewFiles(e) {
         let tempDataTransfer = new DataTransfer();
-        let newlyDroppedFiles = [];
+        let newFiles = [];
 
-        if (e.dataTransfer.items) {
-            [...e.dataTransfer.items].forEach((item) => {
-                if (item.kind === "file" && item.type) {
-                    newlyDroppedFiles.push(item.getAsFile());
-                }
-            });
+        if (e.dataTransfer) {
+            if (e.dataTransfer.items) {
+                [...e.dataTransfer.items].forEach((item) => {
+                    if (item.kind === "file" && item.type) {
+                        newFiles.push(item.getAsFile());
+                    }
+                });
+            } else {
+                [...e.dataTransfer.files].forEach((file) => {
+                    if (file.type) {
+                        newFiles.push(file);
+                    }
+                });
+            }
         } else {
-            [...e.dataTransfer.files].forEach((file) => {
+            [...this.input.files].forEach((file) => {
                 if (file.type) {
-                    newlyDroppedFiles.push(file);
+                    newFiles.push(file);
                 }
             });
         }
@@ -118,7 +126,7 @@ class FileInput {
         let uniqueFiles = [];
         if (this.previouslyAddedFiles.length) {
             uniqueFiles = this.previouslyAddedFiles.concat(
-                newlyDroppedFiles.filter((newFile) => {
+                newFiles.filter((newFile) => {
                     let isKeeper = true;
                     this.previouslyAddedFiles.forEach((previousFile) => {
                         if (
@@ -135,7 +143,7 @@ class FileInput {
                 }),
             );
         } else {
-            uniqueFiles = newlyDroppedFiles;
+            uniqueFiles = newFiles;
         }
 
         uniqueFiles.forEach((file) => {
