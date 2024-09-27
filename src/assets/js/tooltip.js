@@ -146,6 +146,16 @@ class Tooltip {
     }
 }
 
+function getDescendantNodes(node, all = []) {
+    all.push(...node.childNodes);
+
+    for (const child of node.childNodes) {
+        getDescendantNodes(child, all);
+    }
+
+    return all;
+}
+
 let triggers = document.querySelectorAll(".tooltip__trigger");
 
 triggers.forEach((trigger) => {
