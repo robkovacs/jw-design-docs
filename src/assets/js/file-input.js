@@ -22,7 +22,7 @@ class FileInput {
         this.netDragEvents = 0; // dragenter/leave + child nodes gets weird
 
         // State
-        this.currentFiles = [];
+        this.previouslyAddedFiles = [];
 
         this.addEventListeners();
     }
@@ -93,26 +93,55 @@ class FileInput {
                 "file-input__dropzone--dragged-over",
             );
 
-            // get files that were dropped
-            let tempDataTransfer = new DataTransfer();
-
-            if (e.dataTransfer.items) {
-                [...e.dataTransfer.items].forEach((item) => {
-                    if (item.kind === "file" && item.type) {
-                        tempDataTransfer.items.add(item.getAsFile());
-                    }
-                });
-            } else {
-                [...e.dataTransfer.files].forEach((file) => {
-                    if (file.type) {
-                        tempDataTransfer.items.add(file);
-                    }
-                });
-            }
-
-            this.input.files = tempDataTransfer.files;
-            this.populateUI();
+            this.processDroppedFiles(e);
         });
+    }
+
+    processDroppedFiles(e) {
+        let tempDataTransfer = new DataTransfer();
+        let newlyDroppedFiles = [];
+
+        if (e.dataTransfer.items) {
+            [...e.dataTransfer.items].forEach((item) => {
+                if (item.kind === "file" && item.type) {
+                    newlyDroppedFiles.push(item.getAsFile());
+                }
+            });
+        } else {
+            [...e.dataTransfer.files].forEach((file) => {
+                if (file.type) {
+                    newlyDroppedFiles.push(file);
+                }
+            });
+        }
+        
+        let uniqueFiles = [];
+        if (this.previouslyAddedFiles.length) {
+            uniqueFiles = this.previouslyAddedFiles.concat(newlyDroppedFiles.filter((newFile) => {
+                let isKeeper = true;
+                this.previouslyAddedFiles.forEach((previousFile) => {
+                   if (previousFile.name === newFile.name
+                            && previousFile.size === newFile.size
+                            && previousFile.type === newFile.type
+                            && previousFile.lastModified === newFile.lastModified) {
+                        isKeeper = false;
+                    }
+                });
+
+                return isKeeper;
+            }));
+        } else {
+            uniqueFiles = newlyDroppedFiles;
+        }
+        
+        uniqueFiles.forEach((file) => {
+            tempDataTransfer.items.add(file);
+        });
+
+        this.input.files = tempDataTransfer.files;
+        this.previouslyAddedFiles = [...this.input.files];
+
+        this.populateUI();
     }
 
     populateUI() {
