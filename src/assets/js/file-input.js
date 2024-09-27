@@ -129,6 +129,11 @@ class FileInput {
         if (this.previouslyAddedFiles.length) {
             uniqueFiles = this.previouslyAddedFiles.concat(
                 newFiles.filter((newFile) => {
+                    /*
+                        There's not a simple way in JS to know whether two given files are *truly* duplicates of each other.
+                        Similarly, the easier ways of comparing arrays don't seem to work when File objects are involved.
+                        This seems to be the best we can do, but there's a chance of false positives and negatives.
+                    */
                     let isKeeper = true;
                     this.previouslyAddedFiles.forEach((previousFile) => {
                         if (
