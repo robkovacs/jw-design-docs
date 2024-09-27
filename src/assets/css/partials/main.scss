@@ -1,0 +1,101 @@
+@import './breakpoints';
+
+:root {
+    --nav-width: 0;
+    --ui-max-width: 90rem;
+
+    @media screen and (min-width: $breakpoint-md) {
+        --nav-width: 16rem;
+    }
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-white);
+
+    @media screen and (min-width: $breakpoint-md) {
+        min-height: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+    }
+}
+
+main {
+    flex: 1 1 100%;
+    padding: var(--size-xl);
+
+    @media screen and (min-width: $breakpoint-md) {
+        flex: 0 1 calc(var(--ui-max-width) - var(--nav-width));
+        padding: var(--size-5xl);
+        
+        :root {
+            --nav-width: 16rem;
+            --ui-max-width: 90rem;
+        }
+    }
+}
+
+.main-content {
+    display: flex;
+    gap: var(--size-5xl);
+    flex-direction: column;
+    
+    @media screen and (min-width: $breakpoint-lg) {
+        flex-direction: row;
+    }  
+}
+
+#main {
+    /* Don't let page titles with a long word in them might stretch out the layout */
+    overflow-wrap: anywhere;
+}
+
+.body-content {
+    flex: 3 0;
+}
+
+.breadcrumbs {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--size-sm);
+    line-height: var(--size-md);
+    margin-bottom: var(--size-2xs);
+    color: var(--color-gray-700);
+
+    &,
+    & li {
+        display: flex;
+        flex-flow: row wrap;
+        gap: var(--size-3xs);
+    }
+
+    & > li::after {
+        content: "/";
+    }
+}
+
+article {
+    max-width: 40rem;
+}
+
+section + section {
+    margin-top: 4rem;
+}
+
+section + section:has(h3:first-child) {
+    margin-top: 2rem;
+}
+
+section + section:has(h4:first-child) {
+    margin-top: 1rem;
+}
+
+section + section:has(h5:first-child) {
+    margin-top: 0.5rem;
+}
+
+section:has(h2:only-child, h3:only-child, h4:only-child) + section {
+    margin-top: 0;
+}

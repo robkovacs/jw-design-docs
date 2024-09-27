@@ -1,0 +1,165 @@
+.file-input {
+    &__dropzone {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--size-3xs);
+        background-color: transparent;
+        border: var(--size-5xs) dashed var(--color-gray-500);
+        padding: calc(var(--size-xl) - var(--size-5xs));
+        padding-top: calc(var(--size-md) - var(--size-5xs));
+        border-radius: var(--size-2xs);
+        font-family: inherit;
+        font-size: var(--size-sm);
+        line-height: var(--size-lg);
+        width: 100%;
+
+        &.file-input__dropzone--dragged-over {
+            background-color: var(--color-blue-100);
+        }
+
+        &.file-input__dropzone--filled {
+            padding-top: calc(var(--size-xl) - var(--size-5xs));
+            padding-bottom: calc(var(--size-md) - var(--size-5xs));
+            
+            & .file-input__button {
+                order: 2;
+
+                &-content--empty {
+                    display: none;
+                }
+        
+                &-content--filled {
+                    display: block;
+                }
+            }
+
+            & .file-input__description {
+                &-text--empty {
+                    display: none;
+                }
+
+                &-text--filled, & .system-icon {
+                    display: inline;
+                }
+
+                &-text--filled {
+                    color: var(--color-gray-900);
+                }
+            }
+        }
+    }
+
+    &.has-error {
+        & .file-input__dropzone {
+            border-color: var(--color-red-500);
+
+            @media (hover: hover) {
+                &:hover {
+                    border-color: var(--color-red-600);
+                }
+            }
+            
+            &:active {
+                border-color: var(--color-red-700);
+            }
+        }
+    }
+
+    &__button {
+        &-content--filled {
+            display: none;
+        }
+    }
+
+    &__description {
+        color: var(--color-gray-600);
+        text-align: center;
+        
+        &-text--filled, & .system-icon {
+            display: none;
+        }
+    }
+}
+
+.file-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-2xs);
+
+    &:not(:empty) {
+        margin-top: var(--size-xs);
+    }
+}
+
+.file-list-item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: var(--size-md);
+    background-color: var(--color-gray-100);
+    border: var(--size-5xs) solid var(--color-gray-300);
+    border-radius: var(--size-3xs);
+    padding: calc(var(--size-xs) - var(--size-5xs));
+    font-size: var(--size-sm);
+    line-height: var(--size-lg);
+
+    &__filename {
+        overflow-wrap: anywhere;
+    }
+
+    &__buttons {
+        display: flex;
+        margin: calc(-1 * var(--size-xs)) calc(-1 * var(--size-2xs));
+    }
+
+    &__button {
+        width: calc(var(--size-lg) + (2 * var(--size-2xs)));
+        height: calc(var(--size-lg) + (2 * var(--size-xs)));
+        padding: var(--size-xs) var(--size-2xs);
+        appearance: none;
+        border: none;
+        border-radius: var(--size-3xs);
+        background-color: transparent;
+        position: relative;
+
+        &::before {
+            background-color: var(--color-gray-900);
+            mask-repeat: no-repeat;
+            mask-position: center;
+            mask-size: var(--size-lg);
+            content: "";
+            width: var(--size-lg);
+            height: var(--size-lg);
+            position: absolute;
+            right: var(--size-2xs);
+            top: var(--size-xs);
+        }
+
+        &--remove::before {
+            mask-image: url("../../assets/img/system-icons/close.svg");
+        }
+
+        &--preview::before {
+            mask-image: url("../../assets/img/system-icons/zoom-in.svg");
+        }
+    }
+}
+
+
+        
+
+            // &::before {
+            //     background-color: var(--color-gray-900);
+            //     mask-repeat: no-repeat;
+            //     mask-position: center;
+            //     mask-size: var(--size-lg);
+            //     content: "";
+            //     width: var(--size-lg);
+            //     height: var(--size-lg);
+            //     position: absolute;
+            //     right: calc(var(--size-xs) - var(--size-5xs));
+            //     top: calc(var(--size-xs) - var(--size-5xs));
+            //     mask-image: url("../../assets/img/system-icons/close.svg");
+            // }

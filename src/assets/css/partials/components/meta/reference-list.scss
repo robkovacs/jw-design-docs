@@ -1,0 +1,8 @@
+.reference-list {
+    list-style-type: none;
+    padding: 0;
+    margin: var(--size-3xl) 0;
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--size-md);
+}

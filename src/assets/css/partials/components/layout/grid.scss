@@ -1,0 +1,120 @@
+@import '../../breakpoints';
+
+@mixin colspans() {
+    @for $i from 1 through 12 {
+        &-#{$i} {
+            grid-column: auto / span $i;
+        }    
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    width: 100%;
+
+    &--col-gap {
+        &-2xs {
+            column-gap: min(8.3333%, var(--size-2xs));
+        }
+
+        &-xs {
+            column-gap: min(8.3333%, var(--size-xs));
+        }
+
+        &-md {
+            column-gap: min(8.3333%, var(--size-md));
+        }
+
+        &-xl {
+            column-gap: min(8.3333%, var(--size-xl));
+        }
+
+        &-3xl {
+            column-gap: min(8.3333%, var(--size-3xl));
+        }
+
+        &-6xl {
+            column-gap: min(8.3333%, var(--size-6xl));
+        }
+    }
+
+    &--row-gap {
+        &-2xs {
+            row-gap: var(--size-2xs);
+        }
+
+        &-xs {
+            row-gap: var(--size-xs);
+        }
+
+        &-md {
+            row-gap: var(--size-md);
+        }
+
+        &-xl {
+            row-gap: var(--size-xl);
+        }
+
+        &-3xl {
+            row-gap: var(--size-3xl);
+        }
+
+        &-6xl {
+            row-gap: var(--size-6xl);
+        }
+    }
+
+    &--align-items {
+        &-center {
+            align-items: center;
+        }
+
+        &-flex-start {
+            align-items: flex-start;
+        }
+
+        &-flex-end {
+            align-items: flex-end;
+        }
+
+        &-normal {
+            align-items: normal;
+        }
+
+        &-stretch {
+            align-items: stretch;
+        }
+    }
+}
+
+.grid__cell {
+    &--col-xs {
+        @include colspans;
+    }
+
+    @media (min-width: $breakpoint-sm) {
+        &--col-sm {
+            @include colspans;
+        }
+    }
+
+    @media (min-width: $breakpoint-md) {
+        &--col-md {
+            @include colspans;
+        }
+    }
+
+    @media (min-width: $breakpoint-lg) {
+        &--col-lg {
+            @include colspans;
+        }
+    }
+
+    @media (width > $breakpoint-lg) {
+        &--col-xl {
+            @include colspans;
+        }
+    }
+}

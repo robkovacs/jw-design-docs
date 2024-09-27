@@ -1,0 +1,57 @@
+/* TODO: update the call to the TOC plugin to give everything BEM-y class names */
+@import '../breakpoints';
+
+.toc__heading {
+    /* Larger offset to account for mobile header */
+    scroll-margin-top: var(--size-7xl);
+    
+    @media (min-width: $breakpoint-md) {
+        scroll-margin-top: var(--size-3xl);
+    }
+}
+
+.toc__container {
+    align-self: flex-start;
+    top: var(--size-3xl);
+    right: var(--size-3xl);
+
+    @media (min-width: $breakpoint-lg) {
+        position: sticky;
+        order: 2;
+        flex: 0 1 16rem;
+    }
+}
+
+.toc {
+    @media (min-width: $breakpoint-lg) {
+        & .current {
+            background-color: var(--color-blue-100);
+            border-left: var(--size-4xs) solid var(--color-blue-600);
+        }
+    }
+
+    & ol {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    & li {
+        & > ol {
+            margin-bottom: var(--size-md);
+            margin-left: var(--size-md);
+        }
+
+        & a {
+            padding: var(--size-3xs);
+        }
+        
+        @media (min-width: $breakpoint-lg) {
+            & a {
+                padding: var(--size-2xs);
+                border-left: var(--size-4xs) solid transparent;
+                border-radius: 0;
+            }
+        }
+    }
+}
