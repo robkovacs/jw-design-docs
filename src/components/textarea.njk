@@ -10,15 +10,17 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        {{ textarea({
-            label: "This is a textarea",
-            helpText: "It's used when you expect answers that are multiple lines long"
-        }) }}
-        {{ textarea({
-            label: "This is a textarea",
-            helpText: "It's disabled though",
-            disabled: true
-        }) }}
+        {% call stack() %}
+            {{ textarea({
+                label: "This is a textarea",
+                helpText: "It's used when you expect answers that are multiple lines long"
+            }) }}
+            {{ textarea({
+                label: "This is a textarea",
+                helpText: "It's disabled though",
+                disabled: true
+            }) }}
+        {% endcall %}
     </article>
 {% endblock %}
 
