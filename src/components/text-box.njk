@@ -12,9 +12,7 @@ eleventyNavigation:
     <article>
         {% call stack() %}
             {{ textBox({
-                label: "Enter a value",
-                helpText: "You must use only numbers (0-9)",
-                attributes: { pattern: "\\d+" }
+                label: "Enter a value"
             }) }}
 
             {{ textBox({
