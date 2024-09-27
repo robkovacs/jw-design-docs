@@ -1,13 +1,22 @@
 import createToast from "./toast.js";
 
-let colorSwatchButtons = document.querySelectorAll(".color-swatch__button:not(.color-swatch__button--hex)");
-let colorSwatchHexButtons = document.querySelectorAll(".color-swatch__button--hex");
+let colorSwatchButtons = document.querySelectorAll(
+    ".color-swatch__button:not(.color-swatch__button--hex)",
+);
+let colorSwatchHexButtons = document.querySelectorAll(
+    ".color-swatch__button--hex",
+);
 
 colorSwatchHexButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
         e.preventDefault();
-        let computedBgColor = window.getComputedStyle(e.currentTarget.closest(".color-swatch").querySelector(".color-swatch__preview > span")).backgroundColor;
-        e.currentTarget.dataset.copyText = computedBgColorToHexA(computedBgColor);
+        let computedBgColor = window.getComputedStyle(
+            e.currentTarget
+                .closest(".color-swatch")
+                .querySelector(".color-swatch__preview > span"),
+        ).backgroundColor;
+        e.currentTarget.dataset.copyText =
+            computedBgColorToHexA(computedBgColor);
         createToast(e.currentTarget.dataset.copyText, "Copied!");
     });
 });

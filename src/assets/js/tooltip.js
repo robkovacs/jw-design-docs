@@ -31,7 +31,9 @@ class Tooltip {
         if (this.autoUpdating) {
             let newTooltip = this.tooltip.cloneNode(true);
             newTooltip.removeAttribute("style");
-            newTooltip.querySelector(".tooltip__arrow").removeAttribute("style");
+            newTooltip
+                .querySelector(".tooltip__arrow")
+                .removeAttribute("style");
             this.tooltip.remove();
             this.autoUpdater();
             this.trigger.after(newTooltip);

@@ -175,10 +175,10 @@ class FileInput {
                     !this.dropzone.classList.contains(
                         "file-input__dropzone--filled",
                     )
-                ) {                    
+                ) {
                     this.dropzone.classList.add("file-input__dropzone--filled");
                     this.button.classList.add("button--style-danger");
-                    this.button.classList.remove("button--style-brand");    
+                    this.button.classList.remove("button--style-brand");
                 }
 
                 let fileNameSlot = this.dropzone.querySelector(
