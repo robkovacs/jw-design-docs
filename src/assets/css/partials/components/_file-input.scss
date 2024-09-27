@@ -5,8 +5,9 @@
         align-items: center;
         gap: var(--size-3xs);
         background-color: transparent;
-        border: 1px dashed var(--color-gray-500);
-        padding: var(--size-xl);
+        border: var(--size-5xs) dashed var(--color-gray-500);
+        padding: calc(var(--size-xl) - var(--size-5xs));
+        padding-top: calc(var(--size-md) - var(--size-5xs));
         border-radius: var(--size-2xs);
         font-family: inherit;
         font-size: var(--size-sm);
