@@ -69,5 +69,10 @@
                 margin-bottom: 0;
             }
         }
+
+        & > p:last-child,
+        & > p:only-child {
+            margin-bottom: 0;
+        }
     }
 }

@@ -8,6 +8,11 @@
         border: var(--size-5xs) solid var(--color-gray-200);
         border-radius: var(--size-xs);
         box-shadow: var(--box-shadow-level-3);
+
+        & > p:last-child,
+        & > p:only-child {
+            margin-bottom: 0;
+        }
     }
 
     &__figure:has(+ &__caption) {
