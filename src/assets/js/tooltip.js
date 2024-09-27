@@ -28,15 +28,17 @@ class Tooltip {
     }
 
     stopUpdating() {
-        let newTooltip = this.tooltip.cloneNode(true);
-        newTooltip.removeAttribute("style");
-        newTooltip.querySelector(".tooltip__arrow").removeAttribute("style");
-        this.tooltip.remove();
-        this.autoUpdater();
-        this.trigger.after(newTooltip);
-        this.tooltip = newTooltip;
-        this.arrow = newTooltip.querySelector(".tooltip__arrow");
-        this.autoUpdating = false;
+        if (this.autoUpdating) {
+            let newTooltip = this.tooltip.cloneNode(true);
+            newTooltip.removeAttribute("style");
+            newTooltip.querySelector(".tooltip__arrow").removeAttribute("style");
+            this.tooltip.remove();
+            this.autoUpdater();
+            this.trigger.after(newTooltip);
+            this.tooltip = newTooltip;
+            this.arrow = newTooltip.querySelector(".tooltip__arrow");
+            this.autoUpdating = false;
+        }
     }
 
     updatePosition() {
@@ -136,10 +138,10 @@ class Tooltip {
 
         document.addEventListener("click", (e) => {
             let tooltipNodes = getDescendantNodes(this.tooltip);
-            let thisTooltipTargered =
+            let thisTooltipTargeted =
                 e.target == this.tooltip ||
                 tooltipNodes.indexOf(e.target) !== -1;
-            if (!thisTooltipTargered) {
+            if (!thisTooltipTargeted) {
                 this.hideTooltip();
             }
         });
