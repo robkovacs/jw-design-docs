@@ -114,26 +114,30 @@ class FileInput {
                 }
             });
         }
-        
+
         let uniqueFiles = [];
         if (this.previouslyAddedFiles.length) {
-            uniqueFiles = this.previouslyAddedFiles.concat(newlyDroppedFiles.filter((newFile) => {
-                let isKeeper = true;
-                this.previouslyAddedFiles.forEach((previousFile) => {
-                   if (previousFile.name === newFile.name
-                            && previousFile.size === newFile.size
-                            && previousFile.type === newFile.type
-                            && previousFile.lastModified === newFile.lastModified) {
-                        isKeeper = false;
-                    }
-                });
+            uniqueFiles = this.previouslyAddedFiles.concat(
+                newlyDroppedFiles.filter((newFile) => {
+                    let isKeeper = true;
+                    this.previouslyAddedFiles.forEach((previousFile) => {
+                        if (
+                            previousFile.name === newFile.name &&
+                            previousFile.size === newFile.size &&
+                            previousFile.type === newFile.type &&
+                            previousFile.lastModified === newFile.lastModified
+                        ) {
+                            isKeeper = false;
+                        }
+                    });
 
-                return isKeeper;
-            }));
+                    return isKeeper;
+                }),
+            );
         } else {
             uniqueFiles = newlyDroppedFiles;
         }
-        
+
         uniqueFiles.forEach((file) => {
             tempDataTransfer.items.add(file);
         });
