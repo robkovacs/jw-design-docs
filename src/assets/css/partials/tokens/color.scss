@@ -3,7 +3,7 @@
     
     --color-transparent: transparent;
     --color-white: light-dark(#fff, #000);
-    --color-white_10: light-dark(#ffffff1a, #0000001a);
+    --color-white-opacity-10: light-dark(#ffffff1a, #0000001a);
 
     --color-gray-100: light-dark(#f7f8fb, #1c1d1f);
     --color-gray-200: light-dark(#eef0f4, #3f4147);
@@ -14,7 +14,7 @@
     --color-gray-700: light-dark(#5e6167, #d9dce1);
     --color-gray-800: light-dark(#3f4147, #eef0f4);
     --color-gray-900: light-dark(#1c1d1f, #f7f8fb);
-    --color-gray-900_10: light-dark(#1c1d1f1a, #f7f8fb1a);
+    --color-gray-900-opacity-10: light-dark(#1c1d1f1a, #f7f8fb1a);
 
     --color-blue-100: light-dark(#e5f3ff, #15246d);
     --color-blue-200: light-dark(#b6e5ff, #1e3d92);

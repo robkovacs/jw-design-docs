@@ -1,6 +1,8 @@
 html {
+    /* stylelint-disable property-no-vendor-prefix */
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    /* stylelint-enable property-no-vendor-prefix */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizelegibility;
@@ -101,9 +103,13 @@ em {
     margin-bottom: var(--size-2xl);
     padding-left: var(--size-3xl);
 
-    & > li + li,
-    & .bulleted-list li:first-child {
+    & li + li,
+    & & li:first-child {
         margin-top: var(--size-2xs);
+    }
+
+    p + & {
+        margin-top: calc(-1 * var(--size-md));
     }
 
     &:last-child {
@@ -116,17 +122,16 @@ em {
     margin-bottom: var(--size-2xl);
     padding-left: var(--size-3xl);
 
-    & > li + li,
-    & .numbered-list li:first-child {
+    & li + li,
+    & & li:first-child {
         margin-top: var(--size-2xs);
+    }
+
+    p + & {
+        margin-top: calc(-1 * var(--size-md));
     }
 
     &:last-child {
         margin-bottom: 0;
     }
-}
-
-p + .bulleted-list,
-p + .numbered-list {
-    margin-top: calc(-1 * var(--size-md));
 }

@@ -37,6 +37,39 @@
         fill: var(--color-gray-100);
     }
 
+    &__content,
+    &__label,
+    &__description {
+        pointer-events: none;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-2xs);
+    }
+
+    &__label,
+    &__description {
+        display: block;
+    }
+
+    &__description {
+        color: var(--color-gray-600);
+        font-size: var(--size-sm);
+        line-height: var(--size-lg);
+    }
+
+    &[aria-checked="true"] {
+        & .toggle-switch__foreground {
+            cx: 1.375rem;
+        }
+
+        & .toggle-switch__background {
+            fill: var(--color-blue-600);
+        }
+    }
+
     @media (hover: hover) {
         &:hover {
             & .toggle-switch__background,
@@ -77,47 +110,6 @@
         }
     }
 
-    &:focus-visible:not(.toggle-switch--framed) {
-        outline: none;
-        box-shadow: none;
-
-        & .toggle-switch__frame {
-            overflow: visible;
-        }
-
-        & .toggle-switch__background {
-            outline: var(--color-blue-500) solid var(--size-4xs);
-            outline-offset: var(--size-4xs);
-            box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
-            border-radius: var(--size-xs);
-        }
-    }
-
-    &:active {
-        & .toggle-switch__background,
-        & .toggle-switch__foreground {
-            stroke: var(--color-gray-700);
-        }
-
-        &[aria-checked="true"] .toggle-switch__background {
-            fill: var(--color-blue-800);
-        }
-
-        &[aria-checked="false"] .toggle-switch__background {
-            fill: var(--color-gray-300);
-        }
-    }
-
-    &[aria-checked="true"] {
-        & .toggle-switch__foreground {
-            cx: 1.375rem;
-        }
-
-        & .toggle-switch__background {
-            fill: var(--color-blue-600);
-        }
-    }
-
     &:disabled, &[aria-disabled="true"] {
         color: var(--color-gray-500);
 
@@ -138,6 +130,21 @@
             color: var(--color-gray-500);
         }
     }
+    
+    &:active {
+        & .toggle-switch__background,
+        & .toggle-switch__foreground {
+            stroke: var(--color-gray-700);
+        }
+
+        &[aria-checked="true"] .toggle-switch__background {
+            fill: var(--color-blue-800);
+        }
+
+        &[aria-checked="false"] .toggle-switch__background {
+            fill: var(--color-gray-300);
+        }
+    }
 
     &[aria-checked="true"]:disabled, &[aria-checked="true"][aria-disabled="true"] {
         & .toggle-switch__background {
@@ -145,27 +152,20 @@
         }
     }
 
-    &__content,
-    &__label,
-    &__description {
-        pointer-events: none;
-    }
+    &:focus-visible:not(.toggle-switch--framed) {
+        outline: none;
+        box-shadow: none;
 
-    &__content {
-        display: flex;
-        flex-direction: column;
-        gap: var(--size-2xs);
-    }
+        & .toggle-switch__frame {
+            overflow: visible;
+        }
 
-    &__label,
-    &__description {
-        display: block;
-    }
-
-    &__description {
-        color: var(--color-gray-600);
-        font-size: var(--size-sm);
-        line-height: var(--size-lg);
+        & .toggle-switch__background {
+            outline: var(--color-blue-500) solid var(--size-4xs);
+            outline-offset: var(--size-4xs);
+            box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
+            border-radius: var(--size-xs);
+        }
     }
 }
 
@@ -226,6 +226,25 @@
         }
     }
 
+    &:disabled, &[aria-disabled="true"] {
+        background-color: var(--color-white);
+        border-color: var(--color-gray-400);
+        color: var(--color-gray-500);
+
+        & .toggle-switch__background,
+        & .toggle-switch__foreground {
+            stroke: var(--color-gray-400);
+        }
+
+        & .toggle-switch__foreground {
+           fill: var(--color-gray-200);
+        }
+
+        & .toggle-switch__background {
+            fill: var(--color-gray-300);
+        }
+    }
+
     &:active {
         background-color: var(--color-gray-200);
         border-color: var(--color-gray-700);
@@ -276,25 +295,6 @@
             & .toggle-switch__description {
                 color: var(--color-gray-500);
             }
-        }
-    }
-
-    &:disabled, &[aria-disabled="true"] {
-        background-color: var(--color-white);
-        border-color: var(--color-gray-400);
-        color: var(--color-gray-500);
-
-        & .toggle-switch__background,
-        & .toggle-switch__foreground {
-            stroke: var(--color-gray-400);
-        }
-
-        & .toggle-switch__foreground {
-           fill: var(--color-gray-200);
-        }
-
-        & .toggle-switch__background {
-            fill: var(--color-gray-300);
         }
     }
 

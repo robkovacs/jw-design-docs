@@ -1,4 +1,19 @@
 .file-input {
+    &__button {
+        &-content--filled {
+            display: none;
+        }
+    }
+
+    &__description {
+        color: var(--color-gray-600);
+        text-align: center;
+        
+        &-text--filled, & .system-icon {
+            display: none;
+        }
+    }
+
     &__dropzone {
         display: flex;
         flex-direction: column;
@@ -66,21 +81,6 @@
             }
         }
     }
-
-    &__button {
-        &-content--filled {
-            display: none;
-        }
-    }
-
-    &__description {
-        color: var(--color-gray-600);
-        text-align: center;
-        
-        &-text--filled, & .system-icon {
-            display: none;
-        }
-    }
 }
 
 .file-list {
@@ -146,20 +146,3 @@
         }
     }
 }
-
-
-        
-
-            // &::before {
-            //     background-color: var(--color-gray-900);
-            //     mask-repeat: no-repeat;
-            //     mask-position: center;
-            //     mask-size: var(--size-lg);
-            //     content: "";
-            //     width: var(--size-lg);
-            //     height: var(--size-lg);
-            //     position: absolute;
-            //     right: calc(var(--size-xs) - var(--size-5xs));
-            //     top: calc(var(--size-xs) - var(--size-5xs));
-            //     mask-image: url("../../assets/img/system-icons/close.svg");
-            // }

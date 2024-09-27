@@ -14,6 +14,10 @@
 }
 
 .chip--dismissible {
+    &:disabled, &[aria-disabled="true"] {
+        color: var(--color-gray-500);
+    }
+
     @media (hover: hover) {
         &:hover {
             background-color: var(--color-gray-200);
@@ -30,10 +34,6 @@
         &:disabled, &[aria-disabled="true"] {
             background-color: var(--color-gray-100);
         }
-    }
-
-    &:disabled, &[aria-disabled="true"] {
-        color: var(--color-gray-500);
     }
 
     & .system-icon {

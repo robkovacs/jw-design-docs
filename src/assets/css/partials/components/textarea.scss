@@ -35,6 +35,17 @@
     &.has-error {
         border-color: var(--color-red-500);
     }
+
+    &:disabled, &[aria-disabled="true"] {
+        background-color: var(--color-gray-200);
+        border-color: var(--color-gray-400);
+        color: var(--color-gray-500);
+        cursor: not-allowed;
+
+        &::placeholder {
+            color: var(--color-gray-400);
+        }
+    }
     
     @media (hover: hover) {
         &:hover {
@@ -63,17 +74,6 @@
     
         &:disabled, &[aria-disabled="true"] {
             border-color: var(--color-gray-400);
-        }
-    }
-    
-    &:disabled, &[aria-disabled="true"] {
-        background-color: var(--color-gray-200);
-        border-color: var(--color-gray-400);
-        color: var(--color-gray-500);
-        cursor: not-allowed;
-
-        &::placeholder {
-            color: var(--color-gray-400);
         }
     }
 }
