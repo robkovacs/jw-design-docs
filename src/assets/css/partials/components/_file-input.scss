@@ -19,6 +19,9 @@
         }
 
         &.file-input__dropzone--filled {
+            padding-top: calc(var(--size-xl) - var(--size-5xs));
+            padding-bottom: calc(var(--size-md) - var(--size-5xs));
+            
             & .file-input__button {
                 order: 2;
                 color: var(--color-red-600);
