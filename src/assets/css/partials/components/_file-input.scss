@@ -3,6 +3,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         gap: var(--size-3xs);
         background-color: transparent;
         border: var(--size-5xs) dashed var(--color-gray-500);
@@ -96,12 +97,17 @@
     position: relative;
     display: flex;
     justify-content: space-between;
+    gap: var(--size-md);
     background-color: var(--color-gray-100);
     border: var(--size-5xs) solid var(--color-gray-300);
     border-radius: var(--size-3xs);
     padding: calc(var(--size-xs) - var(--size-5xs));
     font-size: var(--size-sm);
     line-height: var(--size-lg);
+
+    &__filename {
+        overflow-wrap: anywhere;
+    }
 
     &__buttons {
         display: flex;
