@@ -9,4 +9,42 @@ eleventyNavigation:
 {% extends '../_includes/layout.njk' %}
 
 {% block content %}
+    <article>
+        {{ multiSelect({
+            label: "Pizza toppings",
+            placeholder: "Choose one or more toppings",
+            required: true,
+            options: [
+                {
+                    label: "Meats",
+                    options: [
+                        { label: "Chicken" },
+                        { label: "Ground beef" },
+                        { label: "Ham" },
+                        { label: "Pepperoni" },
+                        { label: "Sausage" }
+                    ]
+                },
+                {
+                    label: "Vegetables",
+                    options: [
+                        { label: "Mushrooms" },
+                        { label: "Onions (red)" },
+                        { label: "Onions (white)" },
+                        { label: "Olives (black)" },
+                        { label: "Olives (green)" },
+                        { value: "green-peppers", label: "Peppers (green)" },
+                        { label: "Peppers (red)" }
+                    ]
+                },
+                {
+                    label: "Fruits",
+                    disabled: true,
+                    options: [
+                        { label: "Pineapple" }
+                    ]
+                }
+            ]
+        }) }}
+    </article>
 {% endblock %}

@@ -1,0 +1,155 @@
+.multi-select {
+
+    &__wrapper {
+        position: relative;
+        cursor: default;
+    }
+
+
+    &__container {
+        padding:
+            calc(var(--size-3xs) - var(--size-5xs))
+            calc(var(--size-5xl) - var(--size-5xs))
+            calc(var(--size-3xs) - var(--size-5xs))
+            calc(var(--size-2xs) - var(--size-5xs));
+        border-radius: var(--size-3xs);
+        border: var(--size-5xs) solid var(--color-gray-500);
+        overflow-x: scroll;
+        display: flex;
+        flex-flow: row nowrap;
+        gap: var(--size-3xs);
+        scrollbar-width: none;
+        align-items: center;
+    
+        &::-webkit-scrollbar { 
+            display: none;
+        }
+
+        &:has(:focus-visible) {
+            outline-offset: var(--size-4xs);
+            outline: var(--color-blue-500) solid var(--size-4xs);
+            box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
+        }
+
+        & .chip:focus-visible {
+            outline: none;
+            box-shadow: none;
+            background-color: var(--color-gray-200);
+
+            // TODO: this is how it works now, where you can't tell if you've focused a chip. Not great.
+        }
+    }
+
+    &__typeahead {
+        appearance: none;
+        border: none;
+        padding: var(--size-2xs);
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        min-width: 15rem;
+        width: 100%;
+
+        &:focus-visible {
+            outline: none;
+            box-shadow: none;
+        }
+
+        &::placeholder {
+            color: var(--color-gray-400);
+        }
+
+        &:not(:first-child)::placeholder {
+            opacity: 0;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        pointer-events: none;
+        padding: calc(var(--size-xs) - var(--size-5xs));
+        top: var(--size-5xs);
+        right: var(--size-5xs);
+        background-color: var(--color-white);
+        margin-left: var(--size-xs);
+        border-radius: var(--size-3xs);
+    }
+
+    &__listbox {
+        display: none;
+        position: absolute;
+        width: 100%;
+        max-height: 14.25rem; /* 5.5 options + listbox padding */
+        overflow-x: scroll;
+        overscroll-behavior: contain;
+        background-color: var(--color-white);
+        box-shadow: var(--box-shadow-level-2);
+        border-radius: var(--size-3xs);
+        border: var(--size-5xs) solid var(--color-gray-500);
+        padding: var(--size-3xs);
+        z-index: 3;
+    }
+
+    &__optgroup {
+        &-label {
+            padding: var(--size-2xs) var(--size-md);
+            user-select: none;
+            font-weight: 700;
+        }
+
+        &[aria-disabled="true"] {
+            color: var(--color-gray-400);
+            cursor: not-allowed;
+        }
+    }
+
+    &__option {
+        appearance: none;
+        padding: var(--size-2xs) var(--size-md);
+        color: var(--color-gray-900);
+        display: block;
+        width: 100%;
+        border: none;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        background-color: var(--color-white);
+        text-align: left;
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--color-gray-900);
+                background-color: var(--color-gray-100);
+            }
+        }
+
+        &:active {
+            color: var(--color-gray-900);
+            background-color: var(--color-gray-200);            
+        }
+
+        .multi-select__optgroup > & {
+            padding-left: var(--size-3xl);
+        }
+
+        .multi-select__optgroup[aria-disabled="true"] > & {
+            color: var(--color-gray-400);
+            cursor: not-allowed;
+
+            &:hover {
+                color: var(--color-gray-400);
+                background-color: var(--white);
+            }
+
+            &:active {
+                color: var(--color-gray-400);
+                background-color: var(--color-white);            
+            }
+        }
+    }
+
+    &__no-results {
+        padding: var(--size-2xs) var(--size-md);
+        color: var(--color-gray-500);
+    }
+}

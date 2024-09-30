@@ -1,9 +1,9 @@
-import { computePosition, flip, shift, autoUpdate } from "@floating-ui/dom";
+import { computePosition, flip, autoUpdate, size } from "@floating-ui/dom";
 
 class Menu {
-    constructor(trigger, menu) {
+    constructor(trigger) {
         this.trigger = trigger;
-        this.menu = menu;
+        this.menu = this.trigger.nextElementSibling;
         this.autoUpdating = false;
         this.menuHidden = true;
 
@@ -32,7 +32,16 @@ class Menu {
     updatePosition() {
         computePosition(this.trigger, this.menu, {
             placement: "bottom-start",
-            middleware: [flip(), shift({ padding: 32 })],
+            middleware: [flip(), size({
+                padding: 32,
+                apply({availableHeight, elements}) {
+                    Object.assign(elements.floating.style, {
+                        // 228px = 5.5 items + listbox padding
+                        maxHeight: `${Math.min(228, availableHeight)}px`,
+                    });
+                }
+            })
+        ],
         }).then(async ({ x, y }) => {
             Object.assign(this.menu.style, {
                 left: `${x}px`,
@@ -75,8 +84,8 @@ class Menu {
         });
 
         document.addEventListener("click", (e) => {
-            let triggerNodes = getDescendantNodes(this.trigger);
-            let menuNodes = getDescendantNodes(this.menu);
+            let triggerNodes = this.getDescendantNodes(this.trigger);
+            let menuNodes = this.getDescendantNodes(this.menu);
             let thisMenuTargeted =
                 e.target == this.menu ||
                 e.target == this.trigger ||
@@ -87,24 +96,22 @@ class Menu {
             }
         });
     }
+
+    getDescendantNodes(node, all = []) {
+        all.push(...node.childNodes);
+    
+        for (const child of node.childNodes) {
+            this.getDescendantNodes(child, all);
+        }
+    
+        return all;
+    }
 }
 
 let triggers = document.querySelectorAll(".menu__trigger");
 triggers.forEach((trigger) => {
-    let menu = trigger.nextElementSibling;
-
-    new Menu(trigger, menu);
+    new Menu(trigger);
 });
-
-function getDescendantNodes(node, all = []) {
-    all.push(...node.childNodes);
-
-    for (const child of node.childNodes) {
-        getDescendantNodes(child, all);
-    }
-
-    return all;
-}
 
 /*
 TODO: needs to support a lot more keyboard interactions, as described in
