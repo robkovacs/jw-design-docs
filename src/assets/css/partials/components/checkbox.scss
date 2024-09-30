@@ -159,7 +159,7 @@
         background-color: var(--color-blue-100);
     }
 
-    &:has(has-error) {
+    &:has(.has-error) {
         border-color: var(--color-red-500);
     }
 
