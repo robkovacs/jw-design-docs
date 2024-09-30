@@ -102,12 +102,7 @@ em {
     margin-top: 0;
     margin-bottom: var(--size-2xl);
     padding-left: var(--size-3xl);
-
-    & li + li,
-    & & li:first-child {
-        margin-top: var(--size-2xs);
-    }
-
+    
     p + & {
         margin-top: calc(-1 * var(--size-md));
     }
@@ -122,16 +117,22 @@ em {
     margin-bottom: var(--size-2xl);
     padding-left: var(--size-3xl);
 
-    & li + li,
-    & & li:first-child {
-        margin-top: var(--size-2xs);
-    }
-
     p + & {
         margin-top: calc(-1 * var(--size-md));
     }
 
     &:last-child {
         margin-bottom: 0;
+    }
+}
+
+.bulleted-list,
+.numbered-list {
+    & > li + li {
+        margin-top: var(--size-2xs);
+    }
+
+    & > li > & li:first-child {
+        margin-top: var(--size-2xs);
     }
 }
