@@ -60,6 +60,7 @@
                 }
 
                 &-text--filled {
+                    overflow-wrap: anywhere;
                     color: var(--color-gray-900);
                 }
             }
