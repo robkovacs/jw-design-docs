@@ -16,7 +16,8 @@
 
 {% macro render(options) %}
     {% set required = (options.required | default(true)) %}
-    {% set id %}{{ options.id | default(nanoid()) }}{% endset %}
+    {% set id = (options.id | default(nanoid())) %}
+    {% set typeaheadId = nanoid() %}
     {% set locale = options.locale | default("en_US") %}
     {% set placeholder = options.placeholder | default(localeData[locale].placeholder) %}
     
@@ -34,7 +35,7 @@
     {% if options.label or options.messages %}
         <div class="form-field">
     {% endif %}
-            {{ inputLabel(options.label, required, id, locale = locale) if options.label }}
+            {{ inputLabel(options.label, required, typeaheadId, locale = locale) if options.label }}
             {{ inputMessage("help", options.helpText) if options.helpText }}
             <div class="multi-select__wrapper">
                 <input type="hidden"
@@ -51,6 +52,7 @@
                 <div class="multi-select__container">
                     <input
                         type="text"
+                        id="{{ typeaheadId | safe }}"
                         class="multi-select__typeahead"
                         placeholder="{{ placeholder | safe }}"
                     />
