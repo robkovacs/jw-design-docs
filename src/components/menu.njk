@@ -10,6 +10,9 @@ eleventyNavigation:
 
 {% block content %}
     <article>
+        {% call callout({ type: "warning" }) %}
+            This component is still being worked on...it might have some bugs!
+        {% endcall %}
         {% call stack() %}
             <div>
                 {{ menu({
@@ -50,49 +53,6 @@ eleventyNavigation:
                     ]
                 }) }}
             </div>
-            {% call row({ gap: "3xs" }) %}
-                {{ button({ content: "Edit", variant: "ghost" }) }}
-                {{ button({ content: "Delete", variant: "ghost" }) }}
-                <div>
-                    {{ menu({
-                        trigger: button({ leftIcon: "ellipsis", variant: "ghost" }),
-                        menuItems: [
-                            {
-                                title: "Delete",
-                                href: "javascript: console.log('item 1');"
-                            },
-                            {
-                                title: "Duplicate",
-                                onClick: "javascript: console.log('item 2'); return false;"
-                            },
-                            {
-                                title: "Edit this thingy... let's see what happens if this gets real real long",
-                                href: "javascript: console.log('item 1');"
-                            },
-                            {
-                                title: "Reschedule",
-                                onClick: "javascript: console.log('item 2'); return false;"
-                            },
-                            {
-                                title: "Delete",
-                                href: "javascript: console.log('item 1');"
-                            },
-                            {
-                                title: "Cancel",
-                                onClick: "javascript: console.log('item 2'); return false;"
-                            },
-                                            {
-                                title: "Delete",
-                                href: "javascript: console.log('item 1');"
-                            },
-                            {
-                                title: "Duplicate",
-                                onClick: "javascript: console.log('item 2'); return false;"
-                            }
-                        ]
-                    }) }}
-                </div>
-            {% endcall %}
         {% endcall %}
     </article>
 {% endblock %}

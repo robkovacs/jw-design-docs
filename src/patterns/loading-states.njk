@@ -36,7 +36,7 @@ eleventyNavigation:
                 alt="An example of a determinate loading state: the progress bar shown while downloading macOS updates"
             /></p>
 
-            {% call callout("info") %}
+            {% call callout() %}
                 <p>At Justworks, we can almost always get by with just indeterminate loading states. Loading processes in our interfaces are typically short and simple enough that a determinate loading state isn't necessary.</p>
                 <p>If that ever changes, of course we'll standardize on an approach to determinate loading states too. But not yet...</p>
             {% endcall %}
@@ -218,7 +218,7 @@ eleventyNavigation:
             <p>In this case, your primary goal should be to decrease the loading time! But if you absolutely cannot, a skeleton is a good fallback.</p>
         </section>
         <section>
-            {% call callout({type: "info"}) %}
+            {% call callout() %}
                 <div class="h4">Prefer a flow chart? Today's your lucky day!</div>
                 <div style="margin-bottom: -1rem">
                     {{ figmaEmbed("https://embed.figma.com/design/9krwXqHpvNu7GIloNxodj8/Design-System---Patterns?m=auto&node-id=3948-1085&embed-host=share") }}

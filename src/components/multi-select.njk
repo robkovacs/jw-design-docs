@@ -10,6 +10,9 @@ eleventyNavigation:
 
 {% block content %}
     <article>
+        {% call callout({ type: "warning" }) %}
+            This component is still being worked on...it might have some bugs!
+        {% endcall %}
         {{ multiSelect({
             label: "Pizza toppings",
             placeholder: "Choose one or more toppings",
