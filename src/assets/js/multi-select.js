@@ -41,7 +41,7 @@ class MultiSelect {
         computePosition(this.container, this.listbox, {
             placement: "bottom-start",
             middleware: [
-                flip(),
+                flip({ padding: 32 }),
                 offset(-1),
                 size({
                     padding: 32,
