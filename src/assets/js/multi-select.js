@@ -109,15 +109,8 @@ class MultiSelect {
 
         this.addOptionEventListeners();
 
-        document.addEventListener("click", (e) => {
-            let containerNodes = this.getDescendantNodes(this.container);
-            let listboxNodes = this.getDescendantNodes(this.listbox);
-            let thisListboxTargeted =
-                e.target == this.listbox ||
-                e.target == this.container ||
-                listboxNodes.indexOf(e.target) !== -1 ||
-                containerNodes.indexOf(e.target) !== -1;
-            if (!this.listboxHidden && !thisListboxTargeted) {
+        document.addEventListener("click", (e) => {                
+            if (!this.listboxHidden && !this.listbox.contains(e.target) && !this.container.contains(e.target)) {
                 this.hideListbox();
             }
         });
@@ -227,16 +220,6 @@ class MultiSelect {
         e.target.remove();  
 
         // TODO: this isn't actually filtering options, and showing the listbox. seems to be hiding in based on the document click event. WTF.
-    }
-
-    getDescendantNodes(node, all = []) {
-        all.push(...node.childNodes);
-
-        for (const child of node.childNodes) {
-            this.getDescendantNodes(child, all);
-        }
-
-        return all;
     }
 }
 

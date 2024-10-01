@@ -139,25 +139,11 @@ class Tooltip {
         });
 
         document.addEventListener("click", (e) => {
-            let tooltipNodes = getDescendantNodes(this.tooltip);
-            let thisTooltipTargeted =
-                e.target == this.tooltip ||
-                tooltipNodes.indexOf(e.target) !== -1;
-            if (!thisTooltipTargeted) {
+            if (!this.tooltip.contains(e.target)) {
                 this.hideTooltip();
             }
         });
     }
-}
-
-function getDescendantNodes(node, all = []) {
-    all.push(...node.childNodes);
-
-    for (const child of node.childNodes) {
-        getDescendantNodes(child, all);
-    }
-
-    return all;
 }
 
 let triggers = document.querySelectorAll(".tooltip__trigger");
