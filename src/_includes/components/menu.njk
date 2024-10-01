@@ -1,17 +1,15 @@
 {% macro render(options) %}
     {% set id = nanoid() %}
     {% set trigger = addClass(options.trigger, 'menu__trigger') %}
-    {{ addAttribute(trigger, { 'aria-describedby': id }) | safe }}
+    {{ addAttribute(trigger, { "aria-haspopup": "true", "aria-expanded": "false", "aria-controls": id }) | safe }}
 
-    <div class="menu" id="{{ id }}" tabindex="1">
-        <ul class="menu__item-list">
+    <div class="menu" id="{{ id }}" role="menu" hidden tabindex="-1">
     {% for item in options.menuItems %}
         {% if item.href %}
-            <li><a href="{{ item.href | safe }}" class="menu__item menu__item--link">{{ item.title }}</a></li>
+            <a role="menuitem" tabindex="-1" href="{{ item.href | safe }}" class="menu__item menu__item--link">{{ item.title }}</a>
         {% elseif item.onClick %}
-            <li><button onclick="{{ item.onClick | safe }}" class="menu__item menu__item--button">{{ item.title }}</button></li>
+            <button role="menuitem" tabindex="-1" onclick="{{ item.onClick | safe }}" class="menu__item menu__item--button">{{ item.title }}</button>
         {% endif %}
     {% endfor %}
-        </ul>
     </div>
 {% endmacro %}
