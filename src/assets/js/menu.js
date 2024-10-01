@@ -3,10 +3,9 @@ import { computePosition, flip, autoUpdate, size } from "@floating-ui/dom";
 class Menu {
     constructor(trigger) {
         this.trigger = trigger;
-        this.menu = this.trigger.nextElementSibling;
         this.autoUpdating = false;
 
-        this.setupMenuItems();        
+        this.setupMenu(this.trigger.nextElementSibling);
         this.addEventListeners();
     }
 
@@ -25,37 +24,40 @@ class Menu {
         this.menu.remove();
         this.autoUpdater();
         this.trigger.after(newMenu);
-        this.menu = newMenu;
-        this.setupMenuItems();
+        this.setupMenu(newMenu);
         this.autoUpdating = false;
     }
 
     updatePosition() {
         computePosition(this.trigger, this.menu, {
             placement: "bottom-start",
-            middleware: [flip({ padding: 32 }), size({
-                padding: 32,
-                apply({availableHeight, elements}) {
-                    Object.assign(elements.floating.style, {
-                        // 228px = 5.5 items + listbox padding
-                        maxHeight: `${Math.min(228, availableHeight)}px`,
-                    });
-                }
-            })
-        ],
+            middleware: [
+                flip({ padding: 32 }),
+                size({
+                    padding: 32,
+                    apply({ availableHeight, elements }) {
+                        Object.assign(elements.floating.style, {
+                            // 228px = 5.5 items + listbox padding
+                            maxHeight: `${Math.min(228, availableHeight)}px`,
+                        });
+                    },
+                }),
+            ],
         }).then(async ({ x, y }) => {
             Object.assign(this.menu.style, {
                 left: `${x}px`,
                 top: `${y}px`,
             });
 
-            if ([...this.menuItems].indexOf(document.activeElement) !== 1) {
-                this.menu.scrollTo(0, document.activeElement.offsetTop - 4);
-            }
+            // // Sadly, just .focus()-ing a menu item isn't always enough
+            // if ([...this.menuItems].indexOf(document.activeElement) !== 1) {
+            //     this.menu.scrollTop = document.activeElement.offsetTop - 4;
+            // }
         });
     }
 
     hideMenu() {
+        this.trigger.setAttribute("aria-expanded", false);
         this.menu.scrollTop = 0;
         this.menu.hidden = true;
         this.stopUpdating();
@@ -86,34 +88,20 @@ class Menu {
                 this.menuItems[this.menuItems.length - 1].focus();
             }
         });
-        
-        // this may be unnecessary?
-        this.trigger.addEventListener("blur", (e) => {
-            if (e.relatedTarget === null) {
-                this.hideMenu();
-            } else if (
-                !e.relatedTarget.classList.contains("menu") &&
-                !e.relatedTarget.classList.contains("menu__item")
-            ) {
-                this.hideMenu();
-            }
-        });
 
         document.addEventListener("click", (e) => {
-            let triggerNodes = this.getDescendantNodes(this.trigger);
-            let menuNodes = this.getDescendantNodes(this.menu);
-            let thisMenuTargeted =
-                e.target == this.menu ||
-                e.target == this.trigger ||
-                menuNodes.indexOf(e.target) !== -1 ||
-                triggerNodes.indexOf(e.target) !== -1;
-            if (!this.menu.hidden && !thisMenuTargeted) {
+            if (
+                !this.menu.hidden && 
+                !this.menu.contains(e.target) &&
+                !this.trigger.contains(e.target)
+            ) {
                 this.hideMenu();
             }
         });
     }
 
-    setupMenuItems() {
+    setupMenu(menu) {
+        this.menu = menu;
         this.menuItems = this.menu.querySelectorAll('[role="menuitem"]');
         this.menuItems.forEach((el) => {
             el.addEventListener("keydown", (e) => {
@@ -149,24 +137,9 @@ class Menu {
             });
         });
     }
-
-    getDescendantNodes(node, all = []) {
-        all.push(...node.childNodes);
-    
-        for (const child of node.childNodes) {
-            this.getDescendantNodes(child, all);
-        }
-    
-        return all;
-    }
 }
 
 let triggers = document.querySelectorAll(".menu__trigger");
 triggers.forEach((trigger) => {
     new Menu(trigger);
 });
-
-/*
-TODO: needs to support a lot more keyboard interactions, as described in
-https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-actions-active-descendant/
-*/

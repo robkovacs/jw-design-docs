@@ -13,7 +13,7 @@ eleventyNavigation:
         {% call stack() %}
             <div>
                 {{ menu({
-                    trigger: button({ content: "Click or focus me", rightIcon: "caret-down" }),
+                    trigger: button({ content: "Click me", rightIcon: "caret-down" }),
                     menuItems: [
                         {
                             title: "Delete",
@@ -24,12 +24,11 @@ eleventyNavigation:
                             onClick: "javascript: console.log('item 2'); return false;"
                         },
                         {
-                            title: "Edit this thingy... let's see what happens if this gets real real long",
+                            title: "An example of a really, really long menu item label",
                             href: "javascript: console.log('item 1');"
                         },
                         {
-                            title: "Reschedule",
-                            onClick: "javascript: console.log('item 2'); return false;"
+                            title: "I'm disabled"
                         },
                                         {
                             title: "Delete",

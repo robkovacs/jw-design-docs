@@ -9,6 +9,8 @@
             <a role="menuitem" tabindex="-1" href="{{ item.href | safe }}" class="menu__item menu__item--link">{{ item.title }}</a>
         {% elseif item.onClick %}
             <button role="menuitem" tabindex="-1" onclick="{{ item.onClick | safe }}" class="menu__item menu__item--button">{{ item.title }}</button>
+        {% else %}
+            <button role="menuitem" tabindex="-1" class="menu__item menu__item--button" aria-disabled="true">{{ item.title }}</button>
         {% endif %}
     {% endfor %}
     </div>

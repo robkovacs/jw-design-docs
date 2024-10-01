@@ -47,5 +47,22 @@
             font-size: var(--size-md);
             font-family: inherit;
         }
+
+        &[aria-disabled="true"] {
+            color: var(--color-gray-500);
+            cursor: not-allowed;
+
+            @media (hover: hover) {
+                &:hover {
+                    color: var(--color-gray-500);
+                    background-color: var(--color-white);
+                }
+            }
+    
+            &:active {
+                color: var(--color-gray-500);
+                background-color: var(--color-white);            
+            }
+        }
     }
 }
