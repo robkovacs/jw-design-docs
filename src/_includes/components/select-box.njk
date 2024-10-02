@@ -46,7 +46,7 @@
                     {{ ('aria-disabled="true"' | safe) if options.disabled }}
                     title="{{ placeholder | safe }}"
                 >
-                    <option hidden disabled selected value>{{ placeholder | safe }}</option>
+                    <option disabled selected value>{{ placeholder | safe }}</option>
                     {{ caller() | safe }}
                 </select>
                 {{ systemIcon('chevron-down', classes = 'select-box__icon') }}
