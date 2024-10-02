@@ -49,10 +49,10 @@ class Menu {
                 top: `${y}px`,
             });
 
-            // // Sadly, just .focus()-ing a menu item isn't always enough
-            // if ([...this.menuItems].indexOf(document.activeElement) !== 1) {
-            //     this.menu.scrollTop = document.activeElement.offsetTop - 4;
-            // }
+            // Sadly, just .focus()-ing a menu item isn't always enough
+            if ([...this.menuItems].indexOf(document.activeElement) !== 1) {
+                this.menu.scrollTop = document.activeElement.offsetTop - 4;
+            }
         });
     }
 
@@ -103,8 +103,8 @@ class Menu {
     setupMenu(menu) {
         this.menu = menu;
         this.menuItems = this.menu.querySelectorAll('[role="menuitem"]');
-        this.menuItems.forEach((el) => {
-            el.addEventListener("keydown", (e) => {
+        this.menuItems.forEach((menuItem) => {
+            menuItem.addEventListener("keydown", (e) => {
                 if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
                     e.preventDefault();
                     if (e.target.previousElementSibling) {

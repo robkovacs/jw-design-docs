@@ -18,6 +18,7 @@
     {% set required = (options.required | default(true)) %}
     {% set id = (options.id | default(nanoid())) %}
     {% set typeaheadId = nanoid() %}
+    {% set listboxId = nanoid() %}
     {% set locale = options.locale | default("en_US") %}
     {% set placeholder = options.placeholder | default(localeData[locale].placeholder) %}
     
@@ -54,38 +55,50 @@
                         type="text"
                         id="{{ typeaheadId | safe }}"
                         class="multi-select__typeahead"
+                        aria-autocomplete="list"
+                        aria-controls="{{ listboxId | safe }}"
+                        aria-expanded="false"
+                        aria-haspopup="listbox"
                         placeholder="{{ placeholder | safe }}"
                     />
                     {{ systemIcon('chevron-down', classes = 'multi-select__icon') }}
                 </div>
             {% if options.options %}
-                <div class="multi-select__listbox" tabindex="1">
+                <ul class="multi-select__listbox" aria-multiselectable="true" id="{{ listboxId | safe }}" tabindex="-1" hidden>
                     {% for item in options.options %}
                         {% if item.options %}
-                            <div class="multi-select__optgroup" {{ ('aria-disabled="true"' | safe) if item.disabled }}>
-                                <div class="multi-select__optgroup-label">{{ item.label }}</div>
-                                {% for option in item.options %}
+                            {% set labelId = nanoid() %}
+                            {% set groupDisabled = item.disabled | default(false) %}
+                            <li class="multi-select__optgroup" role="group" aria-labelledby="{{ labelId }}" {{ ('aria-disabled="true"' | safe) if item.disabled }}>
+                                <div class="multi-select__optgroup-label" id="{{ labelId }}">{{ item.label }}</div>
+                                <ul class="multi-select__optgroup-options">    
+                                    {% for option in item.options %}
                                     {% set value = option.value | default(option.label) %}
-                                    <button
-                                        class="multi-select__option"
-                                        id="{{ nanoid() }}"
-                                        {{ ('aria-disabled="true"' | safe) if option.disabled }}
-                                        data-value="{{ value | safe }}"
-                                    >
-                                        {{ option.label }}
-                                    </button>
-                                {% endfor %}
-                            </div>
+                                        <li
+                                            class="multi-select__option"
+                                            id="{{ nanoid() }}"
+                                            role="option"
+                                            aria-selected="false"
+                                            {{ ('aria-disabled="true"' | safe) if option.disabled or groupDisabled }}
+                                            data-value="{{ value | safe }}"
+                                        >
+                                            {{ option.label }}
+                                        </li>
+                                    {% endfor %}                                    
+                                </ul>
+                            </li>
                         {% else %}
                             {% set value = item.value | default(item.label) %}
-                            <button
+                            <li
                                 class="multi-select__option"
+                                role="option"
+                                aria-selected="false"
                                 id="{{ nanoid() }}"
                                 {{ ('aria-disabled="true"' | safe) if item.disabled }}
                                 data-value="{{ value | safe }}"
                             >
                                 {{ item.label }}
-                            </button>
+                            </li>
                         {% endif %}
                     {% endfor %}
                 </div>
