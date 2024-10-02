@@ -242,6 +242,7 @@ class MultiSelect {
         );
 
         option.hidden = true;
+        option.setAttribute('aria-selected', true);
 
         this.hideParentGroupIfEmpty(option);
 
@@ -307,6 +308,7 @@ class MultiSelect {
         );
 
         option.hidden = false;
+        option.setAttribute('aria-selected', false);
 
         if (option.parentNode.hidden) {
             option.parentNode.hidden = false;
@@ -412,7 +414,6 @@ class MultiSelect {
             currentActiveDescendant[0].classList.remove(
                 "is--aria-activedescendant",
             );
-            currentActiveDescendant[0].setAttribute("aria-selected", false);
         }
 
         newActiveDescendant.classList.add("is--aria-activedescendant");
