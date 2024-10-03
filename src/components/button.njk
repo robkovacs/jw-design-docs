@@ -169,7 +169,7 @@ eleventyNavigation:
         <section>
             <h4>Neutral</h4>
             <p>Neutral buttons are for secondary actions, or when none of the other roles apply. They don't have an <code>outlined</code> variant.</p>
-            {% call figure(attributes = { "style": "background-color: var(--color-yellow-300)" }) %}
+            {% call figure() %}
                 {% call row() %}
                     {{ button({
                         content: "Filled",
