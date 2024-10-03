@@ -342,7 +342,12 @@ class MultiSelect {
 
         this.typeahead.parentNode.insertBefore(chipHTML, this.typeahead);
         this.typeahead.focus({ preventScroll: true });
-        this.typeahead.scrollIntoView({ block: "none", inline: "nearest" });
+        if (this.container.getBoundingClientRect().right - this.typeahead.getBoundingClientRect().left < 96) {
+            console.log(this.container.getBoundingClientRect().left, this.typeahead.getBoundingClientRect().left);
+            console.log("before " + option.innerText + ":", this.container.scrollLeft);
+            this.container.scrollLeft = this.typeahead.offsetLeft - 96;
+            console.log("after" + option.innerText + ":", this.container.scrollLeft);
+        }
     }
 
     removeChip(chip) {

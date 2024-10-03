@@ -12,6 +12,8 @@
     align-items: center;
     color: var(--color-gray-900);
     flex: 1 0 auto;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .chip--dismissible {

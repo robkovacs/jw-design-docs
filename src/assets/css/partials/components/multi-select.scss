@@ -120,6 +120,8 @@
         border-radius: var(--size-3xs);
         border: var(--size-5xs) solid var(--color-gray-500);
         padding: 0;
+        -webkit-user-select: none;
+        user-select: none;
         z-index: 3;
     }
 
@@ -130,6 +132,7 @@
         
         &-label {
             padding: var(--size-2xs) var(--size-md);
+            -webkit-user-select: none;
             user-select: none;
             font-weight: 700;
         }
@@ -152,6 +155,7 @@
         color: var(--color-gray-900);
         width: 100%;
         background-color: var(--color-white);
+        -webkit-user-select: none;
         user-select: none;
 
         &:not([hidden]) {
