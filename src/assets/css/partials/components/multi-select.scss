@@ -1,10 +1,8 @@
 .multi-select {
-
     &__wrapper {
         position: relative;
         cursor: default;
     }
-
 
     &__container {
         padding:
@@ -15,11 +13,7 @@
         border-radius: var(--size-3xs);
         border: var(--size-5xs) solid var(--color-gray-500);
         overflow-x: scroll;
-        display: flex;
-        flex-flow: row nowrap;
-        gap: var(--size-3xs);
         scrollbar-width: none;
-        align-items: center;
     
         &::-webkit-scrollbar { 
             display: none;
@@ -32,13 +26,25 @@
             box-shadow: 0 0 0 var(--size-4xs) var(--color-white);
         }
 
-        & .chip:focus-visible {
+        &:has(.chip:focus-visible) {
             outline: none;
             box-shadow: none;
-            background-color: var(--color-gray-200);
-
-            // TODO: this is how it works now, where you can't tell if you've focused a chip. Not great.
         }
+
+        & .chip:focus-visible {
+            outline-offset: var(--size-5xs);
+            outline: var(--color-blue-500) solid var(--size-5xs);
+            border: var(--size-5xs) solid var(--color-white);
+            padding: calc(var(--size-2xs) - var(--size-5xs)) calc(var(--size-xs) - var(--size-5xs));
+            background-color: var(--color-gray-200);
+        }
+    }
+
+    &__inner-container {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: var(--size-3xs);
+        align-items: center;
     }
 
     &__typeahead {
@@ -52,6 +58,8 @@
         width: 100%;
         background-color: var(--color-white);
 
+        scroll-margin-inline-end: -9rem;
+        
         &:focus-visible {
             outline: none;
             box-shadow: none;
@@ -116,16 +124,20 @@
         }
     }
 
-    &__option {
+    &__option,
+    &__listbox-empty-message {
         padding: var(--size-2xs) var(--size-md);
         color: var(--color-gray-900);
         width: 100%;
         background-color: var(--color-white);
+        user-select: none;
 
         &:not([hidden]) {
             display: block;
         }
+    }
 
+    &__option {
         &.is--aria-activedescendant {
             color: var(--color-gray-900);
             background-color: var(--color-gray-100);
@@ -156,8 +168,7 @@
         }
     }
 
-    &__no-results {
-        padding: var(--size-2xs) var(--size-md);
+    &__listbox-empty-message {
         color: var(--color-gray-500);
     }
 }

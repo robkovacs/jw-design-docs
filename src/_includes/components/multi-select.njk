@@ -50,71 +50,79 @@
                         {% endif %}
                     {% endfor %}
                 />
-                <div class="multi-select__container">
-                    <input
-                        type="text"
-                        id="{{ typeaheadId | safe }}"
-                        class="multi-select__typeahead"
-                        aria-autocomplete="list"
-                        aria-controls="{{ listboxId | safe }}"
-                        aria-expanded="false"
-                        aria-haspopup="listbox"
-                        placeholder="{{ placeholder | safe }}"
-                    />
-                    {{ systemIcon('chevron-down', classes = 'multi-select__icon') }}
+                <div class="multi-select__container" tabindex="-1">
+                    <div class="multi-select__inner-container">
+                        <input
+                            type="text"
+                            id="{{ typeaheadId | safe }}"
+                            class="multi-select__typeahead"
+                            aria-autocomplete="list"
+                            aria-controls="{{ listboxId | safe }}"
+                            aria-expanded="false"
+                            aria-haspopup="listbox"
+                            placeholder="{{ placeholder | safe }}"
+                            {% for key, value in options.attributes %}
+                                {% if key !== "id" %}
+                                    {% if value !== null %}
+                                        {{ key | safe }}="{{ value | safe }}"
+                                    {% else %}
+                                        {{ key | safe }}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        />
+                        {{ systemIcon('chevron-down', classes = 'multi-select__icon') }}
+                    </div>
                 </div>
-            {% if options.options %}
                 <ul class="multi-select__listbox" aria-multiselectable="true" id="{{ listboxId | safe }}" tabindex="-1" hidden>
-                    {% for item in options.options %}
-                        {% if item.options %}
-                            {% set labelId = nanoid() %}
-                            {% set groupDisabled = item.disabled | default(false) %}
-                            <li class="multi-select__optgroup" role="group" aria-labelledby="{{ labelId }}" {{ ('aria-disabled="true"' | safe) if item.disabled }}>
-                                <div class="multi-select__optgroup-label" id="{{ labelId }}">{{ item.label }}</div>
-                                <ul class="multi-select__optgroup-options">    
-                                    {% for option in item.options %}
-                                    {% set value = option.value | default(option.label) %}
-                                        <li
-                                            class="multi-select__option"
-                                            id="{{ nanoid() }}"
-                                            role="option"
-                                            aria-selected="false"
-                                            {{ ('aria-disabled="true"' | safe) if option.disabled or groupDisabled }}
-                                            data-value="{{ value | safe }}"
-                                        >
-                                            {{ option.label }}
-                                        </li>
-                                    {% endfor %}                                    
-                                </ul>
-                            </li>
-                        {% else %}
-                            {% set value = item.value | default(item.label) %}
-                            <li
-                                class="multi-select__option"
-                                role="option"
-                                aria-selected="false"
-                                id="{{ nanoid() }}"
-                                {{ ('aria-disabled="true"' | safe) if item.disabled }}
-                                data-value="{{ value | safe }}"
-                            >
-                                {{ item.label }}
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            {% else %}
-                <div class="multi-select__listbox multi-select__listbox--empty" tabindex="1">
-                    <span>{{ localeData[locale].listboxEmpty }}</span>
-                </div>
-            {% endif %}
-        </div>
-    {% if options.messages %}
-        <div class="input-message__list">
-           {% for message in options.messages %}
+                    {% if options.options %}
+                        {% for item in options.options %}
+                            {% if item.options %}
+                                {% set labelId = nanoid() %}
+                                {% set groupDisabled = item.disabled | default(false) %}
+                                <li class="multi-select__optgroup" role="group" aria-labelledby="{{ labelId }}" {{ ('aria-disabled="true"' | safe) if item.disabled }}>
+                                    <div class="multi-select__optgroup-label" id="{{ labelId }}">{{ item.label }}</div>
+                                    <ul class="multi-select__optgroup-options">    
+                                        {% for option in item.options %}
+                                        {% set value = option.value | default(option.label) %}
+                                            <li
+                                                class="multi-select__option"
+                                                id="{{ nanoid() }}"
+                                                role="option"
+                                                aria-selected="false"
+                                                {{ ('aria-disabled="true"' | safe) if option.disabled or groupDisabled }}
+                                                data-value="{{ value | safe }}"
+                                            >
+                                                {{ option.label }}
+                                            </li>
+                                        {% endfor %}                                    
+                                    </ul>
+                                </li>
+                            {% else %}
+                                {% set value = item.value | default(item.label) %}
+                                <li
+                                    class="multi-select__option"
+                                    role="option"
+                                    aria-selected="false"
+                                    id="{{ nanoid() }}"
+                                    {{ ('aria-disabled="true"' | safe) if item.disabled }}
+                                    data-value="{{ value | safe }}"
+                                >
+                                    {{ item.label }}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <span class="multi-select__listbox-empty-message" {{ "hidden" if options.options }}>{{ localeData[locale].listboxEmpty }}</span>
+                </ul>
+            </div>
+        {% if options.messages %}
+            <div class="input-message__list">
+            {% for message in options.messages %}
                 {{ inputMessage(message.type, message.message) }}
-           {% endfor %} 
-        </div>
-    {% endif %}
+            {% endfor %} 
+            </div>
+        {% endif %}
     {% if options.label or options.messages %}
         </div>
     {% endif %}

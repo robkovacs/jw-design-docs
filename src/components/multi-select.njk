@@ -10,41 +10,69 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        {{ multiSelect({
-            label: "Pizza toppings",
-            placeholder: "Choose one or more toppings",
-            required: true,
-            options: [
-                {
-                    label: "Meats",
+        {% call figure() %}
+            {% call stack() %}
+                {{ multiSelect({
+                    label: "U.S. states",
+                    placeholder: "Choose one or more states",
+                    required: true,
+                    attributes: {
+                        "data-1p-ignore": null,
+                        "data-bwignore": null,
+                        "data-lpignore": "true",
+                        "data-form-type": "other"
+                    },
                     options: [
-                        { label: "Chicken" },
-                        { label: "Ground beef" },
-                        { label: "Ham" },
-                        { label: "Pepperoni" },
-                        { label: "Sausage" }
+                        { value: "AL", label: "Alabama" },
+                        { value: "AK", label: "Alaska" },
+                        { value: "AZ", label: "Arizona" },
+                        { value: "AR", label: "Arkansas" },
+                        { value: "CA", label: "California" },
+                        { value: "CO", label: "Colorado" },
+                        { value: "CT", label: "Connecticut" },
+                        { value: "DE", label: "Delaware" },
+                        { value: "DC", label: "District of Columbia" },
+                        { value: "FL", label: "Florida" },
+                        { value: "GA", label: "Georgia" }
                     ]
-                },
-                {
-                    label: "Vegetables",
+                }) }}
+                {{ multiSelect({
+                    label: "Pizza toppings",
+                    placeholder: "Choose one or more toppings",
+                    required: true,
                     options: [
-                        { label: "Mushrooms" },
-                        { label: "Onions (red)" },
-                        { label: "Onions (white)" },
-                        { label: "Olives (black)" },
-                        { label: "Olives (green)" },
-                        { value: "green-peppers", label: "Peppers (green)" },
-                        { label: "Peppers (red)" }
+                        {
+                            label: "Meats",
+                            options: [
+                                { label: "Chicken" },
+                                { label: "Ground beef" },
+                                { label: "Ham" },
+                                { label: "Pepperoni" },
+                                { label: "Sausage" }
+                            ]
+                        },
+                        {
+                            label: "Vegetables",
+                            options: [
+                                { label: "Mushrooms" },
+                                { label: "Onions (red)" },
+                                { label: "Onions (white)" },
+                                { label: "Olives (black)" },
+                                { label: "Olives (green)" },
+                                { value: "green-peppers", label: "Peppers (green)" },
+                                { label: "Peppers (red)" }
+                            ]
+                        },
+                        {
+                            label: "Fruits",
+                            disabled: true,
+                            options: [
+                                { label: "Pineapple" }
+                            ]
+                        }
                     ]
-                },
-                {
-                    label: "Fruits",
-                    disabled: true,
-                    options: [
-                        { label: "Pineapple" }
-                    ]
-                }
-            ]
-        }) }}
+                }) }}
+            {% endcall %}
+        {% endcall %}
     </article>
 {% endblock %}
