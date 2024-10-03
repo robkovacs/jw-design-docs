@@ -342,7 +342,7 @@ class MultiSelect {
 
         this.typeahead.parentNode.insertBefore(chipHTML, this.typeahead);
         this.typeahead.focus({ preventScroll: true });
-        this.typeahead.scrollIntoView({ inline: "nearest" });
+        this.typeahead.scrollIntoView({ block: "none", inline: "nearest" });
     }
 
     removeChip(chip) {
