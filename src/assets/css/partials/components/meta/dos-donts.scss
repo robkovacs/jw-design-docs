@@ -17,4 +17,9 @@
         border-top-color: var(--color-red-600);
         color: var(--color-red-600);
     }
+
+    &--avoid {
+        border-top-color: var(--color-yellow-600);
+        color: var(--color-yellow-600);
+    }
 }

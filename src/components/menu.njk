@@ -12,8 +12,9 @@ eleventyNavigation:
     <article>
         {% call stack() %}
             <div>
+                {{ button({ variant: "ghost", size: "sm", content: "Create deposit" }) }}
                 {{ menu({
-                    trigger: button({ content: "Click me", rightIcon: "caret-down" }),
+                    trigger: button({ variant: "ghost", size: "sm", leftIcon: "ellipsis" }),
                     menuItems: [
                         {
                             title: "Delete",

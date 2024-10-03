@@ -10,110 +10,505 @@ eleventyNavigation:
 
 {% block content %}
     <article>
-        {% call stack() %}
-            {% call row() %}
-                {{ button({
-                    content: "This is a filled button"
-                }) }}
-                {{ button({
-                    content: "This is an outlined button",
-                    variant: "outlined"
-                }) }}
-                {{ button({
-                    content: "This is a ghost button",
-                    variant: "ghost"
-                }) }}
+        <section>
+            <h2 class="toc__heading" style="display: none" id="intro">Introduction</h2>
+            <p class="paragraph--large">A <strong>button</strong> is used to trigger an action.</p>
+
+            <ul class="reference-list">
+                <li>
+                    {{ anchor({ 
+                        href: "https://www.figma.com/design/2XUAgVi6sCaQZ1qm4N34GA/Design-System---Components?node-id=10172-19131",
+                        leftIcon: "brand-figma",
+                        content: "Figma",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+                <li>
+                    {{ anchor({ 
+                        href: "https://main--63c9ba51287fc47003f73128.chromatic.com/?path=/docs/core-button--docs",
+                        leftIcon: "brand-storybook",
+                        content: "Storybook",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+                <li>
+                    {{ anchor({ 
+                        href: "https://github.com/justworkshr/milo-components/tree/main/packages/components/core/src/button",
+                        leftIcon: "brand-github",
+                        content: "GitHub",
+                        attributes: {
+                            target: "_blank"
+                        }
+                    }) }}
+                </li>
+            </ul>
+
+            {% call figure("This isn't even every possible variation of button. Keep reading...") %}
+                {% call stack() %}
+                    {% call row() %}
+                        {{ button({
+                            content: "Continue"
+                        }) }}
+                        {{ button({
+                            content: "Add employee",
+                            variant: "outlined"
+                        }) }}
+                        {{ button({
+                            content: "Reset",
+                            variant: "ghost"
+                        }) }}
+                    {% endcall %}
+                    {% call row({ alignItems: "center" }) %}
+                        {{ button({
+                            content: "This is a medium button",
+                            variant: "outlined"
+                        }) }}
+                        {{ button({
+                            content: "This is a small one",
+                            variant: "outlined",
+                            size: "sm"
+                        }) }}
+                    {% endcall %}
+                    {% call row() %}
+                        {{ button({
+                            content: "An icon on the left",
+                            leftIcon: "person-plus"
+                        }) }}
+                        {{ button({
+                            content: "An icon on the right",
+                            variant: "outlined",
+                            rightIcon: "caret-down"
+                        }) }}
+                        {{ tooltip({
+                            trigger: button({
+                                variant: "ghost",
+                                leftIcon: "sync"
+                            }),
+                            content: "Or just an icon"
+                        }) }}
+                    {% endcall %}
+                    {% call row() %}
+                        {{ tooltip({
+                            trigger: button({ content: "Continue", disabled: true }),
+                            content: "This button is disabled."
+                        }) }}
+                        {{ tooltip({
+                            trigger: button({ content: "Continue", loading: true, disabled: true }),
+                            content: "You can't use this button yet. Something has to finish loading first."
+                        }) }}
+                        {{ tooltip({
+                            trigger: button({ content: "Continue", loading: true }),
+                            content: "Pretend you just used this button—something is loading now."
+                        }) }}
+                    {% endcall %}
+                {% endcall %}
             {% endcall %}
-            {% call row() %}
-                {{ button({
-                    content: "Buttons can have no icons"
-                }) }}
-                {{ button({
-                    content: "Or an icon on the left",
-                    variant: "outlined",
-                    leftIcon: "undo"
-                }) }}
-                {{ button({
-                    content: "Or an icon on the right",
-                    variant: "ghost",
-                    rightIcon: "arrow-right"
-                }) }}
-                {{ tooltip({
-                    trigger: button({
+        </section>
+        <section>
+            <h2 class="toc__heading" id="when-to-use">When to use</h2>
+            <p>Buttons and links can get confused for one another, but they're not the same.</p>
+            <ul class="bulleted-list">
+                <li><strong>Buttons execute actions:</strong> showing content on the page that was previously hidden, playing a video, or submitting a form, and so on.</li>
+                <li><strong>Links go to destinations:</strong> taking the user to a new page, or new section of the current page</li>
+            </ul>
+            {% call callout() %}
+                <p>For more about the differences between buttons and links, check out our <a href="/patterns/buttons-and-links/#use-button-link">Buttons and links</a> pattern doc.</p>
+            {% endcall %}
+        </section>
+        <section>
+            <h2 class="toc__heading" id="types">Button types</h2>        
+        </section>
+        <section>
+            <h3 class="toc__heading" id="role">Role</h2>
+        </section>
+        <section>
+            <h4>Primary</h4>
+            <p>This is the default role of a button.</p>
+            {% call figure() %}
+                {% call row() %}
+                    {{ button({
+                        content: "Filled"
+                    }) }}
+                    {{ button({
+                        content: "Outlined",
+                        variant: "outlined"
+                    }) }}
+                    {{ button({
+                        content: "Ghost",
+                        variant: "ghost"
+                    }) }}
+                {% endcall %}
+            {% endcall %}
+        </section>
+        <section>
+            <h4>Destructive</h4>
+            <p>Destructive buttons are for an action that will permanently delete something from the system (e.g. deleting a benefits class).</p>
+            {% call figure() %}
+                {% call row() %}
+                    {{ button({
+                        content: "Filled",
+                        style: "danger"
+                    }) }}
+                    {{ button({
+                        content: "Outlined",
+                        variant: "outlined",
+                        style: "danger"
+                    }) }}
+                    {{ button({
+                        content: "Ghost",
                         variant: "ghost",
-                        leftIcon: "grid"
-                    }),
-                    content: "Or just an icon"
-                }) }}
+                        style: "danger"
+                    }) }}
+                {% endcall %}
             {% endcall %}
-            {% call row() %}
-                {{ button({
-                    content: "Buttons can be small",
-                    size: "sm"
-                }) }}
-                {{ button({
-                    content: "This helps them fit into tight spaces",
-                    variant: "outlined",
-                    size: "sm"
-                }) }}
-                {{ button({
-                    content: "Like into a row of a list",
-                    variant: "ghost",
-                    size: "sm"
-                }) }}
+        </section>
+        <section>
+            <h4>Neutral</h4>
+            <p>Neutral buttons are for secondary actions, or when none of the other roles apply. They don't have an <code>outlined</code> variant.</p>
+            {% call figure(attributes = { "style": "background-color: var(--color-yellow-300)" }) %}
+                {% call row() %}
+                    {{ button({
+                        content: "Filled",
+                        style: "neutral"
+                    }) }}
+                    {{ button({
+                        content: "Ghost",
+                        variant: "ghost",
+                        style: "neutral"
+                    }) }}
+                {% endcall %}
             {% endcall %}
-            {% call row() %}
-                {{ button({
-                    content: "Buttons can be disabled",
-                    disabled: true
-                }) }}
-                {{ button({
-                    content: "Even if they're outlined",
-                    variant: "outlined",
-                    disabled: true
-                }) }}
-                {{ button({
-                    content: "Or ghost",
-                    variant: "ghost",
-                    disabled: true
-                }) }}
+        </section>
+        <section>
+            <h4>Inverse</h4>
+            <p>Inverse buttons are for otherwise neutral use cases, when those don't meet WCAG minimum color contrast requirements. They don't have an <code>outlined</code> variant.</p>
+            {% call figure(attributes = { "style": "background-color: var(--color-gray-900)" }) %}
+                {% call row() %}
+                    {{ button({
+                        content: "Filled",
+                        style: "inverse"
+                    }) }}
+                    {{ button({
+                        content: "Ghost",
+                        variant: "ghost",
+                        style: "inverse"
+                    }) }}
+                {% endcall %}
             {% endcall %}
-            {% call row() %}
-                {{ button({
-                    content: "Buttons can be disabled",
-                    loading: true
-                }) }}
-                {{ button({
-                    content: "Even if they're outlined",
-                    variant: "outlined",
-                    loading: true
-                }) }}
-                {{ button({
-                    content: "Or ghost",
-                    variant: "ghost",
-                    loading: true
-                }) }}
+        </section>
+        <section>
+            <h3 class="toc__heading" id="variant">Variant</h2>
+        </section>
+        <section>            
+            <h4>Filled</h4>
+            <p>This is for only the highest-priority actions. There should only be one of these per page or section.</p>
+            {% call figure() %}
+                <div style="margin: calc(-1 * var(--size-3xl)); display: flex; flex-flow: row wrap">
+                    <div style="padding: var(--size-3xl); flex: 2 0">
+                        {% call row() %}
+                            {{ button({
+                                content: "Brand"
+                            }) }}
+                            {{ button({
+                                content: "Destructive",
+                                style: "danger"
+                            }) }}
+                            {{ button({
+                                content: "Neutral",
+                                style: "neutral"
+                            }) }}            
+                        {% endcall %}
+                    </div>
+                    <div style="padding: var(--size-3xl); flex: 1 0; background-color: var(--color-gray-900); border-radius: 0 var(--size-xs) var(--size-xs) 0">
+                        {{ button({
+                            content: "Inverse",
+                            style: "inverse"
+                        }) }}
+                    </div>
+                </div>
             {% endcall %}
-            {% call row() %}
-                {{ button({
-                    content: "Buttons can be disabled",
-                    disabled: true,
-                    loading: true
-                }) }}
-                {{ button({
-                    content: "Even if they're outlined",
-                    variant: "outlined",
-                    disabled: true,
-                    loading: true
-                }) }}
-                {{ button({
-                    content: "Or ghost",
-                    variant: "ghost",
-                    disabled: true,
-                    loading: true
-                }) }}
+        </section>
+        <section>            
+            <h4>Outlined</h4>
+            <p>For medium priority actions. Useful in a situation where you need a lot of buttons, like on a set of cards, and you want them to be noticeable, but not too overwhelming. Again, they only come in <code>brand</code> and <code>destructive</code>.</p>
+            {% call figure() %}
+                {% call row() %}
+                    {{ button({
+                        content: "Brand",
+                        variant: "outlined"
+                    }) }}
+                    {{ button({
+                        content: "Destructive",
+                        style: "danger",
+                        variant: "outlined"
+                    }) }}
+                {% endcall %}
             {% endcall %}
-        {% endcall %}
+        </section>
+
+        <section>            
+            <h4>Ghost</h4>
+            <p>For the lowest-priority actions. Great for <a href="/patterns/buttons-and-links/#button-groups">button groups</a>.</p>
+            {% call figure() %}
+                <div style="margin: calc(-1 * var(--size-3xl)); display: flex; flex-flow: row wrap">
+                    <div style="padding: var(--size-3xl); flex: 2 0">
+                        {% call row() %}
+                            {{ button({
+                                content: "Brand",
+                                variant: "ghost"
+                            }) }}
+                            {{ button({
+                                content: "Destructive",
+                                style: "danger",
+                                variant: "ghost"
+                            }) }}
+                            {{ button({
+                                content: "Neutral",
+                                style: "neutral",
+                                variant: "ghost"
+                            }) }}
+                        {% endcall %}
+                    </div>
+                    <div style="padding: var(--size-3xl); flex: 1 0; background-color: var(--color-gray-900); border-radius: 0 var(--size-xs) var(--size-xs) 0">
+                        {{ button({
+                            content: "Inverse",
+                            style: "inverse",
+                            variant: "ghost"
+                        }) }}
+                    </div>
+                </div>
+            {% endcall %}
+        </section>
+        <section> 
+            <h3 class="toc__heading" id="size">Size</h2>
+        </section>
+        <section>            
+            <h4>Medium</h4>
+            <p>The default. When in doubt, stick with it.</p>
+            {% call figure() %}
+                <div style="margin: calc(-1 * var(--size-3xl)); display: flex; flex-flow: row wrap">
+                    <div style="padding: var(--size-3xl); flex: 2 0">
+                        {% call row() %}
+                            {{ button({
+                                content: "Brand"
+                            }) }}
+                            {{ button({
+                                content: "Destructive",
+                                style: "danger"
+                            }) }}
+                            {{ button({
+                                content: "Neutral",
+                                style: "neutral"
+                            }) }}            
+                        {% endcall %}
+                    </div>
+                    <div style="padding: var(--size-3xl); flex: 1 0; background-color: var(--color-gray-900); border-radius: 0 var(--size-xs) var(--size-xs) 0">
+                        {{ button({
+                            content: "Inverse",
+                            style: "inverse"
+                        }) }}
+                    </div>
+                </div>
+            {% endcall %}
+        </section>
+        <section>            
+            <h4>Small</h4>
+            <p>for situations where the button needs to fit into a relatively small space, like as a list item or a toast.</p>
+            {% call figure() %}
+                <div style="margin: calc(-1 * var(--size-3xl)); display: flex; flex-flow: row wrap">
+                    <div style="padding: var(--size-3xl); flex: 2 0">
+                        {% call row() %}
+                            {{ button({
+                                content: "Brand",
+                                size: "sm"
+                            }) }}
+                            {{ button({
+                                content: "Destructive",
+                                style: "danger",
+                                size: "sm"
+                            }) }}
+                            {{ button({
+                                content: "Neutral",
+                                style: "neutral",
+                                size: "sm"
+                            }) }}            
+                        {% endcall %}
+                    </div>
+                    <div style="padding: var(--size-3xl); flex: 1 0; background-color: var(--color-gray-900); border-radius: 0 var(--size-xs) var(--size-xs) 0">
+                        {{ button({
+                            content: "Inverse",
+                            style: "inverse",
+                            size: "sm"
+                        }) }}
+                    </div>
+                </div>
+            {% endcall %}
+        </section>
+        <section>
+            <h2 class="toc__heading" id="states">Button states</h3>
+        </section>
+        <section>
+            <h3>Active</h3>
+            <p>The default. When a button is active, you're able to interact with it.</p>
+            {% call figure() %}
+                {% call row() %}
+                    {{ button({
+                        content: "Click me"
+                    }) }}
+                    {{ button({
+                        content: "Tap me",
+                        variant: "outlined"
+                    }) }}
+                    {{ button({
+                        content: "Focus me and hit Space or Enter",
+                        variant: "ghost"
+                    }) }}
+                {% endcall %}
+            {% endcall %}
+        </section>
+        <section>
+            <h3>Disabled</h3>
+            <p>Disabled buttons can't be interacted with. They can be focused though, so that screen reader users know they're there, and so that all users can be shown a tooltip explaining what to do to enable the button.</p>
+            {% call figure("The second set of disabled buttons doesn't have any tooltips explaining what the user has to do to enable them.") %}
+                {% call stack() %}
+                    <div>
+                        {% call row() %}
+                            {{ tooltip({
+                                trigger: button({ content: "I'm disabled", disabled: true }),
+                                content: "There's no way to enable this button...but usually there would be."
+                            }) }}
+                            {{ tooltip({
+                                trigger: button({ content: "I'm disabled", variant: "outlined", disabled: true }),
+                                content: "Sorry, this time you're stuck. This is just an example though."
+                            }) }}
+                            {{ tooltip({
+                                trigger: button({ content: "I'm disabled", variant: "ghost", disabled: true }),
+                                content: "If this was real, this tooltip would explain how to enable this button."
+                            }) }}
+                        {% endcall %}
+                        {{ dosDonts("do") }}
+                    </div>
+                    <div>
+                        {% call row() %}
+                            {{ button({ content: "I'm disabled", disabled: true }) }}
+                            {{ button({ content: "I'm disabled", variant: "outlined", disabled: true }) }}
+                            {{ button({ content: "I'm disabled", variant: "ghost", disabled: true }) }}
+                        {% endcall %}
+                        {{ dosDonts("dont") }}
+                    </div>
+                {% endcall %}
+            {% endcall %}
+        </section>
+        <section>
+            <h3>Loading</h3>
+            <p>Loading buttons also can't be interacted with, and have a spinner replacing their usual contents. They can be styled two different ways:</p>
+            <ul class="bulleted-list">
+                <li>like disabled buttons, to indicate that the user can't interact with them <em>yet</em></li>
+                <li>like pressed buttons, to indicate that the user <em>has</em> interacted with them, and the system is working on a response</li>
+            </ul>
+            <p>Like disabled buttons, they can be focused, so that screen reader users know they're there, and so that all users can be shown a tooltip explaining what to do to enable the button.</p>
+            {% call figure() %}
+                {% call stack() %}
+                    {% call row() %}
+                        {{ tooltip({
+                            trigger: button({ content: "A button", disabled: true, loading: true }),
+                            content: "Hang in there! This button will be available soon."
+                        }) }}
+                        {{ tooltip({
+                            trigger: button({ content: "A button", variant: "outlined", disabled: true, loading: true }),
+                            content: "Not so fast! We're still working on something on our end."
+                        }) }}
+                        {{ tooltip({
+                            trigger: button({ content: "A button", variant: "ghost", disabled: true, loading: true }),
+                            content: "Your patience is appreciated."
+                        }) }}
+                    {% endcall %}
+                    {% call row() %}
+                        {{ tooltip({
+                            trigger: button({ content: "A button", loading: true }),
+                            content: "This sure is better than asking you not to click this button more than once."
+                        }) }}
+                        {{ tooltip({
+                            trigger: button({ content: "A button", variant: "outlined", loading: true }),
+                            content: "That's a lot of form data! We're gonna need a minute..."
+                        }) }}
+                        {{ tooltip({
+                            trigger: button({ content: "A button", variant: "ghost", loading: true }),
+                            content: "Submitting your PTO request (just as one example)..."
+                        }) }}
+                    {% endcall %}
+                {% endcall %}
+            {% endcall %}
+        </section>        
+        <section>
+            <h2 class="toc__heading" id="button-labels">Button labels</h2>
+            <p>Most of the time, your button is gonna need a text label. Here's some guidance for how to make those labels effective.</p>
+
+            {% call grid({ attributes: { "style": "margin-top: calc(-1 * var(--size-2xl))" } }) %}
+                {% call gridCell({ spans: { xs: 12, lg: 4 } }) %}
+                    {% call stack({ gap: "md" }) %}
+                        {{ dosDonts("do") }}
+                        <ul class="bulleted-list">
+                            <li>Use sentence case</li>
+                            <li>Start with a verb, then a noun: "Add employee", "Update PTO policy"</li>
+                            <li>Use one-word labels, for commonly-accepted cases like "Done", "Close", or "Next"</li>
+                        </ul>
+                    {% endcall %}
+                {% endcall %}
+                {% call gridCell({ spans: { xs: 12, lg: 4 } }) %}
+                    {% call stack({ gap: "md" }) %}
+                        {{ dosDonts("dont") }}
+                        <ul class="bulleted-list">
+                            <li>Use ALL CAPS or Title Case</li>
+                            <li>Include articles ("a", "an", or "the")</li>
+                            <li>Use first-person pronouns. "Print your W-2", not "Print my W-2".</li>
+                        </ul>
+                    {% endcall %}
+                {% endcall %}
+                {% call gridCell({ spans: { xs: 12, lg: 4 } }) %}
+                    {% call stack({ gap: "md" }) %}
+                        {{ dosDonts("avoid") }}
+                        <ul class="bulleted-list">
+                            <li>Using more than 3 words in a button label. The harder it is to predict the outcome of activating the button, the less likely it is that users will try it.</li>
+                        </ul>
+                    {% endcall %}                
+                {% endcall %}                
+            {% endcall %}
+        </section>
+        <section>
+            <h2 class="toc__heading" id="adding-icons">Adding icons</h2>
+
+            <p>Buttons can have icons added on the left, right, or in place of their text content.</p>
+
+            {% call callout() %}
+                <p>For more about when and how to use icons in buttons, check out our <a href="/patterns/buttons-and-links/#icon-only-buttons">Buttons and links</a> pattern doc.</p>
+            {% endcall %}
+            {% call figure() %}
+                {% call row() %}
+                    {{ button({
+                        content: "An icon on the left",
+                        variant: "outlined",
+                        leftIcon: "undo"
+                    }) }}
+                    {{ button({
+                        content: "An icon on the right",
+                        variant: "ghost",
+                        rightIcon: "arrow-right"
+                    }) }}
+                    {{ tooltip({
+                        trigger: button({
+                            variant: "ghost",
+                            leftIcon: "grid"
+                        }),
+                        content: "Or just an icon"
+                    }) }}
+                {% endcall %}
+            {% endcall %}
+        </section>
     </article>
 {% endblock %}
 

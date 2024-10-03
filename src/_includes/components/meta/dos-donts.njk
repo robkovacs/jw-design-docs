@@ -5,9 +5,12 @@
         {%- if type == 'do' -%}
             {{ systemIcon('check-circle') }}
             Do
-        {%- else -%}
+        {%- elseif type == 'dont' -%}
             {{ systemIcon('error') }}
             Don't
+        {%- elseif type == 'avoid' -%}
+            {{ systemIcon('warning') }}
+            Avoid        
         {%- endif -%}
     </div>
 {% endmacro %}

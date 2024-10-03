@@ -1,6 +1,14 @@
-{% macro render(caption) %}
+{% macro render(caption, attributes) %}
     <figure class="figure">
-        {% if caller() %}<div class="figure__figure">{{ caller() }}</div>{% endif %}
+    {% if caller() %}
+        <div class="figure__figure"
+            {% for key, value in attributes %}
+                {{ key }}="{{ value | safe }}"
+            {% endfor %}
+        >
+            {{ caller() }}
+        </div>
+    {% endif %}
         {% if caption %}<figcaption class="figure__caption">{{ caption | safe }}</figcaption>{% endif %}
     </figure>
 {% endmacro %}

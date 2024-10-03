@@ -84,18 +84,10 @@ section + section {
     margin-top: 4rem;
 }
 
-section + section:has(h3:first-child) {
+section + section:has(h3:first-child, h4:first-child, h5:first-child) {
     margin-top: 2rem;
 }
 
-section + section:has(h4:first-child) {
-    margin-top: 1rem;
-}
-
-section + section:has(h5:first-child) {
-    margin-top: 0.5rem;
-}
-
 section:has(h2:only-child, h3:only-child, h4:only-child) + section {
-    margin-top: 0;
+    margin-top: 2rem;
 }
