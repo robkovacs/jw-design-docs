@@ -26,7 +26,7 @@ main {
     padding: var(--size-xl);
 
     @media screen and (min-width: $breakpoint-md) {
-        flex: 0 1 calc(var(--ui-max-width) - var(--nav-width));
+        flex: 0 1 min(calc(100vw - var(--nav-width)), calc(var(--ui-max-width) - var(--nav-width)));
         padding: var(--size-5xl);
         
         :root {
