@@ -49,15 +49,9 @@ eleventyNavigation:
             {% call figure() %}
                 {% call stack() %}
                     {{ multiSelect({
-                        label: "U.S. states",
+                        label: "Where you have offices",
                         placeholder: "Choose one or more states",
                         required: true,
-                        attributes: {
-                            "data-1p-ignore": null,
-                            "data-bwignore": null,
-                            "data-lpignore": "true",
-                            "data-form-type": "other"
-                        },
                         options: [
                             { value: "AL", label: "Alabama" },
                             { value: "AK", label: "Alaska" },
@@ -113,7 +107,7 @@ eleventyNavigation:
                         ]
                     }) }}
                     {{ multiSelect({
-                        label: "Pizza toppings",
+                        label: "Favorite pizza toppings",
                         placeholder: "Choose one or more toppings",
                         required: true,
                         options: [
