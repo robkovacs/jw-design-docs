@@ -27,6 +27,10 @@ main {
 
     @media screen and (min-width: $breakpoint-md) {
         width: 0;
+        /*
+            width: 0 helps keep things contained when they'd otherwise stretch things out beyond the viewport
+            I can't say I know *why* it works, but it does, so...
+        */
         flex: 0 1 min(calc(100vw - var(--nav-width)), calc(var(--ui-max-width) - var(--nav-width)));
         padding: var(--size-5xl);
         
