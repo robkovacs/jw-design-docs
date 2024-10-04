@@ -1,8 +1,4 @@
 import { computePosition, flip, autoUpdate, offset, size } from "@floating-ui/dom";
-
-/*
-    Seems to be some funky stuff with setActiveDescendant going on, and expanding the layout at certain breakpoints
-*/
 class MultiSelect {
     constructor(container) {
         this.container = container;
@@ -16,7 +12,6 @@ class MultiSelect {
         this.addContainerEventListeners();
     }
 
-    // Some stuff to clean up in typeahead keydown
     addContainerEventListeners() {
         this.container.addEventListener("click", (e) => {
             if (e.target === this.container && this.enabledOptions.length) {
@@ -51,36 +46,7 @@ class MultiSelect {
                     this.showListbox();
                 }
 
-                /*
-                    Goal: set aria-activedescendant to the next option
-                    that is both enabled and visible. If necessary, go
-                    back to the beginning of the list.
-                    
-                    If there aren't any it shoud be OK that we're
-                    showing the listbox, because the "No results found"
-                    message should be added to the listbox by now? :/
-                */
-                let enabledVisibleOptions = [...this.enabledOptions].filter((option) => {
-                    return !option.hidden;
-                });
-
-                if (enabledVisibleOptions.length) {
-                    if (
-                        enabledVisibleOptions.indexOf(this.activeDescendant) <
-                        enabledVisibleOptions.length - 1
-                    ) {
-                        this.setActiveDescendant(
-                            enabledVisibleOptions[
-                                enabledVisibleOptions.indexOf(this.activeDescendant) + 1
-                            ],
-                        );
-                    } else {
-                        this.setActiveDescendant(enabledVisibleOptions[0]);
-                    }
-                }
-                /*
-                    End goal
-                */
+                this.setActiveDescendant("next");
             }
 
             if (e.key === "ArrowUp") {
@@ -90,38 +56,7 @@ class MultiSelect {
                     this.showListbox();
                 }
 
-                /*
-                    Goal: set aria-activedescendant to the previous
-                    option that is both enabled and visible. If necessary,
-                    go around to the end of the list.
-                    
-                    If there aren't any it shoud be OK that we're
-                    showing the listbox, because the "No results found"
-                    message should be added to the listbox by now? :/
-                */
-                let enabledVisibleOptions = [...this.enabledOptions].filter((option) => {
-                    return !option.hidden;
-                });
-
-                if (enabledVisibleOptions.length) {
-                    if (
-                        this.activeDescendant &&
-                        enabledVisibleOptions.indexOf(this.activeDescendant) > 0
-                    ) {
-                        this.setActiveDescendant(
-                            enabledVisibleOptions[
-                                enabledVisibleOptions.indexOf(this.activeDescendant) - 1
-                            ],
-                        );
-                    } else {
-                        this.setActiveDescendant(
-                            enabledVisibleOptions[enabledVisibleOptions.length - 1],
-                        );
-                    }
-                }
-                /*
-                    End goal
-                */
+                this.setActiveDescendant("previous");
             }
 
             if (e.key === "ArrowLeft" && isCursorAtStart) {
@@ -267,12 +202,12 @@ class MultiSelect {
                         option.innerText.toLowerCase().indexOf(filterString) === -1)
                 ) {
                     option.hidden = true;
-                } 
+                }
             });
         }
 
-        if (this.innerContainer.querySelectorAll('.chip')) {
-            this.innerContainer.querySelectorAll('.chip').forEach((chip) => {
+        if (this.innerContainer.querySelectorAll(".chip")) {
+            this.innerContainer.querySelectorAll(".chip").forEach((chip) => {
                 let controlledOption = document.getElementById(chip.getAttribute("aria-controls"));
                 controlledOption.hidden = true;
             });
@@ -305,7 +240,7 @@ class MultiSelect {
 
         this.addChip(option);
         this.updateListboxContents();
-        this.clearActiveDescendant();
+        this.setActiveDescendant("next");
     }
 
     addChip(option) {
@@ -333,6 +268,16 @@ class MultiSelect {
                 e.target.nextElementSibling.focus();
             }
 
+            if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                if (this.listbox.hidden) {
+                    this.showListbox();
+                }
+
+                this.setActiveDescendant("first");
+
+                this.focusTypeahead();
+            }
+
             if (e.shiftKey && e.key === "Tab") {
                 if (!e.target.previousElementSibling) {
                     this.hideListbox();
@@ -341,22 +286,14 @@ class MultiSelect {
         });
 
         this.typeahead.parentNode.insertBefore(chipHTML, this.typeahead);
-        this.typeahead.focus({ preventScroll: true });
-        if (this.container.getBoundingClientRect().right - this.typeahead.getBoundingClientRect().left < 96) {
-            console.log(this.container.getBoundingClientRect().left, this.typeahead.getBoundingClientRect().left);
-            console.log("before " + option.innerText + ":", this.container.scrollLeft);
-            this.container.scrollLeft = this.typeahead.offsetLeft - 96;
-            console.log("after" + option.innerText + ":", this.container.scrollLeft);
-        }
+        this.focusTypeahead();
     }
 
     removeChip(chip) {
         let controlledOption = document.getElementById(chip.getAttribute("aria-controls"));
         chip.remove();
-
         this.deselectOption(controlledOption);
-
-        this.typeahead.focus();
+        this.focusTypeahead();
     }
 
     deselectOption(deselectedOption) {
@@ -378,7 +315,50 @@ class MultiSelect {
         this.updateListboxContents();
     }
 
-   setActiveDescendant(targetActiveDescendant, scrollToActiveDescendant = true) {
+    setActiveDescendant(target = "first", scrollToActiveDescendant = true) {
+        let targetActiveDescendant;
+        
+        let enabledVisibleOptions = [...this.enabledOptions].filter((option) => {
+            return !option.hidden;
+        });
+
+        let enabledVisibleOptionsPlusCurrent = [...this.enabledOptions].filter((option) => {
+            return !option.hidden || option === this.activeDescendant;
+        });
+       
+        if (enabledVisibleOptions.length) {
+            if (target === "first") {
+                targetActiveDescendant = enabledVisibleOptions[0];
+            } else if (target === "last") {
+                targetActiveDescendant = enabledVisibleOptions.slice(-1)[0];
+            } else if (target === "previous") {
+                let currentIndex = enabledVisibleOptionsPlusCurrent.indexOf(this.activeDescendant);
+                
+                if (this.activeDescendant && currentIndex !== 0) {
+                    targetActiveDescendant = enabledVisibleOptionsPlusCurrent[currentIndex - 1];
+                } else {
+                    this.setActiveDescendant("last");
+                    return;
+                }
+            } else if (target === "next") {
+                let currentIndex = enabledVisibleOptionsPlusCurrent.indexOf(this.activeDescendant);
+                
+                if (this.activeDescendant && currentIndex !== enabledVisibleOptionsPlusCurrent.length - 1) {
+                    targetActiveDescendant = enabledVisibleOptionsPlusCurrent[currentIndex + 1];
+                } else {
+                    this.setActiveDescendant("first");
+                    return;
+                }
+            } else {
+                // target is a specific element
+                targetActiveDescendant = target;
+            }
+        } else {
+            this.clearActiveDescendant();
+            return; // nothing to set it to
+        }
+        console.log("oppo:", targetActiveDescendant);
+
         if (this.activeDescendant) {
             this.activeDescendant.classList.remove("is--aria-activedescendant");
         }
@@ -387,12 +367,13 @@ class MultiSelect {
             "aria-activedescendant",
             targetActiveDescendant.getAttribute("id"),
         );
+        
         targetActiveDescendant.classList.add("is--aria-activedescendant");
         this.activeDescendant = targetActiveDescendant;
 
         if (scrollToActiveDescendant) {
             let targetActiveDescendantHidingAbove =
-                targetActiveDescendant.getBoundingClientRect().y <
+                targetActiveDescendant.getBoundingClientRect().top <
                 this.listbox.getBoundingClientRect().top;
             if (
                 !targetActiveDescendant.previousElementSibling &&
@@ -422,6 +403,17 @@ class MultiSelect {
 
         if (currentActiveDescendant.length > 0) {
             currentActiveDescendant[0].classList.remove("is--aria-activedescendant");
+        }
+    }
+
+    focusTypeahead() {
+        this.typeahead.focus({ preventScroll: true });
+        if (
+            this.container.getBoundingClientRect().right -
+                this.typeahead.getBoundingClientRect().left <
+            96
+        ) {
+            this.container.scrollLeft = this.typeahead.offsetLeft - 96;
         }
     }
 }

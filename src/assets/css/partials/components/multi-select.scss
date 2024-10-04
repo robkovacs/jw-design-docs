@@ -67,6 +67,7 @@
         flex-flow: row nowrap;
         gap: var(--size-3xs);
         align-items: center;
+        z-index: -1;
     }
 
     &__typeahead {
