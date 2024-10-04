@@ -61,6 +61,7 @@
                             aria-expanded="false"
                             aria-haspopup="listbox"
                             placeholder="{{ placeholder | safe }}"
+                            autocomplete="off"
                             {% for key, value in options.attributes %}
                                 {% if key !== "id" %}
                                     {% if value !== null %}
