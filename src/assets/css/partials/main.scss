@@ -22,11 +22,11 @@ body {
 }
 
 main {
-    width: 0;
     flex: 1 1 100%;
     padding: var(--size-xl);
 
     @media screen and (min-width: $breakpoint-md) {
+        width: 0;
         flex: 0 1 min(calc(100vw - var(--nav-width)), calc(var(--ui-max-width) - var(--nav-width)));
         padding: var(--size-5xl);
         
