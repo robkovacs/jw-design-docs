@@ -1,0 +1,458 @@
+---
+title: Form validation
+eleventyNavigation:
+    key: Form validation
+    parent: Patterns
+    order: 3
+    excerpt: "A lot can go wrong in form fields. Here's how to communicate it."
+---
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+    <article>
+        <section>
+            <h2 class="toc__heading" id="general-setup">General form setup</h2>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="reward-early-punish-late">"Reward early, punish late"</h3>
+
+            <p>Most of what's on this page is a variation on this saying, so let's quickly define it.</p>
+
+            <p><strong>Punish late</strong> means that we shouldn't mark a form field as having an error until we're certain that it does.</p>
+            <p><strong>Reward early</strong> means that we should mark a form field as <em>not</em> having an error as soon as we're no longer certain that it has an error.</p>
+
+            {% call callout() %}
+                <p>Further reading on "reward early, punish late":</p>
+                <ul class="bulleted-list">
+                    <li>Smashing Magazine's {{ anchor({ href: "https://www.smashingmagazine.com/2022/09/inline-validation-web-forms-ux/", content: "Complete Guide to Live Validation UX", rightIcon: "external-link", attributes: { target: "_blank" } }) }}</li>
+                    <li>{{ anchor({ href: "https://medium.com/wdstack/inline-validation-in-forms-designing-the-experience-123fb34088ce", content: "Inline validation in forms—designing the experience", rightIcon: "external-link", attributes: { target: "_blank" } }) }}</li>
+                </ul>
+            {% endcall %}
+        </section>
+
+        <section>
+            <h3 class="toc__heading" id="dont-disable-submit">Don't disable form submit buttons</h3>
+            <p>This can lead to people frantically scrolling through a form, trying to find the field they need to fill in or correct in order to enable it.</p>
+            <p>A better experience is to let them use the submit button any time, and if at that time there are invalid fields, we can let them know. Jump to the <a href="#on-submit-validation">on-submit validation</a> section to learn more.</p>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="optional-fields">Avoid optional fields; but label them when they exist</h3>
+            <p>The longer a form is, the more complicated it's perceived as, and the less likely someone is to finish it, or even start.</p>
+            <p>So first of all, if we're including a question in a form, and we don't care if it gets an answer or not, we should think about whether it's worth asking at all.</p>
+            <p>In other words, optional fields should be the exception, not the norm. And as the exception, between optional and required fields, the optional ones should get a special label.</p>
+            <p>If your goal is to communicate that a certain question only needs to be answered if previous questions are answered a certain way, hide it until you get an answer that makes showing it appropriate.</p>
+            {% call figure() %}
+                {% call grid() %}
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
+                        <div>
+                            <form novalidate>
+                                {% call stack() %}
+                                    <fieldset class="form-field">
+                                        {{ inputLabel("Employment status", as = "legend") }}
+                        
+                                        {% call stack({ gap: "xs" }) %}
+                                            {{ radioButton({
+                                                name: "employment-status-1",
+                                                content: "Part-time"
+                                            }) }}
+                                            {{ radioButton({
+                                                name: "employment-status-1",
+                                                content: "Full-time"
+                                            }) }}
+                                        {% endcall %}
+                                    </fieldset>
+                                    {{ textBox({
+                                        label: "Hours per week",
+                                        required: false,
+                                        helpText: "Leave blank if you work full-time",
+                                        classes: "example--optional-dont"
+                                    }) }}
+                                {% endcall %}        
+                            </form>
+                            {{ dosDonts("dont") }}
+                        </div>
+                    {% endcall %}
+
+                    {% call gridCell({ spans: { xs: 12, lg: 6 } }) %}
+                        <div style="height: 100%; display: flex; flex-direction: column">
+                            <form novalidate style="height: 100%">
+                                {% call stack() %}
+                                    <fieldset class="form-field">
+                                        {{ inputLabel("Employment status", as = "legend") }}
+                        
+                                        {% call stack({ gap: "xs" }) %}
+                                            {{ radioButton({
+                                                name: "employment-status-2",
+                                                value: "PT",
+                                                content: "Part-time"
+                                            }) }}
+                                            {{ radioButton({
+                                                name: "employment-status-2",
+                                                value: "FT",
+                                                content: "Full-time"
+                                            }) }}
+                                        {% endcall %}
+                                    </fieldset>
+                                    {{ textBox({
+                                        label: "Hours per week",
+                                        required: true,
+                                        classes: "example--optional-do",
+                                        hidden: true
+                                    }) }}
+                                {% endcall %}        
+                            </form>
+                            {{ dosDonts("do") }}
+                        </div>
+                    {% endcall %}
+                {% endcall %}
+            {% endcall %}
+        </section>
+        <section>
+            <h2 class="toc__heading" id="validation-types">Types of validation</h2>
+            <p>There are three points at which form data can be validated:</p>
+            <ul class="bulleted-list">
+                <li><strong>Inline validation:</strong> as someone interacts with a form, the system validates the data they've entered in each field</li>
+                <li><strong>On-submit validation:</strong> when someone indicates that they would like to submit the form, only then does the system validate the data</li>
+                <li><strong>Post-submit validation:</strong> after the form's data is actually submitted to some sort of backend, only then does the system validate it</li>
+            </ul>
+            <p>Because each of these approaches has places where it's most appropriate, a given form may actually use two of them, or even all three.</p>
+        </section>
+        <section>
+            <h3 class="toc__heading" id="inline-validation">Inline validation</h3>
+            <p>Inline validation is the most common type of validation you'll use in a form.</p>
+            <p>If the criteria for validating a field are simple enough that we can run the validation near-instantly, inline validation is a good choice.</p>
+
+            <h4>Wait as long as possible to show error messages on previously-valid fields</h4>
+            <p>
+                When someone
+                {{ tooltip({
+                    trigger: "focuses",
+                    content: 'Usually a click or tap on the field, or using <kbd class="kbd--inverse">Tab</kbd> or <kbd class="kbd--inverse">Shift</kbd>+<kbd class="kbd--inverse">Tab</kbd> until the field is reached'
+                }) }}
+                a blank field, and starts typing or otherwise entering a value, wait until they
+                {{ tooltip({
+                    trigger: "blur",
+                    content: 'Usually a click or tap outside of the field, or pressing <kbd class="kbd--inverse">Tab</kbd> or <kbd class="kbd--inverse">Shift</kbd>+<kbd class="kbd--inverse">Tab</kbd> until another focusable element is reached'
+                }) }}
+                the field to validate it.
+            </p>
+            {% call figure() %}
+                <div style="max-width: 20rem; margin: 0 auto">
+                    {% call stack() %}
+                        <div>
+                            <form novalidate>
+                            {{ textBox({
+                                label: "Company name",
+                                helpText: "Must be at least three characters",
+                                classes: "example--on-blur-dont",
+                                required: true,
+                                attributes: { "minlength": "3" } 
+                            }) }}
+                            </form>
+                            {{ dosDonts("dont") }}
+                        </div>    
+                        <div>
+                            <form novalidate>    
+                            {{ textBox({
+                                label: "Company name",
+                                helpText: "Must be at least three characters",
+                                classes: "inline-validation--do",
+                                required: true,
+                                attributes: { "minlength": "3" }
+                            }) }}
+                            </form>
+                            {{ dosDonts("do") }}
+                        </div>
+                    {% endcall %}
+                </div>
+            {% endcall %}
+            <p>The field doesn't necessarily need to start off blank though. Here's an example where the field starts with a valid value in it. In the second case, changing this to an invalid value doesn't show an error state until the field is blurred.</p>
+            {% call figure() %}
+                <div style="max-width: 20rem; margin: 0 auto">
+                    {% call stack() %}
+                        <div>
+                            <form novalidate>
+                            {{ textBox({
+                                label: "Company name",
+                                helpText: "Must be at least three characters",
+                                classes: "example--on-blur-dont",
+                                required: true,
+                                value: "Acme",
+                                attributes: { "minlength": "3" } 
+                            }) }}
+                            </form>
+                            {{ dosDonts("dont") }}
+                        </div>    
+                        <div>
+                            <form novalidate>    
+                            {{ textBox({
+                                label: "Company name",
+                                helpText: "Must be at least three characters",
+                                classes: "inline-validation--do",
+                                required: true,
+                                value: "Acme",
+                                attributes: { "minlength": "3" }
+                            }) }}
+                            </form>
+                            {{ dosDonts("do") }}
+                        </div>
+                    {% endcall %}
+                </div>
+            {% endcall %}
+        
+            <h4>Clear a field's error state as soon as possible</h4>
+            <p>When the value in an input field changes, we should immediately check to see if the new value is valid; or at least, whether we can still be certain that it's invalid. In other words, "reward early".</p>
+            {% call callout({ type: "warning" }) %}
+                Again: if you don't know for sure that the value is valid, but don't know for sure that it's <strong>not</strong>, that's enough to clear the error state.
+            {% endcall %}
+            
+            {% call figure("In the first company name field in this example, if it has an error message, that error message doesn't clear until you blur the field. That's too late!") %}
+                <div style="max-width: 20rem; margin: 0 auto">
+                    {% call stack() %}
+                        <div>
+                            <form novalidate>
+                            {{ textBox({
+                                label: "Company name",
+                                helpText: "Must be at least three characters",
+                                classes: "example--on-input-dont",
+                                value: "Ac",
+                                required: true,
+                                attributes: { "minlength": "3" } 
+                            }) }}
+                            </form>
+                            {{ dosDonts("dont") }}
+                        </div>    
+                        <div>
+                            <form novalidate>    
+                            {{ textBox({
+                                label: "Company name",
+                                helpText: "Must be at least three characters",
+                                classes: "inline-validation--do",
+                                required: true,
+                                value: "Ac",
+                                attributes: { "minlength": "3" }
+                            }) }}
+                            </form>
+                            {{ dosDonts("do") }}
+                        </div>
+                    {% endcall %}
+                </div>
+            {% endcall %}
+
+            <h4 id="let-them-answer-out-of-order" data-toc-exclude>Don't penalize people for answering out of order</h4>
+            <p>In other words: previously-answered, empty, required fields shouldn't show an error on blur. If someone focuses an empty, required field, then blurs it without entering a value, that shouldn't be enough to show an error.</p>
+            <p>If there had been a value previously, and they removed it, that's another story.</p>
+            
+            {% call figure() %}
+                <div style="max-width: 20rem; margin: 0 auto">
+                    {% call stack() %}
+                        <div>
+                            <form novalidate>
+                            {{ textBox({
+                                label: "Company name",
+                                helpText: "Must be at least three characters",
+                                classes: "example--on-blur-dont-2",
+                                required: true,
+                                attributes: { "minlength": "3" } 
+                            }) }}
+                            </form>
+                            {{ dosDonts("dont") }}
+                        </div>    
+                        <div>
+                            <form novalidate>    
+                            {{ textBox({
+                                label: "Company name",
+                                helpText: "Must be at least three characters",
+                                classes: "inline-validation--do",
+                                required: true,
+                                attributes: { "minlength": "3" }
+                            }) }}
+                            </form>
+                            {{ dosDonts("do") }}
+                        </div>
+                    {% endcall %}
+                </div>
+            {% endcall %}
+            <p>But wait, that means that a user can tab through a whole form full of required fields, never enter data in any of them, and then submit the form. In that case, how will they ever know which required fields they missed?
+        </section>
+        <section>
+            <h3 class="toc__heading" id="on-submit-validation">On-submit validation</h3>
+            <p>When someone tries to submit a form, that's when you can tell them if they missed any required fields.</p>
+            <p>We shouldn't <a href="#dont-disable-submit">disable the submit button</a> until all fields have valid data. We also should not <a href="#let-them-answer-out-of-order">mark blank, required fields with an error</a> just because someone didn't answer them right away. But when someone tries to submit a form, this is our chance to let them know about these issues.</p>
+            {% call figure() %}
+                <div style="max-width: 20rem; margin: 0 auto">
+                    <form novalidate>
+                        {% call stack() %}
+                            {{ textBox({
+                                label: "First name",
+                                classes: "",
+                                required: true
+                            }) }}
+                            {{ textBox({
+                                label: "Last name",
+                                classes: "",
+                                required: true
+                            }) }}
+                            {{ button({ content: "Submit", classes: "button--on-submit-example" }) }}
+                        {% endcall %}
+                    </form>
+                    {{ dosDonts("do") }}
+                </div>
+            {% endcall %}
+        </section>
+    </article>
+{% endblock %}
+
+{% set localJs %}
+    let branchingRadioButtons = document.querySelectorAll('[name="employment-status-2"]');
+    
+    branchingRadioButtons.forEach((radio) => {
+        radio.addEventListener("change", (e) => {
+            let hoursPerWeekField = document.querySelector('.form-field:has(.example--optional-do)');
+
+            console.log(hoursPerWeekField);
+
+            if (e.target.checked && e.target.value === "PT") {
+                hoursPerWeekField.hidden = false;
+            } else {
+                hoursPerWeekField.hidden = true;
+            }
+        });
+    });
+
+    const showErrorMessage = (input, errorMessage) => {
+        clearErrorMessage(input);
+        
+        input.classList.add("has-error");
+        
+        let errorMessageHTML = document.createRange().createContextualFragment(`<div class="input-message input-message--type-error"><span class="system-icon system-icon--size-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"> <path fill="currentColor" d="M12 13.5a.75.75 0 0 0 .75-.75V7.5a.75.75 0 0 0-1.5 0v5.25c0 .414.336.75.75.75Zm1.125 2.625a1.125 1.125 0 1 1-2.25 0 1.125 1.125 0 0 1 2.25 0Z"></path> <path fill="currentColor" d="m21.31 7.521-4.833-4.834a1.505 1.505 0 0 0-1.056-.437H8.583c-.396 0-.783.161-1.06.44L2.686 7.521c-.282.284-.437.66-.437 1.059v6.835c0 .401.157.778.44 1.06l4.832 4.835c.282.283.659.438 1.06.438h6.835c.4 0 .777-.156 1.06-.44l4.835-4.832c.283-.282.438-.659.438-1.06V8.582c0-.395-.16-.781-.44-1.06ZM15.416 20.25l-6.835.001-4.832-4.834-.001-6.834L8.583 3.75h6.834v-.002l4.832 4.834.001 6.835-4.834 4.832Z"></path></svg></span> ${errorMessage}</div>`);        
+        input.nextElementSibling.append(errorMessageHTML);
+    }
+
+    const clearErrorMessage = (input) => {
+        input.classList.remove("has-error");
+
+        while (input.nextElementSibling.firstChild) {
+            input.nextElementSibling.removeChild(input.nextElementSibling.firstChild);
+        }
+    }
+    
+    let onBlurDont = document.querySelectorAll(".example--on-blur-dont");
+    let onBlurDontTwo = document.querySelectorAll(".example--on-blur-dont-2");
+    let onInputDont = document.querySelectorAll(".example--on-input-dont");
+    let inlineValidationDo = document.querySelectorAll(".inline-validation--do");
+
+    onBlurDont.forEach((input) => {
+        const isValid = (input) => {
+            let tooShortMessage = "Must be at least three characters";
+            if (input.value.length < 3) {
+                showErrorMessage(input, tooShortMessage);
+            } else {
+                clearErrorMessage(input);
+            }
+        }
+
+        input.addEventListener("focus", (e) => { isValid(e.target) });
+        input.addEventListener("input", (e) => { isValid(e.target) });
+        input.addEventListener("blur", (e) => { isValid(e.target) });
+    });
+
+    onBlurDontTwo.forEach((input) => {
+        const isValid = (input) => {
+            let tooShortMessage = "Must be at least three characters";
+            if (input.value.length < 3) {
+                showErrorMessage(input, tooShortMessage);
+            } else {
+                clearErrorMessage(input);
+            }
+        }
+
+        input.addEventListener("input", (e) => { isValid(e.target) });
+        input.addEventListener("blur", (e) => { isValid(e.target) });
+    });
+    
+    onInputDont.forEach((input) => {
+        const isValid = (input) => {
+            let tooShortMessage = "Must be at least three characters";
+            if (input.value.trim().length < 3) {
+                showErrorMessage(input, tooShortMessage);
+            } else {
+                clearErrorMessage(input);
+            }
+        }
+
+        isValid(input);
+        input.addEventListener("blur", (e) => { isValid(e.target) });
+    });
+
+    inlineValidationDo.forEach((input) => {
+        let tooShortMessage = "Must be at least three characters";
+
+        if (input.value.trim().length !== 0 && input.value.trim().length < 3) {
+            showErrorMessage(input, tooShortMessage);
+            input.dataset.validOnLastBlur = false;
+        }
+
+        input.addEventListener("focus", (e) => {
+            e.target.dataset.validOnLastBlur = true;
+            if (e.target.dataset.lengthOnLastBlur === undefined || e.target.dataset.lengthOnLastBlur !== 0) {
+                e.target.dataset.lengthOnLastBlur = e.target.value.length;
+            }
+        });
+
+        input.addEventListener("blur", (e) => {
+            let tooShortMessage = "Must be at least three characters";
+
+            if (e.target.value.trim().length !== 0 && e.target.value.trim().length < 3) {
+                showErrorMessage(e.target, tooShortMessage);
+                e.target.dataset.validOnLastBlur = false;
+            } else if (e.target.dataset.lengthOnLastBlur > 0 && e.target.value.trim().length === 0) {
+                showErrorMessage(e.target, tooShortMessage);
+                e.target.dataset.validOnLastBlur = false;
+            } else {
+                clearErrorMessage(e.target);
+                e.target.dataset.validOnLastBlur = true;
+            }
+            if (e.target.value.trim().length > 0) {
+                e.target.dataset.lengthOnLastBlur = e.target.value.length;
+            }
+        });
+        
+        input.addEventListener("input", (e) => {
+            let tooShortMessage = "Must be at least three characters";
+            if (e.target.value.trim().length !== 0 && e.target.value.trim().length < 3) {
+                if (e.target.dataset.validOnLastBlur === "false") {
+                    showErrorMessage(e.target, tooShortMessage);
+                }
+            } else {
+                clearErrorMessage(e.target);
+                e.target.dataset.validOnLastBlur = true;
+            }
+        });
+    });
+
+    let buttonOnSubmit = document.querySelector(".button--on-submit-example");
+
+    buttonOnSubmit.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        let formFields = e.target.closest("form").querySelectorAll("input");
+
+        formFields.forEach((input) => {
+            let requiredMessage = `Please enter a ${input.previousElementSibling.innerText.toLowerCase()}`;
+            if (e.target.value.trim().length === 0) {
+                showErrorMessage(input, requiredMessage);
+            } else {
+                clearErrorMessage(input);
+            }
+        });
+    });
+{% endset %}
+
+{% set localCss %}
+    .example--optional-dont,
+    .example--optional-do {
+        width: 4rem;
+        text-align: right;
+    }
+{% endset %}

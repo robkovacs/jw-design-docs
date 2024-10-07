@@ -6,12 +6,26 @@ const setCurrentFromHash = () => {
         currentLink.classList.remove("current");
     }
 
-    tocLinks.forEach((el) => {
+    let foundNewCurrent = false;
+
+    tocLinks.forEach((el) => { 
         if (window.location.hash == el.getAttribute("href")) {
             el.classList.add("current");
-            // document.querySelector(el.getAttribute('href')).scrollIntoView();
+            foundNewCurrent = true;
+            // document.querySelector(el.getAttribute('href')).scrollIntoView();       
         }
     });
+
+    if (!foundNewCurrent) {
+        tocLinks.forEach((el) => {
+            let ancestor = document.getElementById(el.getAttribute("href").slice(1)).parentNode;
+            let target = document.getElementById(window.location.hash.slice(1));
+            
+            if (ancestor.contains(target)) {
+                el.classList.add("current");
+            }
+        });       
+    }
 };
 
 window.addEventListener("hashchange", setCurrentFromHash);

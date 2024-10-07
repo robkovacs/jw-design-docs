@@ -35,10 +35,6 @@
                 border-color: var(--color-red-600);
             }
 
-            &:valid {
-                border-color: var(--color-gray-600);
-            }
-
             &:disabled, &[aria-disabled="true"] {
                 border-color: var(--color-gray-400);
             }
@@ -48,10 +44,6 @@
     &:active {
         &.has-error {
             border-color: var(--color-red-700);
-        }
-
-        &:valid {
-            border-color: var(--color-gray-700);
         }
     
         &:disabled, &[aria-disabled="true"] {

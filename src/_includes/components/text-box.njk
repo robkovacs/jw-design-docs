@@ -17,34 +17,30 @@
         {%- endif -%}
     {%- endset %}
 
-    {% if options.label or options.messages %}
-        <div class="form-field">
-    {% endif %}
-            {{ inputLabel(options.label, required, id, locale = locale) if options.label }}
-            {{ inputMessage("help", options.helpText) if options.helpText }}
-            <input
-                class="text-box {{ classes }}"
-                {% for key, value in options.attributes %}
-                    {% if key !== "id" %}
-                        {{ key }}="{{ value | safe }}"
-                    {% endif %}
-                {% endfor %}
-                id="{{ id | safe }}"
-                {{ 'required' if required }}
-                {{ ('aria-disabled="true"' | safe) if options.disabled }}    
-                type="text"
-                placeholder="{{ placeholder | safe }}"    
-                title="{{ placeholder | safe }}"
-                {{ ('value=' + options.value) if options.value }}
-            />
-        {% if options.messages %}
-            <div class="input-message__list">
-            {% for message in options.messages %}
-                    {{ inputMessage(message.type, message.message) }}
-            {% endfor %} 
-            </div>
-        {% endif %}
-    {% if options.label or options.messages %}
+    <div class="form-field" {{ "hidden" if options.hidden }}>
+        {{ inputLabel(options.label, required, id, locale = locale) if options.label }}
+        {{ inputMessage("help", options.helpText) if options.helpText }}
+        <input
+            class="text-box {{ classes }}"
+            {% for key, value in options.attributes %}
+                {% if key !== "id" %}
+                    {{ key }}{{ ('="' + value + '"') | safe if value }}
+                {% endif %}
+            {% endfor %}
+            id="{{ id | safe }}"
+            {{ 'required' if required }}
+            {{ ('aria-disabled="true"' | safe) if options.disabled }}    
+            type="text"
+            placeholder="{{ placeholder | safe }}"    
+            title="{{ placeholder | safe }}"
+            {% if options.value %}
+                value="{{ options.value | safe }}"
+            {% endif %}
+        />
+        <div class="input-message__list">
+        {%- for message in options.messages -%}
+                {{ inputMessage(message.type, message.message) }}
+        {%- endfor -%} 
         </div>
-    {% endif %}
+    </div>
 {% endmacro %}

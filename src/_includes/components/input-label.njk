@@ -6,7 +6,7 @@
         optional: "Freiwillig"
     }
 } %}
-{%- macro render(content, isRequired = true, forId = 'id', as = "label", locale = 'en_US', attributes = {}) -%}
+{%- macro render(content, isRequired = true, forId = "", as = "label", locale = 'en_US', attributes = {}) -%}
 <{{ as }}
     class="input-label"
     {% if forId %}

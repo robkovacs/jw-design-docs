@@ -1,7 +1,8 @@
 /* TODO: update the call to the TOC plugin to give everything BEM-y class names */
 @import '../breakpoints';
 
-.toc__heading {
+.toc__heading,
+section > h2[id], section > h3[id], section > h4[id] {
     /* Larger offset to account for mobile header */
     scroll-margin-top: var(--size-7xl);
     
@@ -9,6 +10,8 @@
         scroll-margin-top: var(--size-3xl);
     }
 }
+
+
 
 .toc__container {
     align-self: flex-start;

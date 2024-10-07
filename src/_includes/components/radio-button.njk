@@ -7,6 +7,9 @@
             {{ ('aria-disabled="true"' | safe) if options.disabled }}
             {{ 'required' if options.required }}
             {{ ('checked="true"' | safe) if options.checked }}
+            {% if options.value %}
+                value="{{ options.value | safe }}"
+            {% endif %}
         />
         <span class="radio-button__content">
             <span class="radio-button__label">{{ options.content }}</span>

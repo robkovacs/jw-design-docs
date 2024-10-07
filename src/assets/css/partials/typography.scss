@@ -92,6 +92,12 @@ code {
     border-radius: var(--size-3xs);
     font-family: monospace;
     color: var(--color-gray-900);
+
+    &.kbd--inverse,
+    &.code--inverse {
+        background-color: var(--color-gray-800);
+        color: var(--color-white);
+    }
 }
 
 em {
