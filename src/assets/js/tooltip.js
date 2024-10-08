@@ -138,10 +138,8 @@ class Tooltip {
             this.hideTooltip();
         });
 
-        document.addEventListener("click", (e) => {
-            if (!this.tooltip.contains(e.target)) {
-                this.hideTooltip();
-            }
+        this.trigger.addEventListener("click", () => {
+            this.showTooltip();
         });
     }
 }
