@@ -36,29 +36,39 @@ document.querySelectorAll(".toc a").forEach((link) => {
     link.addEventListener("click", setCurrentFromHash);
 });
 
+const updateTOC = (entry) => {
+    const targetId = entry.target.firstElementChild.getAttribute("id");
+    const currentLink = document.querySelector(".toc a.current");
+    if (entry.isIntersecting) {
+        if (currentLink) {
+            currentLink.classList.remove("current");
+        }
+        document
+            .querySelector('.toc a[href="#' + targetId + '"]')
+            .classList.add("current");
+        window.history.replaceState(null, null, "#" + targetId);
+        // TODO: don't replace state if the existing hash is a child of this
+    }
+};
+
 const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            const targetId = entry.target.firstElementChild.getAttribute("id");
-            const currentLink = document.querySelector(".toc a.current");
-            if (entry.isIntersecting) {
-                if (currentLink) {
-                    currentLink.classList.remove("current");
-                }
-                document
-                    .querySelector('.toc a[href="#' + targetId + '"]')
-                    .classList.add("current");
-                window.history.replaceState(null, null, "#" + targetId);
-                // TODO: don't replace state if the existing hash is a child of this one
-            }
-        });
-    },
+    (entries) => { entries.forEach(updateTOC); },
     {
         rootMargin: "0px 0px -75% 0px",
         threshold: 0,
     },
 );
 
+const lastObserver = new IntersectionObserver(
+    (entries) => { entries.forEach(updateTOC); },
+    { threshold: 1 },
+);
+
 document.querySelectorAll("section:has(.toc__heading)").forEach((section) => {
     observer.observe(section);
+
+    if (section === section.parentNode.lastElementChild) {
+        console.log("last section is: ", section);
+        lastObserver.observe(section);
+    }
 });
