@@ -279,7 +279,7 @@ eleventyNavigation:
             <h3 class="toc__heading" id="on-submit-validation">On-submit validation</h3>
             <p>When someone tries to submit a form, that's when you can tell them if they missed any required fields.</p>
             <p>We shouldn't <a href="#dont-disable-submit">disable the submit button</a> until all fields have valid data. We also should not <a href="#let-them-answer-out-of-order">mark blank, required fields with an error</a> just because someone didn't answer them right away. But when someone tries to submit a form, this is our chance to let them know about these issues.</p>
-            {% call figure() %}
+            {% call figure("If this was a real form, we'd probably do something when all the data's valid besides pop up a success message. Just need to do something here besides clear out the error summary.") %}
                 <div style="max-width: 20rem; margin: 0 auto">
                     <form novalidate>
                         {% call stack() %}
@@ -300,6 +300,11 @@ eleventyNavigation:
                 </div>
             {% endcall %}
         </section>
+        <section>
+            <h3 class="toc__heading" id="post-submit-validation">Post-submit validation</h3>
+            <p>Post-submit validation is used for anything else we can't check without actually submitting the form data to some sort of backend.</p>
+            <p>Errors should be presented just like <a href="#on-submit-validation">on-submit validation</a>: an error summary at the beginning of the form, and error messages on each affected form field.</p>
+        </section>
     </article>
 {% endblock %}
 
@@ -309,8 +314,6 @@ eleventyNavigation:
     branchingRadioButtons.forEach((radio) => {
         radio.addEventListener("change", (e) => {
             let hoursPerWeekField = document.querySelector('.form-field:has(.example--optional-do)');
-
-            console.log(hoursPerWeekField);
 
             if (e.target.checked && e.target.value === "PT") {
                 hoursPerWeekField.hidden = false;
@@ -387,7 +390,7 @@ eleventyNavigation:
 
     inlineValidationDo.forEach((input) => {
         let tooShortMessage = "Must be at least three characters";
-
+                
         if (input.value.trim().length !== 0 && input.value.trim().length < 3) {
             showErrorMessage(input, tooShortMessage);
             input.dataset.validOnLastBlur = false;
@@ -395,7 +398,7 @@ eleventyNavigation:
 
         input.addEventListener("focus", (e) => {
             e.target.dataset.validOnLastBlur = true;
-            if (e.target.dataset.lengthOnLastBlur === undefined || e.target.dataset.lengthOnLastBlur !== 0) {
+            if (e.target.dataset.lengthOnLastBlur === undefined || e.target.value.trim().length !== 0) {
                 e.target.dataset.lengthOnLastBlur = e.target.value.length;
             }
         });
@@ -432,20 +435,93 @@ eleventyNavigation:
     });
 
     let buttonOnSubmit = document.querySelector(".button--on-submit-example");
+    let onSubmitFormFields = buttonOnSubmit.closest("form").querySelectorAll("input");
+
+    onSubmitFormFields.forEach((input) => {
+        let requiredMessage = `Please enter a ${input.previousElementSibling.innerText.toLowerCase()}`;
+        
+        input.addEventListener("focus", (e) => {
+            e.target.dataset.validOnLastBlur = true;
+            if (e.target.dataset.lengthOnLastBlur === undefined || e.target.value.trim().length !== 0) {
+                e.target.dataset.lengthOnLastBlur = e.target.value.length;
+            }
+        });
+
+        input.addEventListener("blur", (e) => {
+            console.log(e.target.dataset.lengthOnLastBlur, e.target.value.trim().length);
+            if (e.target.dataset.lengthOnLastBlur > 0 && e.target.value.trim().length === 0) {
+                showErrorMessage(e.target, requiredMessage);
+                e.target.dataset.validOnLastBlur = false;
+            } else {
+                clearErrorMessage(e.target);
+                e.target.dataset.validOnLastBlur = true;
+            }
+
+            if (e.target.value.trim().length > 0) {
+                e.target.dataset.lengthOnLastBlur = e.target.value.length;
+            }
+        });
+        
+        input.addEventListener("input", (e) => {
+            if (e.target.value.trim().length === 0) {
+                if (e.target.dataset.validOnLastBlur === "false") {
+                    showErrorMessage(e.target, requiredMessage);
+                }
+            } else {
+                clearErrorMessage(e.target);
+                e.target.dataset.validOnLastBlur = true;
+            }
+        });
+    });
 
     buttonOnSubmit.addEventListener("click", (e) => {
         e.preventDefault();
+        let errorList = [];
 
-        let formFields = e.target.closest("form").querySelectorAll("input");
-
-        formFields.forEach((input) => {
+        onSubmitFormFields.forEach((input) => {
             let requiredMessage = `Please enter a ${input.previousElementSibling.innerText.toLowerCase()}`;
-            if (e.target.value.trim().length === 0) {
+            if (input.value.trim().length === 0) {
+                input.dataset.lengthOnLastBlur = 1;
                 showErrorMessage(input, requiredMessage);
+                let errorHTML = document
+                    .createRange()
+                    .createContextualFragment(
+                    `<li>Please enter a <a href="#${input.getAttribute("id")}">${input.previousElementSibling.innerText.toLowerCase()}</a></li>`,
+                );
+                errorList.push(errorHTML);
             } else {
+                input.dataset.lengthOnLastBlur = undefined;
                 clearErrorMessage(input);
             }
         });
+
+        if (e.target.closest("form").firstElementChild.classList.contains("form-result")) {
+            e.target.closest("form").firstElementChild.remove();
+        }
+
+        let errorSummary = document
+            .createRange()
+            .createContextualFragment(
+                `<div class="form-result error-summary"><div class="h4"><span class="system-icon system-icon--size-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"> <path fill="currentColor" d="M12 13.5a.75.75 0 0 0 .75-.75V7.5a.75.75 0 0 0-1.5 0v5.25c0 .414.336.75.75.75Zm1.125 2.625a1.125 1.125 0 1 1-2.25 0 1.125 1.125 0 0 1 2.25 0Z"></path> <path fill="currentColor" d="m21.31 7.521-4.833-4.834a1.505 1.505 0 0 0-1.056-.437H8.583c-.396 0-.783.161-1.06.44L2.686 7.521c-.282.284-.437.66-.437 1.059v6.835c0 .401.157.778.44 1.06l4.832 4.835c.282.283.659.438 1.06.438h6.835c.4 0 .777-.156 1.06-.44l4.835-4.832c.283-.282.438-.659.438-1.06V8.582c0-.395-.16-.781-.44-1.06ZM15.416 20.25l-6.835.001-4.832-4.834-.001-6.834L8.583 3.75h6.834v-.002l4.832 4.834.001 6.835-4.834 4.832Z"></path> </svg> </span> We have a problem...</div> <ul class="bulleted-list error-summary__list"></ul></div>`,
+            );
+
+        errorList.forEach((error) => {
+            errorSummary.querySelector(".error-summary__list").append(error);
+        });
+
+        if (errorList.length) {        
+            e.target.closest("form").insertBefore(errorSummary, e.target.closest("button").parentNode);
+        } else {
+            let successSummary = document
+                .createRange()
+                .createContextualFragment(
+                    `<div class="form-result success-summary"><div class="h4"><span class="system-icon system-icon--size-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"> <path fill="currentColor" d="M16.28 10.28a.75.75 0 1 0-1.06-1.06l-4.72 4.72-1.72-1.72a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.06 0l5.25-5.25Z"></path> <path fill="currentColor" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM3.75 12a8.25 8.25 0 1 1 16.5 0 8.25 8.25 0 0 1-16.5 0Z"></path> </svg> </span> Form submitted</div></div>`,
+            );
+
+            e.target.closest("form").insertBefore(successSummary, e.target.closest("button").parentNode);
+        }
+
+        window.scrollTo(0, document.querySelector(".form-result").offsetTop - 32);
     });
 {% endset %}
 
@@ -454,5 +530,41 @@ eleventyNavigation:
     .example--optional-do {
         width: 4rem;
         text-align: right;
+    }
+
+    .error-summary, 
+    .success-summary {
+        background-color: var(--color-red-200);
+        border-radius: var(--size-3xs);
+        padding: var(--size-md);
+        margin-bottom: var(--size-xl);
+    }
+
+    .success-summary {
+        background-color: var(--color-green-200);
+    }
+
+    .success-summary .h4 {
+        margin-bottom: 0;
+    }
+
+    .error-summary__list a:link,
+    .error-summary__list a:visited {
+        color: var(--color-gray-900);
+        text-decoration: underline;
+    }
+
+    @media (hover: hover) {
+        .error-summary__list a:hover {
+            color: var(--color-gray-700);
+        }
+    }
+
+    .error-summary__list a:active {
+        color: var(--color-gray-800);
+    }
+
+    .error-summary__list {
+        margin-bottom: 0;        
     }
 {% endset %}

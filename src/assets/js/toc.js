@@ -49,6 +49,7 @@ const observer = new IntersectionObserver(
                     .querySelector('.toc a[href="#' + targetId + '"]')
                     .classList.add("current");
                 window.history.replaceState(null, null, "#" + targetId);
+                // TODO: don't replace state if the existing hash is a child of this one
             }
         });
     },
