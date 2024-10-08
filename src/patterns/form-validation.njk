@@ -309,6 +309,8 @@ eleventyNavigation:
 {% endblock %}
 
 {% set localJs %}
+    /* Apologies to anyone who needs to read this... */
+
     let branchingRadioButtons = document.querySelectorAll('[name="employment-status-2"]');
     
     branchingRadioButtons.forEach((radio) => {
@@ -474,6 +476,10 @@ eleventyNavigation:
         });
     });
 
+    buttonOnSubmit.closest("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+    });
+
     buttonOnSubmit.addEventListener("click", (e) => {
         e.preventDefault();
         let errorList = [];
@@ -521,7 +527,7 @@ eleventyNavigation:
             e.target.closest("form").insertBefore(successSummary, e.target.closest("button").parentNode);
         }
 
-        window.scrollTo(0, document.querySelector(".form-result").offsetTop - 32);
+        document.querySelector(".form-result").scrollIntoView();
     });
 {% endset %}
 
@@ -532,12 +538,23 @@ eleventyNavigation:
         text-align: right;
     }
 
-    .error-summary, 
-    .success-summary {
+    .form-result {
         background-color: var(--color-red-200);
         border-radius: var(--size-3xs);
         padding: var(--size-md);
         margin-bottom: var(--size-xl);
+        scroll-margin-top: 8rem;
+    }
+
+    @media (min-width: 48rem) {
+        .form-result {
+            scroll-margin-top: 4rem;
+        }
+    }
+}
+
+    .error-summary {
+        background-color: var(--color-red-200);
     }
 
     .success-summary {
