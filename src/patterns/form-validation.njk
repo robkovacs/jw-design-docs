@@ -49,7 +49,7 @@ eleventyNavigation:
                                 {% call stack() %}
                                     <fieldset class="form-field">
                                         {{ inputLabel("Employment status", as = "legend") }}
-                        
+
                                         {% call stack({ gap: "xs" }) %}
                                             {{ radioButton({
                                                 name: "employment-status-1",
@@ -67,7 +67,7 @@ eleventyNavigation:
                                         helpText: "Leave blank if you work full-time",
                                         classes: "example--optional-dont"
                                     }) }}
-                                {% endcall %}        
+                                {% endcall %}
                             </form>
                             {{ dosDonts("dont") }}
                         </div>
@@ -79,7 +79,7 @@ eleventyNavigation:
                                 {% call stack() %}
                                     <fieldset class="form-field">
                                         {{ inputLabel("Employment status", as = "legend") }}
-                        
+
                                         {% call stack({ gap: "xs" }) %}
                                             {{ radioButton({
                                                 name: "employment-status-2",
@@ -99,7 +99,7 @@ eleventyNavigation:
                                         classes: "example--optional-do",
                                         hidden: true
                                     }) }}
-                                {% endcall %}        
+                                {% endcall %}
                             </form>
                             {{ dosDonts("do") }}
                         </div>
@@ -146,13 +146,13 @@ eleventyNavigation:
                                 helpText: "Must be at least three characters",
                                 classes: "example--on-blur-dont",
                                 required: true,
-                                attributes: { "minlength": "3" } 
+                                attributes: { "minlength": "3" }
                             }) }}
                             </form>
                             {{ dosDonts("dont") }}
-                        </div>    
+                        </div>
                         <div>
-                            <form novalidate>    
+                            <form novalidate>
                             {{ textBox({
                                 label: "Company name",
                                 helpText: "Must be at least three characters",
@@ -178,13 +178,13 @@ eleventyNavigation:
                                 classes: "example--on-blur-dont",
                                 required: true,
                                 value: "Acme",
-                                attributes: { "minlength": "3" } 
+                                attributes: { "minlength": "3" }
                             }) }}
                             </form>
                             {{ dosDonts("dont") }}
-                        </div>    
+                        </div>
                         <div>
-                            <form novalidate>    
+                            <form novalidate>
                             {{ textBox({
                                 label: "Company name",
                                 helpText: "Must be at least three characters",
@@ -199,13 +199,13 @@ eleventyNavigation:
                     {% endcall %}
                 </div>
             {% endcall %}
-        
+
             <h4>Clear a field's error state as soon as possible</h4>
             <p>When the value in an input field changes, we should immediately check to see if the new value is valid; or at least, whether we can still be certain that it's invalid. In other words, "reward early".</p>
             {% call callout({ type: "warning" }) %}
                 Again: if you don't know for sure that the value is valid, but don't know for sure that it's <strong>not</strong>, that's enough to clear the error state.
             {% endcall %}
-            
+
             {% call figure("In the first company name field in this example, if it has an error message, that error message doesn't clear until you blur the field. That's too late!") %}
                 <div style="max-width: 20rem; margin: 0 auto">
                     {% call stack() %}
@@ -217,13 +217,13 @@ eleventyNavigation:
                                 classes: "example--on-input-dont",
                                 value: "Ac",
                                 required: true,
-                                attributes: { "minlength": "3" } 
+                                attributes: { "minlength": "3" }
                             }) }}
                             </form>
                             {{ dosDonts("dont") }}
-                        </div>    
+                        </div>
                         <div>
-                            <form novalidate>    
+                            <form novalidate>
                             {{ textBox({
                                 label: "Company name",
                                 helpText: "Must be at least three characters",
@@ -242,7 +242,7 @@ eleventyNavigation:
             <h4 id="let-them-answer-out-of-order" data-toc-exclude>Don't penalize people for answering out of order</h4>
             <p>In other words: previously-answered, empty, required fields shouldn't show an error on blur. If someone focuses an empty, required field, then blurs it without entering a value, that shouldn't be enough to show an error.</p>
             <p>If there had been a value previously, and they removed it, that's another story.</p>
-            
+
             {% call figure() %}
                 <div style="max-width: 20rem; margin: 0 auto">
                     {% call stack() %}
@@ -253,13 +253,13 @@ eleventyNavigation:
                                 helpText: "Must be at least three characters",
                                 classes: "example--on-blur-dont-2",
                                 required: true,
-                                attributes: { "minlength": "3" } 
+                                attributes: { "minlength": "3" }
                             }) }}
                             </form>
                             {{ dosDonts("dont") }}
-                        </div>    
+                        </div>
                         <div>
-                            <form novalidate>    
+                            <form novalidate>
                             {{ textBox({
                                 label: "Company name",
                                 helpText: "Must be at least three characters",
@@ -312,7 +312,7 @@ eleventyNavigation:
     /* Apologies to anyone who needs to read this... */
 
     let branchingRadioButtons = document.querySelectorAll('[name="employment-status-2"]');
-    
+
     branchingRadioButtons.forEach((radio) => {
         radio.addEventListener("change", (e) => {
             let hoursPerWeekField = document.querySelector('.form-field:has(.example--optional-do)');
@@ -327,10 +327,10 @@ eleventyNavigation:
 
     const showErrorMessage = (input, errorMessage) => {
         clearErrorMessage(input);
-        
+
         input.classList.add("has-error");
-        
-        let errorMessageHTML = document.createRange().createContextualFragment(`<div class="input-message input-message--type-error"><span class="system-icon system-icon--size-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"> <path fill="currentColor" d="M12 13.5a.75.75 0 0 0 .75-.75V7.5a.75.75 0 0 0-1.5 0v5.25c0 .414.336.75.75.75Zm1.125 2.625a1.125 1.125 0 1 1-2.25 0 1.125 1.125 0 0 1 2.25 0Z"></path> <path fill="currentColor" d="m21.31 7.521-4.833-4.834a1.505 1.505 0 0 0-1.056-.437H8.583c-.396 0-.783.161-1.06.44L2.686 7.521c-.282.284-.437.66-.437 1.059v6.835c0 .401.157.778.44 1.06l4.832 4.835c.282.283.659.438 1.06.438h6.835c.4 0 .777-.156 1.06-.44l4.835-4.832c.283-.282.438-.659.438-1.06V8.582c0-.395-.16-.781-.44-1.06ZM15.416 20.25l-6.835.001-4.832-4.834-.001-6.834L8.583 3.75h6.834v-.002l4.832 4.834.001 6.835-4.834 4.832Z"></path></svg></span> ${errorMessage}</div>`);        
+
+        let errorMessageHTML = document.createRange().createContextualFragment(`<div class="input-message input-message--type-error"><span class="system-icon system-icon--size-md"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"> <path fill="currentColor" d="M12 13.5a.75.75 0 0 0 .75-.75V7.5a.75.75 0 0 0-1.5 0v5.25c0 .414.336.75.75.75Zm1.125 2.625a1.125 1.125 0 1 1-2.25 0 1.125 1.125 0 0 1 2.25 0Z"></path> <path fill="currentColor" d="m21.31 7.521-4.833-4.834a1.505 1.505 0 0 0-1.056-.437H8.583c-.396 0-.783.161-1.06.44L2.686 7.521c-.282.284-.437.66-.437 1.059v6.835c0 .401.157.778.44 1.06l4.832 4.835c.282.283.659.438 1.06.438h6.835c.4 0 .777-.156 1.06-.44l4.835-4.832c.283-.282.438-.659.438-1.06V8.582c0-.395-.16-.781-.44-1.06ZM15.416 20.25l-6.835.001-4.832-4.834-.001-6.834L8.583 3.75h6.834v-.002l4.832 4.834.001 6.835-4.834 4.832Z"></path></svg></span> ${errorMessage}</div>`);
         input.nextElementSibling.append(errorMessageHTML);
     }
 
@@ -341,7 +341,7 @@ eleventyNavigation:
             input.nextElementSibling.removeChild(input.nextElementSibling.firstChild);
         }
     }
-    
+
     let onBlurDont = document.querySelectorAll(".example--on-blur-dont");
     let onBlurDontTwo = document.querySelectorAll(".example--on-blur-dont-2");
     let onInputDont = document.querySelectorAll(".example--on-input-dont");
@@ -375,7 +375,7 @@ eleventyNavigation:
         input.addEventListener("input", (e) => { isValid(e.target) });
         input.addEventListener("blur", (e) => { isValid(e.target) });
     });
-    
+
     onInputDont.forEach((input) => {
         const isValid = (input) => {
             let tooShortMessage = "Must be at least three characters";
@@ -392,7 +392,7 @@ eleventyNavigation:
 
     inlineValidationDo.forEach((input) => {
         let tooShortMessage = "Must be at least three characters";
-                
+
         if (input.value.trim().length !== 0 && input.value.trim().length < 3) {
             showErrorMessage(input, tooShortMessage);
             input.dataset.validOnLastBlur = false;
@@ -422,7 +422,7 @@ eleventyNavigation:
                 e.target.dataset.lengthOnLastBlur = e.target.value.length;
             }
         });
-        
+
         input.addEventListener("input", (e) => {
             let tooShortMessage = "Must be at least three characters";
             if (e.target.value.trim().length !== 0 && e.target.value.trim().length < 3) {
@@ -441,7 +441,7 @@ eleventyNavigation:
 
     onSubmitFormFields.forEach((input) => {
         let requiredMessage = `Please enter a ${input.previousElementSibling.innerText.toLowerCase()}`;
-        
+
         input.addEventListener("focus", (e) => {
             e.target.dataset.validOnLastBlur = true;
             if (e.target.dataset.lengthOnLastBlur === undefined || e.target.value.trim().length !== 0) {
@@ -463,7 +463,7 @@ eleventyNavigation:
                 e.target.dataset.lengthOnLastBlur = e.target.value.length;
             }
         });
-        
+
         input.addEventListener("input", (e) => {
             if (e.target.value.trim().length === 0) {
                 if (e.target.dataset.validOnLastBlur === "false") {
@@ -508,20 +508,20 @@ eleventyNavigation:
         let errorSummary = document
             .createRange()
             .createContextualFragment(
-                `<div class="form-result error-summary"><div class="h4"><span class="system-icon system-icon--size-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"> <path fill="currentColor" d="M12 13.5a.75.75 0 0 0 .75-.75V7.5a.75.75 0 0 0-1.5 0v5.25c0 .414.336.75.75.75Zm1.125 2.625a1.125 1.125 0 1 1-2.25 0 1.125 1.125 0 0 1 2.25 0Z"></path> <path fill="currentColor" d="m21.31 7.521-4.833-4.834a1.505 1.505 0 0 0-1.056-.437H8.583c-.396 0-.783.161-1.06.44L2.686 7.521c-.282.284-.437.66-.437 1.059v6.835c0 .401.157.778.44 1.06l4.832 4.835c.282.283.659.438 1.06.438h6.835c.4 0 .777-.156 1.06-.44l4.835-4.832c.283-.282.438-.659.438-1.06V8.582c0-.395-.16-.781-.44-1.06ZM15.416 20.25l-6.835.001-4.832-4.834-.001-6.834L8.583 3.75h6.834v-.002l4.832 4.834.001 6.835-4.834 4.832Z"></path> </svg> </span> We have a problem...</div> <ul class="bulleted-list error-summary__list"></ul></div>`,
+                `<div class="form-result error-summary"><div class="h4"><span class="system-icon system-icon--size-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 13.5a.75.75 0 0 0 .75-.75V7.5a.75.75 0 0 0-1.5 0v5.25c0 .414.336.75.75.75Zm1.125 2.625a1.125 1.125 0 1 1-2.25 0 1.125 1.125 0 0 1 2.25 0Z"></path> <path fill="currentColor" d="m21.31 7.521-4.833-4.834a1.505 1.505 0 0 0-1.056-.437H8.583c-.396 0-.783.161-1.06.44L2.686 7.521c-.282.284-.437.66-.437 1.059v6.835c0 .401.157.778.44 1.06l4.832 4.835c.282.283.659.438 1.06.438h6.835c.4 0 .777-.156 1.06-.44l4.835-4.832c.283-.282.438-.659.438-1.06V8.582c0-.395-.16-.781-.44-1.06ZM15.416 20.25l-6.835.001-4.832-4.834-.001-6.834L8.583 3.75h6.834v-.002l4.832 4.834.001 6.835-4.834 4.832Z"></path></svg></span>We have a problem...</div><ul class="bulleted-list error-summary__list"></ul></div>`,
             );
 
         errorList.forEach((error) => {
             errorSummary.querySelector(".error-summary__list").append(error);
         });
 
-        if (errorList.length) {        
+        if (errorList.length) {
             e.target.closest("form").insertBefore(errorSummary, e.target.closest("button").parentNode);
         } else {
             let successSummary = document
                 .createRange()
                 .createContextualFragment(
-                    `<div class="form-result success-summary"><div class="h4"><span class="system-icon system-icon--size-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"> <path fill="currentColor" d="M16.28 10.28a.75.75 0 1 0-1.06-1.06l-4.72 4.72-1.72-1.72a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.06 0l5.25-5.25Z"></path> <path fill="currentColor" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM3.75 12a8.25 8.25 0 1 1 16.5 0 8.25 8.25 0 0 1-16.5 0Z"></path> </svg> </span> Form submitted</div></div>`,
+                    `<div class="form-result success-summary"><div class="h4"><span class="system-icon system-icon--size-sm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M16.28 10.28a.75.75 0 1 0-1.06-1.06l-4.72 4.72-1.72-1.72a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.06 0l5.25-5.25Z"></path><path fill="currentColor" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM3.75 12a8.25 8.25 0 1 1 16.5 0 8.25 8.25 0 0 1-16.5 0Z"></path></svg></span>Form submitted</div></div>`,
             );
 
             e.target.closest("form").insertBefore(successSummary, e.target.closest("button").parentNode);
@@ -538,6 +538,10 @@ eleventyNavigation:
         text-align: right;
     }
 
+    .button--on-submit-example {
+        align-self: start;
+    }
+
     .form-result {
         background-color: var(--color-red-200);
         border-radius: var(--size-3xs);
@@ -546,12 +550,15 @@ eleventyNavigation:
         scroll-margin-top: 8rem;
     }
 
+    .form-result .system-icon {
+        margin-right: var(--size-2xs);
+    }
+
     @media (min-width: 48rem) {
         .form-result {
             scroll-margin-top: 4rem;
         }
     }
-}
 
     .error-summary {
         background-color: var(--color-red-200);
@@ -579,9 +586,5 @@ eleventyNavigation:
 
     .error-summary__list a:active {
         color: var(--color-gray-800);
-    }
-
-    .error-summary__list {
-        margin-bottom: 0;        
     }
 {% endset %}
