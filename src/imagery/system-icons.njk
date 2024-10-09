@@ -39,7 +39,7 @@ eleventyNavigation:
     <div id="system-icon-explorer">
         <div id="system-icon-gallery"></div>
         <div id="system-icon-inspector">
-            <div class="empty-state">Choose an icon to see its details here</div>
+            <div class="icon-directory__empty-state">Choose an icon to see its details here</div>
         </div>
     </div>
 
@@ -371,7 +371,7 @@ eleventyNavigation:
         line-height: 1rem;
     }
 
-    .empty-state {
+    .icon-directory__empty-state {
         color: var(--color-gray-600);
         grid-column: 1 / -1;
     }
@@ -403,12 +403,12 @@ eleventyNavigation:
             gallery.innerHTML = "";
             inspector.style.display = "block";
             inspector.innerHTML =
-                '<div class="empty-state">Choose an icon to see its details here</div>';
+                '<div class="icon-directory__empty-state">Choose an icon to see its details here</div>';
         }
 
         if (JSON.stringify(data) === "{}") {
             gallery.innerHTML =
-                '<div class="empty-state">No matching icons found</div>';
+                '<div class="icon-directory__empty-state">No matching icons found</div>';
             inspector.style.display = "none";
         }
 
@@ -443,7 +443,7 @@ eleventyNavigation:
             let iconSource = data[key].source;
             let isDeprecated = data[key].isDeprecated;
             let isNew = data[key].isNew;
-
+            
             let iconSummary = iconSummaryTemplate.content.cloneNode(true);
             let button = iconSummary.querySelector("button");
             let iconContainer = iconSummary.querySelector("figure > div");
