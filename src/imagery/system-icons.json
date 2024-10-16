@@ -2,7 +2,13 @@
     "systemIcons": [
         {
             "name": "arrow-down",
-            "tags": ["arrow", "down", "navigation", "list", "direction"],
+            "tags": [
+                "arrow",
+                "down",
+                "navigation",
+                "list",
+                "direction"
+            ],
             "description": "Move down",
             "source": "Phosphor Regular, arrow-down"
         },
@@ -34,101 +40,162 @@
         },
         {
             "name": "arrow-up",
-            "tags": ["arrow", "up", "navigation", "list", "direction"],
+            "tags": [
+                "arrow",
+                "up",
+                "navigation",
+                "list",
+                "direction"
+            ],
             "description": "Move up",
             "source": "Phosphor Regular, arrow-up"
         },
         {
             "name": "arrows-horizontal",
-            "tags": ["deprecated"],
+            "tags": [
+                "deprecated"
+            ],
             "description": "",
             "isDeprecated": true,
             "source": "Phosphor Regular, arrows-left-right"
         },
         {
             "name": "arrows-vertical",
-            "tags": ["deprecated"],
+            "tags": [
+                "deprecated"
+            ],
             "description": "",
             "isDeprecated": true,
             "source": "Phosphor Regular, arrows-down-up"
         },
         {
             "name": "asterisk",
-            "tags": ["deprecated"],
+            "tags": [
+                "deprecated"
+            ],
             "description": "",
             "isDeprecated": true,
             "source": "Phosphor Regular, asterisk"
         },
         {
             "name": "bar-chart",
-            "tags": ["chart", "data", "analytics", "insights"],
+            "tags": [
+                "chart",
+                "data",
+                "analytics",
+                "insights"
+            ],
             "description": "Used to represent analytics, aka data visualizations",
             "source": "Phosphor Regular, chart-bar"
         },
         {
             "name": "bell",
-            "tags": ["notification", "alerts", "alarm"],
+            "tags": [
+                "notification",
+                "alerts",
+                "alarm"
+            ],
             "description": "Time-sensitive notifications of activity within the system",
             "source": "Phosphor Regular, bell"
         },
         {
             "name": "birthday",
-            "tags": ["birthday", "celebration", "cake"],
+            "tags": [
+                "birthday",
+                "celebration",
+                "cake"
+            ],
             "description": "Indicating when it's a person's birthday",
             "source": "Phosphor Regular, cake",
             "isNew": true
         },
         {
             "name": "brand-facebook",
-            "tags": ["logo", "social", "meta"],
+            "tags": [
+                "logo",
+                "social",
+                "meta"
+            ],
             "description": "Logo for Facebook",
             "source": "<a href=\"https://about.meta.com/brand/resources/facebook/logo/\">Facebook brand guidelines</a>"
         },
         {
             "name": "brand-linkedin",
-            "tags": ["logo", "social"],
+            "tags": [
+                "logo",
+                "social"
+            ],
             "description": "Logo for LinkedIn",
             "source": "<a href=\"https://brand.linkedin.com/downloads\">LinkedIn brand guidelines</a>"
         },
         {
             "name": "brand-slack",
-            "tags": ["logo", "social", "support"],
+            "tags": [
+                "logo",
+                "social",
+                "support"
+            ],
             "description": "Logo for Slack",
             "source": "<a href=\"https://slack.com/media-kit\">Slack media kit</a>"
         },
         {
             "name": "brand-twitter",
-            "tags": ["logo", "social", "twitter", "x"],
+            "tags": [
+                "logo",
+                "social",
+                "twitter",
+                "x"
+            ],
             "description": "Logo for X, formerly known as Twitter",
             "source": "<a href=\"https://about.x.com/en/who-we-are/brand-toolkit\">X brand guidelines</a>"
         },
         {
             "name": "building",
-            "tags": ["office", "company", "work"],
+            "tags": [
+                "office",
+                "company",
+                "work"
+            ],
             "description": "Used to represent the parent company of a Justworks product instance; or an work location, as in work address, work email, or work phone",
             "source": "Phosphor Regular, buildings"
         },
         {
             "name": "bullet-outline",
-            "tags": ["bullet", "bulleted", "list"],
+            "tags": [
+                "bullet",
+                "bulleted",
+                "list"
+            ],
             "description": "Third level of a bulleted list",
             "source": "Custom"
         },
         {
             "name": "bullet-square",
-            "tags": ["bullet", "bulleted", "list"],
+            "tags": [
+                "bullet",
+                "bulleted",
+                "list"
+            ],
             "description": "Second level of a bulleted list",
             "source": "Custom"
         },
         {
             "name": "bullet",
-            "tags": ["bullet", "bulleted", "list"],
+            "tags": [
+                "bullet",
+                "bulleted",
+                "list"
+            ],
             "description": "First level of a bulleted list",
             "source": "Custom"
         },
         {
             "name": "calendar",
-            "tags": ["date", "datepicker", "date picker"],
+            "tags": [
+                "date",
+                "datepicker",
+                "date picker"
+            ],
             "description": "For opening a date picker",
             "source": "Phosphor Regular, calendar-blank"
         },
@@ -200,7 +267,13 @@
         },
         {
             "name": "chat",
-            "tags": ["contact", "message", "chatbot", "forethought", "support"],
+            "tags": [
+                "contact",
+                "message",
+                "chatbot",
+                "forethought",
+                "support"
+            ],
             "description": "Send a chat or instant message to Customer Success",
             "source": "Phosphor Regular, chat-circle"
         },
@@ -220,7 +293,9 @@
         },
         {
             "name": "check-circle-inverted",
-            "tags": ["deprecated"],
+            "tags": [
+                "deprecated"
+            ],
             "description": "",
             "isDeprecated": true,
             "source": "Phosphor Fill, check-circle"
@@ -256,9 +331,25 @@
         },
         {
             "name": "check",
-            "tags": ["check", "approve"],
+            "tags": [
+                "check",
+                "approve"
+            ],
             "description": "Mark something as approved",
             "source": "Phosphor Regular, check"
+        },
+        {
+            "name": "checklist",
+            "tags": [
+                "list",
+                "check",
+                "status",
+                "progress",
+                "timeline"
+            ],
+            "description": "A process with multiple steps or stages",
+            "source": "Phosphor Regular, list-check",
+            "isNew": true
         },
         {
             "name": "chevron-down",
@@ -323,70 +414,124 @@
         },
         {
             "name": "clipboard",
-            "tags": ["navigation", "HR", "human resources"],
+            "tags": [
+                "navigation",
+                "HR",
+                "human resources"
+            ],
             "description": "Used for the \"HR\" section of the main navigation",
             "source": "Phosphor Regular, clipboard"
         },
         {
             "name": "clock",
-            "tags": ["time", "hours", "timepicker", "time picker"],
+            "tags": [
+                "time",
+                "hours",
+                "timepicker",
+                "time picker"
+            ],
             "description": "Used to represent a time picker",
             "source": "Phosphor Regular, clock"
         },
         {
             "name": "close-circle",
-            "tags": ["clear", "empty"],
+            "tags": [
+                "clear",
+                "empty"
+            ],
             "description": "Clear the current input",
             "source": "Phosphor Regular, x-circle"
         },
         {
             "name": "close",
-            "tags": ["x", "close", "exit", "deny", "disapprove"],
+            "tags": [
+                "x",
+                "close",
+                "exit",
+                "deny",
+                "disapprove"
+            ],
             "description": "Close the current view; or deny or disapprove something (in contrast with <code>check</code>",
             "source": "Phosphor Regular, x"
         },
         {
             "name": "color-mode-light",
-            "tags": ["color", "light", "dark", "toggle", "sun"],
+            "tags": [
+                "color",
+                "light",
+                "dark",
+                "toggle",
+                "sun"
+            ],
             "description": "Light mode, as in the opposite of dark mode",
             "source": "Phosphor Regular, sun",
             "isNew": true
         },
         {
             "name": "color-mode-dark",
-            "tags": ["color", "light", "dark", "toggle", "moon"],
+            "tags": [
+                "color",
+                "light",
+                "dark",
+                "toggle",
+                "moon"
+            ],
             "description": "Dark mode, as in the opposite of light mode",
             "source": "Phosphor Regular, moon",
             "isNew": true
         },
         {
             "name": "copy",
-            "tags": ["clipboard", "copy", "cut", "paste"],
+            "tags": [
+                "clipboard",
+                "copy",
+                "cut",
+                "paste"
+            ],
             "description": "An action that copies something to the clipboard",
             "source": "Phosphor Regular, copy"
         },
         {
             "name": "credit-card",
-            "tags": ["deprecated"],
+            "tags": [
+                "deprecated"
+            ],
             "description": "",
             "isDeprecated": true,
             "source": "Phosphor Regular, credit-card"
         },
         {
             "name": "cut",
-            "tags": ["clipboard", "cut", "copy", "paste"],
+            "tags": [
+                "clipboard",
+                "cut",
+                "copy",
+                "paste"
+            ],
             "description": "An action that cuts out a selection, so it can be pasted it somewhere else",
             "source": "Phosphor Regular, scissors"
         },
         {
             "name": "document-csv",
-            "tags": ["document", "csv", "file", "data", "spreadsheet"],
+            "tags": [
+                "document",
+                "csv",
+                "file",
+                "data",
+                "spreadsheet"
+            ],
             "description": "A CSV document",
             "source": "Phosphor Regular, file-csv"
         },
         {
             "name": "document-pdf",
-            "tags": ["document", "pdf", "file", "adobe", "acrobat"],
+            "tags": [
+                "document",
+                "pdf",
+                "file",
+                "adobe",
+                "acrobat"
+            ],
             "description": "A PDF document",
             "source": "Phosphor Regular, file-pdf"
         },
@@ -406,37 +551,68 @@
         },
         {
             "name": "document-zip",
-            "tags": ["document", "zip", "file", "compressed", "zipped"],
+            "tags": [
+                "document",
+                "zip",
+                "file",
+                "compressed",
+                "zipped"
+            ],
             "description": "A ZIP file",
             "source": "Phosphor Regular, file-zip"
         },
         {
             "name": "document",
-            "tags": ["document", "file", "page", "paper"],
+            "tags": [
+                "document",
+                "file",
+                "page",
+                "paper"
+            ],
             "description": "A file that doesn't have a more specific <code>document-*</code> icon that matches its type",
             "source": "Phosphor Regular, file"
         },
         {
             "name": "dollar",
-            "tags": ["currency", "finance", "money"],
+            "tags": [
+                "currency",
+                "finance",
+                "money"
+            ],
             "description": "Only use if you're sure that the context is US-only, otherwise use <code>money</code>",
             "source": "Phosphor Regular, currency-dollar-simple"
         },
         {
             "name": "download",
-            "tags": ["file", "files", "download", "upload"],
+            "tags": [
+                "file",
+                "files",
+                "download",
+                "upload"
+            ],
             "description": "Download a copy of one or more files to the user's device. Opposite of <code>upload</code>",
             "source": "Phosphor Regular, download-simple"
         },
         {
             "name": "edit",
-            "tags": ["pencil", "change", "update"],
+            "tags": [
+                "pencil",
+                "change",
+                "update"
+            ],
             "description": "Change the state of an object within the application",
             "source": "Phosphor Regular, pencil-simple"
         },
         {
             "name": "ellipsis",
-            "tags": ["menu", "actions", "more", "show", "see", "all"],
+            "tags": [
+                "menu",
+                "actions",
+                "more",
+                "show",
+                "see",
+                "all"
+            ],
             "description": "For an overflow menu, when the full list of possible actions can't be displayed by default",
             "source": "Phosphor Regular, dots-three"
         },
@@ -496,20 +672,29 @@
         },
         {
             "name": "filter",
-            "tags": ["filter", "search", "options", "funnel"],
+            "tags": [
+                "filter",
+                "search",
+                "options",
+                "funnel"
+            ],
             "description": "Narrow down a set of items to those that match specific criteria",
             "source": "Phosphor Regular, funnel"
         },
         {
             "name": "folder-open",
-            "tags": ["deprecated"],
+            "tags": [
+                "deprecated"
+            ],
             "description": "",
             "isDeprecated": true,
             "source": "Phosphor Regular, folder-open"
         },
         {
             "name": "folder",
-            "tags": ["deprecated"],
+            "tags": [
+                "deprecated"
+            ],
             "description": "",
             "isDeprecated": true,
             "source": "Phosphor Regular, folder"
@@ -544,7 +729,10 @@
         },
         {
             "name": "gear",
-            "tags": ["gear", "settings"],
+            "tags": [
+                "gear",
+                "settings"
+            ],
             "description": "Settings or configuration options relating to the system, or the current context",
             "source": "Phosphor Regular, gear"
         },
@@ -563,94 +751,152 @@
         },
         {
             "name": "grid",
-            "tags": ["grid", "view", "cards", "boxes"],
+            "tags": [
+                "grid",
+                "view",
+                "cards",
+                "boxes"
+            ],
             "description": "A grid-based view of a data set, as opposed to, say, a list-based view",
             "source": "Phosphor Regular, squares-four",
             "isNew": true
         },
         {
             "name": "heart",
-            "tags": ["benefits", "navigation"],
+            "tags": [
+                "benefits",
+                "navigation"
+            ],
             "description": "Used for the \"Benefits\" section of the main navigation",
             "source": "Phosphor Regular, heart"
         },
         {
             "name": "help",
-            "tags": ["help", "support", "question-circle"],
+            "tags": [
+                "help",
+                "support",
+                "question-circle"
+            ],
             "description": "Get help; contact Customer Success",
             "source": "Phosphor Regular, question"
         },
         {
             "name": "home",
-            "tags": ["home", "homepage", "dashboard"],
+            "tags": [
+                "home",
+                "homepage",
+                "dashboard"
+            ],
             "description": "The initial or top-level summary view of an application",
             "source": "Phosphor Regular, house-line"
         },
         {
             "name": "id-card",
-            "tags": ["benefits", "insurance", "card"],
+            "tags": [
+                "benefits",
+                "insurance",
+                "card"
+            ],
             "description": "The card typically issued with a benefit that indicates the policy holder's name, any dependents, and their level of coverage",
             "source": "Phosphor Regular, identification-card"
         },
         {
             "name": "image",
-            "tags": ["photo", "image", "picture"],
+            "tags": [
+                "photo",
+                "image",
+                "picture"
+            ],
             "description": "Generic representation of a photo, or other image",
             "source": "Phosphor Regular, image"
         },
         {
             "name": "info-circle",
-            "tags": ["did you know", "tooltip", "fun fact"],
+            "tags": [
+                "did you know",
+                "tooltip",
+                "fun fact"
+            ],
             "description": "Useful, but not vital, information",
             "source": "Phosphor Regular, info"
         },
         {
             "name": "internal-controls",
-            "tags": ["CS Tools", "JCC", "admin"],
+            "tags": [
+                "CS Tools",
+                "JCC",
+                "admin"
+            ],
             "description": "Settings and tools available only to Justworkers",
             "isNew": true,
             "source": "Phosphor Regular, sliders"
         },
         {
             "name": "link",
-            "tags": ["list", "resources", "url"],
+            "tags": [
+                "list",
+                "resources",
+                "url"
+            ],
             "description": "Used to represent a link in a list of resources (as compared to a PDF, video, etc.)",
             "source": "Phosphor Regular, link"
         },
         {
             "name": "list",
-            "tags": ["list", "view"],
+            "tags": [
+                "list",
+                "view"
+            ],
             "description": "A list-based view of a data set, as opposed to, say, a grid-based view",
             "source": "Phosphor Regular, list-bullets"
         },
         {
             "name": "lock-open",
-            "tags": ["deprecated"],
+            "tags": [
+                "deprecated"
+            ],
             "description": "",
             "isDeprecated": true,
             "source": "Phosphor Regular, lock-key-open"
         },
         {
             "name": "lock",
-            "tags": ["security", "password", "authorization", "unauthorized"],
+            "tags": [
+                "security",
+                "password",
+                "authorization",
+                "unauthorized"
+            ],
             "description": "Only available to authorized users",
             "source": "Phosphor Regular, lock-key"
         },
         {
             "name": "logout",
-            "tags": ["log out", "log off", "sign out", "sign off"],
+            "tags": [
+                "log out",
+                "log off",
+                "sign out",
+                "sign off"
+            ],
             "description": "Exit the system and clear authentication",
             "source": "Phosphor Regular, sign-out"
         },
         {
             "name": "mail",
-            "tags": ["email", "address", "contact"],
+            "tags": [
+                "email",
+                "address",
+                "contact"
+            ],
             "description": "Email something",
             "source": "Phosphor Regular, envelope"
         },
         {
             "name": "menu",
-            "tags": ["menu", "navigation"],
+            "tags": [
+                "menu",
+                "navigation"
+            ],
             "description": "Click or tap to open the application-level navigation on smaller viewports",
             "source": "Phosphor Regular, list"
         },
@@ -686,50 +932,92 @@
         },
         {
             "name": "minus",
-            "tags": ["subtract", "minus", "decrease", "negative"],
+            "tags": [
+                "subtract",
+                "minus",
+                "decrease",
+                "negative"
+            ],
             "description": "Used to negatively increment a value",
             "source": "Phosphor Regular, minus"
         },
         {
             "name": "money",
-            "tags": ["currency", "finance", "money"],
+            "tags": [
+                "currency",
+                "finance",
+                "money"
+            ],
             "description": "Represent financial or monetary transactions, especially when they can be in currencies that are not U.S. dollars",
             "source": "Phosphor Regular, money"
         },
         {
             "name": "paste",
-            "tags": ["clipboard", "copy", "cut", "paste"],
+            "tags": [
+                "clipboard",
+                "copy",
+                "cut",
+                "paste"
+            ],
             "description": "An action that pastes something from the clipboard into the current context",
             "source": "Phosphor Regular, clipboard-text"
         },
         {
             "name": "paystub",
-            "tags": ["money", "pay", "deprecated"],
+            "tags": [
+                "money",
+                "pay",
+                "deprecated"
+            ],
             "description": "Use <code>money</code> instead",
             "isDeprecated": true,
             "source": "Phosphor Regular, money"
         },
         {
             "name": "person-manage",
-            "tags": ["person", "manager", "reports", "reporting", "people"],
+            "tags": [
+                "person",
+                "manager",
+                "reports",
+                "reporting",
+                "people"
+            ],
             "description": "Indicates a manager-employee relationship between two people",
             "source": "Phosphor Regular, users"
         },
         {
             "name": "person-plus",
-            "tags": ["plus", "add", "create", "person", "people"],
+            "tags": [
+                "plus",
+                "add",
+                "create",
+                "person",
+                "people"
+            ],
             "description": "Add a person to the system, or associate a person with this object",
             "source": "Phosphor Regular, user-plus"
         },
         {
             "name": "person-three",
-            "tags": ["people", "person", "group", "team", "department"],
+            "tags": [
+                "people",
+                "person",
+                "group",
+                "team",
+                "department"
+            ],
             "description": "A group of people that can be two or more (even if it may not always be), such as a department or benefits class",
             "source": "Phosphor Regular, users-three"
         },
         {
             "name": "person",
-            "tags": ["person", "single", "one", "people", "user"],
+            "tags": [
+                "person",
+                "single",
+                "one",
+                "people",
+                "user"
+            ],
             "description": "Representing a single individual",
             "source": "Phosphor Regular, user"
         },
@@ -763,14 +1051,18 @@
         },
         {
             "name": "pie-chart",
-            "tags": ["deprecated"],
+            "tags": [
+                "deprecated"
+            ],
             "description": "",
             "isDeprecated": true,
             "source": "Phosphor Regular, chart-pie"
         },
         {
             "name": "pin",
-            "tags": ["deprecated"],
+            "tags": [
+                "deprecated"
+            ],
             "description": "",
             "isDeprecated": true,
             "source": "Phosphor Regular, map-pin"
@@ -791,129 +1083,243 @@
         },
         {
             "name": "plus-circle",
-            "tags": ["add", "link", "create", "connect", "plus", "circle"],
+            "tags": [
+                "add",
+                "link",
+                "create",
+                "connect",
+                "plus",
+                "circle"
+            ],
             "description": "Used to create or make a connection or association between two objects",
             "source": "Phosphor Regular, plus-circle"
         },
         {
             "name": "plus",
-            "tags": ["add", "plus", "increase", "positive"],
+            "tags": [
+                "add",
+                "plus",
+                "increase",
+                "positive"
+            ],
             "description": "Used to create an object in the system, or positively increment a value",
             "source": "Phosphor Regular, plus"
         },
         {
             "name": "print",
-            "tags": ["print", "printer", "export"],
+            "tags": [
+                "print",
+                "printer",
+                "export"
+            ],
             "description": "Send data to the user's printer",
             "source": "Phosphor Regular, printer"
         },
         {
             "name": "question-circle",
-            "tags": ["help", "support", "deprecated"],
+            "tags": [
+                "help",
+                "support",
+                "deprecated"
+            ],
             "description": "Use <code>help</code> instead",
             "isDeprecated": true,
             "source": "Phosphor Regular, question"
         },
         {
             "name": "redo",
-            "tags": ["redo", "undo", "history", "actions"],
+            "tags": [
+                "redo",
+                "undo",
+                "history",
+                "actions"
+            ],
             "description": "Opposite of <code>undo</code>—move forward in the sequence of previous actions that have been taken",
             "source": "Phosphor Regular, arrow-u-up-right"
         },
         {
             "name": "retry",
-            "tags": ["retry", "again", "repeat"],
+            "tags": [
+                "retry",
+                "again",
+                "repeat"
+            ],
             "description": "Execute a command one more time, especially when the last attempt failed",
             "source": "Phosphor Regular, arrow-clockwise"
         },
         {
             "name": "search",
-            "tags": ["search", "magnifying glass", "magnifier", "find", "look"],
+            "tags": [
+                "search",
+                "magnifying glass",
+                "magnifier",
+                "find",
+                "look"
+            ],
             "description": "Find matching objects within a list or the system, usually by typing in keywords",
             "source": "Phosphor Regular, magnifying-glass"
         },
         {
             "name": "share",
-            "tags": ["share", "send", "social media", "post"],
+            "tags": [
+                "share",
+                "send",
+                "social media",
+                "post"
+            ],
             "description": "Send an item, or a link to it, to another user",
             "source": "Phosphor Regular, export"
         },
         {
             "name": "slash-circle",
-            "tags": ["disable", "disabled", "off", "turn off", "toggle"],
+            "tags": [
+                "disable",
+                "disabled",
+                "off",
+                "turn off",
+                "toggle"
+            ],
             "description": "Disable something",
             "source": "Phosphor Regular, prohibit"
         },
         {
             "name": "sort-asc",
-            "tags": ["sort", "sorting", "asc", "ascending", "table", "list"],
+            "tags": [
+                "sort",
+                "sorting",
+                "asc",
+                "ascending",
+                "table",
+                "list"
+            ],
             "description": "Sorted smallest to largest; A to Z, 0 to 9; first to last; oldest to newest; etc.",
             "source": "Phosphor Fill, caret-up-down, 50% scale, down caret only"
         },
         {
             "name": "sort-desc",
-            "tags": ["sort", "sorting", "desc", "descending", "table", "list"],
+            "tags": [
+                "sort",
+                "sorting",
+                "desc",
+                "descending",
+                "table",
+                "list"
+            ],
             "description": "Sorted largest to smallest; Z to A, 9 to 0; last to first; newest to oldest; etc.",
             "source": "Phosphor Fill, caret-up-down, 50% scale, top caret only"
         },
         {
             "name": "sort",
-            "tags": ["sort", "sorting", "unsorted", "table", "list"],
+            "tags": [
+                "sort",
+                "sorting",
+                "unsorted",
+                "table",
+                "list"
+            ],
             "description": "Indicates that the current view can be sorted by the associated attribute, but currently is not",
             "source": "Phosphor Fill, caret-up-down, 50% scale"
         },
         {
             "name": "sync",
-            "tags": ["sync", "update", "send"],
+            "tags": [
+                "sync",
+                "update",
+                "send"
+            ],
             "description": "Communicate between two systems so that the relevant data in each is equivalent",
             "source": "Phosphor Regular, arrows-clockwise"
         },
         {
             "name": "trash",
-            "tags": ["remove", "delete", "garbage", "can", "oscar"],
+            "tags": [
+                "remove",
+                "delete",
+                "garbage",
+                "can",
+                "oscar"
+            ],
             "description": "Delete something from the system or from this context, permanently",
             "source": "Phosphor Regular, trash"
         },
         {
             "name": "undo",
-            "tags": ["undo", "redo", "history", "actions"],
+            "tags": [
+                "undo",
+                "redo",
+                "history",
+                "actions"
+            ],
             "description": "Go backward in the sequence of previous actions that have been taken. Opposite of <code>redo</code>",
             "source": "Phosphor Regular, arrow-u-up-left"
         },
         {
             "name": "upload",
-            "tags": ["file", "files", "download", "upload"],
+            "tags": [
+                "file",
+                "files",
+                "download",
+                "upload"
+            ],
             "description": "Upload a copy of one or more files from the user's device. Opposite of <code>download</code>",
             "source": "Phosphor Regular, upload-simple"
         },
         {
             "name": "warning",
-            "tags": ["warning", "watch", "oops", "error", "mistake"],
+            "tags": [
+                "warning",
+                "watch",
+                "oops",
+                "error",
+                "mistake"
+            ],
             "description": "When we can't be sure that something is an error in invalid, but we think it might be",
             "source": "Phosphor Regular, warning"
         },
         {
             "name": "whats-new",
-            "tags": ["new", "sparkles", "ai", "exciting", "magic"],
+            "tags": [
+                "new",
+                "sparkles",
+                "ai",
+                "exciting",
+                "magic"
+            ],
             "description": "Highlight a new feature or suggestion within the system",
             "source": "Phosphor Regular, sparkle"
         },
         {
             "name": "zap",
-            "tags": ["autofill", "quick", "shortcut"],
+            "tags": [
+                "autofill",
+                "quick",
+                "shortcut"
+            ],
             "description": "Used on timecards to autofill 8 hours a day, Monday through Friday",
             "source": "Phosphor Regular, lightning"
         },
         {
             "name": "zoom-in",
-            "tags": ["zoom", "enlarge", "bigger", "in", "preview", "look"],
+            "tags": [
+                "zoom",
+                "enlarge",
+                "bigger",
+                "in",
+                "preview",
+                "look"
+            ],
             "description": "Zoom in, or preview file",
             "source": "Phosphor Regular, magnifying-glass-plus",
             "isNew": true
         },
         {
             "name": "zoom-out",
-            "tags": ["zoom", "shrink", "smaller", "out"],
+            "tags": [
+                "zoom",
+                "shrink",
+                "smaller",
+                "out"
+            ],
             "description": "Zoom out",
             "source": "Phosphor Regular, magnifying-glass-minus",
             "isNew": true
