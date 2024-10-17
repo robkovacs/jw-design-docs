@@ -1,0 +1,19 @@
+---
+title: Spinner
+eleventyNavigation: 
+    key: Spinner
+    parent: Components
+    order: 17
+    excerpt: "Generic loading state."
+---
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+    <article>
+        {{ spinner({ size: "xs" }) }}
+        {{ spinner({ size: "sm" }) }}
+        {{ spinner({ size: "md" }) }}
+        {{ spinner({ size: "lg" }) }}
+        {{ spinner({ size: "xl" }) }}
+    </article>
+{% endblock %}

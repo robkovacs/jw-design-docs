@@ -1,0 +1,24 @@
+---
+title: Skeletons
+eleventyNavigation: 
+    key: Skeletons
+    parent: Components
+    order: 16
+    excerpt: "Show a placeholder text or images while content is loading."
+---
+{% extends '../_includes/layout.njk' %}
+
+{% block content %}
+    <article>
+        <p>
+            {{ skeleton("image", { width: "2.5rem", height: "2.5rem" }) }}
+            {{ skeleton("image", { width: "2.5rem", height: "2.5rem", borderRadius: "md" }) }}
+            {{ skeleton("image", { width: "2.5rem", height: "2.5rem", borderRadius: "lg" }) }}
+        </p>
+        <p>
+            {{ skeleton("text", { variant: "heading", size: "xs", width: "100%; max-width: 15rem" }) }}<br/>
+            {{ skeleton("text", { variant: "body", size: "sm", width: "100%; max-width: 15rem" }) }}<br/>
+            {{ skeleton("text", { variant: "body", size: "md", width: "100%; max-width: 15rem" }) }}
+        </p>
+    </article>
+{% endblock %}
